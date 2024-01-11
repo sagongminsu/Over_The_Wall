@@ -7,7 +7,7 @@ public class PlayerStateMachine : StateMachine
     public Player player { get; }
 
     //states
-    public PlayerIdleState idleState { get; }
+   // public PlayerIdleState idleState { get; }
 
     public Vector2 MovemnetInput { get; set; }
     public float MovemnetSpeed { get; private set; }
@@ -22,7 +22,7 @@ public class PlayerStateMachine : StateMachine
     {
         this.player = player;
 
-        idleState = new PlayerIdleState(this);
+        //idleState = new PlayerIdleState(this);
 
         MainCameraTransform = Camera.main.transform;
 

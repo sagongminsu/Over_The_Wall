@@ -2,21 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DaynightCycle : MonoBehaviour
+public class DayNightCycle : MonoBehaviour
 {
-    [Range(0.0f, 1.0f)]
+    [Range(0.0f, 10.0f)]
     public float time;
     public float fullDayLength;
     public float startTime = 0.4f;
     private float timeRate;
     public Vector3 noon;
 
-
     [Header("Sun")]
     public Light sun;
     public Gradient sunColor;
     public AnimationCurve sunIntensity;
-
 
     [Header("Moon")]
     public Light moon;
@@ -29,14 +27,13 @@ public class DaynightCycle : MonoBehaviour
 
     private void Start()
     {
-        timeRate = 1.0f / fullDayLength;
+        timeRate = 10.0f / fullDayLength;
         time = startTime;
-
     }
 
     private void Update()
     {
-        time = (time + timeRate * Time.deltaTime) % 1.0f;
+        time = (time + timeRate * Time.deltaTime) % 10.0f;
 
         UpdateLighting(sun, sunColor, sunIntensity);
         UpdateLighting(moon, moonColor, moonIntensity);
@@ -47,11 +44,10 @@ public class DaynightCycle : MonoBehaviour
     }
 
     void UpdateLighting(Light lightSource, Gradient colorGradiant, AnimationCurve intensityCurve)
-    {   
-
+    {
         float intensity = intensityCurve.Evaluate(time);
 
-        lightSource.transform.eulerAngles = (time - (lightSource == sun ? 0.25f : 0.75f)) * noon * 4.0f;
+        lightSource.transform.eulerAngles = (time - (lightSource == sun ? 0.025f : 00.75f)) * noon * 0.40f;
         lightSource.color = colorGradiant.Evaluate(time);
         lightSource.intensity = intensity;
 
@@ -60,5 +56,5 @@ public class DaynightCycle : MonoBehaviour
             go.SetActive(false);
         else if (lightSource.intensity > 0 && !go.activeInHierarchy)
             go.SetActive(true);
-    } 
+    }
 }
