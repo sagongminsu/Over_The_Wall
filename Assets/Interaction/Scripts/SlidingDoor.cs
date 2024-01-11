@@ -19,4 +19,8 @@ public class SlidingDoor : MonoBehaviour, IInteraction
             transform.position = targetPosition;
         }
     }
+    public void GetInteractPrompt()
+    {
+        return string.Format("Interaction {0}", _object.displayName);
+    }
 }
