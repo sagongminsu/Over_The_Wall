@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 
 public abstract class StateMachine
 {
     protected IState currentState;
 
-    public void ChangState(IState newState)
+    public void ChangeState(IState newState)
     {
         currentState?.Exit();
 
@@ -14,10 +15,10 @@ public abstract class StateMachine
 
         currentState?.Enter();
     }
-    
+
     public void HandleInput()
     {
-        currentState.HandleInput();
+        currentState?.HandleInput();
     }
 
     public void Update()

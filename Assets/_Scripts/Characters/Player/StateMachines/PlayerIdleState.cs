@@ -2,20 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//public class PlayerIdleState : PlayerBaseState
-//{
-//    public void Enter()
-//    {
-//        throw new System.NotImplementedException();
-//    }
+public class PlayerIdleState : PlayerGroundedState
+{
+    public PlayerIdleState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
+    {
+    }
 
-//    public void Exit()
-//    {
-//        throw new System.NotImplementedException();
-//    }
+    public override void Enter()
+    {
+        stateMachine.MovementSpeedModifier = 0f;
+        base.Enter();
+        StartAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
+    }
 
-//    public void Update()
-//    {
-//        throw new System.NotImplementedException();
-//    }
-//}
+    public override void Exit()
+    {
+        base.Exit();
+        StopAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (stateMachine.MovementInput != Vector2.zero)
+        {
+            OnMove();
+            return;
+        }
+    }
+}
