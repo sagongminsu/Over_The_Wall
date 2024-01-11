@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [field: Header("References")]
     [field: SerializeField] public PlayerSO Data { get; private set; }
 
-    [field : Header("Animations")]
+    [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
 
     public Rigidbody Rigidbody { get; private set; }
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         AnimationData.Initialize();
 
         Rigidbody = GetComponent<Rigidbody>();
-        Animator = GetComponent<Animator>();
+        Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerInput>();
         Controller = GetComponent<CharacterController>();
 
@@ -32,5 +32,19 @@ public class Player : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        stateMachine.ChangeState(stateMachine.IdleState);
     }
+
+    private void Update()
+    {
+        stateMachine.HandleInput();
+        stateMachine.Update();
+    }
+
+    private void FixedUpdate()
+    {
+        stateMachine.PhysicsUpdate();
+    }
+
+
 }
