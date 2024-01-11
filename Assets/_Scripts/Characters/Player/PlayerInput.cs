@@ -13,7 +13,6 @@ public class PlayerInput : MonoBehaviour
 
         PlayerActions = InputActions.Player;
     }
-
     private void OnEnable()
     {
         InputActions.Enable();

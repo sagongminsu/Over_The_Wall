@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class PlayerBaseState : IState
@@ -12,49 +14,37 @@ public class PlayerBaseState : IState
     public PlayerBaseState(PlayerStateMachine playerStateMachine)
     {
         stateMachine = playerStateMachine;
-        groundData = stateMachine.player.Data.GroundData;
+        groundData = stateMachine.Player.Data.GroundedData;
     }
 
-    public void Enter()
+    public virtual void Enter()
     {
         AddInputActionsCallbacks();
     }
 
-    public void Exit()
+    public virtual void Exit()
     {
         RemoveInputActionsCallbacks();
     }
 
-    public void HandleInput()
+    public virtual void HandleInput()
     {
-        ReadMovemnetInput();
+        ReadMovementInput();
     }
 
-
-    public void PhysicsUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    void IState.Update()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    //
-    protected virtual void AddInputActionsCallbacks()
+    public virtual void PhysicsUpdate()
     {
 
     }
 
-    protected virtual void RemoveInputActionsCallbacks()
+    public virtual void Update()
     {
-
+        Move();
     }
 
-    private void ReadMovemnetInput()
+    private void ReadMovementInput()
     {
-        stateMachine.MovemnetInput = stateMachine.player.Input.PlayerActions.Movement.ReadValue<Vector2>();
+        stateMachine.MovementInput = stateMachine.Player.Input.PlayerActions.Movement.ReadValue<Vector2>();
     }
 
     private void Move()
@@ -77,36 +67,66 @@ public class PlayerBaseState : IState
         forward.Normalize();
         right.Normalize();
 
-        return forward * stateMachine.MovemnetInput.y + right * stateMachine.MovemnetInput.x;
+        return forward * stateMachine.MovementInput.y + right * stateMachine.MovementInput.x;
     }
+
     private void Move(Vector3 movementDirection)
     {
-        float movementSpeed = GetMovementSpeed();
-        stateMachine.player.Controller.Move((movementDirection * movementSpeed) * Time.deltaTime);
+        float movementSpeed = GetMovemenetSpeed();
+        stateMachine.Player.Controller.Move(
+            (movementDirection * movementSpeed) * Time.deltaTime
+            );
     }
 
     private void Rotate(Vector3 movementDirection)
     {
         if (movementDirection != Vector3.zero)
         {
-            Quaternion targertRotation = Quaternion.LookRotation(movementDirection);
-            stateMachine.player.transform.rotation = Quaternion.Slerp(stateMachine.player.transform.rotation, targertRotation, stateMachine.RotationDamping * Time.deltaTime);
+            Transform playerTransform = stateMachine.Player.transform;
+            Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
+            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
         }
     }
 
-    private float GetMovementSpeed()
+    private float GetMovemenetSpeed()
     {
-        float movementSpeed = stateMachine.MovemnetSpeed * stateMachine.MovemnetSpeedModifier;
+        float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
         return movementSpeed;
     }
-    
+
     protected void StartAnimation(int animationHash)
     {
-        stateMachine.player.Animator.SetBool(animationHash, true);
+        stateMachine.Player.Animator.SetBool(animationHash, true);
     }
 
     protected void StopAnimation(int animationHash)
     {
-        stateMachine.player.Animator.SetBool(animationHash, false);
+        stateMachine.Player.Animator.SetBool(animationHash, false);
     }
+
+    protected virtual void AddInputActionsCallbacks()
+    {
+        PlayerInput input = stateMachine.Player.Input;
+        input.PlayerActions.Movement.canceled += OnMovementCanceled;
+        input.PlayerActions.Run.started += OnRunStarted;
+    }
+
+    protected virtual void RemoveInputActionsCallbacks()
+    {
+        PlayerInput input = stateMachine.Player.Input;
+        input.PlayerActions.Movement.canceled -= OnMovementCanceled;
+        input.PlayerActions.Run.started -= OnRunStarted;
+
+    }
+
+    protected virtual void OnRunStarted(InputAction.CallbackContext context)
+    {
+
+    }
+
+    protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
+    {
+
+    }
+
 }

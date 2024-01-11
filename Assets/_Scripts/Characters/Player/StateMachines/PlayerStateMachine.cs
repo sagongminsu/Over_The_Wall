@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
-    public Player player { get; }
+    public Player Player { get; }
 
-    //states
-    public PlayerIdleState idleState { get; }
+    // States
+    public PlayerIdleState IdleState { get; }
+    public PlayerWalkState WalkState { get; }
+    public PlayerRunState RunState { get; }
 
-    public Vector2 MovemnetInput { get; set; }
-    public float MovemnetSpeed { get; private set; }
+    // 
+    public Vector2 MovementInput { get; set; }
+    public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
-    public float MovemnetSpeedModifier { get; private set; } = 1f;
+    public float MovementSpeedModifier { get; set; } = 1f;
 
     public float JumpForce { get; set; }
 
@@ -20,14 +23,15 @@ public class PlayerStateMachine : StateMachine
 
     public PlayerStateMachine(Player player)
     {
-        this.player = player;
+        this.Player = player;
 
-        idleState = new PlayerIdleState(this);
+        IdleState = new PlayerIdleState(this);
+        WalkState = new PlayerWalkState(this);
+        RunState = new PlayerRunState(this);
 
         MainCameraTransform = Camera.main.transform;
 
-        MovemnetSpeed = player.Data.GroundData.BaseSpeed;
-        RotationDamping = player.Data.GroundData.BaseRotationDamping;
+        MovementSpeed = player.Data.GroundedData.BaseSpeed;
+        RotationDamping = player.Data.GroundedData.BaseRotationDamping;
     }
-
 }
