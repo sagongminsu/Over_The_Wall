@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class OpenWasher : MonoBehaviour, IOpen
+{
+    float openRotationY = 35f;
+    float closeRatationY = -35f;
+    public void Open()
+    {
+        if (transform.rotation.eulerAngles.y != 35f)
+        {
+            Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, openRotationY, transform.rotation.eulerAngles.z);
+            transform.rotation = targetRotation;
+        }
+        else
+        {
+            Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, closeRatationY, transform.rotation.eulerAngles.z);
+            transform.rotation = targetRotation;
+        }
+    }
+}
