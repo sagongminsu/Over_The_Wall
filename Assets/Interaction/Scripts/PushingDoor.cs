@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PushingDoor : MonoBehaviour, IOpen
+public class PushingDoor : MonoBehaviour, IInteraction
 {
     float openRotationY = 90f;
     float closeRotationY = 0f;
-    public void Open()
+    public void OnInteract()
     {
         if(transform.rotation.eulerAngles.y != 90f)
         {

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlidingDoor : MonoBehaviour, IOpen
+public class SlidingDoor : MonoBehaviour, IInteraction
 {
     float openPositionX = -2.78f;
     float closePositionX = -1.47f;
-    public void Open()
+    public void OnInteract()
     {
         if(transform.position.x != -2.78f)
         {

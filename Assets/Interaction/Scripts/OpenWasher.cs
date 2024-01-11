@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenWasher : MonoBehaviour, IOpen
+public class OpenWasher : MonoBehaviour, IInteraction
 {
     float openRotationY = 35f;
     float closeRatationY = -35f;
-    public void Open()
+    public void OnInteract()
     {
         if (transform.rotation.eulerAngles.y != 35f)
         {

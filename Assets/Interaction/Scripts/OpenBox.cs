@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenBox : MonoBehaviour, IOpen
+public class OpenBox : MonoBehaviour, IInteraction
 {
     float openRotationX = -90f;
     float closeRotationX = 0f;
-    public void Open()
+    public void OnInteract()
     {
         if (transform.rotation.eulerAngles.x != -90f)
         {
