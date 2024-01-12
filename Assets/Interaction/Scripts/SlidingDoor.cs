@@ -6,6 +6,12 @@ public class SlidingDoor : MonoBehaviour, IInteraction
 {
     float openPositionX = -2.78f;
     float closePositionX = -1.47f;
+
+    public string GetInteractPrompt()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void OnInteract()
     {
         if(transform.position.x != -2.78f)
@@ -19,8 +25,9 @@ public class SlidingDoor : MonoBehaviour, IInteraction
             transform.position = targetPosition;
         }
     }
-    public void GetInteractPrompt()
-    {
-        return string.Format("Interaction {0}", _object.displayName);
-    }
+    //public void GetInteractPrompt()
+    //{
+    //    return string.Format("Interaction {0}", _object.displayName);
+    //}
+
 }
