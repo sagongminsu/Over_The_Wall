@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SlidingDoor : MonoBehaviour, IInteraction
 {
+    public ItemData.Object associatedData;
     float openPositionX = -2.78f;
     float closePositionX = -1.47f;
     public void OnInteract()
@@ -19,8 +20,18 @@ public class SlidingDoor : MonoBehaviour, IInteraction
             transform.position = targetPosition;
         }
     }
-    public void GetInteractPrompt()
+    
+    public string GetInteractPrompt()
     {
-        return string.Format("Interaction {0}", _object.displayName);
+        if (associatedData != null)
+        {
+            return string.Format("Interaction {0}", associatedData.displayName);
+        }
+        else
+        {
+            return "Interaction";
+        }
     }
+
+
 }

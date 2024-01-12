@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OpenBox : MonoBehaviour, IInteraction
 {
+    public ItemData.Object associatedData;
     float openRotationX = -90f;
     float closeRotationX = 0f;
     public void OnInteract()
@@ -19,8 +20,15 @@ public class OpenBox : MonoBehaviour, IInteraction
             transform.rotation = targetRotation;
         }
     }
-    public void GetInteractPrompt()
+    public string GetInteractPrompt()
     {
-        return string.Format("Interaction {0}", _object.displayName);
+        if (associatedData != null)
+        {
+            return string.Format("Interaction {0}", associatedData.displayName);
+        }
+        else
+        {
+            return "Interaction";
+        }
     }
 }
