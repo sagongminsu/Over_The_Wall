@@ -1,25 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ItemSlot
+public class ItemSlotUI : MonoBehaviour
 {
-    public int quntity;
-}
-public class ItemSlotUi : MonoBehaviour
-{
-    public ItemSlotUi[] UiSlot;
-    public ItemSlot[] slts;
-    public GameObject inventoryWindow;
-    public Transform dropPosition;
-
-    [Header("Selected Item")]
-    private ItemSlot selectedItem;
-    public int selectedItemIndex;
-    public TMPro.TextMeshProUGUI selectedItemName;
-        
-    
+    // Start is called before the first frame update
     void Start()
     {
         
