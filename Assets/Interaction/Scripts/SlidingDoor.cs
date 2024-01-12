@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlidingDoor : MonoBehaviour, IInteraction
 {
-    public ItemData.Data associatedData;
+    public ItemData.Object associatedData;
     float openPositionX = -2.78f;
     float closePositionX = -1.47f;
     public void OnInteract()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PushingDoor : MonoBehaviour, IInteraction
 {
-    public ItemData.Data associatedData;
+    public ItemData.Object associatedData;
     float openRotationY = 90f;
     float closeRotationY = 0f;
     public void OnInteract()

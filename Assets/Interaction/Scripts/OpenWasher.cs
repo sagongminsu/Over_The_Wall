@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenWasher : MonoBehaviour, IInteraction
 {
-    public ItemData.Data associatedData;
+    public ItemData.Object associatedData;
 
     float openRotationY = 35f;
     float closeRatationY = -35f;

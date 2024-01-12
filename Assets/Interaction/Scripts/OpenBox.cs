@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenBox : MonoBehaviour, IInteraction
 {
-    public ItemData.Data associatedData;
+    public ItemData.Object associatedData;
     float openRotationX = -90f;
     float closeRotationX = 0f;
     public void OnInteract()
