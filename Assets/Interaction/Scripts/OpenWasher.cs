@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OpenWasher : MonoBehaviour, IInteraction
 {
+    public ItemData.Data associatedData;
+
     float openRotationY = 35f;
     float closeRatationY = -35f;
     public void OnInteract()
@@ -20,8 +22,15 @@ public class OpenWasher : MonoBehaviour, IInteraction
         }
     }
 
-    public void GetInteractPrompt()
+    public string GetInteractPrompt()
     {
-        return string.Format("Interaction {0}", _object.displayName);
+        if (associatedData != null)
+        {
+            return string.Format("Interaction {0}", associatedData.displayName);
+        }
+        else
+        {
+            return "Interaction";
+        }
     }
 }
