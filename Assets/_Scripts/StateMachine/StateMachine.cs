@@ -1,33 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Experimental.AI;
-
-public abstract class StateMachine
+public class StateMachine
 {
-    protected IState currentState;
+    public State currentState;
 
-    public void ChangeState(IState newState)
+    public void Initialize(State startingState)
     {
-        currentState?.Exit();
+        currentState = startingState;
+        startingState.Enter();
+    }
+
+    public void ChangeState(State newState)
+    {
+        currentState.Exit();
 
         currentState = newState;
-
-        currentState?.Enter();
-    }
-
-    public void HandleInput()
-    {
-        currentState?.HandleInput();
-    }
-
-    public void Update()
-    {
-        currentState?.Update();
-    }
-
-    public void PhysicsUpdate()
-    {
-        currentState?.PhysicsUpdate();
+        newState.Enter();
     }
 }
