@@ -10,13 +10,13 @@ public class SKYPRO_Renderer : ScriptableRendererFeature
 
         private Material _material;
 
-        private RenderTargetHandle tempRenderTarget;
+      //  private RenderTargetHandle tempRenderTarget; 이것
 
         public CustomRenderPass(Material mat)
         {
             _material = mat;
 
-            tempRenderTarget.Init("_TemporaryColourTexture");
+          //  tempRenderTarget.Init("_TemporaryColourTexture");이것
         }
 
         // This method is called before executing the render pass.
@@ -37,9 +37,9 @@ public class SKYPRO_Renderer : ScriptableRendererFeature
         {
             CommandBuffer commandBuffer = CommandBufferPool.Get();
 
-            commandBuffer.GetTemporaryRT(tempRenderTarget.id, renderingData.cameraData.cameraTargetDescriptor);
-            Blit(commandBuffer, source, tempRenderTarget.Identifier(), _material);
-            Blit(commandBuffer, tempRenderTarget.Identifier(), source);
+           // commandBuffer.GetTemporaryRT(tempRenderTarget.id, renderingData.cameraData.cameraTargetDescriptor); 이것
+           // Blit(commandBuffer, source, tempRenderTarget.Identifier(), _material); 이것
+           // Blit(commandBuffer, tempRenderTarget.Identifier(), source); 이것
             
             context.ExecuteCommandBuffer(commandBuffer);
             CommandBufferPool.Release(commandBuffer);
@@ -80,7 +80,7 @@ public class SKYPRO_Renderer : ScriptableRendererFeature
     // This method is called when setting up the renderer once per-camera.
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        m_ScriptablePass.source = renderer.cameraColorTarget;
+      //  m_ScriptablePass.source = renderer.cameraColorTarget; 이것
         renderer.EnqueuePass(m_ScriptablePass);
     }
 }

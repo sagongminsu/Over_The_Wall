@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class DayNightCycle : MonoBehaviour
 {
@@ -27,6 +28,22 @@ public class DayNightCycle : MonoBehaviour
     public AnimationCurve lightingIntensityMultiplier; // 조명 강도
     public AnimationCurve reflectionIntensityMultiplier; // 반사 강도
 
+    [Header("Street Light")]
+    public Light streetlight;
+    public AnimationCurve streetLightIntensity;
+
+    [Header("Lamp")]
+
+    public Light lamp;
+    public AnimationCurve LampIntensity;
+
+    [Header("spotlight")]
+    public Light spotlight;
+    public AnimationCurve spotLightIntensity;
+
+
+
+    [Header("Time")]
     public TextMeshProUGUI timeText; // 시간을 표시할 텍스트
 
     private int days; // 경과한 날짜 수
@@ -51,10 +68,22 @@ public class DayNightCycle : MonoBehaviour
 
         UpdateLighting(sun, sunColor, sunIntensity); // 태양 조명 업데이트
         UpdateLighting(moon, moonColor, moonIntensity); // 달 조명 업데이트
+        UpdateLighting(streetlight, streetLightIntensity); //가로등 조명 업데이트
+        UpdateLighting(lamp,LampIntensity);//램프등 조명 업데이트
+        UpdateLighting(spotlight, spotLightIntensity);//스프라이트 조명 업데이트
 
         // 시간 및 날짜 표시 업데이트
         UpdateTimeText();
     }
+
+    private void UpdateLighting(Light streetlight, AnimationCurve streetLightIntensity)
+    {
+       float intensity = streetLightIntensity.Evaluate(time);
+        streetlight.intensity = intensity;
+    }
+
+
+
     private void UpdateLighting(Light lightSource, Gradient colorGradient, AnimationCurve intensityCurve)
     {
         float intensity = intensityCurve.Evaluate(time); // 시간에 따른 강도 계산

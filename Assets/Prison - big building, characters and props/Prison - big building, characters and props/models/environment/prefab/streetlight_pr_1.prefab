@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4095199773800298}
   - component: {fileID: 108255740690474748}
-  - component: {fileID: 8379372810761490255}
+  - component: {fileID: 1646720605420752902}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417129811678440}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.83, y: 5.088, z: 0}
+  m_LocalRotation: {x: 0.72687435, y: 0, z: 0, w: 0.6867705}
+  m_LocalPosition: {x: -2.16, y: 6.626, z: -0.056}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4386753305073304}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 93.25, y: 0, z: 0}
 --- !u!108 &108255740690474748
 Light:
   m_ObjectHideFlags: 0
@@ -45,10 +45,10 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_Intensity: 100.01
+  m_Range: 17.843248
+  m_SpotAngle: 77.432495
+  m_InnerSpotAngle: 60.345623
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -93,9 +93,9 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
+  m_ShadowRadius: 1
   m_ShadowAngle: 0
---- !u!114 &8379372810761490255
+--- !u!114 &1646720605420752902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4386753305073304
 Transform:
   m_ObjectHideFlags: 0
@@ -146,12 +146,12 @@ Transform:
   m_GameObject: {fileID: 1795604488484554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4095199773800298}
   m_Father: {fileID: 0}
-  m_RootOrder: 74
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33752855194918636
 MeshFilter:
