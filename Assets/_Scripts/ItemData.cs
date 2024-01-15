@@ -18,6 +18,6 @@ public class ItemData : MonoBehaviour
 
     private void Start()
     {
-        Data ItemData = JsonUtility.FromJson<Data>(itemData);
+        //Data ItemData = JsonUtility.FromJson<Data>(itemData);
     }
 }
