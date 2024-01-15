@@ -108,6 +108,6 @@ public class DayNightCycle : MonoBehaviour
         if (hours > 12) hours -= 12;
         if (hours == 0) hours = 12;
 
-        timeText.text = "Day " + days + "\nTime: " + " " + daytime + hours.ToString("00") + ":" + minutes.ToString("00") ;
+       // timeText.text = "Day " + days + "\nTime: " + " " + daytime + hours.ToString("00") + ":" + minutes.ToString("00") ;
     }
 }
