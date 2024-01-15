@@ -1,20 +1,240 @@
 fileFormatVersion: 2
-guid: 8d3fd9bb663c06946b928fcbb0d59c28
+guid: 7cd6d38641f94c8458f9eeb423d3c161
+timeCreated: 1565271509
+licenseType: Store
 ModelImporter:
-  serializedVersion: 22200
-  internalIDToNameTable: []
-  externalObjects: {}
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: chest
+    100004: chest-1
+    100006: clavicle_L
+    100008: clavicle_R
+    100010: deltoid_L
+    100012: deltoid_R
+    100014: eye
+    100016: eye_L
+    100018: eye_L_end
+    100020: eye_R
+    100022: eye_R_end
+    100024: f_index_01_L
+    100026: f_index_01_R
+    100028: f_index_02_L
+    100030: f_index_02_R
+    100032: f_index_03_L
+    100034: f_index_03_L_end
+    100036: f_index_03_R
+    100038: f_index_03_R_end
+    100040: f_middle_01_L
+    100042: f_middle_01_R
+    100044: f_middle_02_L
+    100046: f_middle_02_R
+    100048: f_middle_03_L
+    100050: f_middle_03_L_end
+    100052: f_middle_03_R
+    100054: f_middle_03_R_end
+    100056: f_pinky_01_L
+    100058: f_pinky_01_R
+    100060: f_pinky_02_L
+    100062: f_pinky_02_R
+    100064: f_pinky_03_L
+    100066: f_pinky_03_L_end
+    100068: f_pinky_03_R
+    100070: f_pinky_03_R_end
+    100072: f_ring_01_L
+    100074: f_ring_01_R
+    100076: f_ring_02_L
+    100078: f_ring_02_R
+    100080: f_ring_03_L
+    100082: f_ring_03_L_end
+    100084: f_ring_03_R
+    100086: f_ring_03_R_end
+    100088: foot_L
+    100090: foot_R
+    100092: footwear_1
+    100094: forearm_L
+    100096: forearm_R
+    100098: hand
+    100100: hand_L
+    100102: hand_R
+    100104: hat_1
+    100106: hat_2
+    100108: hat_3
+    100110: hat_4
+    100112: hat_5
+    100114: head
+    100116: head_1
+    100118: head_2
+    100120: head_3
+    100122: head_4
+    100124: hips
+    100126: jaw
+    100128: neck
+    100130: pants
+    100132: //RootNode
+    100134: shin_L
+    100136: shin_R
+    100138: spine
+    100140: spine-1
+    100142: T-shirt
+    100144: T-shirt_2
+    100146: teeth
+    100148: thigh_L
+    100150: thigh_R
+    100152: thumb_02_L
+    100154: thumb_02_R
+    100156: thumb_03_L
+    100158: thumb_03_L_end
+    100160: thumb_03_R
+    100162: thumb_03_R_end
+    100164: toe_L
+    100166: toe_L_end
+    100168: toe_R
+    100170: toe_R_end
+    100172: tongue
+    100174: tongue_base
+    100176: tongue_mid
+    100178: tongue_tip
+    100180: tongue_tip_end
+    100182: upper_arm_L
+    100184: upper_arm_R
+    400000: Armature
+    400002: chest
+    400004: chest-1
+    400006: clavicle_L
+    400008: clavicle_R
+    400010: deltoid_L
+    400012: deltoid_R
+    400014: eye
+    400016: eye_L
+    400018: eye_L_end
+    400020: eye_R
+    400022: eye_R_end
+    400024: f_index_01_L
+    400026: f_index_01_R
+    400028: f_index_02_L
+    400030: f_index_02_R
+    400032: f_index_03_L
+    400034: f_index_03_L_end
+    400036: f_index_03_R
+    400038: f_index_03_R_end
+    400040: f_middle_01_L
+    400042: f_middle_01_R
+    400044: f_middle_02_L
+    400046: f_middle_02_R
+    400048: f_middle_03_L
+    400050: f_middle_03_L_end
+    400052: f_middle_03_R
+    400054: f_middle_03_R_end
+    400056: f_pinky_01_L
+    400058: f_pinky_01_R
+    400060: f_pinky_02_L
+    400062: f_pinky_02_R
+    400064: f_pinky_03_L
+    400066: f_pinky_03_L_end
+    400068: f_pinky_03_R
+    400070: f_pinky_03_R_end
+    400072: f_ring_01_L
+    400074: f_ring_01_R
+    400076: f_ring_02_L
+    400078: f_ring_02_R
+    400080: f_ring_03_L
+    400082: f_ring_03_L_end
+    400084: f_ring_03_R
+    400086: f_ring_03_R_end
+    400088: foot_L
+    400090: foot_R
+    400092: footwear_1
+    400094: forearm_L
+    400096: forearm_R
+    400098: hand
+    400100: hand_L
+    400102: hand_R
+    400104: hat_1
+    400106: hat_2
+    400108: hat_3
+    400110: hat_4
+    400112: hat_5
+    400114: head
+    400116: head_1
+    400118: head_2
+    400120: head_3
+    400122: head_4
+    400124: hips
+    400126: jaw
+    400128: neck
+    400130: pants
+    400132: //RootNode
+    400134: shin_L
+    400136: shin_R
+    400138: spine
+    400140: spine-1
+    400142: T-shirt
+    400144: T-shirt_2
+    400146: teeth
+    400148: thigh_L
+    400150: thigh_R
+    400152: thumb_02_L
+    400154: thumb_02_R
+    400156: thumb_03_L
+    400158: thumb_03_L_end
+    400160: thumb_03_R
+    400162: thumb_03_R_end
+    400164: toe_L
+    400166: toe_L_end
+    400168: toe_R
+    400170: toe_R_end
+    400172: tongue
+    400174: tongue_base
+    400176: tongue_mid
+    400178: tongue_tip
+    400180: tongue_tip_end
+    400182: upper_arm_L
+    400184: upper_arm_R
+    4300000: hat_3
+    4300002: hat_4
+    4300004: hat_5
+    4300006: hat_2
+    4300008: hat_1
+    4300010: head_4
+    4300012: head_3
+    4300014: head_2
+    4300016: footwear_1
+    4300018: T-shirt
+    4300020: T-shirt_2
+    4300022: eye
+    4300024: head_1
+    4300026: hand
+    4300028: pants
+    4300030: teeth
+    4300032: tongue
+    9500000: //RootNode
+    13700000: eye
+    13700002: footwear_1
+    13700004: hand
+    13700006: hat_1
+    13700008: hat_2
+    13700010: hat_3
+    13700012: hat_4
+    13700014: hat_5
+    13700016: head_1
+    13700018: head_2
+    13700020: head_3
+    13700022: head_4
+    13700024: pants
+    13700026: T-shirt
+    13700028: T-shirt_2
+    13700030: teeth
+    13700032: tongue
   materials:
-    materialImportMode: 2
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -22,65 +242,39 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
-    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    useSRGBMaterialColor: 1
-    sortHierarchyByName: 1
-    importPhysicalCameras: 1
-    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
-    nodeNameCollisionStrategy: 1
-    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    bakeAxisConversion: 0
-    preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    optimizeBones: 1
-    meshOptimizationFlags: -1
-    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
-    secondaryUVMarginMethod: 1
-    secondaryUVMinLightmapResolution: 40
-    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 4
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
-    blendShapeNormalImportMode: 1
-    normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human:
     - boneName: hips
       humanName: Hips
@@ -982,20 +1176,14 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: dc7b2d5c7f783964bb7e48641b72eaa0,
-    type: 3}
-  autoGenerateAvatarMappingIfUnspecified: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 2
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  importBlendShapeDeformPercent: 1
-  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
