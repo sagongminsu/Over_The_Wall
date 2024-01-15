@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -29,6 +27,13 @@ public class PlayerGroundedState : PlayerBaseState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        if (!stateMachine.Player.Controller.isGrounded
+            && stateMachine.Player.Controller.velocity.y < Physics.gravity.y * Time.fixedDeltaTime)
+        {
+            stateMachine.ChangeState(stateMachine.FallState);
+            return;
+        }
     }
 
     protected override void OnMovementCanceled(InputAction.CallbackContext context)
@@ -48,4 +53,8 @@ public class PlayerGroundedState : PlayerBaseState
         stateMachine.ChangeState(stateMachine.WalkState);
     }
 
+    protected override void OnJumpStarted(InputAction.CallbackContext context)
+    {
+        stateMachine.ChangeState(stateMachine.JumpState);
+    }
 }
