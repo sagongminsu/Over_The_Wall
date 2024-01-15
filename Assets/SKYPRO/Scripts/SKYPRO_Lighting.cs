@@ -8,7 +8,7 @@ public class SKYPRO_Lighting : MonoBehaviour
 {
     Light _light;
     [SerializeField] private float sunIntensity = 3;
-    //[SerializeField] private Gradient dayToEveningGradient;
+    [SerializeField] private Gradient dayToEveningGradient;
     [SerializeField] private Color dayColour;
     [SerializeField] private Color eveningColour;
 
