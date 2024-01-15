@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerBaseState : IState
 {
@@ -74,7 +69,9 @@ public class PlayerBaseState : IState
     {
         float movementSpeed = GetMovemenetSpeed();
         stateMachine.Player.Controller.Move(
-            (movementDirection * movementSpeed) * Time.deltaTime
+            ((movementDirection * movementSpeed)
+            + stateMachine.Player.ForceReceiver.Movement)
+            * Time.deltaTime
             );
     }
 
@@ -109,6 +106,8 @@ public class PlayerBaseState : IState
         PlayerInput input = stateMachine.Player.Input;
         input.PlayerActions.Movement.canceled += OnMovementCanceled;
         input.PlayerActions.Run.started += OnRunStarted;
+
+        stateMachine.Player.Input.PlayerActions.Jump.started += OnJumpStarted;
     }
 
     protected virtual void RemoveInputActionsCallbacks()
@@ -117,6 +116,7 @@ public class PlayerBaseState : IState
         input.PlayerActions.Movement.canceled -= OnMovementCanceled;
         input.PlayerActions.Run.started -= OnRunStarted;
 
+        stateMachine.Player.Input.PlayerActions.Jump.started -= OnJumpStarted;
     }
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
@@ -129,4 +129,8 @@ public class PlayerBaseState : IState
 
     }
 
+    protected virtual void OnJumpStarted(InputAction.CallbackContext context)
+    {
+
+    }
 }
