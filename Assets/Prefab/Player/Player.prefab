@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3362438890432993551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2209862939613572489}
+  m_Layer: 0
+  m_Name: CameraLookPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2209862939613572489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3362438890432993551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.496, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6787510284660141748}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4806892686005547306
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +43,7 @@ GameObject:
   - component: {fileID: 4367334581202863178}
   - component: {fileID: 8667247724053176115}
   - component: {fileID: 6146922563703098113}
+  - component: {fileID: 4546192279479720845}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -32,8 +64,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8294433557322384712}
+  - {fileID: 2209862939613572489}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4367334581202863178
 MonoBehaviour:
@@ -59,6 +92,7 @@ MonoBehaviour:
     fallParameterName: Fall
     attackParameterName: '@Attack'
     comboAttackParameterName: ComboAttack
+    idleBlendTreeParameterName: IdleBlendTree
 --- !u!114 &8667247724053176115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,13 +124,27 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.79
+  m_Height: 1.77
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.96, z: 0}
+  m_Center: {x: 0, y: 0.84, z: 0}
+--- !u!114 &4546192279479720845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4806892686005547306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2488b3833a880a246aa85be56b87decb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 6146922563703098113}
+  drag: 0.3
 --- !u!1001 &8294433557321997900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,6 +156,10 @@ PrefabInstance:
     - target: {fileID: 100132, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
       propertyPath: m_Name
       value: prisoners
+      objectReference: {fileID: 0}
+    - target: {fileID: 400104, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.828
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
       propertyPath: m_RootOrder
@@ -162,7 +214,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 100112, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
+    - {fileID: 100110, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
+    - {fileID: 100108, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
+    - {fileID: 100106, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
+    - {fileID: 100122, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
+    - {fileID: 100120, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
+    - {fileID: 100118, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
+    - {fileID: 100144, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
