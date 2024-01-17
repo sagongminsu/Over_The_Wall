@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4095199773800298}
   - component: {fileID: 108255740690474748}
-  - component: {fileID: 677617784804006728}
+  - component: {fileID: 809313008863130878}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -45,7 +45,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0
+  m_Intensity: 1
   m_Range: 17.843248
   m_SpotAngle: 77.432495
   m_InnerSpotAngle: 60.345623
@@ -95,7 +95,7 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 1
   m_ShadowAngle: 0
---- !u!114 &677617784804006728
+--- !u!114 &809313008863130878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 33752855194918636}
   - component: {fileID: 23515007712925762}
   - component: {fileID: 64682427173755326}
+  - component: {fileID: 6410643486445549346}
   m_Layer: 0
   m_Name: streetlight_pr_1
   m_TagString: Untagged
@@ -151,7 +152,7 @@ Transform:
   m_Children:
   - {fileID: 4095199773800298}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33752855194918636
 MeshFilter:
@@ -228,3 +229,77 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ab81a32da435d60479b7d7cbe1ebca60, type: 3}
+--- !u!114 &6410643486445549346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795604488484554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b313f9156cfe9734ca7dbf7de69b492a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  streetlight: {fileID: 108255740690474748}
+  streetLightIntensity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 50
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 287.9
+      value: 50
+      inSlope: -0
+      outSlope: -499.96948
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 288
+      value: 0
+      inSlope: -499.96948
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.1326555
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 432
+      value: 0
+      inSlope: -0
+      outSlope: 55.55593
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.16403091
+    - serializedVersion: 3
+      time: 432.9
+      value: 50
+      inSlope: 55.55593
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 720
+      value: 50
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  dayNightCycle: {fileID: 0}
