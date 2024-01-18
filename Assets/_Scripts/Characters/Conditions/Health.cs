@@ -41,13 +41,25 @@ public class Health : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        if (health < 0) health = 0;
-
-        healthIcon.fillAmount = health / 100.0f;
+        if (health <= 0)
+        {
+            health = 0;
+            healthIcon.fillAmount = 0;
+            Die(); // 죽음 처리 메서드 호출
+        }
+        else
+        {
+            healthIcon.fillAmount = health / 100.0f;
+        }
 
         if (damageIndicator != null)
         {
             damageIndicator.Flash();
         }
+    }
+
+    private void Die()
+    {
+        Debug.Log("플레이어가 죽었습니다!");
     }
 }

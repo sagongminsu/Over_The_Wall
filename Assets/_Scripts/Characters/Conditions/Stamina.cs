@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
 
 public class Stamina : MonoBehaviour
@@ -12,40 +11,65 @@ public class Stamina : MonoBehaviour
     private Animator animator;
     private bool isBlinking = false;
 
+    public float recoveryRate = 1.0f;
+
+
     void Start()
     {
-        staminaIcon.enabled = false;
+        staminaIcon.enabled = false; // 스테미나 아이콘을 항상 안보이게 설정
         animator = GetComponent<Animator>();
-        stamina = maxStamina; // 스테미나 초기화
+       
         UpdateStaminaUI(); // UI 업데이트
     }
 
     void Update()
     {
-        // 스테미나 회복 로직
-        // 예: stamina += 회복량 * Time.deltaTime;
-        stamina += Time.deltaTime;
-        UpdateStaminaUI();
-        if (animator.GetBool("isRunning") && stamina > 0)
+
+
+
+        bool isRunning = animator.GetBool("Run");
+
+        if (isRunning && stamina > 0)
         {
-            stamina -= 1 * Time.deltaTime; // 스테미나 1씩 감소
-            UpdateStaminaUI();
+            
+            stamina -= 1 * Time.deltaTime; // 달리고 있을 때 스테미나를 1씩 감소
+            
         }
-        if (stamina <= 20.0f && !isBlinking)
+        else if (!isRunning && stamina < maxStamina)
+        {
+            // 달리지 않는 동안 스테미나 회복
+            stamina += recoveryRate * Time.deltaTime;
+            stamina = Mathf.Min(stamina, maxStamina); // 최대치를 넘지 않도록 함
+        }
+
+
+
+        // 스테미나가 30% 이하일 때만 깜빡임 효과를 시작
+        if (stamina <= 30.0f && !isBlinking)
         {
             StartCoroutine(BlinkIcon());
         }
+        // 스테미나가 30% 이상 회복되면 깜빡임을 중단
+        else if (stamina > 30.0f && isBlinking)
+        {
+            StopCoroutine(BlinkIcon());
+            isBlinking = false;
+            staminaIcon.enabled = true; // 스테미나 아이콘을 다시 활성화
+        }
+        stamina = Mathf.Clamp(stamina, 0, maxStamina);
+
+        UpdateStaminaUI();
+
     }
+
     IEnumerator BlinkIcon()
     {
         isBlinking = true;
-        if (stamina <= 30.0f)
+        while (stamina <= 30.0f)
         {
             staminaIcon.enabled = !staminaIcon.enabled;
             yield return new WaitForSeconds(1.0f); // 1.0초마다 깜빡임
         }
-
-        staminaIcon.enabled = true; // 스테미너가 30% 이상이면 깜빡임 중지
         isBlinking = false;
     }
 

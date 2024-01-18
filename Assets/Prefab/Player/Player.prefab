@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 8667247724053176115}
   - component: {fileID: 6146922563703098113}
   - component: {fileID: 4546192279479720845}
+  - component: {fileID: 7547735546563469635}
+  - component: {fileID: 491889425999803508}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -145,6 +147,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 6146922563703098113}
   drag: 0.3
+--- !u!114 &7547735546563469635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4806892686005547306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3343ca0017077ef429878349a3a56881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthIcon: {fileID: 0}
+  damageIndicator: {fileID: 0}
+--- !u!114 &491889425999803508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4806892686005547306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc01279d0d976f4d9ef0856904afb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hungerIcon: {fileID: 0}
 --- !u!1001 &8294433557321997900
 PrefabInstance:
   m_ObjectHideFlags: 0
