@@ -1,7 +1,8 @@
 using UnityEngine.InputSystem;
 
 public class PlayerRunState : PlayerGroundedState
-{
+{   
+
     public PlayerRunState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
