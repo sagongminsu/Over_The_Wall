@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class Interaction : MonoBehaviour
 {
     public float checkRate = 0.05f;
@@ -53,7 +52,7 @@ public class Interaction : MonoBehaviour
         promptText.text = string.Format("<b>[E]</b> {0}", curInteraction.GetInteractPrompt());
     }
 
-    public void OnInteractInput(InputAction.CallbackContext callbackContext)
+    public void OnInteraction(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("E");
         if (callbackContext.phase == InputActionPhase.Started && curInteraction != null)
