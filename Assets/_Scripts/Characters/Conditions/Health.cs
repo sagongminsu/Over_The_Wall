@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     public Image healthIcon; // 체력 아이콘에 대한 참조
     private float health = 100.0f;
     private bool isBlinking = false;
+    [SerializeField] private DamageIndicator damageIndicator;
 
     void Start()
     {
@@ -17,8 +18,8 @@ public class Health : MonoBehaviour
 
     void Update()
     {
-        // 체력이 20% 이하이고 아직 깜빡이지 않는 상태라면
-        if (health <= 20.0f && !isBlinking)
+        // 체력이 30% 이하이고 아직 깜빡이지 않는 상태라면
+        if (health <= 30.0f && !isBlinking)
         {
             StartCoroutine(BlinkIcon());
         }
@@ -27,12 +28,12 @@ public class Health : MonoBehaviour
     IEnumerator BlinkIcon()
     {
         isBlinking = true;
-        while (health <= 20.0f)
+        while (health <= 30.0f)
         {
             healthIcon.enabled = !healthIcon.enabled;
-            yield return new WaitForSeconds(0.5f); // 0.5초마다 깜빡임
+            yield return new WaitForSeconds(1.0f); // 1.0초마다 깜빡임
         }
-        healthIcon.enabled = true; // 체력이 20% 이상이면 깜빡임 중지
+        healthIcon.enabled = true; // 체력이 30% 이상이면 깜빡임 중지
         isBlinking = false;
     }
 
@@ -41,5 +42,12 @@ public class Health : MonoBehaviour
     {
         health -= amount;
         if (health < 0) health = 0;
+
+        healthIcon.fillAmount = health / 100.0f;
+
+        if (damageIndicator != null)
+        {
+            damageIndicator.Flash();
+        }
     }
 }

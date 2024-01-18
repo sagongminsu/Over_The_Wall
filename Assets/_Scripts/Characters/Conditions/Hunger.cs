@@ -8,7 +8,7 @@ public class Hunger : MonoBehaviour
     public Image hungerIcon; // 배고픔 아이콘에 대한 참조
     private float hunger = 100.0f; // 초기 배고픔 수치
     private bool isBlinking = false; // 아이콘 깜빡임 상태
-    private float hungerDecreaseRate = 1.0f; // 배고픔 감소율
+    private float hungerDecreaseRate = 0.5f; // 배고픔 감소율
 
     void Start()
     {
@@ -31,13 +31,13 @@ public class Hunger : MonoBehaviour
     IEnumerator BlinkIcon()
     {
         isBlinking = true;
-        if (hunger <= 20.0f)
+        if (hunger <= 30.0f)
         {
             hungerIcon.enabled = !hungerIcon.enabled;
             yield return new WaitForSeconds(1.0f); // 1.0초마다 깜빡임
         }
  
-        hungerIcon.enabled = true; // 배고픔가 20% 이상이면 깜빡임 중지
+        hungerIcon.enabled = true; // 배고픔가 30% 이상이면 깜빡임 중지
         isBlinking = false;
     }
 
