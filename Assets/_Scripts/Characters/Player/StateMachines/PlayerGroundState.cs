@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,6 +23,19 @@ public class PlayerGroundedState : PlayerBaseState
     public override void Update()
     {
         base.Update();
+
+        if (stateMachine.IsAttacking)
+        {
+            OnAttack();
+            return;
+        }
+
+        if (stateMachine.IsInteracting)
+        {
+            stateMachine.IsInteracting = false;
+            OnInteraction();
+            return;
+        }
     }
 
     public override void PhysicsUpdate()
@@ -56,5 +70,15 @@ public class PlayerGroundedState : PlayerBaseState
     protected override void OnJumpStarted(InputAction.CallbackContext context)
     {
         stateMachine.ChangeState(stateMachine.JumpState);
+    }
+
+    protected virtual void OnAttack()
+    {
+        stateMachine.ChangeState(stateMachine.ComboAttackState);
+    }
+
+    protected virtual void OnInteraction()
+    {
+        stateMachine.ChangeState(stateMachine.InteractState);
     }
 }

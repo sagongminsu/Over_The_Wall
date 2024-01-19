@@ -15,7 +15,6 @@ public class PlayerAnimationData
 
     [SerializeField] private string attackParameterName = "@Attack";
     [SerializeField] private string comboAttackParameterName = "ComboAttack";
-    [SerializeField] private string idleBlendTreeParameterName = "IdleBlendTree";
 
 
     public int GroundParameterHash { get; private set; }
@@ -30,8 +29,6 @@ public class PlayerAnimationData
     public int AttackParameterHash { get; private set; }
     public int ComboAttackParameterHash { get; private set; }
 
-    public int IdleBelndTreeParameterHash { get; private set; }
-
     public void Initialize()
     {
         GroundParameterHash = Animator.StringToHash(groundParameterName);
@@ -45,7 +42,5 @@ public class PlayerAnimationData
 
         AttackParameterHash = Animator.StringToHash(attackParameterName);
         ComboAttackParameterHash = Animator.StringToHash(comboAttackParameterName);
-
-        IdleBelndTreeParameterHash = Animator.StringToHash(idleBlendTreeParameterName);
     }
 }
