@@ -55,7 +55,8 @@ public class Interaction : MonoBehaviour
     public void OnInteraction(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("E");
-        if (callbackContext.phase == InputActionPhase.Started && curInteraction != null)
+
+        if (callbackContext.started && curInteraction != null)
         {
             curInteraction.OnInteract();
             curInteractGameobject = null;
