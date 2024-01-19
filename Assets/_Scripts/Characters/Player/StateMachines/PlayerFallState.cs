@@ -12,14 +12,14 @@ public class PlayerFallState : PlayerAirState
     {
         base.Enter();
 
-        StartAnimation(stateMachine.Player.AnimationData.fallParameterHash);
+        StartAnimation(stateMachine.Player.AnimationData.FallParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        StopAnimation(stateMachine.Player.AnimationData.fallParameterHash);
+        StopAnimation(stateMachine.Player.AnimationData.FallParameterHash);
     }
 
     public override void Update()
