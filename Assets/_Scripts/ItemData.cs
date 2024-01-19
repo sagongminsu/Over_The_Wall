@@ -19,7 +19,7 @@ public class JsonLoader : MonoBehaviour
         
         public List<Item> ItemList;
     }
-    private void Start()
+    private void Awake()
     {
         // Resources 폴더 내의 JSON 파일 로드
         TextAsset jsonFile = Resources.Load<TextAsset>("ItemData");
