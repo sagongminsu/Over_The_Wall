@@ -3,13 +3,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class Interaction : MonoBehaviour
 {
+    private InteractionManager interactionManager;
+
     public float checkRate = 0.05f;
     private float lastCheckTime;
     public float maxCheckDistance;
     public LayerMask layerMask;
     public bool IsInteracting;
 
-    private GameObject curInteractGameobject;
     private IInteraction curInteraction;
 
     public TextMeshProUGUI promptText;
@@ -18,6 +19,7 @@ public class Interaction : MonoBehaviour
     void Start()
     {
         camera = Camera.main;
+        interactionManager = InteractionManager.Instance;
     }
 
     void Update()
@@ -31,17 +33,17 @@ public class Interaction : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
-                if (hit.collider.gameObject != curInteractGameobject)
+                GameObject hitObject = hit.collider.gameObject;
+
+                if (hitObject != interactionManager.CurrentInteractGameObject)
                 {
-                    curInteractGameobject = hit.collider.gameObject;
-                    curInteraction = hit.collider.GetComponent<IInteraction>();
+                    interactionManager.SetCurrentInteraction(hitObject);
                     SetPromptText();
                 }
             }
             else
             {
-                curInteractGameobject = null;
-                curInteraction = null;
+                interactionManager.SetCurrentInteraction(null);
                 promptText.gameObject.SetActive(false);
             }
         }
