@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 384944509}
   - component: {fileID: 384944508}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -984,8 +984,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384944506}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.7999998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1677,32 +1677,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5615311897274636130}
   m_PrefabAsset: {fileID: 0}
---- !u!143 &1236141989 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 6146922563703098113, guid: f10a5825745ef7940ac5025bd977f7fb,
-    type: 3}
-  m_PrefabInstance: {fileID: 5615311897274636130}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1236141990 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6787510284660141748, guid: f10a5825745ef7940ac5025bd977f7fb,
     type: 3}
   m_PrefabInstance: {fileID: 5615311897274636130}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1236141993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1236141988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2488b3833a880a246aa85be56b87decb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 1236141989}
-  drag: 0.3
 --- !u!114 &1236142002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1720,38 +1700,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  IsInteracting: 0
   promptText: {fileID: 332048015}
---- !u!114 &1236142003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1236141988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: cc29a10cff4c458449a3746dac50b45a,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1308839850 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1464330131123152, guid: 018aa20d699e55742921013bdae5bb59,
@@ -3001,23 +2951,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 648413523456808745, guid: f10a5825745ef7940ac5025bd977f7fb, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3362438890432993551, guid: f10a5825745ef7940ac5025bd977f7fb, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6787510284660141748, guid: f10a5825745ef7940ac5025bd977f7fb,
         type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 384944507}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4806892686005547306, guid: f10a5825745ef7940ac5025bd977f7fb,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1236141993}
-    - targetCorrespondingSourceObject: {fileID: 4806892686005547306, guid: f10a5825745ef7940ac5025bd977f7fb,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1236142003}
     - targetCorrespondingSourceObject: {fileID: 4806892686005547306, guid: f10a5825745ef7940ac5025bd977f7fb,
         type: 3}
       insertIndex: -1

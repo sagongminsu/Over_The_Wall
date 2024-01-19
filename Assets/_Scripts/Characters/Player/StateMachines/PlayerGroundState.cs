@@ -29,6 +29,13 @@ public class PlayerGroundedState : PlayerBaseState
             OnAttack();
             return;
         }
+
+        if (stateMachine.IsInteracting)
+        {
+            stateMachine.IsInteracting = false;
+            OnInteraction();
+            return;
+        }
     }
 
     public override void PhysicsUpdate()
@@ -68,5 +75,10 @@ public class PlayerGroundedState : PlayerBaseState
     protected virtual void OnAttack()
     {
         stateMachine.ChangeState(stateMachine.ComboAttackState);
+    }
+
+    protected virtual void OnInteraction()
+    {
+        stateMachine.ChangeState(stateMachine.InteractState);
     }
 }

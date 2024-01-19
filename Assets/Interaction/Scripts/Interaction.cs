@@ -7,6 +7,7 @@ public class Interaction : MonoBehaviour
     private float lastCheckTime;
     public float maxCheckDistance;
     public LayerMask layerMask;
+    public bool IsInteracting;
 
     private GameObject curInteractGameobject;
     private IInteraction curInteraction;
@@ -49,19 +50,20 @@ public class Interaction : MonoBehaviour
     private void SetPromptText()
     {
         promptText.gameObject.SetActive(true);
+        IsInteracting = true;
         promptText.text = string.Format("<b>[E]</b> {0}", curInteraction.GetInteractPrompt());
     }
 
-    public void OnInteraction(InputAction.CallbackContext callbackContext)
-    {
-        Debug.Log("E");
+    //public void OnInteraction(InputAction.CallbackContext callbackContext)
+    //{
+    //    Debug.Log("E");
 
-        if (callbackContext.started && curInteraction != null)
-        {
-            curInteraction.OnInteract();
-            curInteractGameobject = null;
-            curInteraction = null;
-            promptText.gameObject.SetActive(false);
-        }
-    }
+    //    if (callbackContext.started && curInteraction != null)
+    //    {
+    //        curInteraction.OnInteract();
+    //        curInteractGameobject = null;
+    //        curInteraction = null;
+    //        promptText.gameObject.SetActive(false);
+    //    }
+    //}
 }
