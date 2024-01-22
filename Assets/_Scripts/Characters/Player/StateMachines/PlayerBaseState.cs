@@ -35,7 +35,6 @@ public class PlayerBaseState : IState
     public virtual void Update()
     {
         Move();
-        
     }
 
     private void ReadMovementInput()
@@ -120,6 +119,9 @@ public class PlayerBaseState : IState
 
         stateMachine.Player.Input.PlayerActions.Interaction.performed += OnInteractionPerformed;
         stateMachine.Player.Input.PlayerActions.Interaction.canceled += OnInteractionCanceled;
+
+        stateMachine.Player.Input.PlayerActions.Aim.performed += OnAimingPerformed;
+        stateMachine.Player.Input.PlayerActions.Aim.canceled += OnAimingCanceled;
     }
 
     protected virtual void RemoveInputActionsCallbacks()
@@ -135,6 +137,9 @@ public class PlayerBaseState : IState
 
         stateMachine.Player.Input.PlayerActions.Interaction.performed -= OnInteractionPerformed;
         stateMachine.Player.Input.PlayerActions.Interaction.canceled -= OnInteractionCanceled;
+
+        stateMachine.Player.Input.PlayerActions.Aim.performed -= OnAimingPerformed;
+        stateMachine.Player.Input.PlayerActions.Aim.canceled -= OnAimingCanceled;
     }
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
@@ -171,6 +176,17 @@ public class PlayerBaseState : IState
     {
         stateMachine.IsInteracting = false;
     }
+
+    protected virtual void OnAimingPerformed(InputAction.CallbackContext obj)
+    {
+        stateMachine.IsAiming = true;
+    }
+
+    protected virtual void OnAimingCanceled(InputAction.CallbackContext obj)
+    {
+        stateMachine.IsAiming = false;
+    }
+
     protected float GetNormalizedTime(Animator animator, string tag)
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
