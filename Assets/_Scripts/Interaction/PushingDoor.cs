@@ -1,11 +1,11 @@
 using UnityEngine;
 
-
 public class PushingDoor : MonoBehaviour, IInteraction
 {
     public JsonLoader.ItemData associatedData;
     float openRotationY = 90f;
     float closeRotationY = 0f;
+
     public void OnInteract()
     {
         if (transform.rotation.eulerAngles.y != 90f)
@@ -19,18 +19,19 @@ public class PushingDoor : MonoBehaviour, IInteraction
             transform.rotation = targetRotation;
         }
     }
+
     public string GetInteractPrompt()
     {
-        if (associatedData != null && associatedData.ItemList.Count == 6)
+        if (associatedData != null)
         {
+            JsonLoader.ItemData.Item item = associatedData.ItemList.Find(i => i.ID == "6");
 
-            JsonLoader.ItemData.Item item = associatedData.ItemList[6];
-            return string.Format("Interaction {0}", item.InteractionName);
+            if (item != null)
+            {
+                return string.Format("Interaction {0}", item.InteractionName);
+            }
+        }
 
-        }
-        else
-        {
-            return "Interaction";
-        }
+        return "Interaction";
     }
 }

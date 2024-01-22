@@ -24,16 +24,16 @@ public class OpenWasher : MonoBehaviour, IInteraction
 
     public string GetInteractPrompt()
     {
-        if (associatedData != null && associatedData.ItemList.Count == 8)
+        if (associatedData != null)
         {
+            JsonLoader.ItemData.Item item = associatedData.ItemList.Find(i => i.ID == "8");
 
-            JsonLoader.ItemData.Item item = associatedData.ItemList[8];
-            return string.Format("Interaction {0}", item.InteractionName);
+            if (item != null)
+            {
+                return string.Format("Interaction {0}", item.InteractionName);
+            }
+        }
 
-        }
-        else
-        {
-            return "Interaction";
-        }
+        return "Interaction";
     }
 }

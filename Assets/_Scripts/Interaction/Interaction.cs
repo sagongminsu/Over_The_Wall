@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 public class Interaction : MonoBehaviour
 {
     private InteractionManager interactionManager;
@@ -9,8 +8,6 @@ public class Interaction : MonoBehaviour
     private float lastCheckTime;
     public float maxCheckDistance;
     public LayerMask layerMask;
-    public bool IsInteracting;
-
     private IInteraction curInteraction;
 
     public TextMeshProUGUI promptText;
@@ -52,8 +49,18 @@ public class Interaction : MonoBehaviour
     private void SetPromptText()
     {
         promptText.gameObject.SetActive(true);
-        IsInteracting = true;
-        promptText.text = string.Format("<b>[E]</b> {0}", curInteraction.GetInteractPrompt());
+
+        // curInteraction에 값을 할당
+        curInteraction = interactionManager.CurrentInteraction;
+
+        if (curInteraction != null)
+        {
+            promptText.text = string.Format("<b>[E]</b> {0}", curInteraction.GetInteractPrompt());
+        }
+        else
+        {
+            Debug.Log("curInteraction is null!");
+        }
     }
 
     //public void OnInteraction(InputAction.CallbackContext callbackContext)
