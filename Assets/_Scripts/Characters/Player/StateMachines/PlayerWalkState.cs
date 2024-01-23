@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerWalkState : PlayerGroundedState
@@ -17,6 +18,16 @@ public class PlayerWalkState : PlayerGroundedState
     {
         base.Exit();
         StopAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
+
+        Debug.Log(currentSpeed);
+        stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
     }
 
     protected override void OnRunStarted(InputAction.CallbackContext context)

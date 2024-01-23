@@ -56,7 +56,7 @@ public class PlayerBaseState : IState
     private Vector3 GetMovementDirection()
     {
         Vector3 forward = stateMachine.MainCameraTransform.forward;
-        Vector3 right = stateMachine.MainCameraTransform.right;
+        Vector3 right = stateMachine.Player.transform.right;
 
         forward.y = 0;
         right.y = 0;
@@ -77,15 +77,15 @@ public class PlayerBaseState : IState
             );
     }
 
-    private void Rotate(Vector3 movementDirection)
-    {
-        if (movementDirection != Vector3.zero)
-        {
-            Transform playerTransform = stateMachine.Player.transform;
-            Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
-            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
-        }
-    }
+    //private void Rotate(Vector3 movementDirection)
+    //{
+    //    if (movementDirection != Vector3.zero)
+    //    {
+    //        Transform playerTransform = stateMachine.Player.transform;
+    //        Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
+    //        playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+    //    }
+    //}
 
     private float GetMovemenetSpeed()
     {
@@ -103,7 +103,6 @@ public class PlayerBaseState : IState
         Vector2 mouseDelta = stateMachine.Player.Input.PlayerActions.Look.ReadValue<Vector2>();
         float mouseX = mouseDelta.x;
 
-        // 수평(좌우) 회전
         if (Mathf.Abs(mouseX) > 0.1f)
         {
             Transform playerTransform = stateMachine.Player.transform;
@@ -128,17 +127,18 @@ public class PlayerBaseState : IState
         PlayerInput input = stateMachine.Player.Input;
         input.PlayerActions.Movement.canceled += OnMovementCanceled;
         input.PlayerActions.Run.started += OnRunStarted;
+        input.PlayerActions.Run.canceled += OnRunCanceled;
 
-        stateMachine.Player.Input.PlayerActions.Jump.started += OnJumpStarted;
+        input.PlayerActions.Jump.started += OnJumpStarted;
 
-        stateMachine.Player.Input.PlayerActions.Attack.performed += OnAttackPerformed;
-        stateMachine.Player.Input.PlayerActions.Attack.canceled += OnAttackCanceled;
+        input.PlayerActions.Attack.performed += OnAttackPerformed;
+        input.PlayerActions.Attack.canceled += OnAttackCanceled;
 
-        stateMachine.Player.Input.PlayerActions.Interaction.performed += OnInteractionPerformed;
-        stateMachine.Player.Input.PlayerActions.Interaction.canceled += OnInteractionCanceled;
+        input.PlayerActions.Interaction.performed += OnInteractionPerformed;
+        input.PlayerActions.Interaction.canceled += OnInteractionCanceled;
 
-        stateMachine.Player.Input.PlayerActions.Aim.performed += OnAimingPerformed;
-        stateMachine.Player.Input.PlayerActions.Aim.canceled += OnAimingCanceled;
+        input.PlayerActions.Aim.performed += OnAimingPerformed;
+        input.PlayerActions.Aim.canceled += OnAimingCanceled;
     }
 
     protected virtual void RemoveInputActionsCallbacks()
@@ -146,22 +146,28 @@ public class PlayerBaseState : IState
         PlayerInput input = stateMachine.Player.Input;
         input.PlayerActions.Movement.canceled -= OnMovementCanceled;
         input.PlayerActions.Run.started -= OnRunStarted;
+        input.PlayerActions.Run.canceled -= OnRunCanceled;
 
-        stateMachine.Player.Input.PlayerActions.Jump.started -= OnJumpStarted;
+        input.PlayerActions.Jump.started -= OnJumpStarted;
 
-        stateMachine.Player.Input.PlayerActions.Attack.performed -= OnAttackPerformed;
-        stateMachine.Player.Input.PlayerActions.Attack.canceled -= OnAttackCanceled;
+        input.PlayerActions.Attack.performed -= OnAttackPerformed;
+        input.PlayerActions.Attack.canceled -= OnAttackCanceled;
 
-        stateMachine.Player.Input.PlayerActions.Interaction.performed -= OnInteractionPerformed;
-        stateMachine.Player.Input.PlayerActions.Interaction.canceled -= OnInteractionCanceled;
+        input.PlayerActions.Interaction.performed -= OnInteractionPerformed;
+        input.PlayerActions.Interaction.canceled -= OnInteractionCanceled;
 
-        stateMachine.Player.Input.PlayerActions.Aim.performed -= OnAimingPerformed;
-        stateMachine.Player.Input.PlayerActions.Aim.canceled -= OnAimingCanceled;
+        input.PlayerActions.Aim.performed -= OnAimingPerformed;
+        input.PlayerActions.Aim.canceled -= OnAimingCanceled;
     }
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
     {
 
+    }
+
+    protected virtual void OnRunCanceled(InputAction.CallbackContext context)
+    {
+        
     }
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)

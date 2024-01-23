@@ -92,4 +92,10 @@ public class PlayerGroundedState : PlayerBaseState
     {
         stateMachine.ChangeState(stateMachine.AimingState);
     }
+
+    protected override void OnRunCanceled(InputAction.CallbackContext context)
+    {
+        base.OnRunCanceled(context);
+        stateMachine.ChangeState(stateMachine.IdleState); // 혹은 정지 상태로 변경하는 적절한 상태로 변경
+    }
 }

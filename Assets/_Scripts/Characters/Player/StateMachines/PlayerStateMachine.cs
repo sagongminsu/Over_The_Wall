@@ -13,7 +13,6 @@ public class PlayerStateMachine : StateMachine
     public PlayerComboAttackState ComboAttackState { get; }
     public PlayerInteractState InteractState { get; }
     public PlayerAimingState AimingState { get; }
-    public PlayerStandingState StandingState { get; }
 
     // 
     public Vector2 MovementInput { get; set; }
@@ -44,7 +43,6 @@ public class PlayerStateMachine : StateMachine
         ComboAttackState = new PlayerComboAttackState(this);
         InteractState = new PlayerInteractState(this);
         AimingState = new PlayerAimingState(this);
-        StandingState = new PlayerStandingState(this);
 
         MainCameraTransform = Camera.main.transform;
 

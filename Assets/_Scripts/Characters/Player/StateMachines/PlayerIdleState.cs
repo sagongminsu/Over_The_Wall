@@ -10,13 +10,15 @@ public class PlayerIdleState : PlayerGroundedState
     {
         stateMachine.MovementSpeedModifier = 0f;
         base.Enter();
-        StartAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
+        float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
+
+        Debug.Log(currentSpeed);
+        stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
     }
 
     public override void Update()
@@ -28,5 +30,7 @@ public class PlayerIdleState : PlayerGroundedState
             OnMove();
             return;
         }
+
+        
     }
 }
