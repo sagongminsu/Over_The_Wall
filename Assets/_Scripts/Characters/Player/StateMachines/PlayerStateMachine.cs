@@ -12,6 +12,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerFallState FallState { get; }
     public PlayerComboAttackState ComboAttackState { get; }
     public PlayerInteractState InteractState { get; }
+    public PlayerAimingState AimingState { get; }
 
     // 
     public Vector2 MovementInput { get; set; }
@@ -23,7 +24,10 @@ public class PlayerStateMachine : StateMachine
 
     public bool IsAttacking { get; set; }
     public bool IsInteracting { get; set; }
+    public bool IsAiming { get; set; }
     public int ComboIndex { get; set; }
+
+    public float MouseSensitivity = 10.0f;
 
     public Transform MainCameraTransform { get; set; }
 
@@ -38,6 +42,7 @@ public class PlayerStateMachine : StateMachine
         FallState = new PlayerFallState(this);
         ComboAttackState = new PlayerComboAttackState(this);
         InteractState = new PlayerInteractState(this);
+        AimingState = new PlayerAimingState(this);
 
         MainCameraTransform = Camera.main.transform;
 

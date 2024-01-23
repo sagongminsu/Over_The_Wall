@@ -36,6 +36,12 @@ public class PlayerGroundedState : PlayerBaseState
             OnInteraction();
             return;
         }
+
+        if (stateMachine.IsAiming)
+        {
+            OnAim();
+            return;
+        }
     }
 
     public override void PhysicsUpdate()
@@ -80,5 +86,16 @@ public class PlayerGroundedState : PlayerBaseState
     protected virtual void OnInteraction()
     {
         stateMachine.ChangeState(stateMachine.InteractState);
+    }
+
+    protected virtual void OnAim()
+    {
+        stateMachine.ChangeState(stateMachine.AimingState);
+    }
+
+    protected override void OnRunCanceled(InputAction.CallbackContext context)
+    {
+        base.OnRunCanceled(context);
+        stateMachine.ChangeState(stateMachine.IdleState); // 혹은 정지 상태로 변경하는 적절한 상태로 변경
     }
 }
