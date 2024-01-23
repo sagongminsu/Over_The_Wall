@@ -1,39 +1,44 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OpenWasher : MonoBehaviour, IInteraction
 {
-    public JsonLoader.ItemData associatedData;
-
     float openRotationY = 35f;
-    float closeRatationY = -35f;
+    float closeRotationY = -35f;
+    float rotationSpeed = 50f;
+
+    bool isRotating = false;
+
     public void OnInteract()
     {
-        if (transform.rotation.eulerAngles.y != 35f)
+        if (!isRotating)
         {
-            Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, openRotationY, transform.rotation.eulerAngles.z);
-            transform.rotation = targetRotation;
+            StartCoroutine(RotateWasher());
         }
-        else
+    }
+
+    IEnumerator RotateWasher()
+    {
+        isRotating = true;
+
+        float currentY = transform.rotation.eulerAngles.y;
+        float targetY = (currentY != openRotationY) ? openRotationY : closeRotationY;
+
+        while (Mathf.Abs(currentY - targetY) > 0.01f)
         {
-            Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, closeRatationY, transform.rotation.eulerAngles.z);
+            currentY = Mathf.MoveTowards(currentY, targetY, rotationSpeed * Time.deltaTime);
+
+            Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, currentY, transform.rotation.eulerAngles.z);
             transform.rotation = targetRotation;
+
+            yield return null;
         }
+
+        isRotating = false;
     }
 
     public string GetInteractPrompt()
     {
-        if (associatedData != null)
-        {
-            JsonLoader.ItemData.Item item = associatedData.ItemList.Find(i => i.ID == "8");
-
-            if (item != null)
-            {
-                return string.Format("Interaction {0}", item.InteractionName);
-            }
-        }
-
-        return "Interaction";
+        return "Interaction ¿­±â";
     }
 }

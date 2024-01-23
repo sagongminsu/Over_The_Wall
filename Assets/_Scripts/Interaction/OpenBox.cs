@@ -1,37 +1,44 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OpenBox : MonoBehaviour, IInteraction
 {
-    public JsonLoader.ItemData associatedData;
     float openRotationX = -90f;
     float closeRotationX = 0f;
+    float rotationSpeed = 30f;
+
+    bool isMoving = false;
+
     public void OnInteract()
     {
-        if (transform.rotation.eulerAngles.x != -90f)
+        if (!isMoving)
         {
-            Quaternion targetRotation = Quaternion.Euler(openRotationX, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-            transform.rotation = targetRotation;
-        }
-        else
-        {
-            Quaternion targetRotation = Quaternion.Euler(closeRotationX, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-            transform.rotation = targetRotation;
+            StartCoroutine(MoveBox());
         }
     }
-    public string GetInteractPrompt()
-    {
-        if (associatedData != null)
-        {
-            JsonLoader.ItemData.Item item = associatedData.ItemList.Find(i => i.ID == "9");
 
-            if (item != null)
-            {
-                return string.Format("Interaction {0}", item.InteractionName);
-            }
+    IEnumerator MoveBox()
+    {
+        isMoving = true;
+
+        float currentRotationX = transform.rotation.eulerAngles.x;
+        float targetRotationX = (currentRotationX != -90f) ? openRotationX : closeRotationX;
+
+        while (Mathf.Abs(currentRotationX - targetRotationX) > 0.1f)
+        {
+            currentRotationX = Mathf.MoveTowards(currentRotationX, targetRotationX, rotationSpeed * Time.deltaTime);
+
+            Quaternion targetRotation = Quaternion.Euler(currentRotationX, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+            transform.rotation = targetRotation;
+
+            yield return null;
         }
 
-        return "Interaction";
+        isMoving = false;
+    }
+
+    public string GetInteractPrompt()
+    {
+        return "Interaction ¿­±â";
     }
 }

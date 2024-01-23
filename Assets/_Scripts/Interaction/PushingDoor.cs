@@ -1,37 +1,43 @@
+using System.Collections;
 using UnityEngine;
 
 public class PushingDoor : MonoBehaviour, IInteraction
 {
-    public JsonLoader.ItemData associatedData;
-    float openRotationY = 90f;
+    float openRotationY = 87f;
     float closeRotationY = 0f;
+    float rotationSpeed = 60f;
 
+    bool isMoving = false;
     public void OnInteract()
     {
-        if (transform.rotation.eulerAngles.y != 90f)
+        if (!isMoving)
         {
-            Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, openRotationY, transform.rotation.eulerAngles.z);
-            transform.rotation = targetRotation;
+            StartCoroutine(MoveDoor());
         }
-        else
+    }
+
+    IEnumerator MoveDoor()
+    {
+        isMoving = true;
+
+        float currentRotationY = transform.rotation.eulerAngles.y;
+        float targetRotationY = (currentRotationY != 87f) ? openRotationY : closeRotationY;
+
+        while (Mathf.Abs(currentRotationY - targetRotationY) > 0.1f)
         {
-            Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, closeRotationY, transform.rotation.eulerAngles.z);
+            currentRotationY = Mathf.MoveTowards(currentRotationY, targetRotationY, rotationSpeed * Time.deltaTime);
+
+            Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, currentRotationY, transform.rotation.eulerAngles.z);
             transform.rotation = targetRotation;
+
+            yield return null;
         }
+
+        isMoving = false;
     }
 
     public string GetInteractPrompt()
     {
-        if (associatedData != null)
-        {
-            JsonLoader.ItemData.Item item = associatedData.ItemList.Find(i => i.ID == "6");
-
-            if (item != null)
-            {
-                return string.Format("Interaction {0}", item.InteractionName);
-            }
-        }
-
-        return "Interaction";
+        return "Interaction ¿­±â";
     }
 }

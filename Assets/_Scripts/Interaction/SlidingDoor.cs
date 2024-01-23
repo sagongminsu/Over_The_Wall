@@ -1,38 +1,50 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SlidingDoor : MonoBehaviour, IInteraction
 {
-    public JsonLoader.ItemData associatedData;
     float openPositionX = -2.78f;
     float closePositionX = -1.47f;
+    float slideSpeed = 1.5f;
+
+    bool isMoving = false;
+
     public void OnInteract()
     {
-        if (transform.position.x != -2.78f)
+        if (!isMoving)
         {
-            Vector3 targetPosition = new Vector3(openPositionX, transform.position.y, transform.position.z);
-            transform.position = targetPosition;
+            StartCoroutine(MoveDoor());
         }
-        else
+    }
+
+    IEnumerator MoveDoor()
+    {
+        isMoving = true;
+
+        float currentX = transform.position.x;
+        float targetX = (currentX != openPositionX) ? openPositionX : closePositionX;
+
+        float startTime = Time.time;
+
+        while (Time.time - startTime < Mathf.Abs(currentX - targetX) / slideSpeed)
         {
-            Vector3 targetPosition = new Vector3(closePositionX, transform.position.y, transform.position.z);
+            float t = (Time.time - startTime) * slideSpeed;
+
+            currentX = Mathf.Lerp(currentX, targetX, t);
+
+            Vector3 targetPosition = new Vector3(currentX, transform.position.y, transform.position.z);
             transform.position = targetPosition;
+
+            yield return null;
         }
+
+        transform.position = new Vector3(targetX, transform.position.y, transform.position.z);
+
+        isMoving = false;
     }
 
     public string GetInteractPrompt()
     {
-        if (associatedData != null)
-        {
-            JsonLoader.ItemData.Item item = associatedData.ItemList.Find(i => i.ID == "7");
-
-            if (item != null)
-            {
-                return string.Format("Interaction {0}", item.InteractionName);
-            }
-        }
-
-        return "Interaction";
+        return "Interaction ¿­±â";
     }
 }

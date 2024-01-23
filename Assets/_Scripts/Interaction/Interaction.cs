@@ -62,17 +62,4 @@ public class Interaction : MonoBehaviour
             Debug.Log("curInteraction is null!");
         }
     }
-
-    //public void OnInteraction(InputAction.CallbackContext callbackContext)
-    //{
-    //    Debug.Log("E");
-
-    //    if (callbackContext.started && curInteraction != null)
-    //    {
-    //        curInteraction.OnInteract();
-    //        curInteractGameobject = null;
-    //        curInteraction = null;
-    //        promptText.gameObject.SetActive(false);
-    //    }
-    //}
 }
