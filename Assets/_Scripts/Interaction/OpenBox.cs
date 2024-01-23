@@ -31,7 +31,7 @@ public class OpenBox : MonoBehaviour, IInteraction
                 return string.Format("Interaction {0}", item.InteractionName);
             }
         }
-        
+
         return "Interaction";
     }
 }

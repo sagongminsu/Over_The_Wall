@@ -1788,7 +1788,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
-  IsInteracting: 0
   promptText: {fileID: 332048015}
 --- !u!1 &1308839850 stripped
 GameObject:
@@ -3082,7 +3081,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6787510284660141748, guid: f10a5825745ef7940ac5025bd977f7fb,
         type: 3}
-      insertIndex: 1
+      insertIndex: -1
       addedObject: {fileID: 384944507}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4806892686005547306, guid: f10a5825745ef7940ac5025bd977f7fb,
