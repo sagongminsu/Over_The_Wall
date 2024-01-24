@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4042181120725474}
   - component: {fileID: 33742452397415524}
   - component: {fileID: 23679130597367862}
-  - component: {fileID: 3618526189484093439}
   - component: {fileID: 7840393924621264032}
   - component: {fileID: 9173546204470561107}
+  - component: {fileID: 7438611662918047560}
   m_Layer: 0
   m_Name: g_8
   m_TagString: Untagged
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 4770480677048138}
   - {fileID: 4182502551440336}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33742452397415524
 MeshFilter:
@@ -91,19 +91,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3618526189484093439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1404099222790398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a7386183f4588e45bb7ac4a4d68da4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patrolTime: 10
 --- !u!195 &7840393924621264032
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -149,6 +136,31 @@ CapsuleCollider:
   m_Height: 1.61
   m_Direction: 1
   m_Center: {x: 0.0012521003, y: 0.8554894, z: 0.12657025}
+--- !u!114 &7438611662918047560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404099222790398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130878185d069754388e9e44416da954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1873085722871958
 GameObject:
   m_ObjectHideFlags: 0
