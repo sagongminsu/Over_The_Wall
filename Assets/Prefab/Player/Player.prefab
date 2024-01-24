@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 7547735546563469635}
   - component: {fileID: 491889425999803508}
   - component: {fileID: 7016985286560419764}
+  - component: {fileID: 2505117929567412518}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -96,6 +97,8 @@ MonoBehaviour:
     fallParameterName: Fall
     attackParameterName: '@Attack'
     comboAttackParameterName: ComboAttack
+    aimingParameterName: Aiming
+    standingParameterName: Standing
 --- !u!114 &8667247724053176115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +192,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   flashSpeed: 0.5
+--- !u!114 &2505117929567412518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4806892686005547306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12434aa3cf82da4e854ce4ea6702067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkRate: 0.05
+  maxCheckDistance: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  promptText: {fileID: 0}
 --- !u!1 &7175464940941803594
 GameObject:
   m_ObjectHideFlags: 0
