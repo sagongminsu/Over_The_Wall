@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 4123682796366910}
   - component: {fileID: 33251382167871634}
   - component: {fileID: 23579618056515222}
-  m_Layer: 0
+  - component: {fileID: 8142809336884301737}
+  - component: {fileID: 696399664526420509}
+  m_Layer: 6
   m_Name: doors_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,6 +88,40 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8142809336884301737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289153596252428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45354199902f3df45bbea2fe6c485d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &696399664526420509
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289153596252428}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300024, guid: a12b8bb8dddd0ad478632bd53d633dd1, type: 3}
 --- !u!1 &1308677278252364
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +133,7 @@ GameObject:
   - component: {fileID: 4276409618612512}
   - component: {fileID: 33843678114693596}
   - component: {fileID: 23705373369115430}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: doors_1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +299,7 @@ GameObject:
   - component: {fileID: 4129564878285916}
   - component: {fileID: 33786488456808968}
   - component: {fileID: 23014366888490438}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: doors_1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +490,7 @@ Transform:
   - {fileID: 4123682796366910}
   - {fileID: 4012117941729918}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33286703278044552
 MeshFilter:

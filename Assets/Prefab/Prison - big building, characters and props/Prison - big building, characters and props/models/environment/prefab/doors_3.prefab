@@ -36,7 +36,7 @@ Transform:
   - {fileID: 4043313121492422}
   - {fileID: 4827876070748462}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33590050690887232
 MeshFilter:
@@ -205,7 +205,9 @@ GameObject:
   - component: {fileID: 33371453915999868}
   - component: {fileID: 23035049172993664}
   - component: {fileID: 619331396277697449}
-  m_Layer: 0
+  - component: {fileID: 2627907395471175405}
+  - component: {fileID: 3176775779921842524}
+  m_Layer: 6
   m_Name: doors_3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,6 +297,40 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.39200002, y: 0.841, z: 0.029000001}
   m_TimeToStationary: 0.5
+--- !u!114 &2627907395471175405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309146327970136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45354199902f3df45bbea2fe6c485d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &3176775779921842524
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309146327970136}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300014, guid: a12b8bb8dddd0ad478632bd53d633dd1, type: 3}
 --- !u!1 &1365148458207646
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +425,7 @@ GameObject:
   - component: {fileID: 4212108917706766}
   - component: {fileID: 33969439148993228}
   - component: {fileID: 23648146545927582}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: doors_3_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,7 +508,7 @@ GameObject:
   - component: {fileID: 4212051303207926}
   - component: {fileID: 33480024538309788}
   - component: {fileID: 23032215072685960}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: doors_3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +592,9 @@ GameObject:
   - component: {fileID: 33542068037052064}
   - component: {fileID: 23919650523692956}
   - component: {fileID: 3494243727110667576}
-  m_Layer: 0
+  - component: {fileID: 4962222145112415205}
+  - component: {fileID: 2451831347130406132}
+  m_Layer: 6
   m_Name: doors_3_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,7 +608,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984069367109858}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.79068065, y: 0.20361936, z: -0.048619322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -646,3 +684,37 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.39200002, y: 0.90200007, z: 0.029000001}
   m_TimeToStationary: 0.5
+--- !u!114 &4962222145112415205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984069367109858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e58d47f50b4e945ab5f07262646d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &2451831347130406132
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984069367109858}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300004, guid: a12b8bb8dddd0ad478632bd53d633dd1, type: 3}
