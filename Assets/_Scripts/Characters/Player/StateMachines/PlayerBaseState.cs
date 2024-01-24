@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,6 +35,7 @@ public class PlayerBaseState : IState
     public virtual void Update()
     {
         Move();
+        
     }
 
     private void ReadMovementInput()
@@ -47,8 +47,7 @@ public class PlayerBaseState : IState
     {
         Vector3 movementDirection = GetMovementDirection();
 
-        RotateByMouseDelta();
-        //Rotate(movementDirection);
+        Rotate(movementDirection);
 
         Move(movementDirection);
     }
@@ -56,7 +55,7 @@ public class PlayerBaseState : IState
     private Vector3 GetMovementDirection()
     {
         Vector3 forward = stateMachine.MainCameraTransform.forward;
-        Vector3 right = stateMachine.Player.transform.right;
+        Vector3 right = stateMachine.MainCameraTransform.right;
 
         forward.y = 0;
         right.y = 0;
@@ -77,15 +76,15 @@ public class PlayerBaseState : IState
             );
     }
 
-    //private void Rotate(Vector3 movementDirection)
-    //{
-    //    if (movementDirection != Vector3.zero)
-    //    {
-    //        Transform playerTransform = stateMachine.Player.transform;
-    //        Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
-    //        playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
-    //    }
-    //}
+    private void Rotate(Vector3 movementDirection)
+    {
+        if (movementDirection != Vector3.zero)
+        {
+            Transform playerTransform = stateMachine.Player.transform;
+            Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
+            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+        }
+    }
 
     private float GetMovemenetSpeed()
     {
@@ -96,20 +95,6 @@ public class PlayerBaseState : IState
     protected void ForceMove()
     {
         stateMachine.Player.Controller.Move(stateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
-    }
-
-    private void RotateByMouseDelta()
-    {
-        Vector2 mouseDelta = stateMachine.Player.Input.PlayerActions.Look.ReadValue<Vector2>();
-        float mouseX = mouseDelta.x;
-
-        if (Mathf.Abs(mouseX) > 0.1f)
-        {
-            Transform playerTransform = stateMachine.Player.transform;
-            Vector3 rotationAmount = new Vector3(0, mouseX * stateMachine.MouseSensitivity, 0);
-            Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
-            playerTransform.rotation *= deltaRotation;
-        }
     }
 
     protected void StartAnimation(int animationHash)
@@ -127,18 +112,24 @@ public class PlayerBaseState : IState
         PlayerInput input = stateMachine.Player.Input;
         input.PlayerActions.Movement.canceled += OnMovementCanceled;
         input.PlayerActions.Run.started += OnRunStarted;
-        input.PlayerActions.Run.canceled += OnRunCanceled;
 
-        input.PlayerActions.Jump.started += OnJumpStarted;
+        stateMachine.Player.Input.PlayerActions.Jump.started += OnJumpStarted;
 
-        input.PlayerActions.Attack.performed += OnAttackPerformed;
-        input.PlayerActions.Attack.canceled += OnAttackCanceled;
+        stateMachine.Player.Input.PlayerActions.Attack.performed += OnAttackPerformed;
+        stateMachine.Player.Input.PlayerActions.Attack.canceled += OnAttackCanceled;
 
+<<<<<<< Updated upstream
+        stateMachine.Player.Input.PlayerActions.Interaction.performed += OnInteractionPerformed;
+        stateMachine.Player.Input.PlayerActions.Interaction.canceled += OnInteractionCanceled;
+=======
         input.PlayerActions.Interaction.performed += OnInteractionPerformed;
         input.PlayerActions.Interaction.canceled += OnInteractionCanceled;
 
         input.PlayerActions.Aim.performed += OnAimingPerformed;
         input.PlayerActions.Aim.canceled += OnAimingCanceled;
+
+        input.PlayerActions.Crouch.started += OnCrouchStarted;
+>>>>>>> Stashed changes
     }
 
     protected virtual void RemoveInputActionsCallbacks()
@@ -146,28 +137,29 @@ public class PlayerBaseState : IState
         PlayerInput input = stateMachine.Player.Input;
         input.PlayerActions.Movement.canceled -= OnMovementCanceled;
         input.PlayerActions.Run.started -= OnRunStarted;
-        input.PlayerActions.Run.canceled -= OnRunCanceled;
 
-        input.PlayerActions.Jump.started -= OnJumpStarted;
+        stateMachine.Player.Input.PlayerActions.Jump.started -= OnJumpStarted;
 
-        input.PlayerActions.Attack.performed -= OnAttackPerformed;
-        input.PlayerActions.Attack.canceled -= OnAttackCanceled;
+        stateMachine.Player.Input.PlayerActions.Attack.performed -= OnAttackPerformed;
+        stateMachine.Player.Input.PlayerActions.Attack.canceled -= OnAttackCanceled;
 
+<<<<<<< Updated upstream
+        stateMachine.Player.Input.PlayerActions.Interaction.performed -= OnInteractionPerformed;
+        stateMachine.Player.Input.PlayerActions.Interaction.canceled -= OnInteractionCanceled;
+=======
         input.PlayerActions.Interaction.performed -= OnInteractionPerformed;
         input.PlayerActions.Interaction.canceled -= OnInteractionCanceled;
 
         input.PlayerActions.Aim.performed -= OnAimingPerformed;
         input.PlayerActions.Aim.canceled -= OnAimingCanceled;
+
+        input.PlayerActions.Crouch.started -= OnCrouchStarted;
+>>>>>>> Stashed changes
     }
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
     {
 
-    }
-
-    protected virtual void OnRunCanceled(InputAction.CallbackContext context)
-    {
-        
     }
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
@@ -199,6 +191,8 @@ public class PlayerBaseState : IState
     {
         stateMachine.IsInteracting = false;
     }
+<<<<<<< Updated upstream
+=======
 
     protected virtual void OnAimingPerformed(InputAction.CallbackContext obj)
     {
@@ -210,6 +204,22 @@ public class PlayerBaseState : IState
         stateMachine.IsAiming = false;
     }
 
+    protected virtual void OnCrouchStarted(InputAction.CallbackContext obj)
+    {
+        if (!stateMachine.IsCrouch)
+        {
+            Debug.Log("ON");
+            stateMachine.IsCrouch = true;
+            stateMachine.Player.Controller.height = 1.3f;
+        }
+        else
+        {
+            Debug.Log("OFF");
+            stateMachine.IsCrouch = false;
+            stateMachine.Player.Controller.height = 1.77f;
+        }
+    }
+>>>>>>> Stashed changes
     protected float GetNormalizedTime(Animator animator, string tag)
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);

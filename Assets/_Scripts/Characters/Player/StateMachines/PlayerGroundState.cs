@@ -36,12 +36,6 @@ public class PlayerGroundedState : PlayerBaseState
             OnInteraction();
             return;
         }
-
-        if (stateMachine.IsAiming)
-        {
-            OnAim();
-            return;
-        }
     }
 
     public override void PhysicsUpdate()
@@ -62,7 +56,6 @@ public class PlayerGroundedState : PlayerBaseState
         {
             return;
         }
-
         stateMachine.ChangeState(stateMachine.IdleState);
 
         base.OnMovementCanceled(context);
@@ -70,12 +63,22 @@ public class PlayerGroundedState : PlayerBaseState
 
     protected virtual void OnMove()
     {
-        stateMachine.ChangeState(stateMachine.WalkState);
+        if (stateMachine.IsCrouch)
+            stateMachine.ChangeState(stateMachine.CrouchWalkState);
+        else
+            stateMachine.ChangeState(stateMachine.WalkState);
+
     }
 
     protected override void OnJumpStarted(InputAction.CallbackContext context)
     {
         stateMachine.ChangeState(stateMachine.JumpState);
+    }
+
+    protected override void OnRunCanceled(InputAction.CallbackContext context)
+    {
+        base.OnRunCanceled(context);
+        stateMachine.ChangeState(stateMachine.IdleState);
     }
 
     protected virtual void OnAttack()
@@ -87,15 +90,12 @@ public class PlayerGroundedState : PlayerBaseState
     {
         stateMachine.ChangeState(stateMachine.InteractState);
     }
+<<<<<<< Updated upstream
+=======
 
     protected virtual void OnAim()
     {
         stateMachine.ChangeState(stateMachine.AimingState);
     }
-
-    protected override void OnRunCanceled(InputAction.CallbackContext context)
-    {
-        base.OnRunCanceled(context);
-        stateMachine.ChangeState(stateMachine.IdleState); // 혹은 정지 상태로 변경하는 적절한 상태로 변경
-    }
+>>>>>>> Stashed changes
 }
