@@ -5,7 +5,7 @@ public class PushingDoor : MonoBehaviour, IInteraction
 {
     float openRotationY = 87f;
     float closeRotationY = 0f;
-    bool isOpen = false; // Track the door state
+    bool isOpen = false;
 
     bool isMoving = false;
 
@@ -28,7 +28,7 @@ public class PushingDoor : MonoBehaviour, IInteraction
 
         while (Time.time - startTime < 1f)
         {
-            float t = (Time.time - startTime) / 1f; // Normalize time between 0 and 1
+            float t = (Time.time - startTime) / 1f;
 
             currentRotationY = Mathf.Lerp(currentRotationY, targetRotationY, t);
 
@@ -40,7 +40,7 @@ public class PushingDoor : MonoBehaviour, IInteraction
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, targetRotationY, transform.rotation.eulerAngles.z);
 
-        isOpen = !isOpen; // Toggle the door state
+        isOpen = !isOpen;
         isMoving = false;
     }
 
