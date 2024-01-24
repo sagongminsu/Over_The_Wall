@@ -33,6 +33,8 @@ public class PlayerStateMachine : StateMachine
 
     public int ComboIndex { get; set; }
 
+    public float MouseSensitivity = 10.0f;
+
     public Transform MainCameraTransform { get; set; }
 
     public PlayerStateMachine(Player player)

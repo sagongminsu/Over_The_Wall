@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerBaseState : IState
@@ -47,7 +47,8 @@ public class PlayerBaseState : IState
     {
         Vector3 movementDirection = GetMovementDirection();
 
-        Rotate(movementDirection);
+        RotateByMouseDelta();
+        //Rotate(movementDirection);
 
         Move(movementDirection);
     }
@@ -95,6 +96,20 @@ public class PlayerBaseState : IState
     protected void ForceMove()
     {
         stateMachine.Player.Controller.Move(stateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
+    }
+
+    private void RotateByMouseDelta()
+    {
+        Vector2 mouseDelta = stateMachine.Player.Input.PlayerActions.Look.ReadValue<Vector2>();
+        float mouseX = mouseDelta.x;
+
+        if (Mathf.Abs(mouseX) > 0.1f)
+        {
+            Transform playerTransform = stateMachine.Player.transform;
+            Vector3 rotationAmount = new Vector3(0, mouseX * stateMachine.MouseSensitivity, 0);
+            Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
+            playerTransform.rotation *= deltaRotation;
+        }
     }
 
     protected void StartAnimation(int animationHash)
