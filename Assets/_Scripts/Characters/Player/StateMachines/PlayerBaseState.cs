@@ -113,15 +113,11 @@ public class PlayerBaseState : IState
         input.PlayerActions.Movement.canceled += OnMovementCanceled;
         input.PlayerActions.Run.started += OnRunStarted;
 
-        stateMachine.Player.Input.PlayerActions.Jump.started += OnJumpStarted;
+        input.PlayerActions.Jump.started += OnJumpStarted;
 
-        stateMachine.Player.Input.PlayerActions.Attack.performed += OnAttackPerformed;
-        stateMachine.Player.Input.PlayerActions.Attack.canceled += OnAttackCanceled;
+        input.PlayerActions.Attack.performed += OnAttackPerformed;
+        input.PlayerActions.Attack.canceled += OnAttackCanceled;
 
-<<<<<<< Updated upstream
-        stateMachine.Player.Input.PlayerActions.Interaction.performed += OnInteractionPerformed;
-        stateMachine.Player.Input.PlayerActions.Interaction.canceled += OnInteractionCanceled;
-=======
         input.PlayerActions.Interaction.performed += OnInteractionPerformed;
         input.PlayerActions.Interaction.canceled += OnInteractionCanceled;
 
@@ -129,7 +125,6 @@ public class PlayerBaseState : IState
         input.PlayerActions.Aim.canceled += OnAimingCanceled;
 
         input.PlayerActions.Crouch.started += OnCrouchStarted;
->>>>>>> Stashed changes
     }
 
     protected virtual void RemoveInputActionsCallbacks()
@@ -138,15 +133,11 @@ public class PlayerBaseState : IState
         input.PlayerActions.Movement.canceled -= OnMovementCanceled;
         input.PlayerActions.Run.started -= OnRunStarted;
 
-        stateMachine.Player.Input.PlayerActions.Jump.started -= OnJumpStarted;
+        input.PlayerActions.Jump.started -= OnJumpStarted;
 
-        stateMachine.Player.Input.PlayerActions.Attack.performed -= OnAttackPerformed;
-        stateMachine.Player.Input.PlayerActions.Attack.canceled -= OnAttackCanceled;
+        input.PlayerActions.Attack.performed -= OnAttackPerformed;
+        input.PlayerActions.Attack.canceled -= OnAttackCanceled;
 
-<<<<<<< Updated upstream
-        stateMachine.Player.Input.PlayerActions.Interaction.performed -= OnInteractionPerformed;
-        stateMachine.Player.Input.PlayerActions.Interaction.canceled -= OnInteractionCanceled;
-=======
         input.PlayerActions.Interaction.performed -= OnInteractionPerformed;
         input.PlayerActions.Interaction.canceled -= OnInteractionCanceled;
 
@@ -154,10 +145,13 @@ public class PlayerBaseState : IState
         input.PlayerActions.Aim.canceled -= OnAimingCanceled;
 
         input.PlayerActions.Crouch.started -= OnCrouchStarted;
->>>>>>> Stashed changes
     }
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
+    {
+
+    }
+    protected virtual void OnRunCanceled(InputAction.CallbackContext context)
     {
 
     }
@@ -191,8 +185,6 @@ public class PlayerBaseState : IState
     {
         stateMachine.IsInteracting = false;
     }
-<<<<<<< Updated upstream
-=======
 
     protected virtual void OnAimingPerformed(InputAction.CallbackContext obj)
     {
@@ -219,7 +211,7 @@ public class PlayerBaseState : IState
             stateMachine.Player.Controller.height = 1.77f;
         }
     }
->>>>>>> Stashed changes
+
     protected float GetNormalizedTime(Animator animator, string tag)
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);

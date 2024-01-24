@@ -13,27 +13,21 @@ public class PlayerIdleState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
-<<<<<<< Updated upstream
-        StartAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
-=======
+
         Debug.Log("Idle ON");
         stateMachine.MovementSpeedModifier = 0f;
 
         StartAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
 
         IdleStateTime = 0.0f;
->>>>>>> Stashed changes
     }
 
     public override void Exit()
     {
         base.Exit();
-<<<<<<< Updated upstream
-        StopAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
-=======
+
         Debug.Log("Idle OFF");
         StopAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
->>>>>>> Stashed changes
     }
 
     public override void Update()
@@ -45,8 +39,7 @@ public class PlayerIdleState : PlayerGroundedState
             OnMove();
             return;
         }
-<<<<<<< Updated upstream
-=======
+
 
         currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
@@ -65,6 +58,5 @@ public class PlayerIdleState : PlayerGroundedState
         {
             stateMachine.ChangeState(stateMachine.CrouchIdleState);
         }
->>>>>>> Stashed changes
     }
 }

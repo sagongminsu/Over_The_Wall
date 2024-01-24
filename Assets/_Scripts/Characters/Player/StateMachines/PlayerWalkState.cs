@@ -1,4 +1,6 @@
+using UnityEngine;
 using UnityEngine.InputSystem;
+
 
 public class PlayerWalkState : PlayerGroundedState
 {
@@ -30,9 +32,6 @@ public class PlayerWalkState : PlayerGroundedState
 
         //StopAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
     }
-
-<<<<<<< Updated upstream
-=======
     public override void Update()
     {
         base.Update();
@@ -46,7 +45,6 @@ public class PlayerWalkState : PlayerGroundedState
         }
     }
 
->>>>>>> Stashed changes
     protected override void OnRunStarted(InputAction.CallbackContext context)
     {
         base.OnRunStarted(context);

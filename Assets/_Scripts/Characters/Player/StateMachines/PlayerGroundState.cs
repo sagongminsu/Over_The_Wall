@@ -90,12 +90,9 @@ public class PlayerGroundedState : PlayerBaseState
     {
         stateMachine.ChangeState(stateMachine.InteractState);
     }
-<<<<<<< Updated upstream
-=======
 
     protected virtual void OnAim()
     {
         stateMachine.ChangeState(stateMachine.AimingState);
     }
->>>>>>> Stashed changes
 }
