@@ -48,7 +48,7 @@ public class AiAttackState : AiBaseState
             }
             else
             {
-                stateMachine.ChangeState(stateMachine.IdlingState);
+                stateMachine.ChangeState(stateMachine.IdleingState);
                 return;
             }
         }

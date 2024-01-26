@@ -31,7 +31,7 @@ public class Ai : MonoBehaviour
 
     private void Start()
     {
-        stateMachine.ChangeState(stateMachine.IdlingState);
+        stateMachine.ChangeState(stateMachine.IdleingState);
     }
 
     private void Update()

@@ -14,14 +14,14 @@ public class AiIdleState : AiBaseState
 
         base.Enter();
         StartAnimation(stateMachine.Ai.AnimationData.GroundParameterHash);
-        StartAnimation(stateMachine.Ai.AnimationData.IdleParameterHash);
+        
     }
 
     public override void Exit()
     {
         base.Exit();
         StopAnimation(stateMachine.Ai.AnimationData.GroundParameterHash);
-        StopAnimation(stateMachine.Ai.AnimationData.IdleParameterHash);
+        
     }
 
     public override void Update()

@@ -8,7 +8,7 @@ public class AiStateMachine : StateMachine
 
     public Transform Target { get; private set; }
 
-    public AiIdleState IdlingState { get; }
+    public AiIdleState IdleingState { get; }
     public AiChasingState ChasingState { get; }
     public AiAttackState AttackState { get; }
 
@@ -22,7 +22,7 @@ public class AiStateMachine : StateMachine
         Ai = ai;
         Target = GameObject.FindGameObjectWithTag("Player").transform;
 
-        IdlingState = new AiIdleState(this);
+        IdleingState = new AiIdleState(this);
         ChasingState = new AiChasingState(this);
         AttackState = new AiAttackState(this);
 

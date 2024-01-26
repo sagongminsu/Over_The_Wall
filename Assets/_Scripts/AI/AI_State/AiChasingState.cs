@@ -13,14 +13,14 @@ public class AiChasingState : AiBaseState
         stateMachine.MovementSpeedModifier = 1;
         base.Enter();
         StartAnimation(stateMachine.Ai.AnimationData.GroundParameterHash);
-        StartAnimation(stateMachine.Ai.AnimationData.RunParameterHash);
+       
     }
 
     public override void Exit()
     {
         base.Exit();
         StopAnimation(stateMachine.Ai.AnimationData.GroundParameterHash);
-        StopAnimation(stateMachine.Ai.AnimationData.RunParameterHash);
+        
     }
 
     public override void Update()
@@ -29,7 +29,7 @@ public class AiChasingState : AiBaseState
 
         if (!IsInChaseRange())
         {
-            stateMachine.ChangeState(stateMachine.IdlingState);
+            stateMachine.ChangeState(stateMachine.IdleingState);
             return;
         }
         else if (IsInAttackRange())
