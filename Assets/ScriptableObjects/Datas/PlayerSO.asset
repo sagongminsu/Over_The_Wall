@@ -21,12 +21,6 @@ MonoBehaviour:
     <JumpForce>k__BackingField: 4
   <AttackData>k__BackingField:
     <AttackInfoDatas>k__BackingField:
-    - <AttackName>k__BackingField: 
-      <ComboStateIndex>k__BackingField: 0
-      <ComboTransitionTime>k__BackingField: 0
-      <ForceTransitionTime>k__BackingField: 0
-      <Force>k__BackingField: 0
-      <Damage>k__BackingField: 0
     - <AttackName>k__BackingField: "1\uD0C0"
       <ComboStateIndex>k__BackingField: 1
       <ComboTransitionTime>k__BackingField: 0.8
