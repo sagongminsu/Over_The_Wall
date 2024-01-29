@@ -50,4 +50,10 @@ public class PlayerWalkState : PlayerGroundedState
         base.OnRunStarted(context);
         stateMachine.ChangeState(stateMachine.RunState);
     }
+
+    protected override void OnAimingPerformed(InputAction.CallbackContext context)
+    {
+        base.OnRunStarted(context);
+        stateMachine.ChangeState(stateMachine.AimingWalkState);
+    }
 }

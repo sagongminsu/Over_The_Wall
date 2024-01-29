@@ -13,7 +13,8 @@ public class PlayerStateMachine : StateMachine
     public PlayerComboAttackState ComboAttackState { get; }
     public PlayerInteractState InteractState { get; }
 
-    public PlayerAimingState AimingState { get; }
+    public PlayerAimingIdleState AimingIdleState { get; }
+    public PlayerAimingWalkState AimingWalkState { get; }
     public PlayerCrouchIdleState CrouchIdleState { get; }
     public PlayerCrouchWalkState CrouchWalkState { get; }
 
@@ -48,7 +49,8 @@ public class PlayerStateMachine : StateMachine
         FallState = new PlayerFallState(this);
         ComboAttackState = new PlayerComboAttackState(this);
         InteractState = new PlayerInteractState(this);
-        AimingState = new PlayerAimingState(this);
+        AimingIdleState = new PlayerAimingIdleState(this);
+        AimingWalkState = new PlayerAimingWalkState(this);
         CrouchIdleState = new PlayerCrouchIdleState(this);
         CrouchWalkState = new PlayerCrouchWalkState(this);
 

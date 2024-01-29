@@ -24,15 +24,14 @@ public class PlayerGroundedState : PlayerBaseState
     {
         base.Update();
 
-        if (stateMachine.IsAttacking)
-        {
-            OnAttack();
-            return;
-        }
+        //if (stateMachine.IsAttacking)
+        //{
+        //    OnAttack();
+        //    return;
+        //}
 
         if (stateMachine.IsInteracting)
         {
-            stateMachine.IsInteracting = false;
             OnInteraction();
             return;
         }
@@ -65,6 +64,8 @@ public class PlayerGroundedState : PlayerBaseState
     {
         if (stateMachine.IsCrouch)
             stateMachine.ChangeState(stateMachine.CrouchWalkState);
+        else if (stateMachine.IsAiming)
+            stateMachine.ChangeState(stateMachine.AimingWalkState);
         else
             stateMachine.ChangeState(stateMachine.WalkState);
 
@@ -93,6 +94,6 @@ public class PlayerGroundedState : PlayerBaseState
 
     protected virtual void OnAim()
     {
-        stateMachine.ChangeState(stateMachine.AimingState);
+        stateMachine.ChangeState(stateMachine.AimingIdleState);
     }
 }

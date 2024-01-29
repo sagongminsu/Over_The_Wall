@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAimingState : PlayerGroundedState
+public class PlayerAimingIdleState : PlayerGroundedState
 {
-    public PlayerAimingState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
+    public PlayerAimingIdleState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
 
@@ -22,6 +22,31 @@ public class PlayerAimingState : PlayerGroundedState
         base.Exit();
         Debug.Log("OFF");
         StopAnimation(stateMachine.Player.AnimationData.AimingParameterHash);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (stateMachine.IsAiming)
+        {
+            if (stateMachine.MovementInput != Vector2.zero)
+            {
+                OnMove();
+                return;
+            }
+        }
+
+        if (!stateMachine.IsAiming)
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
+        }
+
+        if (stateMachine.IsAttacking)
+        {
+            OnAttack();
+            return;
+        }
     }
 
     protected override void OnAimingCanceled(InputAction.CallbackContext context)

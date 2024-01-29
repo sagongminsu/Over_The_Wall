@@ -40,6 +40,12 @@ public class PlayerIdleState : PlayerGroundedState
             return;
         }
 
+        if (stateMachine.IsAttacking)
+        {
+            OnAttack();
+            return;
+        }
+
 
         currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
@@ -61,7 +67,7 @@ public class PlayerIdleState : PlayerGroundedState
 
         if(stateMachine.IsAiming)
         {
-            stateMachine.ChangeState(stateMachine.AimingState);
+            stateMachine.ChangeState(stateMachine.AimingIdleState);
         }
     }
 }

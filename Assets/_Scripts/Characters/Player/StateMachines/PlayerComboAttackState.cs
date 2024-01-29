@@ -80,7 +80,7 @@ public class PlayerComboAttackState : PlayerAttackState
             }
             else
             {
-                stateMachine.ChangeState(stateMachine.IdleState);
+                stateMachine.ChangeState(stateMachine.AimingIdleState);
             }
         }
     }
