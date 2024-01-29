@@ -77,15 +77,15 @@ public class PlayerBaseState : IState
             );
     }
 
-    private void Rotate(Vector3 movementDirection)
-    {
-        if (movementDirection != Vector3.zero)
-        {
-            Transform playerTransform = stateMachine.Player.transform;
-            Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
-            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
-        }
-    }
+    //private void Rotate(Vector3 movementDirection)
+    //{
+    //    if (movementDirection != Vector3.zero)
+    //    {
+    //        Transform playerTransform = stateMachine.Player.transform;
+    //        Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
+    //        playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+    //    }
+    //}
 
     private float GetMovemenetSpeed()
     {

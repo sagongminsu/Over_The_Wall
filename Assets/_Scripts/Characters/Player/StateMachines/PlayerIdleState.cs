@@ -58,5 +58,10 @@ public class PlayerIdleState : PlayerGroundedState
         {
             stateMachine.ChangeState(stateMachine.CrouchIdleState);
         }
+
+        if(stateMachine.IsAiming)
+        {
+            stateMachine.ChangeState(stateMachine.AimingState);
+        }
     }
 }
