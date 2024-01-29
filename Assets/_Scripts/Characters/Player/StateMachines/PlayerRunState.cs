@@ -13,6 +13,8 @@ public class PlayerRunState : PlayerGroundedState
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
         base.Enter();
 
+        Debug.Log("Run ON");
+
         StartAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
         //StartAnimation(stateMachine.Player.AnimationData.RunParameterHash);
     }
@@ -29,6 +31,12 @@ public class PlayerRunState : PlayerGroundedState
     {
         base.Update();
 
+        if (stateMachine.IsAttacking)
+        {
+            OnAttack();
+            return;
+        }
+
         float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
         Debug.Log(currentSpeed);
@@ -38,6 +46,7 @@ public class PlayerRunState : PlayerGroundedState
     protected override void OnRunCanceled(InputAction.CallbackContext context)
     {
         base.OnRunCanceled(context);
+        Debug.Log("Run OFF");
         stateMachine.ChangeState(stateMachine.WalkState);
     }
 }
