@@ -3,23 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Animator))]
 public class NPCAnimationController : MonoBehaviour
 {
+    private NavMeshAgent navMeshAgent;
     private Animator animator;
-    private NavMeshAgent agent;
+
+    public Transform target;
 
     void Start()
     {
-        // 컴포넌트를 가져옵니다.
+        navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
-        // 이동 속도에 따라 애니메이션을 변경합니다.
-        float speed = agent.velocity.magnitude / agent.speed;
-        animator.SetFloat("Speed", speed);
+        if (target != null)
+        {
+            navMeshAgent.SetDestination(target.position);
+            // 이동 속도에 따라 애니메이션 상태를 업데이트합니다.
+            float speed = navMeshAgent.velocity.magnitude;
+            animator.SetFloat("Speed", speed); // "Speed"는 애니메이터 파라미터의 이름입니다.
+        }
     }
 }
 
