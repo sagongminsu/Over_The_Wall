@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCrouchIdleState : PlayerGroundedState
 {
@@ -12,19 +13,13 @@ public class PlayerCrouchIdleState : PlayerGroundedState
     {
         stateMachine.MovementSpeedModifier = 0f;
         base.Enter();
-        Debug.Log("coruch ON");
 
         StartAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
-
-        currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier * 0.5f;
-
-        stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
     }
 
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("coruch OFF");
 
         StopAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
 
@@ -42,6 +37,10 @@ public class PlayerCrouchIdleState : PlayerGroundedState
                 OnMove();
                 return;
             }
+        }
+        if (!stateMachine.IsCrouch)
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
 }

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteractState : PlayerGroundedState
 {
@@ -20,7 +21,7 @@ public class PlayerInteractState : PlayerGroundedState
         }
         else
         {
-            Debug.LogError("Interaction failed. Check if the object implements IInteraction interface.");
+            //Debug.LogError("Interaction failed. Check if the object implements IInteraction interface.");
         }
 
         base.Enter();
@@ -37,5 +38,11 @@ public class PlayerInteractState : PlayerGroundedState
     public override void Update()
     {
         base.Update();
+    }
+
+    protected override void OnInteractionCanceled(InputAction.CallbackContext context)
+    {
+        base.OnInteractionCanceled(context);
+        stateMachine.ChangeState(stateMachine.IdleState);
     }
 }

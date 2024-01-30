@@ -25,26 +25,26 @@ public class PullingDoor : MonoBehaviour, IInteraction
 
         if (isOpen)
         {
-            if (targetRotationY < -87f) targetRotationY = -87f;
+            if (targetRotationY != -87f) targetRotationY = -87f;
         }
         else
         {
-            if (targetRotationY > 0f) targetRotationY = 0f;
+            if (targetRotationY == -87f) targetRotationY = 0f;
         }
 
-        Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, targetRotationY, transform.rotation.eulerAngles.z);
+        Quaternion targetRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, targetRotationY, transform.localRotation.eulerAngles.z);
 
         float elapsedTime = 0f;
         float moveTime = 1f;
 
         while (elapsedTime < moveTime)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, elapsedTime / moveTime);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, elapsedTime / moveTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        transform.rotation = targetRotation;
+        transform.localRotation = targetRotation;
         isOpen = !isOpen;
         isMoving = false;
     }

@@ -30,11 +30,10 @@ public class PlayerCrouchWalkState : PlayerGroundedState
 
         Debug.Log(currentSpeed);
         stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
-    }
 
-    //protected override void OnRunStarted(InputAction.CallbackContext context)
-    //{
-    //    base.OnRunStarted(context);
-    //    stateMachine.ChangeState(stateMachine.RunState);
-    //}
+        if (!stateMachine.IsCrouch)
+        {
+            stateMachine.ChangeState(stateMachine.WalkState);
+        }
+    }
 }

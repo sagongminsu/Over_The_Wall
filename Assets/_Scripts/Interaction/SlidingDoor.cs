@@ -9,6 +9,15 @@ public class SlidingDoor : MonoBehaviour, IInteraction
 
     bool isMoving = false;
 
+    // 추가된 변수
+    Transform parentTransform;
+
+    void Start()
+    {
+        // 부모 Transform 참조
+        parentTransform = transform.parent;
+    }
+
     public void OnInteract()
     {
         if (!isMoving)
@@ -21,7 +30,7 @@ public class SlidingDoor : MonoBehaviour, IInteraction
     {
         isMoving = true;
 
-        float currentX = transform.position.x;
+        float currentX = transform.localPosition.x; // 로컬 좌표계 기준으로 변경
         float targetX = (currentX != openPositionX) ? openPositionX : closePositionX;
 
         float startTime = Time.time;
@@ -32,13 +41,13 @@ public class SlidingDoor : MonoBehaviour, IInteraction
 
             currentX = Mathf.Lerp(currentX, targetX, t);
 
-            Vector3 targetPosition = new Vector3(currentX, transform.position.y, transform.position.z);
-            transform.position = targetPosition;
+            Vector3 targetPosition = new Vector3(currentX, transform.localPosition.y, transform.localPosition.z);
+            transform.localPosition = targetPosition;
 
             yield return null;
         }
 
-        transform.position = new Vector3(targetX, transform.position.y, transform.position.z);
+        transform.localPosition = new Vector3(targetX, transform.localPosition.y, transform.localPosition.z);
 
         isMoving = false;
     }

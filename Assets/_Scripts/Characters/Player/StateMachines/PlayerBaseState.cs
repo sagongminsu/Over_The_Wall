@@ -35,7 +35,7 @@ public class PlayerBaseState : IState
     public virtual void Update()
     {
         Move();
-        
+
     }
 
     private void ReadMovementInput()
@@ -77,15 +77,15 @@ public class PlayerBaseState : IState
             );
     }
 
-    private void Rotate(Vector3 movementDirection)
-    {
-        if (movementDirection != Vector3.zero)
-        {
-            Transform playerTransform = stateMachine.Player.transform;
-            Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
-            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
-        }
-    }
+    //private void Rotate(Vector3 movementDirection)
+    //{
+    //    if (movementDirection != Vector3.zero)
+    //    {
+    //        Transform playerTransform = stateMachine.Player.transform;
+    //        Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
+    //        playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+    //    }
+    //}
 
     private float GetMovemenetSpeed()
     {
@@ -126,7 +126,9 @@ public class PlayerBaseState : IState
     {
         PlayerInput input = stateMachine.Player.Input;
         input.PlayerActions.Movement.canceled += OnMovementCanceled;
+
         input.PlayerActions.Run.started += OnRunStarted;
+        input.PlayerActions.Run.canceled += OnRunCanceled;
 
         input.PlayerActions.Jump.started += OnJumpStarted;
 
@@ -146,7 +148,9 @@ public class PlayerBaseState : IState
     {
         PlayerInput input = stateMachine.Player.Input;
         input.PlayerActions.Movement.canceled -= OnMovementCanceled;
+
         input.PlayerActions.Run.started -= OnRunStarted;
+        input.PlayerActions.Run.canceled -= OnRunCanceled;
 
         input.PlayerActions.Jump.started -= OnJumpStarted;
 
