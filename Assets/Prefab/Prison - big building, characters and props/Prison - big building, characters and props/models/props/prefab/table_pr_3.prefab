@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 23528585707169224}
   - component: {fileID: 64234906413882804}
   - component: {fileID: 682860844698599493}
-  m_Layer: 0
+  - component: {fileID: -586448818741667407}
+  m_Layer: 6
   m_Name: table_pr_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,3 +127,15 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &-586448818741667407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422595860156486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a93d6aab73c39147a6d18d9299e9d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
