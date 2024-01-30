@@ -13,10 +13,8 @@ public class CharacterAnimationController : MonoBehaviour
     }
 
     void Update()
-    {
-        // 실제 게임 로직으로 파라미터를 설정하면 됩니다
+    {  
         animator.GetBool("isWalking");
-        animator.GetBool("isAttacking");
         animator.GetBool("isFleeing");
         animator.GetBool("isRunning");
     }

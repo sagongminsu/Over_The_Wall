@@ -6,9 +6,9 @@ using System;
 
 public class DayNightCycle : MonoBehaviour
 {
-    [Range(0.0f, 720.0f)]
+    [Range(0.0f, 1080.0f)]
     public float time; // 게임 내 시간
-    public float fullDayLength = 720f; // 게임 내 하루의 길이를 현실 시간 12분으로 설정
+    public float fullDayLength = 1080f;  // 게임 내 하루의 길이를 현실 시간 18분으로 설정
     public float startTime = 0; // 시작 시간
     private float timeRate; // 게임 내 시간의 진행 속도
     public Vector3 noon; // 정오 시의 태양 위치
