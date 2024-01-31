@@ -21,6 +21,8 @@ public class NPCWaypoint : MonoBehaviour
         {
             MoveToNextWaypoint();
         }
+
+
     }
 
     void MoveToNextWaypoint()
