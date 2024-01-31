@@ -1548,14 +1548,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1528013176}
-    - targetCorrespondingSourceObject: {fileID: 1600565974581486, guid: 75fc205488b80e044961e6017c8836f6,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1699267658}
-    - targetCorrespondingSourceObject: {fileID: 1600565974581486, guid: 75fc205488b80e044961e6017c8836f6,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1699267662}
   m_SourcePrefab: {fileID: 100100000, guid: 75fc205488b80e044961e6017c8836f6, type: 3}
 --- !u!1 &557671854
 GameObject:
@@ -2970,46 +2962,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 58fa18e5ff0c3a649a29c25f338e1db7, type: 3}
---- !u!1 &1699267654 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1600565974581486, guid: 75fc205488b80e044961e6017c8836f6,
-    type: 3}
-  m_PrefabInstance: {fileID: 440291050}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1699267658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699267654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5865ab9d0e4fde4419ba2215ac6a56b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!64 &1699267662
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699267654}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300012, guid: 24d36a58e540325429396926564568b7, type: 3}
 --- !u!1 &1714790047 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1289153596252428, guid: 9802ddff25a5b2643ae27f5aadc15e90,

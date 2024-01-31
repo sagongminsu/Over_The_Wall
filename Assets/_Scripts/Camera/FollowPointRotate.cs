@@ -28,7 +28,7 @@ public class FollowPointRotate : MonoBehaviour
         Vector2 mouseDelta = inputActions.Player.Look.ReadValue<Vector2>();
 
         // 마우스 입력에 따라 수직 회전값 축적
-        verticalRotation += -mouseDelta.y * rotationSpeed * Time.deltaTime;
+        verticalRotation += (-mouseDelta.y * rotationSpeed) * Time.deltaTime;
 
         // 수직 회전값을 최소, 최대 값으로 제한
         verticalRotation = Mathf.Clamp(verticalRotation, minVerticalRotation, maxVerticalRotation);

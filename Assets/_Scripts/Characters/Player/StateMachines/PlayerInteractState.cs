@@ -23,6 +23,7 @@ public class PlayerInteractState : PlayerGroundedState
         {
             //Debug.LogError("Interaction failed. Check if the object implements IInteraction interface.");
         }
+        //여기에서 텍스트를 끄고 게이지가 온되어야함
 
         base.Enter();
     }
@@ -38,6 +39,8 @@ public class PlayerInteractState : PlayerGroundedState
     public override void Update()
     {
         base.Update();
+
+        //게이지를 여기서 관리하면?
     }
 
     protected override void OnInteractionCanceled(InputAction.CallbackContext context)

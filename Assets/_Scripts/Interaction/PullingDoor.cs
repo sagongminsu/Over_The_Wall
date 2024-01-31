@@ -5,8 +5,8 @@ public class PullingDoor : MonoBehaviour, IInteraction
 {
     float openRotationY = -87f;
     float closeRotationY = 0f;
-    bool isOpen = false;
 
+    bool isOpen = false;
     bool isMoving = false;
 
     public void OnInteract()
@@ -22,15 +22,6 @@ public class PullingDoor : MonoBehaviour, IInteraction
         isMoving = true;
 
         float targetRotationY = isOpen ? closeRotationY : openRotationY;
-
-        if (isOpen)
-        {
-            if (targetRotationY != -87f) targetRotationY = -87f;
-        }
-        else
-        {
-            if (targetRotationY == -87f) targetRotationY = 0f;
-        }
 
         Quaternion targetRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, targetRotationY, transform.localRotation.eulerAngles.z);
 
