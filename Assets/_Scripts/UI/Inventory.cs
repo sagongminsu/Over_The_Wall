@@ -8,34 +8,8 @@ public class ItemSlot
 }
 public class Inventory : MonoBehaviour
 {
-    public ItemSlotUI[] uiSlot;
-    public ItemSlot[] slts;
 
-    public GameObject inventoryWindow;
-    public Transform dropPosition;
+    public ItemSlotUI[] uiSlots;
 
-    [Header("Selected Item")]
-    private ItemSlot selectedItem;
-    private int selectedItemIndex;
-    public TMPro.TextMeshProUGUI selectedItemName;
-    public TMPro.TextMeshProUGUI selectedItemDescription;
-    public TMPro.TextMeshProUGUI selectedItemStatNames;
-    public TMPro.TextMeshProUGUI selectedItemCount;
-    public GameObject useButton;
-    public GameObject equipButton;
-    public GameObject unEquiptton;
-    public GameObject DropButton;
-
-    private int curEquipIndex;
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
