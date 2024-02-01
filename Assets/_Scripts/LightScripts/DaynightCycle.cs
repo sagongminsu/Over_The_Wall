@@ -87,13 +87,13 @@ public class DayNightCycle : MonoBehaviour
     }
     private void UpdateTimeText()
     {
-        hours = (int)(time / 30.0f);
-        float minutes = (time % 30.0f) * 2;
+        hours = (int)(time / 60.0f);
+        float minutes = (time % 60.0f) * 2;
         int crrentHours = hours;
         string daytime = hours >= 12 ? "PM" : "AM";
         if (crrentHours > 12) crrentHours -= 12;
         if (crrentHours == 0) crrentHours = 12;
 
-        timeText.text = "Day " + days + "\nTime: " + " " + daytime + hours.ToString("00") + ":" + minutes.ToString("00");
+        timeText.text = "Day " + days + "\nTime: " + " " + daytime + crrentHours.ToString("00") + ":" + minutes.ToString("00");
     }
 }

@@ -8,8 +8,18 @@ public class ItemSlot
 }
 public class Inventory : MonoBehaviour
 {
-
+    public KeyCode OpenInven;
     public ItemSlotUI[] uiSlots;
+    public GameObject Inven;
 
-    
+    private void Update()
+    {
+        KeyCode result = OpenInven;
+        if (result == OpenInven)
+        {
+            Inven.SetActive(true);
+        }
+    }
+
+
 }
