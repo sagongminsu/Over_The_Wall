@@ -13,6 +13,8 @@ public class PlayerAimingWalkState : PlayerGroundedState
     {
         stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
         base.Enter();
+
+        stateMachine.Player.Aim.CheckWeaponType(true);
         Debug.Log("ON");
         StartAnimation(stateMachine.Player.AnimationData.AimingParameterHash);
     }
@@ -20,6 +22,8 @@ public class PlayerAimingWalkState : PlayerGroundedState
     public override void Exit()
     {
         base.Exit();
+
+        stateMachine.Player.Aim.ResetCrossHair();
         Debug.Log("OFF");
         StopAnimation(stateMachine.Player.AnimationData.AimingParameterHash);
     }

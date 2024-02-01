@@ -208,11 +208,13 @@ public class PlayerBaseState : IState
     protected virtual void OnAimingPerformed(InputAction.CallbackContext obj)
     {
         stateMachine.IsAiming = true;
+        stateMachine.Player.Aim.CheckWeaponType(true);
     }
 
     protected virtual void OnAimingCanceled(InputAction.CallbackContext obj)
     {
         stateMachine.IsAiming = false;
+        stateMachine.Player.Aim.ResetCrossHair();
     }
 
     protected virtual void OnCrouchStarted(InputAction.CallbackContext obj)
@@ -221,7 +223,7 @@ public class PlayerBaseState : IState
         {
             Debug.Log("ON");
             stateMachine.IsCrouch = true;
-            stateMachine.Player.Controller.height = 1.3f;
+            stateMachine.Player.Controller.height = 1.2f;
         }
         else
         {
