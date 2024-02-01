@@ -6,24 +6,12 @@ using System;
 
 public class DayNightCycle : MonoBehaviour
 {
-    
-    public int Hours {  get { return hours; } }
-    private int hours;
-    public float Minutes { get { return minutes; } }
-    private float minutes;
-    public string Daytime {  get { return daytime; } }
-    private string daytime;
-
-
-    [Range(0.0f, 720.0f)]
+    [Range(0.0f, 1440.0f)]
     public float time; // 게임 내 시간
-    public float fullDayLength = 720f; // 게임 내 하루의 길이를 현실 시간 12분으로 설정
+    public float fullDayLength = 1440f;  // 게임 내 하루의 길이를 현실 시간 24분으로 설정
     public float startTime = 0; // 시작 시간
     private float timeRate; // 게임 내 시간의 진행 속도
     public Vector3 noon; // 정오 시의 태양 위치
-    
-
- 
 
     [Header("Sun")]
     public Light sun; // 태양
@@ -41,15 +29,14 @@ public class DayNightCycle : MonoBehaviour
     public AnimationCurve reflectionIntensityMultiplier; // 반사 강도
 
 
-    [Header("time")]
-    public TextMeshProUGUI timeText; // 시간을 표시할 텍스트
+    //[Header("Time")]
+    //public TextMeshProUGUI timeText; // 시간을 표시할 텍스트
 
     private int days; // 경과한 날짜 수
 
-
     private void Start()
     {
-        timeRate = 720.0f / fullDayLength; // 게임 내 하루와 현실 시간의 비율 계산
+        timeRate = 1440.0f / fullDayLength; // 게임 내 하루와 현실 시간의 비율 계산
         time = startTime;
         days = 0; // 시작 날짜 초기화
     }
@@ -59,7 +46,7 @@ public class DayNightCycle : MonoBehaviour
         time += timeRate * Time.deltaTime; // 게임 내 시간 업데이트
 
         // 하루가 지나면 날짜 증가 및 시간 리셋
-        if (time >= 720.0f)
+        if (time >= 1440.0f)
         {
             days++;
             time = 0;
@@ -70,7 +57,6 @@ public class DayNightCycle : MonoBehaviour
 
         // 시간 및 날짜 표시 업데이트
         UpdateTimeText();
-        Debug.Log(Hours);
     }
 
     public float GetCurrentTime()
@@ -99,14 +85,12 @@ public class DayNightCycle : MonoBehaviour
     }
     private void UpdateTimeText()
     {
-        hours = (int)(time / 30.0f);
-        minutes = (time % 30.0f) * 2;
-        int crruntHours = hours;
-       
-        daytime = crruntHours >= 12 ? "PM" : "AM";  
-        if (crruntHours  > 12) crruntHours -= 12;
-        if (crruntHours == 0) crruntHours = 12;
+        int hours = (int)(time / 30.0f);
+        float minutes = (time % 30.0f) * 2;
+        string daytime = hours >= 12 ? "PM" : "AM";
+        if (hours > 12) hours -= 12;
+        if (hours == 0) hours = 12;
 
-        timeText.text = "Day " + days + "\nTime: " + " " + daytime + crruntHours.ToString("00") + ":" + minutes.ToString("00");
+       // timeText.text = "Day " + days + "\nTime: " + " " + daytime + hours.ToString("00") + ":" + minutes.ToString("00") ;
     }
 }

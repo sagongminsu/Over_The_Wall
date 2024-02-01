@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
 
+    public WeaponColliderController Weapon_R{ get; private set; }
+    public WeaponColliderController Weapon_L{ get; private set; }
+
     public Rigidbody Rigidbody { get; private set; }
     public Animator Animator { get; private set; }
     public PlayerInput Input { get; private set; }
@@ -25,6 +28,8 @@ public class Player : MonoBehaviour
         Input = GetComponent<PlayerInput>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
+        Weapon_R = GetWeapon("Weapon_R");
+        Weapon_L = GetWeapon("Weapon_L");
 
         stateMachine = new PlayerStateMachine(this);
     }
@@ -44,5 +49,17 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
+    }
+
+    private WeaponColliderController GetWeapon(string weaponName)
+    {
+        WeaponColliderController weapon = GetComponentInChildren<WeaponColliderController>();
+
+        if (weapon == null)
+        {
+            Debug.LogError($"No {weaponName} found in children. Make sure it's assigned in the Unity Inspector.");
+        }
+
+        return weapon;
     }
 }

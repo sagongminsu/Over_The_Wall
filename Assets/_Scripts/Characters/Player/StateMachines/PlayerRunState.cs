@@ -12,18 +12,30 @@ public class PlayerRunState : PlayerGroundedState
     {
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
         base.Enter();
-        StartAnimation(stateMachine.Player.AnimationData.RunParameterHash);
+
+        Debug.Log("Run ON");
+
+        StartAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
+        //StartAnimation(stateMachine.Player.AnimationData.RunParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Player.AnimationData.RunParameterHash);
+
+        StopAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
+        //StopAnimation(stateMachine.Player.AnimationData.RunParameterHash);
     }
 
     public override void Update()
     {
         base.Update();
+
+        if (stateMachine.IsAttacking)
+        {
+            OnAttack();
+            return;
+        }
 
         float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
@@ -34,6 +46,7 @@ public class PlayerRunState : PlayerGroundedState
     protected override void OnRunCanceled(InputAction.CallbackContext context)
     {
         base.OnRunCanceled(context);
+        Debug.Log("Run OFF");
         stateMachine.ChangeState(stateMachine.WalkState);
     }
 }
