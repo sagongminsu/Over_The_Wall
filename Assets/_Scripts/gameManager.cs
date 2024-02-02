@@ -27,7 +27,7 @@ public class gameManager : MonoBehaviour
     {
         PlayerData playerData = new PlayerData
         {
-            // �ð��� 1140f �̻� 1439f ������ ��� day ���� �������� ����
+            // time이 1140f 이상 1439f 이하에서 저장시 day++
             currentHours = dayNightCycle.Hours >= 1140f ? 0 : dayNightCycle.Hours,
             health = playerConditions.health.curValue,
             stamina = playerConditions.stamina.curValue,

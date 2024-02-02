@@ -11,14 +11,11 @@ public class SlidingDoor : MonoBehaviour, IInteraction
 
     bool isMoving = false;
 
-    // 추가된 변수
-    Transform parentTransform;
+
 
     void Start()
     {
         ObjectCollider = GetComponent<Collider>();
-        // 부모 Transform 참조
-        parentTransform = transform.parent;
     }
 
     public void OnInteract()

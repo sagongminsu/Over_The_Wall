@@ -319,8 +319,8 @@ GameObject:
   - component: {fileID: 33397460424522886}
   - component: {fileID: 23304121877484712}
   - component: {fileID: 7096209576361793877}
-  - component: {fileID: 8642464389154695120}
   - component: {fileID: 3995865357398255265}
+  - component: {fileID: 5951996967692152582}
   m_Layer: 6
   m_Name: lattice_1_4
   m_TagString: Untagged
@@ -409,18 +409,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 1.2720001, y: 0.771, z: 0.038000003}
   m_TimeToStationary: 0.5
---- !u!114 &8642464389154695120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600565974581486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5865ab9d0e4fde4419ba2215ac6a56b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &3995865357398255265
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -443,3 +431,15 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300012, guid: 24d36a58e540325429396926564568b7, type: 3}
+--- !u!114 &5951996967692152582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600565974581486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1667e3befa60d184db542a693a0263f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
