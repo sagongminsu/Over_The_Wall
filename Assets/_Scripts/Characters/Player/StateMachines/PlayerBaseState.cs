@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerBaseState : IState
@@ -93,6 +94,12 @@ public class PlayerBaseState : IState
         return movementSpeed;
     }
 
+    private void CameraPosition(float Height)
+    {
+        float smoothSpeed = 5f;
+        Vector3 targetPosition = new Vector3(stateMachine.MainCameraTransform.position.x, Height, stateMachine.MainCameraTransform.position.z);
+        stateMachine.MainCameraTransform.position = Vector3.Lerp(stateMachine.MainCameraTransform.position, targetPosition, smoothSpeed * Time.deltaTime);
+    }
     protected void ForceMove()
     {
         stateMachine.Player.Controller.Move(stateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
@@ -223,12 +230,14 @@ public class PlayerBaseState : IState
         {
             Debug.Log("ON");
             stateMachine.IsCrouch = true;
-            stateMachine.Player.Controller.height = 1.2f;
+            CameraPosition(1.3f);
+            stateMachine.Player.Controller.height = 1.3f;
         }
         else
         {
             Debug.Log("OFF");
             stateMachine.IsCrouch = false;
+            CameraPosition(1.77f);
             stateMachine.Player.Controller.height = 1.77f;
         }
     }
@@ -251,4 +260,6 @@ public class PlayerBaseState : IState
             return 0f;
         }
     }
+
+
 }

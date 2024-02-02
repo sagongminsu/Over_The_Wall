@@ -3,11 +3,18 @@ using UnityEngine;
 
 public class PushingDoor : MonoBehaviour, IInteraction
 {
+    private Collider ObjectCollider;
+
     float openRotationY = 87f;
     float closeRotationY = 0f;
 
     bool isOpen = false;
     bool isMoving = false;
+
+    private void Start()
+    {
+        ObjectCollider = GetComponent<Collider>();
+    }
 
     public void OnInteract()
     {
@@ -20,6 +27,7 @@ public class PushingDoor : MonoBehaviour, IInteraction
     IEnumerator MoveDoor()
     {
         isMoving = true;
+        ToggleObject(false);
 
         float targetRotationY = isOpen ? closeRotationY : openRotationY;
 
@@ -38,10 +46,16 @@ public class PushingDoor : MonoBehaviour, IInteraction
         transform.localRotation = targetRotation;
         isOpen = !isOpen;
         isMoving = false;
+        ToggleObject(true);
     }
 
     public string GetInteractPrompt()
     {
         return "Interaction ¿­±â";
+    }
+
+    private void ToggleObject(bool enable)
+    {
+        ObjectCollider.enabled = enable;
     }
 }
