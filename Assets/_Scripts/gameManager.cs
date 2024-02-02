@@ -7,7 +7,6 @@ public class gameManager : MonoBehaviour
 {
     public DayNightCycle dayNightCycle;
     
-
     public static gameManager I;
 
     void Awake()

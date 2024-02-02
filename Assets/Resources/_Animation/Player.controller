@@ -9,8 +9,7 @@ BlendTree:
   m_Name: Walk
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 99d1489e45093434da775b6cf0c31872,
-      type: 3}
+    m_Motion: {fileID: 7400000, guid: 54a3bf87a4f1ae649807fdc42148c54d, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1133,8 +1132,7 @@ BlendTree:
   m_Name: Crouch
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 7827a09eeb3126d418bbc568130ff2ef,
-      type: 3}
+    m_Motion: {fileID: 7400000, guid: 482d1e8832eb5ad4ebd724e9328c7ffd, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
