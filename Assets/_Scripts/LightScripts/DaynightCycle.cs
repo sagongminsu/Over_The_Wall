@@ -8,6 +8,10 @@ public class DayNightCycle : MonoBehaviour
 {
     public int Hours {  get { return hours; } }
     private int hours;
+    public void SetHours(int newHours)
+    {
+        hours = newHours;
+    }
     [Range(0.0f, 1440.0f)]
     public float time; // 게임 내 시간
     public float fullDayLength = 1440f;  // 게임 내 하루의 길이를 현실 시간 24분으로 설정
@@ -35,6 +39,14 @@ public class DayNightCycle : MonoBehaviour
     public TextMeshProUGUI timeText; // 시간을 표시할 텍스트
 
     private int days; // 경과한 날짜 수
+    public int Days { get { return days; } }
+
+    public int GetCurrentDay()
+    {
+        return days;
+    }
+
+
 
     private void Start()
     {
