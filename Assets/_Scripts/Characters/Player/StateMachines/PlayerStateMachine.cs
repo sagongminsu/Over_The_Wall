@@ -18,6 +18,8 @@ public class PlayerStateMachine : StateMachine
     public PlayerCrouchIdleState CrouchIdleState { get; }
     public PlayerCrouchWalkState CrouchWalkState { get; }
 
+    public PlayerSitState SitState { get; }
+
     // 
     public Vector2 MovementInput { get; set; }
     public float MovementSpeed { get; private set; }
@@ -53,6 +55,7 @@ public class PlayerStateMachine : StateMachine
         AimingWalkState = new PlayerAimingWalkState(this);
         CrouchIdleState = new PlayerCrouchIdleState(this);
         CrouchWalkState = new PlayerCrouchWalkState(this);
+        SitState = new PlayerSitState(this);
 
         MainCameraTransform = Camera.main.transform;
 

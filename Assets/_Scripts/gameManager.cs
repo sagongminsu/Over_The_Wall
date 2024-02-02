@@ -27,7 +27,7 @@ public class gameManager : MonoBehaviour
     {
         PlayerData playerData = new PlayerData
         {
-            // ½Ã°£ÀÌ 1140f ÀÌ»ó 1439f ÀÌÇÏÀÎ °æ¿ì day °ªÀ» Áõ°¡½ÃÄÑ ÀúÀå
+            // ï¿½Ã°ï¿½ï¿½ï¿½ 1140f ï¿½Ì»ï¿½ 1439f ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ day ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             currentHours = dayNightCycle.Hours >= 1140f ? 0 : dayNightCycle.Hours,
             health = playerConditions.health.curValue,
             stamina = playerConditions.stamina.curValue,

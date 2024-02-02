@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class SlidingDoor : MonoBehaviour, IInteraction
 {
+    private Collider ObjectCollider;
+
     float openPositionX = -2.78f;
     float closePositionX = -1.47f;
     float slideSpeed = 1.5f;
@@ -14,6 +16,7 @@ public class SlidingDoor : MonoBehaviour, IInteraction
 
     void Start()
     {
+        ObjectCollider = GetComponent<Collider>();
         // 부모 Transform 참조
         parentTransform = transform.parent;
     }
@@ -29,6 +32,7 @@ public class SlidingDoor : MonoBehaviour, IInteraction
     IEnumerator MoveDoor()
     {
         isMoving = true;
+        ToggleObject(false);
 
         float currentX = transform.localPosition.x; // 로컬 좌표계 기준으로 변경
         float targetX = (currentX != openPositionX) ? openPositionX : closePositionX;
@@ -50,10 +54,16 @@ public class SlidingDoor : MonoBehaviour, IInteraction
         transform.localPosition = new Vector3(targetX, transform.localPosition.y, transform.localPosition.z);
 
         isMoving = false;
+        ToggleObject(true);
     }
 
     public string GetInteractPrompt()
     {
         return "Interaction 열기";
+    }
+
+    private void ToggleObject(bool enable)
+    {
+        ObjectCollider.enabled = enable;
     }
 }

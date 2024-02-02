@@ -13,6 +13,7 @@ public class PlayerAimingWalkState : PlayerGroundedState
     {
         stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
         base.Enter();
+
         Debug.Log("ON");
         StartAnimation(stateMachine.Player.AnimationData.AimingParameterHash);
     }
@@ -20,6 +21,7 @@ public class PlayerAimingWalkState : PlayerGroundedState
     public override void Exit()
     {
         base.Exit();
+
         Debug.Log("OFF");
         StopAnimation(stateMachine.Player.AnimationData.AimingParameterHash);
     }

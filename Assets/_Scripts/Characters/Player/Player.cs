@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     public WeaponColliderController Weapon_R{ get; private set; }
     public WeaponColliderController Weapon_L{ get; private set; }
 
+    public AimUI Aim { get; private set; }
+
+
     public Rigidbody Rigidbody { get; private set; }
     public Animator Animator { get; private set; }
     public PlayerInput Input { get; private set; }
@@ -30,6 +33,7 @@ public class Player : MonoBehaviour
         ForceReceiver = GetComponent<ForceReceiver>();
         Weapon_R = GetWeapon("Weapon_R");
         Weapon_L = GetWeapon("Weapon_L");
+        Aim = GetComponent<AimUI>();
 
         stateMachine = new PlayerStateMachine(this);
     }
