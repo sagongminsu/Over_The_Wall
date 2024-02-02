@@ -6,6 +6,8 @@ using System;
 
 public class DayNightCycle : MonoBehaviour
 {
+    public int Hours {  get { return hours; } }
+    private int hours;
     [Range(0.0f, 1440.0f)]
     public float time; // 게임 내 시간
     public float fullDayLength = 1440f;  // 게임 내 하루의 길이를 현실 시간 24분으로 설정
@@ -29,8 +31,8 @@ public class DayNightCycle : MonoBehaviour
     public AnimationCurve reflectionIntensityMultiplier; // 반사 강도
 
 
-    //[Header("Time")]
-    //public TextMeshProUGUI timeText; // 시간을 표시할 텍스트
+    [Header("Time")]
+    public TextMeshProUGUI timeText; // 시간을 표시할 텍스트
 
     private int days; // 경과한 날짜 수
 
@@ -85,12 +87,13 @@ public class DayNightCycle : MonoBehaviour
     }
     private void UpdateTimeText()
     {
-        int hours = (int)(time / 30.0f);
+        hours = (int)(time / 30.0f);
         float minutes = (time % 30.0f) * 2;
+        int crrentHours = hours;
         string daytime = hours >= 12 ? "PM" : "AM";
-        if (hours > 12) hours -= 12;
-        if (hours == 0) hours = 12;
+        if (crrentHours > 12) crrentHours -= 12;
+        if (crrentHours == 0) crrentHours = 12;
 
-       // timeText.text = "Day " + days + "\nTime: " + " " + daytime + hours.ToString("00") + ":" + minutes.ToString("00") ;
+        timeText.text = "Day " + days + "\nTime: " + " " + daytime + hours.ToString("00") + ":" + minutes.ToString("00");
     }
 }
