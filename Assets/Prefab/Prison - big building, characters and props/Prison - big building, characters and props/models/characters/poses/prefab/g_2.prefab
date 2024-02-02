@@ -33,11 +33,7 @@ Transform:
   - {fileID: 4776136198506734}
   - {fileID: 4280173637523276}
   m_Father: {fileID: 0}
-<<<<<<< Updated upstream
   m_RootOrder: 21
-=======
-  m_RootOrder: 5
->>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33491637932199852
 MeshFilter:

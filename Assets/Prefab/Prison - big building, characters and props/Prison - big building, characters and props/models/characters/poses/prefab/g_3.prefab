@@ -26,11 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052357768512948}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< Updated upstream
   m_LocalPosition: {x: -0, y: 1.674, z: 0.14450783}
-=======
-  m_LocalPosition: {x: -0, y: 1.669195, z: 0.14450783}
->>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -204,11 +200,7 @@ Transform:
   - {fileID: 4210423290668452}
   - {fileID: 4736766249358392}
   m_Father: {fileID: 0}
-<<<<<<< Updated upstream
   m_RootOrder: 16
-=======
-  m_RootOrder: 1
->>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33608609736179548
 MeshFilter:
