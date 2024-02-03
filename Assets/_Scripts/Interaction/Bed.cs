@@ -1,8 +1,35 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bed : MonoBehaviour, IInteraction
 {
+    public CanvasGroup fadePanel; // Reference to your fade panel
+
     public void OnInteract()
+    {
+        StartCoroutine(FadeOutAndIn());
+    }
+
+    IEnumerator FadeOutAndIn()
+    {
+        yield return StartCoroutine(FadeOut());
+        yield return new WaitForSeconds(2.0f); // Optional delay between fade out and fade in
+        FadeInAndSave();
+    }
+
+    IEnumerator FadeOut()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < 1.0f)
+        {
+            fadePanel.alpha = Mathf.Lerp(0f, 1f, elapsedTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        fadePanel.alpha = 1f;
+    }
+
+    void FadeInAndSave()
     {
         float currentTime = gameManager.I.dayNightCycle.GetCurrentTime();
 
@@ -26,6 +53,19 @@ public class Bed : MonoBehaviour, IInteraction
 
         gameManager.I.SaveGame();
 
+        StartCoroutine(FadeIn());
+    }
+
+    IEnumerator FadeIn()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < 1.0f)
+        {
+            fadePanel.alpha = Mathf.Lerp(1f, 0f, elapsedTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        fadePanel.alpha = 0f;
         Debug.Log("Game saved!");
     }
 
