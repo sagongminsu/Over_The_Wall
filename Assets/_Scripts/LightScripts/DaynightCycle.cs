@@ -87,7 +87,7 @@ public class DayNightCycle : MonoBehaviour
                 moonObject.SetActive(true);
         }
     }
-    private void UpdateTimeText()
+    public void UpdateTimeText()
     {
         hours = (int)(time / 60.0f);
         int minutes = (int)time % 60;
@@ -98,4 +98,5 @@ public class DayNightCycle : MonoBehaviour
 
         timeText.text = "Day " + Days + "\nTime: " + " " + daytime + crrentHours.ToString("00") + ":" + minutes.ToString("00");
     }
+
 }
