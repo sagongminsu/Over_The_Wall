@@ -47,17 +47,20 @@ public class gameManager : MonoBehaviour
             string jsonData = PlayerPrefs.GetString("SavedGameData");
             PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonData);
 
-            dayNightCycle.SetHours(playerData.currentHours);
+            dayNightCycle.SetHours(360);
+            dayNightCycle.Days = playerData.days;
+
             playerConditions.health.curValue = playerData.health;
             playerConditions.stamina.curValue = playerData.stamina;
 
-            Debug.Log("Game loaded!");
+            Debug.Log("게임 로드 완료!");
         }
         else
         {
-            Debug.Log("No saved game data found.");
+            Debug.Log("저장된 게임 데이터를 찾을 수 없습니다.");
         }
     }
+
 
 
 }
