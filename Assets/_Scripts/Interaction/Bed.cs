@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Bed : MonoBehaviour, IInteraction
 {
-    public CanvasGroup fadePanel; // Reference to your fade panel
+    public CanvasGroup fadePanel;
 
     public void OnInteract()
     {
@@ -13,7 +13,7 @@ public class Bed : MonoBehaviour, IInteraction
     IEnumerator FadeOutAndIn()
     {
         yield return StartCoroutine(FadeOut());
-        yield return new WaitForSeconds(2.0f); // Optional delay between fade out and fade in
+        yield return new WaitForSeconds(2.0f);
         FadeInAndSave();
     }
 
