@@ -94,12 +94,12 @@ public class PlayerBaseState : IState
         return movementSpeed;
     }
 
-    private void CameraPosition(float Height)
-    {
-        float smoothSpeed = 5f;
-        Vector3 targetPosition = new Vector3(stateMachine.MainCameraTransform.position.x, Height, stateMachine.MainCameraTransform.position.z);
-        stateMachine.MainCameraTransform.position = Vector3.Lerp(stateMachine.MainCameraTransform.position, targetPosition, smoothSpeed * Time.deltaTime);
-    }
+    //private void CameraPosition(float Height)
+    //{
+    //    float smoothSpeed = 5f;
+    //    Vector3 targetPosition = new Vector3(stateMachine.MainCameraTransform.position.x, Height, stateMachine.MainCameraTransform.position.z);
+    //    stateMachine.MainCameraTransform.position = Vector3.Lerp(stateMachine.MainCameraTransform.position, targetPosition, smoothSpeed * Time.deltaTime);
+    //}
     protected void ForceMove()
     {
         stateMachine.Player.Controller.Move(stateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
@@ -226,19 +226,20 @@ public class PlayerBaseState : IState
 
     protected virtual void OnCrouchStarted(InputAction.CallbackContext obj)
     {
+        
         if (!stateMachine.IsCrouch)
         {
             Debug.Log("ON");
             stateMachine.IsCrouch = true;
-            CameraPosition(1.3f);
             stateMachine.Player.Controller.height = 1.3f;
+            stateMachine.Player.Controller.center = new Vector3(0, stateMachine.Player.Controller.height * 0.5f, 0);
         }
         else
         {
             Debug.Log("OFF");
             stateMachine.IsCrouch = false;
-            CameraPosition(1.77f);
             stateMachine.Player.Controller.height = 1.77f;
+            stateMachine.Player.Controller.center = new Vector3(0, stateMachine.Player.Controller.height * 0.5f, 0);
         }
     }
 
