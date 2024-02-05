@@ -20,12 +20,16 @@ public class Player : MonoBehaviour
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
 
+    public PlayerConditions Conditions { get; private set; }
+
     private PlayerStateMachine stateMachine;
 
     private void Awake()
     {
+
         AnimationData.Initialize();
 
+        Conditions = GetComponent<PlayerConditions>();
         Rigidbody = GetComponent<Rigidbody>();
         Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerInput>();
@@ -48,6 +52,8 @@ public class Player : MonoBehaviour
     {
         stateMachine.HandleInput();
         stateMachine.Update();
+
+
     }
 
     private void FixedUpdate()
