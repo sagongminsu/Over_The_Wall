@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Bed : MonoBehaviour, IInteraction
 {
     public Image fadePanel;
+    private bool dayIncremented = false;
 
     void Awake()
     {
@@ -18,7 +19,7 @@ public class Bed : MonoBehaviour, IInteraction
 
     public void OnInteract()
     {
-        if (gameManager.I.CheckTime(1140, 1439) || gameManager.I.CheckTime(1, 360))
+        if (gameManager.I.dayNightCycle.Hours > 18 || gameManager.I.dayNightCycle.Hours < 5)
         {
             StartCoroutine(FadeOutAndIn());
         }
@@ -31,13 +32,21 @@ public class Bed : MonoBehaviour, IInteraction
 
     IEnumerator FadeOutAndIn()
     {
-        if (gameManager.I.CheckTime(1140, 1439))
+        if (gameManager.I.CheckTime(1140, 1439) && !dayIncremented)
         {
             gameManager.I.dayNightCycle.Days++;
+            dayIncremented = true;
+            gameManager.I.dayNightCycle.SetHours(6);
         }
-        else if (gameManager.I.CheckTime(1, 360))
+        else if (gameManager.I.CheckTime(1, 360) && !dayIncremented)
         {
-            gameManager.I.dayNightCycle.SetHours(360);
+            gameManager.I.dayNightCycle.Days++;
+            dayIncremented = true;
+            gameManager.I.dayNightCycle.SetHours(6);
+        }
+        else
+        {
+            dayIncremented = false;
         }
 
         yield return StartCoroutine(FadeOut());
@@ -46,6 +55,7 @@ public class Bed : MonoBehaviour, IInteraction
 
         StartCoroutine(FadeInAndSave());
     }
+
 
     IEnumerator FadeOut()
     {
@@ -63,17 +73,26 @@ public class Bed : MonoBehaviour, IInteraction
     IEnumerator FadeInAndSave()
     {
         float elapsedTime = 0f;
-        while (elapsedTime < 1.0f)
+        float fadeInDuration = 1.0f;
+        float targetTime = 360; // AM 06:00
+        float initialTime = gameManager.I.dayNightCycle.GetCurrentTime();
+
+        while (elapsedTime < fadeInDuration)
         {
             Color currentColor = fadePanel.color;
-            fadePanel.color = new Color(currentColor.r, currentColor.g, currentColor.b, Mathf.Lerp(1f, 0f, elapsedTime));
+            fadePanel.color = new Color(currentColor.r, currentColor.g, currentColor.b, Mathf.Lerp(1f, 0f, elapsedTime / fadeInDuration));
+
+            gameManager.I.dayNightCycle.time = Mathf.Lerp(initialTime, targetTime, elapsedTime / fadeInDuration);
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
         fadePanel.color = new Color(0f, 0f, 0f, 0f);
 
         SaveAndUpdateTime();
     }
+
 
     void SaveAndUpdateTime()
     {
