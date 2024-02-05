@@ -43,22 +43,6 @@ public class Inventory : MonoBehaviour
 
     public static Inventory instance;
 
-   
-    private void Update()
-    {
-        if (Input.GetKeyDown(OpenInven))
-        {
-            Toggle();
-        }
-    }
-
-    private void Toggle()
-    {
-        bool Open = Inven.activeSelf;
-        Inven.SetActive(!Open);
-    }
-
-
     //void Awake()
     //{
     //    instance = this;
@@ -77,6 +61,22 @@ public class Inventory : MonoBehaviour
     //    }
     //    ClearSelectedItemWindow();
     //}
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(OpenInven))
+        {
+            Toggle();
+        }
+    }
+
+    private void Toggle()
+    {
+        bool Open = Inven.activeSelf;
+        Inven.SetActive(!Open);
+    }
+
 
    
   

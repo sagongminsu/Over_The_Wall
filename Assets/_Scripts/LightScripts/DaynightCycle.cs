@@ -88,7 +88,8 @@ public class DayNightCycle : MonoBehaviour
     private void UpdateTimeText()
     {
         hours = (int)(time / 60.0f);
-        float minutes = (time % 60.0f) * 2;
+        float minutes = ((int)time % 60);
+        
         int crrentHours = hours;
         string daytime = hours >= 12 ? "PM" : "AM";
         if (crrentHours > 12) crrentHours -= 12;

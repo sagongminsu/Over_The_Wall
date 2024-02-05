@@ -46,7 +46,7 @@ public class ItemSlotUI : MonoBehaviour
         quatityText.text = string.Empty;
     }
 
-    public void OnBittonClick()
+    public void OnButtonClick()
     {
 
     }
