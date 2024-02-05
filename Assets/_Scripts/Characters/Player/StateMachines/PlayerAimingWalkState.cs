@@ -14,7 +14,6 @@ public class PlayerAimingWalkState : PlayerGroundedState
         stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
         base.Enter();
 
-        Debug.Log("ON");
         StartAnimation(stateMachine.Player.AnimationData.AimingParameterHash);
     }
 
@@ -22,7 +21,6 @@ public class PlayerAimingWalkState : PlayerGroundedState
     {
         base.Exit();
 
-        Debug.Log("OFF");
         StopAnimation(stateMachine.Player.AnimationData.AimingParameterHash);
     }
 
@@ -38,7 +36,6 @@ public class PlayerAimingWalkState : PlayerGroundedState
 
         float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
-        Debug.Log(currentSpeed);
         stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
     }
 

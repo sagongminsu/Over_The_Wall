@@ -28,7 +28,6 @@ public class PlayerCrouchWalkState : PlayerGroundedState
 
         float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier * 0.5f;
 
-        Debug.Log(currentSpeed);
         stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
 
         if (!stateMachine.IsCrouch)

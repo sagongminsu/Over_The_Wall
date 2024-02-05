@@ -24,11 +24,11 @@ public class PlayerGroundedState : PlayerBaseState
     {
         base.Update();
 
-        //if (stateMachine.IsAttacking)
-        //{
-        //    OnAttack();
-        //    return;
-        //}
+        if (stateMachine.IsAttacking)
+        {
+            OnAttack();
+            return;
+        }
 
         if (stateMachine.IsInteracting)
         {

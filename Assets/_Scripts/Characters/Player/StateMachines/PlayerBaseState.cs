@@ -229,18 +229,20 @@ public class PlayerBaseState : IState
         
         if (!stateMachine.IsCrouch)
         {
-            Debug.Log("ON");
             stateMachine.IsCrouch = true;
-            stateMachine.Player.Controller.height = 1.3f;
-            stateMachine.Player.Controller.center = new Vector3(0, stateMachine.Player.Controller.height * 0.5f, 0);
+            AdjustCharacterHeight(1.3f);
         }
         else
         {
-            Debug.Log("OFF");
             stateMachine.IsCrouch = false;
-            stateMachine.Player.Controller.height = 1.77f;
-            stateMachine.Player.Controller.center = new Vector3(0, stateMachine.Player.Controller.height * 0.5f, 0);
+            AdjustCharacterHeight(1.77f);
         }
+    }
+
+    private void AdjustCharacterHeight(float height)
+    {
+        stateMachine.Player.Controller.height = height;
+        stateMachine.Player.Controller.center = new Vector3(0, height * 0.5f, 0);
     }
 
     protected float GetNormalizedTime(Animator animator, string tag)

@@ -14,7 +14,6 @@ public class PlayerWalkState : PlayerGroundedState
     {
         stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
         base.Enter();
-        Debug.Log("Walk ON");
 
         StartAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
 
@@ -26,7 +25,6 @@ public class PlayerWalkState : PlayerGroundedState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("Walk OFF");
 
         StopAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
 
@@ -36,7 +34,6 @@ public class PlayerWalkState : PlayerGroundedState
     {
         base.Update();
 
-        Debug.Log(currentSpeed);
         stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
 
         if (stateMachine.IsCrouch)
