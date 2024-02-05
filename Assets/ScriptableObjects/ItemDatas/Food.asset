@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197d11c900a44464bb4cda296d027eb2, type: 3}
+  m_Name: Food
+  m_EditorClassIdentifier: 
+  displayName: "\uC74C\uC2DD"
+  description: "\uC2DD\uC0AC \uC2DC\uAC04\uC5D0 \uBC30\uC2DD\uB41C \uC74C\uC2DD\uC785\uB2C8\uB2E4."
+  type: 2
+  icon: {fileID: 21300000, guid: a5c1f47a558551d4e9e760ebe62d3bcf, type: 3}
+  dropPrefab: {fileID: 1727205188046394, guid: b23a63a24b83c6740833cbd15c6ced80, type: 3}
+  canStack: 0
+  maxStackAmount: 0
+  consumables: []
