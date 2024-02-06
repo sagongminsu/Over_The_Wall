@@ -19,7 +19,7 @@ public class StaminaIconBlinker : MonoBehaviour
 
     void Update()
     {
-        Condition stamina = playerConditions.stamina;
+        Condition stamina = playerConditions.playerSO.Stamina;
 
         if (stamina.GetPercentage() <= 0.2f && blinkCoroutine == null)
         {

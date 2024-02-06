@@ -49,7 +49,7 @@ public class PlayerRunState : PlayerGroundedState
     private bool DrainStamina(float amount)
     {
         PlayerConditions conditions = stateMachine.Player.GetComponent<PlayerConditions>();
-        if (conditions.stamina.curValue >= amount)
+        if (conditions.playerSO.Stamina.curValue >= amount)
         {
             conditions.UseStamina(amount);
             return true;

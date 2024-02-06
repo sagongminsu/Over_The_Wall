@@ -16,5 +16,6 @@ public class AiSO : ScriptableObject
     [field: SerializeField][field: Range(0f, 1f)] public float Dealing_End_TransitionTime { get; private set; }
 
     [field: SerializeField] public PlayerGroundData GroundedData { get; private set; }
-
+    [field: SerializeField] public PlayerAirData AirData { get; private set; }
+    [field: SerializeField] public PlayerAttackData AttackData { get; private set; }
 }
