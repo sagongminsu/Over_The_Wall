@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Ai : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class Ai : MonoBehaviour
     public CharacterController Controller { get; private set; }
 
     private AiStateMachine stateMachine;
-
+    public NavMeshAgent Agent { get; private set; }
     void Awake()
     {
         AnimationData.Initialize();
@@ -25,6 +26,7 @@ public class Ai : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
+        Agent = GetComponent<NavMeshAgent>();
 
         stateMachine = new AiStateMachine(this);
     }
@@ -37,8 +39,11 @@ public class Ai : MonoBehaviour
     private void Update()
     {
         stateMachine.HandleInput();
-
         stateMachine.Update();
+
+        // NavMeshAgent의 속도를 체크하여 애니메이션 파라미터 설정
+        float speed = Agent.velocity.magnitude;
+        Animator.SetFloat("Speed", speed);
     }
 
     private void FixedUpdate()

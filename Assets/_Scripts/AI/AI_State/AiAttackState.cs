@@ -15,7 +15,7 @@ public class AiAttackState : AiBaseState
         stateMachine.MovementSpeedModifier = 0;
         base.Enter();
         StartAnimation(stateMachine.Ai.AnimationData.AttackParameterHash);
-      
+        
     }
 
     public override void Exit()
