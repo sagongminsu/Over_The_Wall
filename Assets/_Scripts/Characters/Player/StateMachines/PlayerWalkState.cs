@@ -34,7 +34,7 @@ public class PlayerWalkState : PlayerGroundedState
     {
         base.Update();
 
-        stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
+        stateMachine.Player.PlayerAnimator.SetFloat("Speed", currentSpeed);
 
         if (stateMachine.IsCrouch)
         {

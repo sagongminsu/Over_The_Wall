@@ -36,7 +36,7 @@ public class PlayerAimingWalkState : PlayerGroundedState
 
         float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
-        stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
+        stateMachine.Player.PlayerAnimator.SetFloat("Speed", currentSpeed);
     }
 
     protected override void OnAimingCanceled(InputAction.CallbackContext context)

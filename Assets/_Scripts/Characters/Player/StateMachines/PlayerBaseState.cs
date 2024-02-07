@@ -121,12 +121,14 @@ public class PlayerBaseState : IState
 
     protected void StartAnimation(int animationHash)
     {
-        stateMachine.Player.Animator.SetBool(animationHash, true);
+        stateMachine.Player.PlayerAnimator.SetBool(animationHash, true);
+        stateMachine.Player.ArmAnimator.SetBool(animationHash, true);
     }
 
     protected void StopAnimation(int animationHash)
     {
-        stateMachine.Player.Animator.SetBool(animationHash, false);
+        stateMachine.Player.PlayerAnimator.SetBool(animationHash, false);
+        stateMachine.Player.ArmAnimator.SetBool(animationHash, false);
     }
 
     protected virtual void AddInputActionsCallbacks()

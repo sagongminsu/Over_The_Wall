@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerComboAttackState : PlayerAttackState
 {
     private bool alreadyAppliedForce;
@@ -19,7 +21,8 @@ public class PlayerComboAttackState : PlayerAttackState
 
         int comboIndex = stateMachine.ComboIndex;
         attackInfoData = stateMachine.Player.Data.AttackData.GetAttackInfo(comboIndex);
-        stateMachine.Player.Animator.SetInteger("Combo", comboIndex);
+        stateMachine.Player.PlayerAnimator.SetInteger("Combo", comboIndex);
+        stateMachine.Player.ArmAnimator.SetInteger("Combo", comboIndex);
     }
 
     public override void Exit()
@@ -58,7 +61,15 @@ public class PlayerComboAttackState : PlayerAttackState
 
         ForceMove();
 
-        float normalizedTime = GetNormalizedTime(stateMachine.Player.Animator, "Attack");
+        UpdateAttackStateMachine(stateMachine.Player.PlayerAnimator);
+        UpdateAttackStateMachine(stateMachine.Player.ArmAnimator);
+
+    }
+
+    private void UpdateAttackStateMachine(Animator animator)
+    {
+        float normalizedTime = GetNormalizedTime(animator, "Attack");
+
         if (normalizedTime < 1f)
         {
             if (normalizedTime >= attackInfoData.ForceTransitionTime)
@@ -76,7 +87,7 @@ public class PlayerComboAttackState : PlayerAttackState
             }
             else
             {
-                stateMachine.ChangeState(stateMachine.AimingIdleState);
+                stateMachine.ChangeState(stateMachine.IdleState);
             }
         }
     }

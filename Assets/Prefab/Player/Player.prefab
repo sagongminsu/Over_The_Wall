@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616458306969587888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0.17}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0.17000002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -514,6 +514,7 @@ MonoBehaviour:
     startValue: 10
     regenRate: 1
     decayRate: 4
+  minStaminaToRun: 10
   noHungerHealthDecay: 0
   onTakeDamage:
     m_PersistentCalls:
@@ -530,6 +531,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onStaminaDepleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3065352321066061873
 MonoBehaviour:
   m_ObjectHideFlags: 0

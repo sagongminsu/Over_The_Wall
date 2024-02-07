@@ -43,7 +43,7 @@ public class PlayerRunState : PlayerGroundedState
 
         float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
         //Debug.Log(currentSpeed);
-        stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
+        stateMachine.Player.PlayerAnimator.SetFloat("Speed", currentSpeed);
     }
 
     private bool DrainStamina(float amount)

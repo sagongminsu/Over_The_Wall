@@ -47,7 +47,7 @@ public class PlayerIdleState : PlayerGroundedState
 
         currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
-        stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
+        stateMachine.Player.PlayerAnimator.SetFloat("Speed", currentSpeed);
 
         currentTime += Time.deltaTime;
         currentTime %= 40.0f;
@@ -55,7 +55,7 @@ public class PlayerIdleState : PlayerGroundedState
         IdleStateTime = currentTime;
         //IdleStateTime = Mathf.Floor(currentTime / 5.0f) * 5.0f;
 
-        stateMachine.Player.Animator.SetFloat("Time", IdleStateTime);
+        stateMachine.Player.PlayerAnimator.SetFloat("Time", IdleStateTime);
         //Debug.Log("IdleStateTime: " + IdleStateTime);
 
         if (stateMachine.IsCrouch)

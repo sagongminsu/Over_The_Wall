@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
 
 
     public Rigidbody Rigidbody { get; private set; }
-    public Animator Animator { get; private set; }
+    public Animator PlayerAnimator { get; private set; }
+    public Animator ArmAnimator { get; private set; }
     public PlayerInput Input { get; private set; }
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
@@ -31,7 +32,8 @@ public class Player : MonoBehaviour
 
         Conditions = GetComponent<PlayerConditions>();
         Rigidbody = GetComponent<Rigidbody>();
-        Animator = GetComponentInChildren<Animator>();
+        PlayerAnimator = GetComponentInChildren<Animator>();
+        ArmAnimator = GetAnimator("Arm"); // 두 번째 애니메이터의 이름을 사용
         Input = GetComponent<PlayerInput>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
@@ -53,7 +55,6 @@ public class Player : MonoBehaviour
         stateMachine.HandleInput();
         stateMachine.Update();
 
-
     }
 
     private void FixedUpdate()
@@ -71,5 +72,27 @@ public class Player : MonoBehaviour
         }
 
         return weapon;
+    }
+
+    private Animator GetAnimator(string animatorName)
+    {
+        // 지정된 이름을 가진 두 번째 자식 애니메이터를 찾습니다.
+        Transform animatorTransform = transform.Find(animatorName);
+
+        if (animatorTransform == null)
+        {
+            Debug.LogError($"{animatorName} 이름을 가진 자식 애니메이터가 없습니다. Unity Inspector에서 할당되었는지 확인하세요.");
+            return null;
+        }
+
+        // 찾은 자식에서 Animator 컴포넌트를 가져옵니다.
+        Animator animator = animatorTransform.GetComponent<Animator>();
+
+        if (animator == null)
+        {
+            Debug.LogError($"{animatorName}은(는) Animator 컴포넌트가 부착되어 있지 않습니다.");
+        }
+
+        return animator;
     }
 }
