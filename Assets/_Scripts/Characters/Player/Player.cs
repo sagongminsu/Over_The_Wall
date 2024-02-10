@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
 
     private PlayerStateMachine stateMachine;
 
+
+
+
     private void Awake()
     {
 

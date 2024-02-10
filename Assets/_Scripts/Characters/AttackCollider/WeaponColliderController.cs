@@ -18,4 +18,13 @@ public class WeaponColliderController : MonoBehaviour
             weapon.enabled = enable;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        AiStateMachine aiStateMachine = other.GetComponentInParent<AiStateMachine>();
+        if (aiStateMachine != null)
+        {
+            aiStateMachine.OnAttacked();
+        }
+    }
 }

@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AiStateMachine : StateMachine
 {
+
     public Ai Ai { get; }
 
     public Transform Target { get; private set; }
-
+    public AiPatrollingState PatrollingState { get; private set; }
     public AiIdleState IdleingState { get; }
     public AiChasingState ChasingState { get; }
     public AiAttackState AttackState { get; }
@@ -17,7 +19,25 @@ public class AiStateMachine : StateMachine
     public float RotationDamping { get; private set; }
     public float MovementSpeedModifier { get; set; } = 1f;
 
-    public AiStateMachine(Ai ai)
+
+    // AI가 공격 받았는지 여부를 나타내는 상태 변수 추가
+    public bool IsAttacked { get; set; } = false;
+    public void OnAttacked()
+    {
+        IsAttacked = true;
+        if (IsInPlayerChaseRange() && IsAttacked)
+        {
+            ChangeState(ChasingState);
+        }
+        else
+        {
+            ChangeState(PatrollingState);
+        }
+    }
+
+
+
+    public AiStateMachine(Ai ai, List<Transform> waypoints)
     {
         Ai = ai;
         Target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -28,5 +48,13 @@ public class AiStateMachine : StateMachine
 
         MovementSpeed = ai.Data.GroundedData.BaseSpeed;
         RotationDamping = ai.Data.GroundedData.BaseRotationDamping;
+        PatrollingState = new AiPatrollingState(this, waypoints);
+    }
+
+
+    public bool IsInPlayerChaseRange()
+    {
+        float playerDistanceSqr = (Target.transform.position - Ai.transform.position).sqrMagnitude;
+        return playerDistanceSqr <= Ai.Data.PlayerChasingRange * Ai.Data.PlayerChasingRange;
     }
 }

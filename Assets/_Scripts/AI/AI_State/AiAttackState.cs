@@ -15,16 +15,17 @@ public class AiAttackState : AiBaseState
         stateMachine.MovementSpeedModifier = 0;
         base.Enter();
         StartAnimation(stateMachine.Ai.AnimationData.AttackParameterHash);
-        
+
     }
 
     public override void Exit()
     {
         base.Exit();
         StopAnimation(stateMachine.Ai.AnimationData.AttackParameterHash);
-        
-
+        // 공격 상태를 나갈 때 IsAttacked를 false로 설정하여, 다음 공격은 새로운 피해를 받았을 때만 발생하도록 함
+        stateMachine.IsAttacked = false;
     }
+
 
     public override void Update()
     {
