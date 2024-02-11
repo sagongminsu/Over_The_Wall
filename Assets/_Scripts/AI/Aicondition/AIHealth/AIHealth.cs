@@ -8,6 +8,9 @@ public class AIHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
+    public event Action OnDie;
+
+    public bool IsDead => currentHealth == 0;
 
     private NavMeshAgent navMeshAgent;
     private Animator animator;
@@ -24,15 +27,19 @@ public class AIHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
+
+        if (currentHealth == 0) return;
+        currentHealth = Mathf.Max(currentHealth - damage, 0);
+
+        if (currentHealth == 0)
+            OnDie?.Invoke();
         else
         {
            
             aiStateMachine.OnAttacked();
         }
+
+        Debug.Log(currentHealth);
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -44,15 +51,15 @@ public class AIHealth : MonoBehaviour
         //}
 
     }
-    void Die()
-    {
-        // AI가 죽었을 때의 로직을 구현합니다.
-        if (navMeshAgent != null)
-            navMeshAgent.enabled = false;
-        if (animator != null)
-            animator.SetTrigger("Die");
+    //public void OnDie()
+    //{
+    //    // AI가 죽었을 때의 로직을 구현합니다.
+    //    if (navMeshAgent != null)
+    //        navMeshAgent.enabled = false;
+    //    if (animator != null)
+    //        animator.SetTrigger("Die");
 
-    }
+    //}
 
 }
 

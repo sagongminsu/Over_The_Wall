@@ -5,7 +5,8 @@ using UnityEngine;
 public class AiAttackState : AiBaseState
 {
     private bool alreadyAppliedForce;
-    private bool alreadyAppliedDealing;
+    private bool RigntalreadyAppliedDealing;
+    private bool LeftalreadyAppliedDealing;
 
     public AiAttackState(AiStateMachine aiStateMachine) : base(aiStateMachine)
     {
@@ -14,7 +15,8 @@ public class AiAttackState : AiBaseState
     public override void Enter()
     {
         alreadyAppliedForce = false;
-        alreadyAppliedDealing = false;
+        RigntalreadyAppliedDealing = false;
+        LeftalreadyAppliedDealing = false;
 
         stateMachine.MovementSpeedModifier = 0;
         base.Enter();
@@ -42,17 +44,29 @@ public class AiAttackState : AiBaseState
         {
             if (normalizedTime >= stateMachine.Ai.Data.ForceTransitionTime)
                 TryApplyForce();
-
-            if (!alreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
+            //¿À¸¥¼Õ
+            if (!RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
             {
-                stateMachine.Ai.Weapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
-                stateMachine.Ai.Weapon.gameObject.SetActive(true);
-                alreadyAppliedDealing = true;
+                stateMachine.Ai.RightHandWeapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
+                stateMachine.Ai.RightHandWeapon.gameObject.SetActive(true);
+                RigntalreadyAppliedDealing = true;
             }
 
-            if (alreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
+            if (RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
             {
-                stateMachine.Ai.Weapon.gameObject.SetActive(false);
+                stateMachine.Ai.RightHandWeapon.gameObject.SetActive(false);
+            }
+            //¿Þ¼Õ
+            if (!LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
+            {
+                stateMachine.Ai.LeftHandWeapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
+                stateMachine.Ai.LeftHandWeapon.gameObject.SetActive(true);
+                LeftalreadyAppliedDealing = true;
+            }
+
+            if (LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
+            {
+                stateMachine.Ai.LeftHandWeapon.gameObject.SetActive(false);
             }
         }
 

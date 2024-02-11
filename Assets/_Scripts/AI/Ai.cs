@@ -11,14 +11,15 @@ public class Ai : MonoBehaviour
 
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
-    [field: SerializeField] public Weapon Weapon { get; private set; }
+
     public Rigidbody Rigidbody { get; private set; }
     public Animator Animator { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public CharacterController Controller { get; private set; }
-
-
-    public CharacterHealth CharacterHealth { get; private set; }
+    [field: SerializeField] public RightWeapon RightHandWeapon { get; private set; }
+    [field: SerializeField] public LeftWeapon LeftHandWeapon { get; private set; }
+   
+    public AIHealth AiHealth { get; private set; }
 
     private AiStateMachine stateMachine;
 
@@ -34,7 +35,7 @@ public class Ai : MonoBehaviour
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
         Agent = GetComponent<NavMeshAgent>();
-        CharacterHealth = GetComponent<CharacterHealth>();
+        AiHealth = GetComponent<AIHealth>();
 
         List<Transform> waypoints = new List<Transform>();
         stateMachine = new AiStateMachine(this, waypoints);
@@ -48,7 +49,7 @@ public class Ai : MonoBehaviour
     private void Start()
     {
         stateMachine.ChangeState(stateMachine.IdleingState);
-        CharacterHealth.OnDie += OnDie;
+        AiHealth.OnDie += OnDie;
     }
 
     private void Update()
