@@ -5,6 +5,7 @@ using UnityEngine;
 public class AiAttackState : AiBaseState
 {
     private bool alreadyAppliedForce;
+    private bool alreadyAppliedDealing;
 
     public AiAttackState(AiStateMachine aiStateMachine) : base(aiStateMachine)
     {
@@ -12,6 +13,9 @@ public class AiAttackState : AiBaseState
 
     public override void Enter()
     {
+        alreadyAppliedForce = false;
+        alreadyAppliedDealing = false;
+
         stateMachine.MovementSpeedModifier = 0;
         base.Enter();
         StartAnimation(stateMachine.Ai.AnimationData.AttackParameterHash);
@@ -39,18 +43,16 @@ public class AiAttackState : AiBaseState
             if (normalizedTime >= stateMachine.Ai.Data.ForceTransitionTime)
                 TryApplyForce();
 
-        }
-        else
-        {
-            if (IsInChaseRange())
+            if (!alreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
             {
-                stateMachine.ChangeState(stateMachine.ChasingState);
-                return;
+                stateMachine.Ai.Weapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
+                stateMachine.Ai.Weapon.gameObject.SetActive(true);
+                alreadyAppliedDealing = true;
             }
-            else
+
+            if (alreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
             {
-                stateMachine.ChangeState(stateMachine.IdleingState);
-                return;
+                stateMachine.Ai.Weapon.gameObject.SetActive(false);
             }
         }
 
