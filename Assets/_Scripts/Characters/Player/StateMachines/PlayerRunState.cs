@@ -42,14 +42,14 @@ public class PlayerRunState : PlayerGroundedState
         }
 
         float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
-        Debug.Log(currentSpeed);
+        //Debug.Log(currentSpeed);
         stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
     }
 
     private bool DrainStamina(float amount)
     {
         PlayerConditions conditions = stateMachine.Player.GetComponent<PlayerConditions>();
-        if (conditions.stamina.curValue >= amount)
+        if (conditions.playerSO.Stamina.curValue >= amount)
         {
             conditions.UseStamina(amount);
             return true;

@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public interface IDamagable
 {
-    void TakePhysicalDamage(int damageAmount);
+    void TakeDamage(int damageAmount);
 }
 
 [System.Serializable]
@@ -38,7 +38,7 @@ public class PlayerConditions : MonoBehaviour, IDamagable
 {
     public Condition health;
     public Condition hunger;
-    public Condition stamina;
+    public PlayerSO playerSO;
     public float minStaminaToRun = 10f;
 
 
@@ -51,17 +51,18 @@ public class PlayerConditions : MonoBehaviour, IDamagable
    
 
     void Start()
-    {
+    {   
+       
         health.curValue = health.startValue;
         hunger.curValue = hunger.startValue;
-        stamina.curValue = stamina.startValue;
+        playerSO.Stamina.curValue = playerSO.Stamina.startValue;
     }
 
     // Update is called once per frame
     void Update()
     {
         hunger.Subtract(hunger.decayRate * Time.deltaTime);
-        stamina.Add(stamina.regenRate * Time.deltaTime);
+        playerSO.Stamina.Add(playerSO.Stamina.regenRate * Time.deltaTime);
 
         if (hunger.curValue == 0.0f)
             health.Subtract(noHungerHealthDecay * Time.deltaTime);
@@ -87,11 +88,11 @@ public class PlayerConditions : MonoBehaviour, IDamagable
     public bool UseStamina(float amount)
     {
         // 스태미너가 충분하지 않으면 남은 스태미너를 모두 사용하고 false를 반환
-        if (stamina.curValue < amount)
+        if (playerSO.Stamina.curValue < amount)
         {
-            if (stamina.curValue > 0)
+            if (playerSO.Stamina.curValue > 0)
             {
-                stamina.Subtract(stamina.curValue); // 남은 스태미너 사용
+                playerSO.Stamina.Subtract(playerSO.Stamina.curValue); // 남은 스태미너 사용
                 if (onStaminaDepleted != null)
                 {
                     onStaminaDepleted.Invoke(); // 스태미너 고갈 이벤트 발생
@@ -101,7 +102,7 @@ public class PlayerConditions : MonoBehaviour, IDamagable
         }
 
         // 스태미너를 감소시키고 true를 반환
-        stamina.Subtract(amount);
+        playerSO.Stamina.Subtract(amount);
         return true;
     }
 
@@ -114,9 +115,11 @@ public class PlayerConditions : MonoBehaviour, IDamagable
         }
     }
 
-    public void TakePhysicalDamage(int damageAmount)
+
+    public void TakeDamage(int damage)
     {
-        health.Subtract(damageAmount);
+        health.Subtract(damage);
+        Debug.Log($"플레이어가 {damage} 만큼의 데미지를 받았습니다.");
         if (onTakeDamage != null)
         {
             onTakeDamage.Invoke(); // 피해 입었을 때의 이벤트 발생
@@ -125,6 +128,6 @@ public class PlayerConditions : MonoBehaviour, IDamagable
 
     public bool CanRun()
     {
-        return stamina.curValue >= minStaminaToRun;
+        return playerSO.Stamina.curValue >= minStaminaToRun;
     }
 }

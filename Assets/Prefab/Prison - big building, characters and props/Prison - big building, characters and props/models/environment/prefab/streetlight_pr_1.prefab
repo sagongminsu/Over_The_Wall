@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4095199773800298}
   - component: {fileID: 108255740690474748}
-  - component: {fileID: 809313008863130878}
+  - component: {fileID: 359217019680694453}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &4095199773800298
 Transform:
@@ -95,7 +95,7 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 1
   m_ShadowAngle: 0
---- !u!114 &809313008863130878
+--- !u!114 &359217019680694453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &4386753305073304
 Transform:
@@ -152,7 +152,7 @@ Transform:
   m_Children:
   - {fileID: 4095199773800298}
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 73
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33752855194918636
 MeshFilter:
@@ -247,52 +247,52 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 50
-      inSlope: 0
-      outSlope: 0
+      value: 100
+      inSlope: -0.00025650425
+      outSlope: -0.00025650425
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 287.9
-      value: 50
-      inSlope: -0
-      outSlope: -499.96948
+      time: 498.47528
+      value: 99.87214
+      inSlope: -0.00025650425
+      outSlope: -998.66046
       tangentMode: 69
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 288
+      time: 498.5753
       value: 0
-      inSlope: -499.96948
+      inSlope: -998.66046
       outSlope: 0
       tangentMode: 69
       weightedMode: 0
       inWeight: 0.1326555
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 432
+      time: 889.9
       value: 0
       inSlope: -0
-      outSlope: 55.55593
+      outSlope: 1000.2442
       tangentMode: 69
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.16403091
     - serializedVersion: 3
-      time: 432.9
-      value: 50
-      inSlope: 55.55593
+      time: 890
+      value: 100
+      inSlope: 1000.2442
       outSlope: 0
       tangentMode: 69
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 720
-      value: 50
+      time: 1440
+      value: 100
       inSlope: 0
       outSlope: 0
       tangentMode: 34

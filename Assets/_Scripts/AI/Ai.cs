@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Ai : MonoBehaviour
 {
@@ -14,8 +16,18 @@ public class Ai : MonoBehaviour
     public Animator Animator { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public CharacterController Controller { get; private set; }
+    [field: SerializeField] public RightWeapon RightHandWeapon { get; private set; }
+    [field: SerializeField] public LeftWeapon LeftHandWeapon { get; private set; }
+   
+    public AIHealth AiHealth { get; private set; }
+
+
+
+    public NavMeshAgent Agent { get; private set; }
 
     private AiStateMachine stateMachine;
+
+    public AiStateMachine StateMachine => stateMachine;
 
     void Awake()
     {
@@ -25,24 +37,48 @@ public class Ai : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
+        Agent = GetComponent<NavMeshAgent>();
+        AiHealth = GetComponent<AIHealth>();
 
-        stateMachine = new AiStateMachine(this);
+
+        List<Transform> waypoints = new List<Transform>();
+        stateMachine = new AiStateMachine(this, waypoints);
+        //// 'Waypoint' 태그가 있는 모든 게임 오브젝트를 찾아서 리스트에 추가합니다.
+        //List<Transform> waypoints = new List<Transform>(GameObject.FindGameObjectsWithTag("Waypoint").Select(go => go.transform));
+
+        //// AiStateMachine을 생성할 때 웨이포인트 리스트를 전달합니다.
+        //stateMachine = new AiStateMachine(this, waypoints);
     }
 
     private void Start()
     {
         stateMachine.ChangeState(stateMachine.IdleingState);
+        
     }
 
     private void Update()
     {
         stateMachine.HandleInput();
-
         stateMachine.Update();
+
+        // NavMeshAgent의 속도를 체크하여 애니메이션 파라미터 설정
+        float speed = Agent.velocity.magnitude;
+        Animator.SetFloat("Speed", speed);
     }
 
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
     }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        // 'PlayerWeapon' 태그를 가진 오브젝트가 AI의 트리거 컬라이더에 들어왔는지 확인
+        if (collider.CompareTag("PlayerWeapon"))
+        {
+            // AI가 공격 받았음을 나타내는 메서드 호출
+            stateMachine.OnAttacked();
+        }
+    }
+
 }

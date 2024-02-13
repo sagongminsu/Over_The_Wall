@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
+{   
     [field: Header("References")]
     [field: SerializeField] public PlayerSO Data { get; private set; }
 
@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public WeaponColliderController Weapon_L{ get; private set; }
 
     public AimUI Aim { get; private set; }
-
+    
 
     public Rigidbody Rigidbody { get; private set; }
     public Animator Animator { get; private set; }
@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
     public PlayerConditions Conditions { get; private set; }
 
     private PlayerStateMachine stateMachine;
+
+
+
 
     private void Awake()
     {

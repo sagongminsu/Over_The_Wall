@@ -22,8 +22,6 @@ public class PlayerCrouchIdleState : PlayerGroundedState
         base.Exit();
 
         StopAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
-
-        //stateMachine.Player.Controller.height = 1.77f;
     }
 
     public override void Update()

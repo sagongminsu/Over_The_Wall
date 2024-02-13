@@ -13,29 +13,31 @@ public class AiChasingState : AiBaseState
         stateMachine.MovementSpeedModifier = 1;
         base.Enter();
         StartAnimation(stateMachine.Ai.AnimationData.GroundParameterHash);
-       
+        StartAnimation(stateMachine.Ai.AnimationData.RunParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
         StopAnimation(stateMachine.Ai.AnimationData.GroundParameterHash);
-        
+        StopAnimation(stateMachine.Ai.AnimationData.RunParameterHash);
+
     }
 
     public override void Update()
     {
         base.Update();
 
-        if (!IsInChaseRange())
+        if (IsInChaseRange() && stateMachine.IsAttacked)
         {
-            stateMachine.ChangeState(stateMachine.IdleingState);
-            return;
+            if (IsInAttackRange())
+            {
+                stateMachine.ChangeState(stateMachine.AttackState);
+            }
         }
-        else if (IsInAttackRange())
+        else
         {
-            stateMachine.ChangeState(stateMachine.AttackState);
-            return;
+            stateMachine.ChangeState(stateMachine.PatrollingState);
         }
     }
 
@@ -44,7 +46,6 @@ public class AiChasingState : AiBaseState
         // if (stateMachine.Target.IsDead) { return false; }
 
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Ai.transform.position).sqrMagnitude;
-
         return playerDistanceSqr <= stateMachine.Ai.Data.AttackRange * stateMachine.Ai.Data.AttackRange;
     }
 }

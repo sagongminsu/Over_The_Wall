@@ -30,7 +30,7 @@ public class gameManager : MonoBehaviour
             // time이 1140f 이상 1439f 이하에서 저장시 day++
             currentHours = dayNightCycle.Hours >= 1140f ? 0 : dayNightCycle.Hours,
             health = playerConditions.health.curValue,
-            stamina = playerConditions.stamina.curValue,
+            stamina = playerConditions.playerSO.Stamina.curValue,
             days = dayNightCycle.Hours >= 1140f ? dayNightCycle.Days + 1 : dayNightCycle.Days,
         };
 
@@ -51,7 +51,7 @@ public class gameManager : MonoBehaviour
             dayNightCycle.Days = playerData.days;
 
             playerConditions.health.curValue = playerData.health;
-            playerConditions.stamina.curValue = playerData.stamina;
+            playerConditions.playerSO.Stamina.curValue = playerData.stamina;
 
             Debug.Log("게임 로드 완료!");
         }

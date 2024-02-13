@@ -18,9 +18,31 @@ MonoBehaviour:
   <Force>k__BackingField: 0.2
   <Damage>k__BackingField: 5
   <Dealing_Start_TransitionTime>k__BackingField: 0.13
-  <Dealing_End_TransitionTime>k__BackingField: 0
+  <Dealing_End_TransitionTime>k__BackingField: 0.046
   <GroundedData>k__BackingField:
     <BaseSpeed>k__BackingField: 5
     <BaseRotationDamping>k__BackingField: 8
     <WalkSpeedModifier>k__BackingField: 0.225
     <RunSpeedModifier>k__BackingField: 1
+  <AirData>k__BackingField:
+    <JumpForce>k__BackingField: 4
+  <AttackData>k__BackingField:
+    <AttackInfoDatas>k__BackingField:
+    - <AttackName>k__BackingField: 1
+      <ComboStateIndex>k__BackingField: 0
+      <ComboTransitionTime>k__BackingField: 3
+      <ForceTransitionTime>k__BackingField: 3
+      <Force>k__BackingField: 0
+      <Damage>k__BackingField: 5
+    - <AttackName>k__BackingField: 2
+      <ComboStateIndex>k__BackingField: 1
+      <ComboTransitionTime>k__BackingField: 2.28
+      <ForceTransitionTime>k__BackingField: 2.25
+      <Force>k__BackingField: 0
+      <Damage>k__BackingField: 10
+    - <AttackName>k__BackingField: 3
+      <ComboStateIndex>k__BackingField: 2
+      <ComboTransitionTime>k__BackingField: 3
+      <ForceTransitionTime>k__BackingField: 3
+      <Force>k__BackingField: 0
+      <Damage>k__BackingField: 15
