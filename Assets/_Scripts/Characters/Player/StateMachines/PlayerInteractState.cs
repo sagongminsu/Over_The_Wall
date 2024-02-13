@@ -21,7 +21,7 @@ public class PlayerInteractState : PlayerGroundedState
         {
             interactionManager.CurrentInteraction.OnInteract();
             hasInteracted = true;
-            interactTimer = interactCooldown; // 대화 시작 후 타이머 초기화
+            interactTimer = interactCooldown;
         }
         else
         {
@@ -58,5 +58,10 @@ public class PlayerInteractState : PlayerGroundedState
     {
         base.OnInteractionCanceled(context);
         stateMachine.ChangeState(stateMachine.IdleState);
+    }
+
+    public void SetHasInteracted(bool value)
+    {
+        hasInteracted = value;
     }
 }

@@ -4,48 +4,68 @@ using System.Collections;
 
 public class NPCInteraction : MonoBehaviour, IInteraction
 {
-    public string dialogue;
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
 
-    private bool canInteract = true;
+    private bool isInteracting = false;
+    private bool canInteract = true; // 추가된 변수
+    private int currentDialogueIndex = 0;
+    private string[] dialogues;
+
+    public void GetDialogues(string[] newDialogues)
+    {
+        dialogues = newDialogues;
+    }
 
     public void OnInteract()
     {
-        if (canInteract)
+        if (!isInteracting && dialogues != null && dialogues.Length > 0 && canInteract) // 상호작용 가능한 상태일 때만 대화 시작
         {
-            dialoguePanel.SetActive(true);
-            if (dialogueText != null)
-            {
-                dialogueText.text = "NPC와의 대화가 시작되었습니다: " + dialogue;
-            }
-            canInteract = false;
-            StartCoroutine(ResetInteractionAfterDelay(1f));
+            StartDialogue();
         }
     }
 
-    public string GetInteractPrompt()
+    private void StartDialogue()
     {
-        if (canInteract)
+        isInteracting = true;
+        dialoguePanel.SetActive(true);
+        ShowNextDialogue();
+    }
+
+    private void ShowNextDialogue()
+    {
+        if (currentDialogueIndex < dialogues.Length)
         {
-            return "NPC와 대화하기 (E)";
+            dialogueText.text = dialogues[currentDialogueIndex];
+            currentDialogueIndex++;
         }
         else
-        {
-            return "대화 중입니다...";
-        }
-    }
-
-    void Update()
-    {
-        // 'E' 키나 마우스 좌클릭을 누를 때 대화 패널을 닫습니다.
-        if (!canInteract && (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)))
         {
             CloseDialoguePanel();
         }
     }
 
-    IEnumerator ResetInteractionAfterDelay(float delay)
+    public string GetInteractPrompt()
+    {
+        return isInteracting ? "대화 중입니다..." : "NPC와 대화하기 (E)";
+    }
+
+    void Update()
+    {
+        if (isInteracting && (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)))
+        {
+            if (currentDialogueIndex < dialogues.Length)
+            {
+                ShowNextDialogue();
+            }
+            else
+            {
+                CloseDialoguePanel();
+            }
+        }
+    }
+
+    IEnumerator EnableInteractionAfterDelay(float delay) 
     {
         yield return new WaitForSeconds(delay);
         canInteract = true;
@@ -54,12 +74,9 @@ public class NPCInteraction : MonoBehaviour, IInteraction
     void CloseDialoguePanel()
     {
         dialoguePanel.SetActive(false);
+        isInteracting = false;
+        currentDialogueIndex = 0;
+        canInteract = false;
         StartCoroutine(EnableInteractionAfterDelay(1f));
-    }
-
-    IEnumerator EnableInteractionAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        canInteract = true;
     }
 }
