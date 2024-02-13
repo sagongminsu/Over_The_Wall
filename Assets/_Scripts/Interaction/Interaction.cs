@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+
 public class Interaction : MonoBehaviour
 {
     private InteractionManager interactionManager;
@@ -12,6 +14,12 @@ public class Interaction : MonoBehaviour
 
     public TextMeshProUGUI promptText;
     private Camera camera;
+
+    // 셰이더로부터 받은 윤곽선 머티리얼
+    public Material outlineMaterial;
+
+    // 각 오브젝트의 원래 Material을 저장할 딕셔너리
+    private Dictionary<GameObject, Material> originalMaterials = new Dictionary<GameObject, Material>();
 
     void Start()
     {
@@ -36,10 +44,20 @@ public class Interaction : MonoBehaviour
                 {
                     interactionManager.SetCurrentInteraction(hitObject);
                     SetPromptText();
+
+                    // 윤곽선 적용
+                    ApplyOutline(hitObject, true);
                 }
             }
             else
             {
+                // 모든 강조된 오브젝트의 Material을 원래 Material로 되돌림
+                foreach (GameObject obj in originalMaterials.Keys)
+                {
+                    ApplyOutline(obj, false);
+                }
+                originalMaterials.Clear();
+
                 interactionManager.SetCurrentInteraction(null);
                 promptText.gameObject.SetActive(false);
             }
@@ -60,6 +78,32 @@ public class Interaction : MonoBehaviour
         else
         {
             Debug.Log("curInteraction is null!");
+        }
+    }
+
+    private void ApplyOutline(GameObject obj, bool apply)
+    {
+        Renderer renderer = obj.GetComponent<Renderer>();
+        if (renderer == null)
+            return;
+
+        if (apply)
+        {
+            // 원래 Material을 저장하고, outlineMaterial을 적용
+            if (!originalMaterials.ContainsKey(obj))
+            {
+                originalMaterials[obj] = renderer.material;
+            }
+            renderer.material = outlineMaterial;
+        }
+        else
+        {
+            // outlineMaterial을 적용했던 것을 원래 Material로 되돌림
+            if (originalMaterials.ContainsKey(obj))
+            {
+                renderer.material = originalMaterials[obj];
+                originalMaterials.Remove(obj);
+            }
         }
     }
 }
