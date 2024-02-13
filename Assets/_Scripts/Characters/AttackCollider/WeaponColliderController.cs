@@ -19,9 +19,9 @@ public class WeaponColliderController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
-        AiStateMachine aiStateMachine = other.GetComponentInParent<AiStateMachine>();
+        AiStateMachine aiStateMachine = collider.GetComponentInParent<AiStateMachine>();
         if (aiStateMachine != null)
         {
             aiStateMachine.OnAttacked();

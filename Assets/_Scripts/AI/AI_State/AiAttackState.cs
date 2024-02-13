@@ -38,12 +38,18 @@ public class AiAttackState : AiBaseState
         base.Update();
 
         ForceMove();
-
+        float distanceToPlayer = Vector3.Distance(stateMachine.Ai.transform.position, stateMachine.Target.position);
+        //지속해서 추적
         float normalizedTime = GetNormalizedTime(stateMachine.Ai.Animator, "Attack");
+
         if (normalizedTime < 1f)
         {
-            if (normalizedTime >= stateMachine.Ai.Data.ForceTransitionTime)
+            stateMachine.Ai.Agent.isStopped = true;
+            if (normalizedTime >= stateMachine.Ai.Data.ForceTransitionTime && !alreadyAppliedForce)
+            {
                 TryApplyForce();
+            }
+
             //오른손
             if (!RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
             {
@@ -70,6 +76,18 @@ public class AiAttackState : AiBaseState
             }
         }
 
+
+        else
+        {
+            // 공격 애니메이션이 끝났을 경우, 이동 재개
+            stateMachine.Ai.Agent.isStopped = false;
+
+            // 플레이어를 향해 다시 이동 시작
+            if (distanceToPlayer > stateMachine.Ai.Agent.stoppingDistance)
+            {
+                stateMachine.Ai.Agent.SetDestination(stateMachine.Target.position);
+            }
+        }
     }
 
     private void TryApplyForce()

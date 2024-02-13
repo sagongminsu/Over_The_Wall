@@ -20,7 +20,7 @@ public class AiStateMachine : StateMachine
     public float MovementSpeedModifier { get; set; } = 1f;
 
 
-    // AI가 공격 받았는지 여부를 나타내는 상태 변수 추가
+    // AI가 공격 받았는지 여부를 나타내는 변수 
     public bool IsAttacked { get; set; } = false;
     public void OnAttacked()
     {

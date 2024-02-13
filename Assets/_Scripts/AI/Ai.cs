@@ -21,11 +21,14 @@ public class Ai : MonoBehaviour
    
     public AIHealth AiHealth { get; private set; }
 
-    private AiStateMachine stateMachine;
+
 
     public NavMeshAgent Agent { get; private set; }
-    
-    
+
+    private AiStateMachine stateMachine;
+
+    public AiStateMachine StateMachine => stateMachine;
+
     void Awake()
     {
         AnimationData.Initialize();
@@ -36,6 +39,7 @@ public class Ai : MonoBehaviour
         ForceReceiver = GetComponent<ForceReceiver>();
         Agent = GetComponent<NavMeshAgent>();
         AiHealth = GetComponent<AIHealth>();
+
 
         List<Transform> waypoints = new List<Transform>();
         stateMachine = new AiStateMachine(this, waypoints);
@@ -49,7 +53,7 @@ public class Ai : MonoBehaviour
     private void Start()
     {
         stateMachine.ChangeState(stateMachine.IdleingState);
-        AiHealth.OnDie += OnDie;
+        
     }
 
     private void Update()
@@ -67,9 +71,14 @@ public class Ai : MonoBehaviour
         stateMachine.PhysicsUpdate();
     }
 
-    void OnDie()
+    void OnTriggerEnter(Collider collider)
     {
-        Animator.SetTrigger("Die");
-        enabled = false;
+        // 'PlayerWeapon' 태그를 가진 오브젝트가 AI의 트리거 컬라이더에 들어왔는지 확인
+        if (collider.CompareTag("PlayerWeapon"))
+        {
+            // AI가 공격 받았음을 나타내는 메서드 호출
+            stateMachine.OnAttacked();
+        }
     }
+
 }

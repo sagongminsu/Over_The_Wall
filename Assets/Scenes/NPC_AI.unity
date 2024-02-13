@@ -834,8 +834,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 616842955}
-  - component: {fileID: 616842957}
   - component: {fileID: 616842956}
+  - component: {fileID: 616842957}
   - component: {fileID: 616842958}
   m_Layer: 0
   m_Name: L.hand
@@ -918,7 +918,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 616842954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4109a937d88a84da7229f9e2443508, type: 3}
+  m_Script: {fileID: 11500000, guid: dafd5dd3f28687e4188fd74620e986d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myCollider: {fileID: 2020269478}
@@ -2230,7 +2230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0f9be3acd672843b24f0257113c2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
 --- !u!1 &1849132296
 GameObject:
   m_ObjectHideFlags: 0
@@ -2389,7 +2388,8 @@ MonoBehaviour:
     aimingParameterName: Aiming
     standingParameterName: Standing
     crouchParameterName: Crouch
-  <Weapon>k__BackingField: {fileID: 616842958}
+  <RightHandWeapon>k__BackingField: {fileID: 1484768453}
+  <LeftHandWeapon>k__BackingField: {fileID: 616842958}
 --- !u!136 &2020269478
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2405,9 +2405,9 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.43
   m_Height: 2.16
@@ -2513,7 +2513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0f9be3acd672843b24f0257113c2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
 --- !u!1 &2031636888
 GameObject:
   m_ObjectHideFlags: 0
