@@ -62,4 +62,6 @@ public class Interaction : MonoBehaviour
             Debug.Log("curInteraction is null!");
         }
     }
+
+   
 }

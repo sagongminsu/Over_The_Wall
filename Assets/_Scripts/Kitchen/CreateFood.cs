@@ -7,15 +7,11 @@ public class CreateFood : MonoBehaviour
     public GameObject[] createFood;
 
 
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         if (gameManager.I.CheckTime(11, 12))
         {
             activateFoods();
@@ -46,7 +42,5 @@ public class CreateFood : MonoBehaviour
             foods.SetActive(false);
         }
     }
-   
-    
    
 }
