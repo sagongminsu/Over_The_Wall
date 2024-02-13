@@ -144,7 +144,7 @@ public class PlayerBaseState : IState
         input.PlayerActions.Attack.performed += OnAttackPerformed;
         input.PlayerActions.Attack.canceled += OnAttackCanceled;
 
-        input.PlayerActions.Interaction.performed += OnInteractionPerformed;
+        input.PlayerActions.Interaction.started += OnInteractionStarted;
         input.PlayerActions.Interaction.canceled += OnInteractionCanceled;
 
         input.PlayerActions.Aim.performed += OnAimingPerformed;
@@ -166,7 +166,7 @@ public class PlayerBaseState : IState
         input.PlayerActions.Attack.performed -= OnAttackPerformed;
         input.PlayerActions.Attack.canceled -= OnAttackCanceled;
 
-        input.PlayerActions.Interaction.performed -= OnInteractionPerformed;
+        input.PlayerActions.Interaction.started -= OnInteractionStarted;
         input.PlayerActions.Interaction.canceled -= OnInteractionCanceled;
 
         input.PlayerActions.Aim.performed -= OnAimingPerformed;
@@ -204,7 +204,7 @@ public class PlayerBaseState : IState
         stateMachine.IsAttacking = false;
     }
 
-    protected virtual void OnInteractionPerformed(InputAction.CallbackContext obj)
+    protected virtual void OnInteractionStarted(InputAction.CallbackContext obj)
     {
         stateMachine.IsInteracting = true;
     }
@@ -228,7 +228,6 @@ public class PlayerBaseState : IState
 
     protected virtual void OnCrouchStarted(InputAction.CallbackContext obj)
     {
-        
         if (!stateMachine.IsCrouch)
         {
             stateMachine.IsCrouch = true;

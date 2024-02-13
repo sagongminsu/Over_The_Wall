@@ -34,6 +34,10 @@ public class PlayerStateMachine : StateMachine
     public bool IsAiming { get; set; }
     public bool IsCrouch { get; set; }
 
+    public bool IsIdle { get; set; }
+    public bool IsWalk {  get; set; }
+    public bool IsRun { get; set; }
+
     public int ComboIndex { get; set; }
 
     public float MouseSensitivity = 5.0f;

@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerWalkState : PlayerGroundedState
 {
-    float currentSpeed;
+
 
     public PlayerWalkState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -16,8 +16,6 @@ public class PlayerWalkState : PlayerGroundedState
         base.Enter();
 
         StartAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
-
-        currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
         //StartAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
     }
@@ -34,12 +32,8 @@ public class PlayerWalkState : PlayerGroundedState
     {
         base.Update();
 
+        float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
         stateMachine.Player.PlayerAnimator.SetFloat("Speed", currentSpeed);
-
-        if (stateMachine.IsCrouch)
-        {
-            stateMachine.ChangeState(stateMachine.CrouchWalkState);
-        }
     }
 
     protected override void OnRunStarted(InputAction.CallbackContext context)

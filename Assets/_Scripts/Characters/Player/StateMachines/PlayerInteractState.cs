@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,7 +14,6 @@ public class PlayerInteractState : PlayerGroundedState
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 0;
 
         if (interactionManager.CurrentInteractGameObject != null && interactionManager.CurrentInteraction != null)
         {
@@ -30,12 +30,11 @@ public class PlayerInteractState : PlayerGroundedState
 
     public override void Exit()
     {
-        Debug.Log("OFF");
 
         base.Exit();
         //exit 애니메이션 넣을거면 넣으면됨
     }
-    
+
     public override void Update()
     {
         base.Update();
@@ -46,6 +45,13 @@ public class PlayerInteractState : PlayerGroundedState
     protected override void OnInteractionCanceled(InputAction.CallbackContext context)
     {
         base.OnInteractionCanceled(context);
-        stateMachine.ChangeState(stateMachine.IdleState);
+
+        if (stateMachine.IsCrouch)
+            stateMachine.ChangeState(stateMachine.CrouchIdleState);
+        else if (stateMachine.MovementSpeedModifier == groundData.RunSpeedModifier)
+            stateMachine.ChangeState(stateMachine.RunState);
+        else
+            stateMachine.ChangeState(stateMachine.IdleState);
+
     }
 }

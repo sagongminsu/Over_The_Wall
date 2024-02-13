@@ -3,9 +3,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerIdleState : PlayerGroundedState
 {
-    float IdleStateTime;
-    float currentTime;
-    float currentSpeed;
     public PlayerIdleState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
@@ -17,8 +14,6 @@ public class PlayerIdleState : PlayerGroundedState
         stateMachine.MovementSpeedModifier = 0f;
 
         StartAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
-
-        IdleStateTime = 0.0f;
     }
 
     public override void Exit()
@@ -44,24 +39,10 @@ public class PlayerIdleState : PlayerGroundedState
             return;
         }
 
-
-        currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
+        float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
         stateMachine.Player.PlayerAnimator.SetFloat("Speed", currentSpeed);
 
-        currentTime += Time.deltaTime;
-        currentTime %= 40.0f;
-
-        IdleStateTime = currentTime;
-        //IdleStateTime = Mathf.Floor(currentTime / 5.0f) * 5.0f;
-
-        stateMachine.Player.PlayerAnimator.SetFloat("Time", IdleStateTime);
-        //Debug.Log("IdleStateTime: " + IdleStateTime);
-
-        if (stateMachine.IsCrouch)
-        {
-            stateMachine.ChangeState(stateMachine.CrouchIdleState);
-        }
 
         if(stateMachine.IsAiming)
         {
