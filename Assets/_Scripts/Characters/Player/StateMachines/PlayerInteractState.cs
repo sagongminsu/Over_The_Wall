@@ -1,10 +1,12 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInteractState : PlayerGroundedState
 {
     private InteractionManager interactionManager;
+    private bool hasInteracted = false;
+    private float interactCooldown = 0.2f;
+    private float interactTimer = 0f;
 
     public PlayerInteractState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -15,9 +17,11 @@ public class PlayerInteractState : PlayerGroundedState
     {
         stateMachine.MovementSpeedModifier = 0;
 
-        if (interactionManager.CurrentInteractGameObject != null && interactionManager.CurrentInteraction != null)
+        if (!hasInteracted && interactionManager.CurrentInteractGameObject != null && interactionManager.CurrentInteraction != null)
         {
             interactionManager.CurrentInteraction.OnInteract();
+            hasInteracted = true;
+            interactTimer = interactCooldown; // 대화 시작 후 타이머 초기화
         }
         else
         {
@@ -35,12 +39,19 @@ public class PlayerInteractState : PlayerGroundedState
         base.Exit();
         //exit 애니메이션 넣을거면 넣으면됨
     }
-    
+
     public override void Update()
     {
         base.Update();
 
-        //게이지를 여기서 관리하면?
+        if (hasInteracted)
+        {
+            interactTimer -= Time.deltaTime;
+            if (interactTimer <= 0)
+            {
+                hasInteracted = false;
+            }
+        }
     }
 
     protected override void OnInteractionCanceled(InputAction.CallbackContext context)
