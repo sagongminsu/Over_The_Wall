@@ -1,3 +1,5 @@
+using System;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerComboAttackState : PlayerAttackState
@@ -60,15 +62,35 @@ public class PlayerComboAttackState : PlayerAttackState
         base.Update();
 
         ForceMove();
+        //if (stateMachine.Player.PlayerAnimator.GetLayerWeight(1) == 1f)
+        //{
+        //    //stateMachine.Player.PlayerAnimator.SetLayerWeight(1, 1);
 
-        UpdateAttackStateMachine(stateMachine.Player.PlayerAnimator);
-        UpdateAttackStateMachine(stateMachine.Player.ArmAnimator);
-
+        //}
+        //else
+        //{
+        stateMachine.IsMeleeEquip = true;
+        //}
+        if (stateMachine.IsMeleeEquip)
+        {
+            UpdateAttackStateMachine(stateMachine.Player.PlayerAnimator, "Melee");
+            UpdateAttackStateMachine(stateMachine.Player.ArmAnimator, "Melee");
+        }
+        else if (stateMachine.IsRangeEquip)
+        {
+            UpdateAttackStateMachine(stateMachine.Player.PlayerAnimator, "Range");
+            UpdateAttackStateMachine(stateMachine.Player.ArmAnimator, "Range");
+        }
+        else
+        {
+            UpdateAttackStateMachine(stateMachine.Player.PlayerAnimator, "Pistol");
+            UpdateAttackStateMachine(stateMachine.Player.ArmAnimator, "Pistol");
+        }
     }
 
-    private void UpdateAttackStateMachine(Animator animator)
+    private void UpdateAttackStateMachine(Animator animator, string Weapon)
     {
-        float normalizedTime = GetNormalizedTime(animator, "Attack");
+        float normalizedTime = GetNormalizedTime(animator, Weapon);
 
         if (normalizedTime < 1f)
         {
@@ -91,4 +113,17 @@ public class PlayerComboAttackState : PlayerAttackState
             }
         }
     }
+
+    //Animator GetLayerAnimator(Animator animator, int layerIndex)
+    //{
+    //    AnimatorController controller = animator.runtimeAnimatorController as AnimatorController;
+
+    //    if (controller != null && controller.layers.Length > layerIndex)
+    //    {
+    //        AnimatorStateMachine stateMachine = controller.layers[layerIndex].stateMachine;
+    //        return stateMachine != null ? stateMachine.animator : null;
+    //    }
+
+    //    return null;
+    //}
 }

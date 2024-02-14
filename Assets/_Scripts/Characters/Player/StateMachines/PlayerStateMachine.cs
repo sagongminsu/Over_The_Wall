@@ -37,6 +37,8 @@ public class PlayerStateMachine : StateMachine
     public bool IsIdle { get; set; }
     public bool IsWalk {  get; set; }
     public bool IsRun { get; set; }
+    public bool IsMeleeEquip { get; set; }
+    public bool IsRangeEquip { get; set; }
 
     public int ComboIndex { get; set; }
 
