@@ -64,4 +64,10 @@ public class PlayerAttackState : PlayerBaseState
             Debug.LogError("Player null");
         }
     }
+
+    private void HandleAttack(AiStateMachine aiStateMachine)
+    {
+        // AI에게 공격이 감지되었다고 알림
+        aiStateMachine.OnAttacked();
+    }
 }

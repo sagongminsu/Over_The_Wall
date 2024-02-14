@@ -1,11 +1,12 @@
-using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInteractState : PlayerGroundedState
 {
     private InteractionManager interactionManager;
+    private bool hasInteracted = false;
+    private float interactCooldown = 0.2f;
+    private float interactTimer = 0f;
 
     public PlayerInteractState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -15,15 +16,17 @@ public class PlayerInteractState : PlayerGroundedState
     public override void Enter()
     {
 
-        if (interactionManager.CurrentInteractGameObject != null && interactionManager.CurrentInteraction != null)
+        if (!hasInteracted && interactionManager.CurrentInteractGameObject != null && interactionManager.CurrentInteraction != null)
         {
             interactionManager.CurrentInteraction.OnInteract();
+            hasInteracted = true;
+            interactTimer = interactCooldown;
         }
         else
         {
             //Debug.LogError("Interaction failed. Check if the object implements IInteraction interface.");
         }
-        //¿©±â¿¡¼­ ÅØ½ºÆ®¸¦ ²ô°í °ÔÀÌÁö°¡ ¿ÂµÇ¾î¾ßÇÔ
+        //ï¿½ï¿½ï¿½â¿¡ï¿½ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÂµÇ¾ï¿½ï¿½ï¿½ï¿½
 
         base.Enter();
     }
@@ -32,14 +35,21 @@ public class PlayerInteractState : PlayerGroundedState
     {
 
         base.Exit();
-        //exit ¾Ö´Ï¸ÞÀÌ¼Ç ³ÖÀ»°Å¸é ³ÖÀ¸¸éµÊ
+        //exit ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     public override void Update()
     {
         base.Update();
 
-        //°ÔÀÌÁö¸¦ ¿©±â¼­ °ü¸®ÇÏ¸é?
+        if (hasInteracted)
+        {
+            interactTimer -= Time.deltaTime;
+            if (interactTimer <= 0)
+            {
+                hasInteracted = false;
+            }
+        }
     }
 
     protected override void OnInteractionCanceled(InputAction.CallbackContext context)
@@ -53,5 +63,10 @@ public class PlayerInteractState : PlayerGroundedState
         else
             stateMachine.ChangeState(stateMachine.IdleState);
 
+    }
+
+    public void SetHasInteracted(bool value)
+    {
+        hasInteracted = value;
     }
 }

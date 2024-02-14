@@ -1,62 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AIHealth : MonoBehaviour
+public class AIHealth : CharacterHealth
 {
-    public int maxHealth = 100; // AI의 최대 체력을 설정
-    private int currentHealth; // AI의 현재 체력
 
-    private NavMeshAgent navMeshAgent; // Nav Mesh Agent 참조를 저장합니다.
-    private Animator animator; // Animator 참조를 저장합니다.
+    private NavMeshAgent navMeshAgent;
+    private Animator animator;
+    private AiStateMachine aiStateMachine; // AI 상태 머신 참조
 
     void Start()
     {
-        currentHealth = maxHealth;
-        navMeshAgent = GetComponent<NavMeshAgent>(); // Nav Mesh Agent 컴포넌트를 가져옵니다.
-        animator = GetComponent<Animator>(); // Animator 컴포넌트를 가져옵니다.
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        Ai aiComponent = GetComponent<Ai>();
+        aiStateMachine = aiComponent.StateMachine; // 상태 머신 참조 초기화
     }
 
-    public void TakeDamage(int damage)
+
+    private void OnTriggerEnter(Collider collider)
     {
-        currentHealth -= damage; // 피해량만큼 체력을 감소시킵니다.
-        if (currentHealth <= 0)
+        if (collider.gameObject.CompareTag("PlayerWeapon")) // 플레이어 무기와 충돌 시
         {
-            Die(); // 체력이 0 이하가 되면 Die 함수를 호출합니다.
+            IDamagable damagable = collider.gameObject.GetComponent<IDamagable>();
+            if (damagable != null)
+            {
+                damagable.TakeDamage(aiStateMachine.Ai.Data.Damage); // AI의 대미지를 플레이어에 적용
+            }
         }
     }
+    //public void OnDie()
+    //{
+    //    // AI가 죽었을 때의 로직을 구현합니다.
+    //    if (navMeshAgent != null)
+    //        navMeshAgent.enabled = false;
+    //    if (animator != null)
+    //        animator.SetTrigger("Die");
 
-    public void Heal(int healingAmount)
-    {
-        currentHealth += healingAmount; // 회복량
-        currentHealth = Mathf.Min(currentHealth, maxHealth); // 체력이 최대 체력을 넘지 않도록
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("PlayerWeapon"))
-        {
-           //collision.gameObject.GetComponent<PlayerWeapon>().SetDamage();
-            //TakeDamage((int)collision.gameObject.GetComponent<PlayerWeapon>().WeaponDamage);
-            
-           
-        }
-    }
-    void Die()
-    {
-        // AI가 죽었을 때의 로직을 구현합니다.
-        if (navMeshAgent != null)
-        {
-            navMeshAgent.enabled = false; // Nav Mesh Agent를 비활성화합니다.
-        }
-
-        if (animator != null)
-        {
-            animator.enabled = false; // Animator를 비활성화합니다.
-        }
-
-    }
-
+    //}
 
 }
 

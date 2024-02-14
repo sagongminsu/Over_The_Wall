@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public interface IDamagable
 {
-    void TakePhysicalDamage(int damageAmount);
+    void TakeDamage(int damageAmount);
 }
 
 [System.Serializable]
@@ -51,7 +51,8 @@ public class PlayerConditions : MonoBehaviour, IDamagable
    
 
     void Start()
-    {
+    {   
+       
         health.curValue = health.startValue;
         hunger.curValue = hunger.startValue;
         playerSO.Stamina.curValue = playerSO.Stamina.startValue;
@@ -114,9 +115,11 @@ public class PlayerConditions : MonoBehaviour, IDamagable
         }
     }
 
-    public void TakePhysicalDamage(int damageAmount)
+
+    public void TakeDamage(int damage)
     {
-        health.Subtract(damageAmount);
+        Debug.Log($"TakeDamage 호출됨. 받은 대미지: {damage}");
+        health.Subtract(damage);
         if (onTakeDamage != null)
         {
             onTakeDamage.Invoke(); // 피해 입었을 때의 이벤트 발생

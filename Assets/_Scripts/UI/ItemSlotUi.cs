@@ -29,15 +29,15 @@ public class ItemSlotUI : MonoBehaviour
     {
         curSlot = slot;
         icon.gameObject.SetActive(true);
-        //icon.sprite = slot.item.icon;
+        icon.sprite = slot.item.icon;
         quatityText.text = slot.quantity > 1 ? slot.quantity.ToString() : string.Empty;
 
         if (outline != null)
         {
             outline.enabled = equipped;
         }
-
     }
+
 
     public void Clear()
     {
@@ -48,6 +48,6 @@ public class ItemSlotUI : MonoBehaviour
 
     public void OnButtonClick()
     {
-
+        Inventory.instance.SelectItem(index);
     }
 }

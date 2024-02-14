@@ -74,12 +74,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Interaction"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""5b0e7c24-3176-4a16-88e2-9910f8ae5266"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""initialStateCheck"": true
+                    ""interactions"": ""Press(pressPoint=1,behavior=2)"",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Aim"",

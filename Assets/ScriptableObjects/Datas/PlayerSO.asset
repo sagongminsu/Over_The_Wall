@@ -43,5 +43,5 @@ MonoBehaviour:
     curValue: 10
     maxValue: 10
     startValue: 10
-    regenRate: 0
+    regenRate: 0.5
     decayRate: 0
