@@ -100,4 +100,5 @@ public class AiAttackState : AiBaseState
         stateMachine.Ai.ForceReceiver.AddForce(stateMachine.Ai.transform.forward * stateMachine.Ai.Data.Force);
 
     }
+
 }

@@ -20,12 +20,15 @@ public class AIHealth : CharacterHealth
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (other.gameObject.CompareTag("PlayerWeapon")) 
+        if (collider.gameObject.CompareTag("PlayerWeapon")) // 플레이어 무기와 충돌 시
         {
-
-            
+            IDamagable damagable = collider.gameObject.GetComponent<IDamagable>();
+            if (damagable != null)
+            {
+                damagable.TakeDamage(aiStateMachine.Ai.Data.Damage); // AI의 대미지를 플레이어에 적용
+            }
         }
     }
     //public void OnDie()
