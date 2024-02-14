@@ -5,7 +5,6 @@ public class gameManager : MonoBehaviour
     public DayNightCycle dayNightCycle;
     public PlayerConditions playerConditions;
 
-
     public static gameManager I;
 
     void Awake()
