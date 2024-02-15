@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private int damage = 10; // 대미지 값 설정
+    private int damage;
     [SerializeField] private Collider weaponCollider; // 무기의 Collider
 
     private void OnTriggerEnter(Collider other)
@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
         {
             
             var healthComponent = other.GetComponent<AIHealth>(); // AIHealth 컴포넌트 참조
-            Debug.Log($"[Weapon] 플레이어 {other.name}에게 {damage} 대미지 적용.");
+            Debug.Log($"[Weapon] 플레이어가 Ai에게 {damage} 대미지 적용.");
             if (healthComponent != null)
             {
                 healthComponent.TakeDamage(damage); // 대미지 적용

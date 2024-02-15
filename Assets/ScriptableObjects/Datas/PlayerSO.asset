@@ -23,22 +23,22 @@ MonoBehaviour:
     <AttackInfoDatas>k__BackingField:
     - <AttackName>k__BackingField: "1\uD0C0"
       <ComboStateIndex>k__BackingField: 1
-      <ComboTransitionTime>k__BackingField: 0.8
-      <ForceTransitionTime>k__BackingField: 0.1
-      <Force>k__BackingField: 0.3
-      <Damage>k__BackingField: 5
+      <ComboTransitionTime>k__BackingField: 2.32
+      <ForceTransitionTime>k__BackingField: 1.81
+      <Force>k__BackingField: -5.28
+      <Damage>k__BackingField: 10
     - <AttackName>k__BackingField: "2\uD0C0"
       <ComboStateIndex>k__BackingField: 2
-      <ComboTransitionTime>k__BackingField: 0.8
-      <ForceTransitionTime>k__BackingField: 0.2
+      <ComboTransitionTime>k__BackingField: 2.55
+      <ForceTransitionTime>k__BackingField: 1.87
       <Force>k__BackingField: 1
-      <Damage>k__BackingField: 5
+      <Damage>k__BackingField: 10
     - <AttackName>k__BackingField: "3\uD0C0"
       <ComboStateIndex>k__BackingField: -1
-      <ComboTransitionTime>k__BackingField: 0.8
-      <ForceTransitionTime>k__BackingField: 0.1
+      <ComboTransitionTime>k__BackingField: 2.39
+      <ForceTransitionTime>k__BackingField: 1.78
       <Force>k__BackingField: 1.5
-      <Damage>k__BackingField: 10
+      <Damage>k__BackingField: 15
   <Stamina>k__BackingField:
     curValue: 10
     maxValue: 10
