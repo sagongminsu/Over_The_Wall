@@ -17,13 +17,4 @@ public class DialogueScript : MonoBehaviour
 
         npcInteraction.GetDialogues(dialogues);
     }
-
-    // 대화 종료 후 호출되는 함수
-    public void OnDialogueEnd()
-    {
-        if (questManager.quest1Completed == false)
-        {
-            questManager.CompleteQuest1(); // 첫 번째 퀘스트 완료
-        }
-    }
 }

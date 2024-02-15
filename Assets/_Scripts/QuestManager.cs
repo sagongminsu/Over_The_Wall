@@ -2,18 +2,26 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    [SerializeField] private DialogueScript2 dialogueScript2;
+
     public bool quest1Completed = false;
     public bool quest2Completed = false;
-    // 추가적인 퀘스트가 있다면 여기에도 변수를 추가할 수 있습니다.
+    public bool quest2progress = false;
 
     public void CompleteQuest1()
     {
-        quest1Completed = true;
+        if (quest1Completed == false)
+        {
+            quest1Completed = true;
+            dialogueScript2.Dialogues2(); // 퀘스트1 완료 후 다음 대화 설정
+        }
     }
 
     public void CompleteQuest2()
     {
-        quest2Completed = true;
+        if (quest1Completed == true)
+        {
+            quest2progress = true; // 퀘스트1 완료 후 퀘스트2 진행 시작
+        }
     }
-    // 추가적인 퀘스트가 있다면 여기에도 완료 함수를 추가할 수 있습니다.
 }
