@@ -21,5 +21,6 @@ public class AINavigation : MonoBehaviour
 
 
         animator.SetBool("IsWalking", isMoving);
+
     }
 }

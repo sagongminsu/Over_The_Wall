@@ -28,6 +28,7 @@ public class LeftWeapon : MonoBehaviour
             health.TakeDamage(damage);
         }
 
+
         if (other.TryGetComponent(out ForceReceiver forceReceiver))
         {
             Vector3 direction = (other.transform.position - myCollider.transform.position).normalized;
