@@ -5,8 +5,9 @@ public class OpenBox : MonoBehaviour, IInteraction
 {
     float openRotationX = -90f;
     float closeRotationX = 0f;
-    float rotationSpeed = 30f;
+    float rotationSpeed = 15f;
 
+    bool isOpen = false;
     bool isMoving = false;
 
     public void OnInteract()
@@ -22,11 +23,13 @@ public class OpenBox : MonoBehaviour, IInteraction
         isMoving = true;
 
         float currentRotationX = transform.rotation.eulerAngles.x;
-        float targetRotationX = (currentRotationX != -90f) ? openRotationX : closeRotationX;
+        float targetRotationX = isOpen ? closeRotationX : openRotationX;
+        float direction = isOpen ? -1f : 1f;
 
         while (Mathf.Abs(currentRotationX - targetRotationX) > 0.1f)
         {
-            currentRotationX = Mathf.MoveTowards(currentRotationX, targetRotationX, rotationSpeed * Time.deltaTime);
+            currentRotationX += direction * rotationSpeed * Time.deltaTime;
+            currentRotationX = Mathf.Clamp(currentRotationX, closeRotationX, openRotationX);
 
             Quaternion targetRotation = Quaternion.Euler(currentRotationX, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
             transform.rotation = targetRotation;
@@ -34,11 +37,12 @@ public class OpenBox : MonoBehaviour, IInteraction
             yield return null;
         }
 
+        isOpen = !isOpen;
         isMoving = false;
     }
 
     public string GetInteractPrompt()
     {
-        return "Interaction 열기";
+        return isOpen ? "Interaction 닫기" : "Interaction 열기";
     }
 }

@@ -1,5 +1,5 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class PushingDoor : MonoBehaviour, IInteraction
 {
@@ -51,7 +51,7 @@ public class PushingDoor : MonoBehaviour, IInteraction
 
     public string GetInteractPrompt()
     {
-        return "Interaction 열기";
+        return isOpen ? "Interaction 닫기" : "Interaction 열기";
     }
 
     private void ToggleObject(bool enable)
