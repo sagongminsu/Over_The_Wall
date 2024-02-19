@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAttackState : PlayerBaseState
 {
+    EquipManager equipManager = EquipManager.instance;
     public PlayerAttackState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
@@ -12,8 +13,7 @@ public class PlayerAttackState : PlayerBaseState
     {
         stateMachine.MovementSpeedModifier = 0;
         base.Enter();
-
-        StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
+        StartAnim();
 
         if (stateMachine.Player != null)
         {
@@ -41,7 +41,7 @@ public class PlayerAttackState : PlayerBaseState
     {
         base.Exit();
 
-        StopAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
+        StopAnim();
 
         if (stateMachine.Player != null)
         {
@@ -69,5 +69,55 @@ public class PlayerAttackState : PlayerBaseState
     {
         // AI에게 공격이 감지되었다고 알림
         aiStateMachine.OnAttacked();
+    }
+
+    protected void HandleWeaponType(bool startAnimation, bool stopAnimation)
+    {
+        string weaponType = GetWeaponType(equipManager);
+
+        if (startAnimation)
+        {
+            if (weaponType == "Pistol")
+                StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
+            else if (weaponType == "OHMelee")
+                StartAnimation(stateMachine.Player.AnimationData.MeleeAttackParameterHash);
+        }
+        else if (stopAnimation)
+        {
+            if (weaponType == "Pistol")
+                StopAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
+            else if (weaponType == "OHMelee")
+                StopAnimation(stateMachine.Player.AnimationData.MeleeAttackParameterHash);
+        }
+    }
+
+    protected string GetWeaponType(EquipManager equipManager)
+    {
+        if (equipManager.isEquipped && equipManager.curEquip.GetComponent<ItemData_>() != null)
+        {
+            WeaponType weaponTypeValue = equipManager.curEquip.GetComponent<ItemData_>().weaponType;
+
+            switch (weaponTypeValue)
+            {
+                case WeaponType.OHMelee:
+                    return "OHMelee";
+                case WeaponType.THMelee:
+                    return "THMelee";
+                case WeaponType.Range:
+                    return "Range";
+            }
+        }
+
+        return "Pistol";
+    }
+
+    private void StartAnim()
+    {
+        HandleWeaponType(true, false);
+    }
+
+    private void StopAnim()
+    {
+        HandleWeaponType(false, true);
     }
 }

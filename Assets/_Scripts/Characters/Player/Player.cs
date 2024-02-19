@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -25,11 +26,11 @@ public class Player : MonoBehaviour
 
     private PlayerStateMachine stateMachine;
 
-
-
+    private gameManager gameManager;
 
     private void Awake()
     {
+        gameManager = gameManager.I;
 
         AnimationData.Initialize();
 
@@ -50,7 +51,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        stateMachine.ChangeState(stateMachine.IdleState);
+        stateMachine.ChangeState(stateMachine.IdleState);  
     }
 
     private void Update()
@@ -80,4 +81,10 @@ public class Player : MonoBehaviour
 
         return animator;
     }
+
+    public float MouseSensitivity()
+    {
+        return gameManager.GetMouseSensitivity();
+    }
+    
 }

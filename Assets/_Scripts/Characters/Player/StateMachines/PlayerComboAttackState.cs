@@ -9,6 +9,8 @@ public class PlayerComboAttackState : PlayerAttackState
 
     AttackInfoData attackInfoData;
 
+    EquipManager equipManager = EquipManager.instance;
+
     public PlayerComboAttackState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
@@ -16,6 +18,7 @@ public class PlayerComboAttackState : PlayerAttackState
     public override void Enter()
     {
         base.Enter();
+
         StartAnimation(stateMachine.Player.AnimationData.ComboAttackParameterHash);
 
         alreadyApplyCombo = false;
@@ -30,6 +33,7 @@ public class PlayerComboAttackState : PlayerAttackState
     public override void Exit()
     {
         base.Exit();
+
         StopAnimation(stateMachine.Player.AnimationData.ComboAttackParameterHash);
 
         if (!alreadyApplyCombo)
@@ -62,30 +66,9 @@ public class PlayerComboAttackState : PlayerAttackState
         base.Update();
 
         ForceMove();
-        //if (stateMachine.Player.PlayerAnimator.GetLayerWeight(1) == 1f)
-        //{
-        //    //stateMachine.Player.PlayerAnimator.SetLayerWeight(1, 1);
-
-        //}
-        //else
-        //{
-        stateMachine.IsMeleeEquip = true;
-        //}
-        if (stateMachine.IsMeleeEquip)
-        {
-            UpdateAttackStateMachine(stateMachine.Player.PlayerAnimator, "Melee");
-            UpdateAttackStateMachine(stateMachine.Player.ArmAnimator, "Melee");
-        }
-        else if (stateMachine.IsRangeEquip)
-        {
-            UpdateAttackStateMachine(stateMachine.Player.PlayerAnimator, "Range");
-            UpdateAttackStateMachine(stateMachine.Player.ArmAnimator, "Range");
-        }
-        else
-        {
-            UpdateAttackStateMachine(stateMachine.Player.PlayerAnimator, "Pistol");
-            UpdateAttackStateMachine(stateMachine.Player.ArmAnimator, "Pistol");
-        }
+        
+        UpdateAttackStateMachine(stateMachine.Player.PlayerAnimator, GetWeaponType(equipManager));
+        UpdateAttackStateMachine(stateMachine.Player.ArmAnimator, GetWeaponType(equipManager));
     }
 
     private void UpdateAttackStateMachine(Animator animator, string Weapon)
@@ -114,16 +97,4 @@ public class PlayerComboAttackState : PlayerAttackState
         }
     }
 
-    //Animator GetLayerAnimator(Animator animator, int layerIndex)
-    //{
-    //    AnimatorController controller = animator.runtimeAnimatorController as AnimatorController;
-
-    //    if (controller != null && controller.layers.Length > layerIndex)
-    //    {
-    //        AnimatorStateMachine stateMachine = controller.layers[layerIndex].stateMachine;
-    //        return stateMachine != null ? stateMachine.animator : null;
-    //    }
-
-    //    return null;
-    //}
 }

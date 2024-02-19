@@ -8,6 +8,7 @@ public class PlayerWalkState : PlayerGroundedState
 
     public PlayerWalkState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
+
     }
 
     public override void Enter()

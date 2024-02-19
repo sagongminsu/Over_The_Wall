@@ -94,12 +94,7 @@ public class PlayerBaseState : IState
         return movementSpeed;
     }
 
-    //private void CameraPosition(float Height)
-    //{
-    //    float smoothSpeed = 5f;
-    //    Vector3 targetPosition = new Vector3(stateMachine.MainCameraTransform.position.x, Height, stateMachine.MainCameraTransform.position.z);
-    //    stateMachine.MainCameraTransform.position = Vector3.Lerp(stateMachine.MainCameraTransform.position, targetPosition, smoothSpeed * Time.deltaTime);
-    //}
+
     protected void ForceMove()
     {
         stateMachine.Player.Controller.Move(stateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
@@ -107,13 +102,15 @@ public class PlayerBaseState : IState
 
     private void RotateByMouseDelta()
     {
+        float mouseSensitivity = stateMachine.Player.MouseSensitivity();
+
         Vector2 mouseDelta = stateMachine.Player.Input.PlayerActions.Look.ReadValue<Vector2>();
         float mouseX = mouseDelta.x;
 
         if (Mathf.Abs(mouseX) > 0.1f)
         {
             Transform playerTransform = stateMachine.Player.transform;
-            Vector3 rotationAmount = new Vector3(0, mouseX * stateMachine.MouseSensitivity, 0);
+            Vector3 rotationAmount = new Vector3(0, mouseX * mouseSensitivity, 0);
             Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
             playerTransform.rotation *= deltaRotation;
         }
