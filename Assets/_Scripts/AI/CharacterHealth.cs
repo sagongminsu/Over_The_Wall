@@ -16,12 +16,12 @@ public class CharacterHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (IsDead) return; 
-        health = Mathf.Max(health - damage, 0); 
+        if (IsDead) return;
+        health = Mathf.Max(health - damage, 0);
 
         if (IsDead)
-            OnDie?.Invoke(); 
+            OnDie?.Invoke();
 
-        Debug.Log($"Current Health: {health}"); 
+        Debug.Log($"Current Health: {health}");
     }
 }

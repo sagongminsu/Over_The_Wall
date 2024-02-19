@@ -21,10 +21,10 @@ public class WeaponColliderController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        AiStateMachine aiStateMachine = collider.GetComponentInParent<AiStateMachine>();
-        if (aiStateMachine != null)
-        {
-            aiStateMachine.OnAttacked();
-        }
+       // AiStateMachine aiStateMachine = collider.GetComponentInParent<AiStateMachine>();
+      //  if (aiStateMachine != null)
+      //  {
+      //       aiStateMachine.OnAttacked();
+       // }
     }
 }

@@ -7,6 +7,7 @@ public class OpenWasher : MonoBehaviour, IInteraction
     float closeRotationY = -35f;
     float rotationSpeed = 50f;
 
+    bool isOpen = false;
     bool isRotating = false;
 
     public void OnInteract()
@@ -21,24 +22,26 @@ public class OpenWasher : MonoBehaviour, IInteraction
     {
         isRotating = true;
 
-        float currentY = transform.rotation.eulerAngles.y;
-        float targetY = (currentY != openRotationY) ? openRotationY : closeRotationY;
+        Quaternion startRotation = transform.localRotation;
+        Quaternion targetRotation = isOpen ? Quaternion.Euler(0, closeRotationY, 0) : Quaternion.Euler(0, openRotationY, 0);
 
-        while (Mathf.Abs(currentY - targetY) > 0.01f)
+        float elapsedTime = 0f;
+        float duration = Quaternion.Angle(startRotation, targetRotation) / rotationSpeed;
+
+        while (elapsedTime < duration)
         {
-            currentY = Mathf.MoveTowards(currentY, targetY, rotationSpeed * Time.deltaTime);
-
-            Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, currentY, transform.rotation.eulerAngles.z);
-            transform.rotation = targetRotation;
-
+            transform.localRotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
 
+        transform.localRotation = targetRotation;
+        isOpen = !isOpen;
         isRotating = false;
     }
 
     public string GetInteractPrompt()
     {
-        return "Interaction 열기";
+        return isOpen ? "Interaction 열기" : "Interaction 닫기";
     }
 }

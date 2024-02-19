@@ -9,9 +9,8 @@ public class SlidingDoor : MonoBehaviour, IInteraction
     float closePositionX = -1.47f;
     float slideSpeed = 1.5f;
 
+    bool isOpen = false;
     bool isMoving = false;
-
-
 
     void Start()
     {
@@ -32,7 +31,7 @@ public class SlidingDoor : MonoBehaviour, IInteraction
         ToggleObject(false);
 
         float currentX = transform.localPosition.x; // 로컬 좌표계 기준으로 변경
-        float targetX = (currentX != openPositionX) ? openPositionX : closePositionX;
+        float targetX = isOpen ? closePositionX : openPositionX;
 
         float startTime = Time.time;
 
@@ -50,13 +49,14 @@ public class SlidingDoor : MonoBehaviour, IInteraction
 
         transform.localPosition = new Vector3(targetX, transform.localPosition.y, transform.localPosition.z);
 
+        isOpen = !isOpen;
         isMoving = false;
         ToggleObject(true);
     }
 
     public string GetInteractPrompt()
     {
-        return "Interaction 열기";
+        return isOpen ? "Interaction 닫기" : "Interaction 열기";
     }
 
     private void ToggleObject(bool enable)

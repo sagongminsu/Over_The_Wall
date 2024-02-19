@@ -1,9 +1,15 @@
+using System;
+using UnityEditor.Animations;
+using UnityEngine;
+
 public class PlayerComboAttackState : PlayerAttackState
 {
     private bool alreadyAppliedForce;
     private bool alreadyApplyCombo;
 
     AttackInfoData attackInfoData;
+
+    EquipManager equipManager = EquipManager.instance;
 
     public PlayerComboAttackState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -12,6 +18,7 @@ public class PlayerComboAttackState : PlayerAttackState
     public override void Enter()
     {
         base.Enter();
+
         StartAnimation(stateMachine.Player.AnimationData.ComboAttackParameterHash);
 
         alreadyApplyCombo = false;
@@ -19,12 +26,14 @@ public class PlayerComboAttackState : PlayerAttackState
 
         int comboIndex = stateMachine.ComboIndex;
         attackInfoData = stateMachine.Player.Data.AttackData.GetAttackInfo(comboIndex);
-        stateMachine.Player.Animator.SetInteger("Combo", comboIndex);
+        stateMachine.Player.PlayerAnimator.SetInteger("Combo", comboIndex);
+        stateMachine.Player.ArmAnimator.SetInteger("Combo", comboIndex);
     }
 
     public override void Exit()
     {
         base.Exit();
+
         StopAnimation(stateMachine.Player.AnimationData.ComboAttackParameterHash);
 
         if (!alreadyApplyCombo)
@@ -57,8 +66,15 @@ public class PlayerComboAttackState : PlayerAttackState
         base.Update();
 
         ForceMove();
+        
+        UpdateAttackStateMachine(stateMachine.Player.PlayerAnimator, GetWeaponType(equipManager));
+        UpdateAttackStateMachine(stateMachine.Player.ArmAnimator, GetWeaponType(equipManager));
+    }
 
-        float normalizedTime = GetNormalizedTime(stateMachine.Player.Animator, "Attack");
+    private void UpdateAttackStateMachine(Animator animator, string Weapon)
+    {
+        float normalizedTime = GetNormalizedTime(animator, Weapon);
+
         if (normalizedTime < 1f)
         {
             if (normalizedTime >= attackInfoData.ForceTransitionTime)
@@ -76,8 +92,9 @@ public class PlayerComboAttackState : PlayerAttackState
             }
             else
             {
-                stateMachine.ChangeState(stateMachine.AimingIdleState);
+                stateMachine.ChangeState(stateMachine.IdleState);
             }
         }
     }
+
 }

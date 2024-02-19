@@ -6,9 +6,10 @@ public class NPCInteraction : MonoBehaviour, IInteraction
 {
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
+    public QuestManager questManager;
 
     private bool isInteracting = false;
-    private bool canInteract = true; // 추가된 변수
+    private bool canInteract = true;
     private int currentDialogueIndex = 0;
     private string[] dialogues;
 
@@ -19,7 +20,8 @@ public class NPCInteraction : MonoBehaviour, IInteraction
 
     public void OnInteract()
     {
-        if (!isInteracting && dialogues != null && dialogues.Length > 0 && canInteract) // 상호작용 가능한 상태일 때만 대화 시작
+        // 대화 중 또는 상호작용 불가능한 상태에서는 대화를 시작하지 않음
+        if (!isInteracting && dialogues != null && dialogues.Length > 0 && canInteract)
         {
             StartDialogue();
         }
@@ -65,7 +67,7 @@ public class NPCInteraction : MonoBehaviour, IInteraction
         }
     }
 
-    IEnumerator EnableInteractionAfterDelay(float delay) 
+    IEnumerator EnableInteractionAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         canInteract = true;
@@ -73,7 +75,15 @@ public class NPCInteraction : MonoBehaviour, IInteraction
 
     void CloseDialoguePanel()
     {
+        // 퀘스트 상태에 따라 대화가 종료된 후의 동작을 다르게 처리
+        if (questManager.quest1Completed == true)
+        {
+            questManager.CompleteQuest2();
+        }
         dialoguePanel.SetActive(false);
+        questManager.CompleteQuest1();
+
+        // 대화 종료 후 초기화
         isInteracting = false;
         currentDialogueIndex = 0;
         canInteract = false;

@@ -51,7 +51,7 @@ public class PullingDoor : MonoBehaviour, IInteraction
 
     public string GetInteractPrompt()
     {
-        return "Interaction 열기";
+        return isOpen ? "Interaction 닫기" : "Interaction 열기";
     }
 
     private void ToggleObject(bool enable)

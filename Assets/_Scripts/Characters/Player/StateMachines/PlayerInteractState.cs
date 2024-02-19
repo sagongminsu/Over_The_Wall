@@ -15,7 +15,6 @@ public class PlayerInteractState : PlayerGroundedState
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 0;
 
         if (!hasInteracted && interactionManager.CurrentInteractGameObject != null && interactionManager.CurrentInteraction != null)
         {
@@ -27,17 +26,16 @@ public class PlayerInteractState : PlayerGroundedState
         {
             //Debug.LogError("Interaction failed. Check if the object implements IInteraction interface.");
         }
-        //¿©±â¿¡¼­ ÅØ½ºÆ®¸¦ ²ô°í °ÔÀÌÁö°¡ ¿ÂµÇ¾î¾ßÇÔ
+        //ï¿½ï¿½ï¿½â¿¡ï¿½ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÂµÇ¾ï¿½ï¿½ï¿½ï¿½
 
         base.Enter();
     }
 
     public override void Exit()
     {
-        Debug.Log("OFF");
 
         base.Exit();
-        //exit ¾Ö´Ï¸ÞÀÌ¼Ç ³ÖÀ»°Å¸é ³ÖÀ¸¸éµÊ
+        //exit ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     public override void Update()
@@ -57,7 +55,14 @@ public class PlayerInteractState : PlayerGroundedState
     protected override void OnInteractionCanceled(InputAction.CallbackContext context)
     {
         base.OnInteractionCanceled(context);
-        stateMachine.ChangeState(stateMachine.IdleState);
+
+        if (stateMachine.IsCrouch)
+            stateMachine.ChangeState(stateMachine.CrouchIdleState);
+        else if (stateMachine.MovementSpeedModifier == groundData.RunSpeedModifier)
+            stateMachine.ChangeState(stateMachine.RunState);
+        else
+            stateMachine.ChangeState(stateMachine.IdleState);
+
     }
 
     public void SetHasInteracted(bool value)

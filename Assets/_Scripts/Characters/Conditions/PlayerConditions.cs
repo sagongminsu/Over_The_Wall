@@ -118,8 +118,8 @@ public class PlayerConditions : MonoBehaviour, IDamagable
 
     public void TakeDamage(int damage)
     {
+        Debug.Log($"TakeDamage 호출됨. 받은 대미지: {damage}");
         health.Subtract(damage);
-        Debug.Log($"플레이어가 {damage} 만큼의 데미지를 받았습니다.");
         if (onTakeDamage != null)
         {
             onTakeDamage.Invoke(); // 피해 입었을 때의 이벤트 발생

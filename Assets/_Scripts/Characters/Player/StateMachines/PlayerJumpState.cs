@@ -25,6 +25,14 @@ public class PlayerJumpState : PlayerAirState
         StopAnimation(stateMachine.Player.AnimationData.JumpParameterHash);
     }
 
+    public override void Update()
+    {
+        base.Update();
+
+        float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
+        stateMachine.Player.PlayerAnimator.SetFloat("Speed", currentSpeed);
+    }
+
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
