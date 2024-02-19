@@ -7,9 +7,15 @@ public class gameManager : MonoBehaviour
 
     public static gameManager I;
 
+    public float defaultMouseSensitivity = 5.0f;
+
+    private float currentMouseSensitivity;
+
     void Awake()
     {
         I = this;
+
+        currentMouseSensitivity = defaultMouseSensitivity;
     }
 
     public bool CheckTime(int startTime, int endTime)
@@ -61,6 +67,15 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("저장된 게임 데이터를 찾을 수 없습니다.");
         }
+    }
+    public void SetMouseSensitivity(float sensitivity)
+    {
+        currentMouseSensitivity = sensitivity;
+    }
+
+    public float GetMouseSensitivity()
+    {
+        return currentMouseSensitivity;
     }
 
     public void DeleteSavedGame()

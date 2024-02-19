@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36244e0afc3b63847a846298ba8cda78
+guid: 5f60e54bb1ad5b548ad79cd82c950dc8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -19,7 +19,7 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
       rotation in copied configuration does not match rotation in animation file:\n\t'chest-1'
-      : rotation error = 19.898943 deg\n\t'deltoid_R' : rotation error = 9.618061
+      : rotation error = 1.186348 deg\n\t'deltoid_R' : rotation error = 9.618061
       deg\n\t'deltoid_L' : rotation error = 9.618061 deg\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
@@ -42,8 +42,8 @@ ModelImporter:
       name: Jumping
       takeName: mixamo.com
       internalID: -203655887218126122
-      firstFrame: 0
-      lastFrame: 24
+      firstFrame: 0.5
+      lastFrame: 142
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -52,9 +52,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0

@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+
 public class ItemSlot
 {
     public ItemData_ item;
@@ -185,17 +184,35 @@ public class Inventory : MonoBehaviour
         unEquipButton.SetActive(false);
         dropButton.SetActive(false);
     }
+
     public void OnEquipButton()
     {
+        if (uiSlots[curEquipIndex].equipped)
+        {
+            UnEquip(selectedItemIndex);
+        }
 
+        uiSlots[selectedItemIndex].equipped = true;
+        curEquipIndex = selectedItemIndex;
+        EquipManager.instance.EquipNew(selectedItem.item);
+        UpdateUi();
+
+        SelectItem(selectedItemIndex);
     }
+
     void UnEquip(int index)
     {
+        uiSlots[index].equipped = false;
+        EquipManager.instance.UnEquip();
+        UpdateUi();
 
+        if (selectedItemIndex == index)
+            SelectItem(index);
     }
+
     public void OnUnEquipButton()
     {
-
+        UnEquip(selectedItemIndex);
     }
     public void OnDropButton()
     {

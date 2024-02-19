@@ -14,14 +14,12 @@ public class PlayerRunState : PlayerGroundedState
         base.Enter();
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
         StartAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
-        Debug.Log("Run ON");
     }
 
     public override void Exit()
     {
         base.Exit();
         StopAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
-        Debug.Log("Run OFF");
     }
 
     public override void Update()
@@ -43,7 +41,7 @@ public class PlayerRunState : PlayerGroundedState
 
         float currentSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
         //Debug.Log(currentSpeed);
-        stateMachine.Player.Animator.SetFloat("Speed", currentSpeed);
+        stateMachine.Player.PlayerAnimator.SetFloat("Speed", currentSpeed);
     }
 
     private bool DrainStamina(float amount)

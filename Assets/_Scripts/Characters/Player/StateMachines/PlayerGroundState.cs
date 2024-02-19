@@ -30,11 +30,17 @@ public class PlayerGroundedState : PlayerBaseState
             return;
         }
 
-        if (stateMachine.IsInteracting)
+        //if (stateMachine.IsInteracting)
+        //{
+        //    OnInteraction();
+        //    return;
+        //}
+        if (stateMachine.IsCrouch)
         {
-            OnInteraction();
+            OnCrouch();
             return;
         }
+
     }
 
     public override void PhysicsUpdate()
@@ -56,7 +62,6 @@ public class PlayerGroundedState : PlayerBaseState
             return;
         }
         stateMachine.ChangeState(stateMachine.IdleState);
-
         base.OnMovementCanceled(context);
     }
 
@@ -68,7 +73,6 @@ public class PlayerGroundedState : PlayerBaseState
             stateMachine.ChangeState(stateMachine.AimingWalkState);
         else
             stateMachine.ChangeState(stateMachine.WalkState);
-
     }
 
     protected override void OnJumpStarted(InputAction.CallbackContext context)
@@ -81,16 +85,29 @@ public class PlayerGroundedState : PlayerBaseState
         base.OnRunCanceled(context);
         stateMachine.ChangeState(stateMachine.IdleState);
     }
+    protected override void OnInteractionStarted(InputAction.CallbackContext context)
+    {
+        base.OnInteractionStarted(context);
+        stateMachine.ChangeState(stateMachine.InteractState);
+    }
 
     protected virtual void OnAttack()
     {
         stateMachine.ChangeState(stateMachine.ComboAttackState);
     }
 
-    protected virtual void OnInteraction()
+    protected virtual void OnCrouch()
     {
-        stateMachine.ChangeState(stateMachine.InteractState);
+        stateMachine.ChangeState(stateMachine.CrouchIdleState);
+
+        if (stateMachine.MovementInput != Vector2.zero)
+            stateMachine.ChangeState(stateMachine.CrouchWalkState);
     }
+
+    //protected virtual void OnInteraction()
+    //{
+    //    stateMachine.ChangeState(stateMachine.InteractState);
+    //}
 
     protected virtual void OnAim()
     {

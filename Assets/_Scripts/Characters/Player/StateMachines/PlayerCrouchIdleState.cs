@@ -28,17 +28,15 @@ public class PlayerCrouchIdleState : PlayerGroundedState
     {
         base.Update();
 
-        if (stateMachine.IsCrouch)
+        if (stateMachine.MovementInput != Vector2.zero)
         {
-            if (stateMachine.MovementInput != Vector2.zero)
-            {
-                OnMove();
-                return;
-            }
+            OnMove();
+            return;
         }
         if (!stateMachine.IsCrouch)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
+
 }

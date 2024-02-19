@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -15,7 +16,8 @@ public class Player : MonoBehaviour
     
 
     public Rigidbody Rigidbody { get; private set; }
-    public Animator Animator { get; private set; }
+    public Animator PlayerAnimator { get; private set; }
+    public Animator ArmAnimator { get; private set; }
     public PlayerInput Input { get; private set; }
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
@@ -24,17 +26,18 @@ public class Player : MonoBehaviour
 
     private PlayerStateMachine stateMachine;
 
-
-
+    private gameManager gameManager;
 
     private void Awake()
     {
+        gameManager = gameManager.I;
 
         AnimationData.Initialize();
 
         Conditions = GetComponent<PlayerConditions>();
         Rigidbody = GetComponent<Rigidbody>();
-        Animator = GetComponentInChildren<Animator>();
+        PlayerAnimator = GetComponentInChildren<Animator>();
+        ArmAnimator = GetAnimator("Arm");
         Input = GetComponent<PlayerInput>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
@@ -48,14 +51,13 @@ public class Player : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        stateMachine.ChangeState(stateMachine.IdleState);
+        stateMachine.ChangeState(stateMachine.IdleState);  
     }
 
     private void Update()
     {
         stateMachine.HandleInput();
         stateMachine.Update();
-
 
     }
 
@@ -68,11 +70,21 @@ public class Player : MonoBehaviour
     {
         WeaponColliderController weapon = GetComponentInChildren<WeaponColliderController>();
 
-        if (weapon == null)
-        {
-            Debug.LogError($"No {weaponName} found in children. Make sure it's assigned in the Unity Inspector.");
-        }
-
         return weapon;
     }
+
+    private Animator GetAnimator(string animatorName)
+    {
+        Transform animatorTransform = transform.Find(animatorName);
+
+        Animator animator = animatorTransform.GetComponent<Animator>();
+
+        return animator;
+    }
+
+    public float MouseSensitivity()
+    {
+        return gameManager.GetMouseSensitivity();
+    }
+    
 }

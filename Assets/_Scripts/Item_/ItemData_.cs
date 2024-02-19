@@ -16,6 +16,14 @@ public enum ConsumableType
     Stemina
 }
 
+public enum WeaponType
+{
+    Pistol,
+    OHMelee,
+    THMelee,
+    Range,
+}
+
 [System.Serializable]
 public class ItemDataConsumable
 {
@@ -39,5 +47,9 @@ public class ItemData_ : ScriptableObject
 
     [Header("Consumable")]
     public ItemDataConsumable[] consumables;
+
+    [Header("Equip")]
+    public GameObject equipPrefab;
+    public WeaponType weaponType;
 
 }

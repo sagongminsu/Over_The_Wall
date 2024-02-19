@@ -8,7 +8,7 @@ TagManager:
   - PlayerAttack
   - Ai
   - PlayerWeapon
-  - AiWeapon
+  - Arm
   layers:
   - Default
   - TransparentFX
