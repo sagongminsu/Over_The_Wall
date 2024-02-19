@@ -633,6 +633,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7203250407087254848}
+  - component: {fileID: 7684191267694410132}
+  - component: {fileID: 9009072663113839044}
   m_Layer: 6
   m_Name: hand_L
   m_TagString: Untagged
@@ -660,6 +662,40 @@ Transform:
   m_Father: {fileID: 9026789028550778970}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7684191267694410132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584871973129362133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafd5dd3f28687e4188fd74620e986d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCollider: {fileID: 1495945337952572699}
+--- !u!65 &9009072663113839044
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584871973129362133}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 4.15, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &673025666315965429
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,6 +978,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4998420459362066393}
+  - component: {fileID: 9132048507721976629}
+  - component: {fileID: 3577183752136763362}
   m_Layer: 6
   m_Name: hand_R
   m_TagString: Untagged
@@ -969,6 +1007,40 @@ Transform:
   m_Father: {fileID: 2904047561436058543}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9132048507721976629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320823447937125501}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 4.15, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3577183752136763362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320823447937125501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4109a937d88a84da7229f9e2443508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCollider: {fileID: 1495945337952572699}
 --- !u!1 &1344191177892869456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1125,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 895e4a0ccb0252c49aef281a66c94269, type: 2}
+  - {fileID: 2100000, guid: 49252c89002396947a66cd7fd4b57188, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3301,6 +3373,12 @@ GameObject:
   - component: {fileID: 4349700082741483843}
   - component: {fileID: 8157468162041571599}
   - component: {fileID: 1495945337952572699}
+  - component: {fileID: 1611456087221075848}
+  - component: {fileID: 8261940725046616578}
+  - component: {fileID: 817421404971392959}
+  - component: {fileID: 1365279701840208993}
+  - component: {fileID: 3604924812809363058}
+  - component: {fileID: 8942033606388072574}
   m_Layer: 6
   m_Name: GangBossNPCprisoner
   m_TagString: Untagged
@@ -3340,7 +3418,7 @@ Transform:
   - {fileID: 6924727682888943259}
   - {fileID: 9090732250065268933}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4349700082741483843
 Animator:
@@ -3352,7 +3430,7 @@ Animator:
   m_GameObject: {fileID: 5535282565598195709}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: dc7b2d5c7f783964bb7e48641b72eaa0, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96c43150d8b6ba8418d5feeaed0c37c9, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3401,6 +3479,133 @@ CapsuleCollider:
   m_Height: 1.8075887
   m_Direction: 1
   m_Center: {x: -0.0032653809, y: 0.9056224, z: 0.021881104}
+--- !u!114 &1611456087221075848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535282565598195709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c890bfb4abc1dd4888c1f0411711d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Data>k__BackingField: {fileID: 11400000, guid: d16622ed448e52644bb5dbe64aba8e03,
+    type: 2}
+  <AnimationData>k__BackingField:
+    groundParameterName: '@Ground'
+    runParameterName: Run
+    airParameterName: '@Air'
+    jumpParameterName: Jump
+    fallParameterName: Fall
+    attackParameterName: '@Attack'
+    comboAttackParameterName: ComboAttack
+    aimingParameterName: Aiming
+    standingParameterName: Standing
+    crouchParameterName: Crouch
+  <RightHandWeapon>k__BackingField: {fileID: 3577183752136763362}
+  <LeftHandWeapon>k__BackingField: {fileID: 7684191267694410132}
+--- !u!114 &8261940725046616578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535282565598195709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f73a86a883d68845b908f79cfe60927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+--- !u!54 &817421404971392959
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535282565598195709}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1365279701840208993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535282565598195709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abc6791278b6874c9b7446696138655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!143 &3604924812809363058
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535282565598195709}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.29
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.11, z: 0}
+--- !u!195 &8942033606388072574
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535282565598195709}
+  m_Enabled: 0
+  m_AgentTypeID: -1923039037
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &5575881775944671502
 GameObject:
   m_ObjectHideFlags: 0
