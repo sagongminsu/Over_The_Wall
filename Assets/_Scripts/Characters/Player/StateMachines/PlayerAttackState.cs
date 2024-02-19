@@ -108,7 +108,7 @@ public class PlayerAttackState : PlayerBaseState
             }
         }
 
-        return "Pistol";
+        return "OHMelee";
     }
 
     private void StartAnim()
