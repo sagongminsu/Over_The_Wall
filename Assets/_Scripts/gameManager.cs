@@ -11,17 +11,19 @@ public class gameManager : MonoBehaviour
     {
         I = this;
     }
+
     public bool CheckTime(int startTime, int endTime)
     {
-        if(dayNightCycle.Hours >= startTime && dayNightCycle.Hours <= endTime )
+        if (dayNightCycle.Hours >= startTime && dayNightCycle.Hours <= endTime)
         {
             return true;
         }
-        else 
+        else
         {
             return false;
         }
     }
+
     public void SaveGame()
     {
         PlayerData playerData = new PlayerData
@@ -39,6 +41,7 @@ public class gameManager : MonoBehaviour
 
         Debug.Log("Game saved!");
     }
+
     public void LoadGame()
     {
         if (PlayerPrefs.HasKey("SavedGameData"))
@@ -60,4 +63,16 @@ public class gameManager : MonoBehaviour
         }
     }
 
+    public void DeleteSavedGame()
+    {
+        if (PlayerPrefs.HasKey("SavedGameData"))
+        {
+            PlayerPrefs.DeleteKey("SavedGameData");
+            Debug.Log("Saved game data deleted!");
+        }
+        else
+        {
+            Debug.Log("No saved game data found to delete.");
+        }
+    }
 }
