@@ -9,34 +9,42 @@ public class RightWeapon : MonoBehaviour
     private int damage;
     private float knockback;
 
-    private List<Collider> alreadyColliderWith = new List<Collider>();
+    private List<Collider> alreadyCollidedWith = new List<Collider>();
 
     private void OnEnable()
     {
-        alreadyColliderWith.Clear();
+        ResetCollisions();
+    }
+
+    // 새로운 공격이 시작될 때 호출될 메소드
+    public void ResetCollisions()
+    {
+        alreadyCollidedWith.Clear();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other == myCollider) return;
-        if (!other.CompareTag("Player")) return; // "Player" 태그를 가진 객체에만 대미지 적용
-        if (alreadyColliderWith.Contains(other)) return;
+        if (!other.CompareTag("Player")) return;
+        if (alreadyCollidedWith.Contains(other)) return;
 
-        alreadyColliderWith.Add(other);
+        alreadyCollidedWith.Add(other);
 
-        // 플레이어에게 대미지 적용
-        if (other.TryGetComponent(out PlayerConditions health))
+        // 플레이어에게 데미지 및 넉백 적용
+        ApplyDamageAndKnockback(other);
+    }
+
+    private void ApplyDamageAndKnockback(Collider target)
+    {
+        if (target.TryGetComponent(out PlayerConditions health))
         {
             health.TakeDamage(damage);
-            Debug.Log($"[Weapon] 플레이어 {other.name}에게 {damage} 대미지 적용.");
         }
 
-        // 플레이어에게 넉백 적용
-        if (other.TryGetComponent(out ForceReceiver forceReceiver))
+        if (target.TryGetComponent(out ForceReceiver forceReceiver))
         {
-            Vector3 direction = (other.transform.position - myCollider.transform.position).normalized;
+            Vector3 direction = (target.transform.position - transform.position).normalized;
             forceReceiver.AddForce(direction * knockback);
-        
         }
     }
 
@@ -45,5 +53,4 @@ public class RightWeapon : MonoBehaviour
         this.damage = damage;
         this.knockback = knockback;
     }
-
 }

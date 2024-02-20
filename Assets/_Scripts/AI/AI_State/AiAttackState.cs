@@ -22,6 +22,16 @@ public class AiAttackState : AiBaseState
         base.Enter();
         StartAnimation(stateMachine.Ai.AnimationData.AttackParameterHash);
 
+        // 공격 상태에 진입할 때 무기의 충돌 처리 리스트를 초기화
+        if (stateMachine.Ai.RightHandWeapon != null)
+        {
+            stateMachine.Ai.RightHandWeapon.ResetCollisions();
+        }
+
+        if (stateMachine.Ai.LeftHandWeapon != null)
+        {
+            stateMachine.Ai.LeftHandWeapon.ResetCollisions();
+        }
     }
 
     public override void Exit()

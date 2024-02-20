@@ -17,7 +17,7 @@ MonoBehaviour:
   <ForceTransitionTime>k__BackingField: 0.25
   <Force>k__BackingField: 0.2
   <Damage>k__BackingField: 20
-  <Dealing_Start_TransitionTime>k__BackingField: 0.048
+  <Dealing_Start_TransitionTime>k__BackingField: 0.174
   <Dealing_End_TransitionTime>k__BackingField: 0.512
   <GroundedData>k__BackingField:
     <BaseSpeed>k__BackingField: 5
@@ -30,8 +30,8 @@ MonoBehaviour:
     <AttackInfoDatas>k__BackingField:
     - <AttackName>k__BackingField: 1
       <ComboStateIndex>k__BackingField: 0
-      <ComboTransitionTime>k__BackingField: 1.9
-      <ForceTransitionTime>k__BackingField: 2.32
+      <ComboTransitionTime>k__BackingField: 0.71
+      <ForceTransitionTime>k__BackingField: 1.66
       <Force>k__BackingField: 0
       <Damage>k__BackingField: 5
     - <AttackName>k__BackingField: 2
