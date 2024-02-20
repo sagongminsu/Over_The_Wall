@@ -25,10 +25,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        audioSource = GetComponent<AudioSource>();
-
-        // BGM을 위한 AudioSource 추가
-        bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.loop = false; // BGM은 반복 재생하지 않도록 설정
     }
 
