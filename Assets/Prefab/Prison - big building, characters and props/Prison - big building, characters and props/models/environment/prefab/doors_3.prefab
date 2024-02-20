@@ -309,6 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45354199902f3df45bbea2fe6c485d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorSound: {fileID: 8300000, guid: f12452983896aa9488baa1e1f1bedacb, type: 3}
 --- !u!64 &3176775779921842524
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -696,6 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e58d47f50b4e945ab5f07262646d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorSound: {fileID: 8300000, guid: f12452983896aa9488baa1e1f1bedacb, type: 3}
 --- !u!64 &2451831347130406132
 MeshCollider:
   m_ObjectHideFlags: 0
