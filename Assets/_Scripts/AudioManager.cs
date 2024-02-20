@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip[] doorSounds = new AudioClip[3]; // 도어 사운드를 저장하는 배열
     public AudioClip[] bgmTracks; // BGM 트랙을 저장하는 배열
+    public AudioSource walkSoundSource; // 걷는 소리 AudioSource
 
     public AudioSource audioSource;
     public AudioSource bgmSource;
@@ -79,6 +81,31 @@ public class AudioManager : MonoBehaviour
         if (!bgmSource.isPlaying)
         {
             OnBGMTrackEnd();
+        }
+    }
+
+    // 걷는 소리 재생
+    public void PlayWalkSound(float pitch)
+    {
+        if (walkSoundSource != null)
+        {
+            walkSoundSource.pitch = pitch; // Pitch 설정
+            walkSoundSource.loop = true; // 루프 설정
+            walkSoundSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Walk sound source is missing!");
+        }
+    }
+
+    // 걷는 소리 중지
+    public void StopWalkSound()
+    {
+        if (walkSoundSource != null && walkSoundSource.isPlaying)
+        {
+            walkSoundSource.Stop();
+            walkSoundSource.loop = false; // 루프 중지
         }
     }
 }
