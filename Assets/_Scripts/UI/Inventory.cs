@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
     public ItemSlotUI[] uiSlots;
     public GameObject Inven;
     public ItemData_ itemData_;
+    public bool Open;
 
     public ItemSlot[] slots;
 
@@ -25,7 +26,6 @@ public class Inventory : MonoBehaviour
     public TMPro.TextMeshProUGUI selectedItemName;
     public TMPro.TextMeshProUGUI selectedItemDescription;
     public TMPro.TextMeshProUGUI selectedItemStatNames;
-    public TMPro.TextMeshProUGUI selectedItemCount;
     public TMPro.TextMeshProUGUI selectedItemStatValues;
     public GameObject useButton;
     public GameObject equipButton;
@@ -46,7 +46,6 @@ public class Inventory : MonoBehaviour
     void Awake()
     {
         instance = this;
-        playerInput = GetComponent<PlayerInput>();
         playerConditions = GetComponent<PlayerConditions>();
     }
     private void Start()
@@ -68,14 +67,32 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(OpenInven))
         {
             Toggle();
+            if (Open)
+            {
+                Inven.SetActive(true);
+                Time.timeScale = 0;
+            }
+            else if (!Open)
+            {
+                Inven.SetActive(false);
+                Time.timeScale = 1;
+            }
+            
         }
     }
 
-    private void Toggle()
-    {
-        bool Open = Inven.activeSelf;
-        Inven.SetActive(!Open);
-    }
+      private void Toggle()
+        {
+            if (Open)
+            {
+                Open = false;
+            }
+            else if (!Open)
+            {
+                Open = true;
+            }
+        }
+    
 
     public void AddItem(ItemData_ item)
     {
@@ -175,7 +192,7 @@ public class Inventory : MonoBehaviour
         selectedItem = null;
         selectedItemName.text = string.Empty;
         selectedItemDescription.text = string.Empty;
-
+        selectedItemStatValues.text = string.Empty;
         selectedItemStatNames.text = string.Empty;
 
 
@@ -256,7 +273,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(ItemData_ item, int quantity)
     {
-
+      
     }
 
     public bool HasItems(ItemData_ item, int quantity)
