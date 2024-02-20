@@ -18,11 +18,13 @@ public class AiAttackState : AiBaseState
         RigntalreadyAppliedDealing = false;
         LeftalreadyAppliedDealing = false;
 
+
         stateMachine.MovementSpeedModifier = 0;
         base.Enter();
+        float damage = stateMachine.Ai.Data.Damage;
         StartAnimation(stateMachine.Ai.AnimationData.AttackParameterHash);
 
-        // 공격 상태에 진입할 때 무기의 충돌 처리 리스트를 초기화
+ 
         if (stateMachine.Ai.RightHandWeapon != null)
         {
             stateMachine.Ai.RightHandWeapon.ResetCollisions();
@@ -60,27 +62,24 @@ public class AiAttackState : AiBaseState
                 TryApplyForce();
             }
 
-            //오른손
+            
             if (!RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
             {
                 stateMachine.Ai.RightHandWeapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
                 stateMachine.Ai.RightHandWeapon.gameObject.SetActive(true);
                 RigntalreadyAppliedDealing = true;
             }
-
-            if (RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
+            if (!RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
             {
                 stateMachine.Ai.RightHandWeapon.gameObject.SetActive(false);
             }
-            //왼손
             if (!LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
             {
                 stateMachine.Ai.LeftHandWeapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
                 stateMachine.Ai.LeftHandWeapon.gameObject.SetActive(true);
                 LeftalreadyAppliedDealing = true;
             }
-
-            if (LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
+            if (!LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
             {
                 stateMachine.Ai.LeftHandWeapon.gameObject.SetActive(false);
             }

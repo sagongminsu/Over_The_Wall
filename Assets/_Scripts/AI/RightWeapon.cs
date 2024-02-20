@@ -50,6 +50,7 @@ public class RightWeapon : MonoBehaviour
 
     public void SetAttack(int damage, float knockback)
     {
+        Debug.Log($"Setting attack with damage: {damage} and knockback: {knockback}");
         this.damage = damage;
         this.knockback = knockback;
     }
