@@ -4,6 +4,9 @@ using System.Collections;
 public class PushingDoor : MonoBehaviour, IInteraction
 {
     private Collider ObjectCollider;
+    private AudioSource audioSource; // AudioSource 컴포넌트를 저장할 변수 추가
+
+    public AudioClip doorSound; // 문 열고 닫힐 때 재생할 사운드 파일
 
     float openRotationY = 87f;
     float closeRotationY = 0f;
@@ -47,6 +50,7 @@ public class PushingDoor : MonoBehaviour, IInteraction
         isOpen = !isOpen;
         isMoving = false;
         ToggleObject(true);
+        audioSource.PlayOneShot(doorSound); // 열리는/닫히는 소리 재생
     }
 
     public string GetInteractPrompt()
