@@ -990,7 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e894cebbed6edc44ea4fe9784088da40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &340158453
+--- !u!82 &340158454
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -999,7 +999,8 @@ AudioSource:
   m_GameObject: {fileID: 340158449}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1762439173621791754, guid: a2aca57c806582142adb39f19a50c745,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1086,7 +1087,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &340158454
+--- !u!82 &340158457
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1095,7 +1096,8 @@ AudioSource:
   m_GameObject: {fileID: 340158449}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3525095251740362606, guid: a2aca57c806582142adb39f19a50c745,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -2085,9 +2087,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 340158450}
-        m_TargetAssemblyTypeName: AudioVolumeController, Assembly-CSharp
-        m_MethodName: SetSFXVolume
+      - m_Target: {fileID: 340158454}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_volume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3881,9 +3883,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 340158450}
-        m_TargetAssemblyTypeName: AudioVolumeController, Assembly-CSharp
-        m_MethodName: SetBGMVolume
+      - m_Target: {fileID: 340158457}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_volume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4041,12 +4043,12 @@ PrefabInstance:
         type: 3}
       propertyPath: bgmSource
       value: 
-      objectReference: {fileID: 340158454}
+      objectReference: {fileID: 340158457}
     - target: {fileID: 5888465563746291805, guid: 25ee194f6f9645b4fb33c6ded98cc9ac,
         type: 3}
       propertyPath: audioSource
       value: 
-      objectReference: {fileID: 340158453}
+      objectReference: {fileID: 340158454}
     - target: {fileID: 5888465563746291805, guid: 25ee194f6f9645b4fb33c6ded98cc9ac,
         type: 3}
       propertyPath: bgmTracks.Array.size
@@ -4074,6 +4076,12 @@ PrefabInstance:
       objectReference: {fileID: 630070619}
     - target: {fileID: 6015861802258341212, guid: 25ee194f6f9645b4fb33c6ded98cc9ac,
         type: 3}
+      propertyPath: masterMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: a2aca57c806582142adb39f19a50c745,
+        type: 2}
+    - target: {fileID: 6015861802258341212, guid: 25ee194f6f9645b4fb33c6ded98cc9ac,
+        type: 3}
       propertyPath: masterVolumeSlider
       value: 
       objectReference: {fileID: 129373666}
@@ -4084,9 +4092,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5782428964972107014, guid: 25ee194f6f9645b4fb33c6ded98cc9ac,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 340158453}
+      addedObject: {fileID: 340158454}
     - targetCorrespondingSourceObject: {fileID: 5782428964972107014, guid: 25ee194f6f9645b4fb33c6ded98cc9ac,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 340158454}
+      addedObject: {fileID: 340158457}
   m_SourcePrefab: {fileID: 100100000, guid: 25ee194f6f9645b4fb33c6ded98cc9ac, type: 3}
