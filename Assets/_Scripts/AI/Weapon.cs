@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] private Collider myCollider;
 
-    private int damage;
+    private int damage = 10;
     private float knockback;
 
     private List<Collider> alreadyColliderWith = new List<Collider>();
@@ -32,13 +32,7 @@ public class Weapon : MonoBehaviour
             Debug.Log($"[Weapon] 플레이어 {collider.name}에게 {damage} 대미지 적용.");
         }
 
-        // Ai에게 넉백 적용
-        if (collider.TryGetComponent(out ForceReceiver forceReceiver))
-        {
-            Vector3 direction = (collider.transform.position - myCollider.transform.position).normalized;
-            forceReceiver.AddForce(direction * knockback);
-           
-        }
+
     }
 
     // Collider 활성화/비활성화
