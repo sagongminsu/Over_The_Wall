@@ -6,7 +6,7 @@ public class LeftWeapon : MonoBehaviour
 {
     [SerializeField] private Collider myCollider;
 
-    private int damage;
+    private int damage = 10;
     private float knockback;
 
     private List<Collider> alreadyCollidedWith = new List<Collider>();
@@ -25,32 +25,27 @@ public class LeftWeapon : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other == myCollider) return;
-        if (!other.CompareTag("Player")) return;
         if (alreadyCollidedWith.Contains(other)) return;
 
         alreadyCollidedWith.Add(other);
 
-        // 플레이어에게 데미지 및 넉백 적용
-        ApplyDamageAndKnockback(other);
-    }
-
-    private void ApplyDamageAndKnockback(Collider target)
-    {
-        if (target.TryGetComponent(out PlayerConditions health))
+        if (other.TryGetComponent(out PlayerConditions health))
         {
             health.TakeDamage(damage);
         }
 
-        if (target.TryGetComponent(out ForceReceiver forceReceiver))
+        if (other.TryGetComponent(out ForceReceiver forceReceiver))
         {
-            Vector3 direction = (target.transform.position - transform.position).normalized;
+            Vector3 direction = (other.transform.position - myCollider.transform.position).normalized;
             forceReceiver.AddForce(direction * knockback);
         }
+
+
     }
 
     public void SetAttack(int damage, float knockback)
     {
-        Debug.Log($"Setting attack with damage: {damage} and knockback: {knockback}");
+
         this.damage = damage;
         this.knockback = knockback;
     }

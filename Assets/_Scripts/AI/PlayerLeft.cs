@@ -6,7 +6,7 @@ public class PlayerLeft : MonoBehaviour
 {
     [SerializeField] private Collider myCollider;
 
-    private int damage;
+    private int damage = 10;
     private float knockback;
 
     private List<Collider> alreadyCollidedWith = new List<Collider>();
