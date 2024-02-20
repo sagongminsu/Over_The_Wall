@@ -4,9 +4,7 @@ using UnityEngine;
 public class SlidingDoor : MonoBehaviour, IInteraction
 {
     private Collider ObjectCollider;
-    private AudioSource audioSource; // AudioSource 컴포넌트를 저장할 변수 추가
-
-    public AudioClip doorSound; // 문 열고 닫힐 때 재생할 사운드 파일
+    private AudioManager audioManager;
 
     float openPositionX = -2.78f;
     float closePositionX = -1.47f;
@@ -18,7 +16,6 @@ public class SlidingDoor : MonoBehaviour, IInteraction
     void Start()
     {
         ObjectCollider = GetComponent<Collider>();
-        audioSource = GetComponent<AudioSource>(); // AudioSource 컴포넌트 가져오기
     }
 
     public void OnInteract()
@@ -57,7 +54,7 @@ public class SlidingDoor : MonoBehaviour, IInteraction
         isMoving = false;
         ToggleObject(true);
 
-        audioSource.PlayOneShot(doorSound); // 열리는/닫히는 소리 재생
+        audioManager.PlayDoorSound(1); // AudioManager에서 두 번째 door sound 재생
     }
 
     public string GetInteractPrompt()

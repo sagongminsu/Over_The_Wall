@@ -970,6 +970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 340158451}
   - component: {fileID: 340158450}
+  - component: {fileID: 340158452}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -1008,6 +1009,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &340158452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340158449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b673ff289ff58a943a346f914a88f81d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorSounds:
+  - {fileID: 8300000, guid: f12452983896aa9488baa1e1f1bedacb, type: 3}
+  - {fileID: 8300000, guid: 6cfb383b4d438cd4f9c867540b59125b, type: 3}
+  - {fileID: 8300000, guid: 616d3b3bb785a2b43a11df8ac7e9c4df, type: 3}
+  bgmTracks: []
 --- !u!1 &388261205
 GameObject:
   m_ObjectHideFlags: 0
