@@ -16,6 +16,8 @@ public class SlidingDoor : MonoBehaviour, IInteraction
     void Start()
     {
         ObjectCollider = GetComponent<Collider>();
+        audioManager = AudioManager.Instance; // AudioManager 인스턴스 가져오기
+
     }
 
     public void OnInteract()
@@ -35,6 +37,7 @@ public class SlidingDoor : MonoBehaviour, IInteraction
         float targetX = isOpen ? closePositionX : openPositionX;
 
         float startTime = Time.time;
+        audioManager.PlayDoorSound(1); // AudioManager에서 두 번째 door sound 재생
 
         while (Time.time - startTime < Mathf.Abs(currentX - targetX) / slideSpeed)
         {
@@ -54,7 +57,6 @@ public class SlidingDoor : MonoBehaviour, IInteraction
         isMoving = false;
         ToggleObject(true);
 
-        audioManager.PlayDoorSound(1); // AudioManager에서 두 번째 door sound 재생
     }
 
     public string GetInteractPrompt()
