@@ -66,7 +66,9 @@ public class PlayerComboAttackState : PlayerAttackState
         base.Update();
 
         ForceMove();
-        
+
+        if (equipManager == null) equipManager = EquipManager.instance;
+
         UpdateAttackStateMachine(stateMachine.Player.PlayerAnimator, GetWeaponType(equipManager));
         UpdateAttackStateMachine(stateMachine.Player.ArmAnimator, GetWeaponType(equipManager));
     }
