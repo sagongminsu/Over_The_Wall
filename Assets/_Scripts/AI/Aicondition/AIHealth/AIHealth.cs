@@ -27,7 +27,7 @@ public class AIHealth : CharacterHealth
             IDamagable damagable = collider.gameObject.GetComponent<IDamagable>();
             if (damagable != null)
             {
-                damagable.TakeDamage(aiStateMachine.Ai.Data.Damage); // AI의 대미지를 플레이어에 적용
+                damagable.TakeDamage(aiStateMachine.Ai.Data.Damage); // AI에게 대미지적용
             }
         }
     }

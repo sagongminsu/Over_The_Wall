@@ -5,10 +5,10 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
 
-    [SerializeField] private Collider myCollider;
+    [SerializeField] private Collider aCollider;
 
     private int damage = 10;
-    private float knockback;
+    
 
     private List<Collider> alreadyColliderWith = new List<Collider>();
 
@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider == myCollider) return;
+        if (collider == aCollider) return;
         if (!collider.CompareTag("Ai")) return; // "" 태그를 가진 객체에만 대미지 적용
         if (alreadyColliderWith.Contains(collider)) return;
 
@@ -29,7 +29,7 @@ public class Weapon : MonoBehaviour
         if (collider.TryGetComponent(out AIHealth health))
         {
             health.TakeDamage(damage);
-            Debug.Log($"[Weapon] 플레이어 {collider.name}에게 {damage} 대미지 적용.");
+            Debug.Log($"[Weapon] 플레이어 {collider.name}에게 {damage} 대미지 적용");
         }
 
 
@@ -38,7 +38,7 @@ public class Weapon : MonoBehaviour
     // Collider 활성화/비활성화
     public void ToggleColliders(bool state)
     {
-        myCollider.enabled = state;
+        aCollider.enabled = state;
     }
     
 }
