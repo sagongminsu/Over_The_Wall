@@ -36,7 +36,7 @@ public class RightWeapon : MonoBehaviour
         {
             Vector3 direction = (other.transform.position - myCollider.transform.position).normalized;
             forceReceiver.AddForce(direction * knockback);
-            Debug.Log($"[Weapon] 플레이어 {other.name}에게 넉백 적용: 방향 {direction}, 힘 {knockback}");
+        
         }
     }
 
