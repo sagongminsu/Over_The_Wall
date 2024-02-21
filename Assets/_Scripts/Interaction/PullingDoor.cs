@@ -4,6 +4,7 @@ using UnityEngine;
 public class PullingDoor : MonoBehaviour, IInteraction
 {
     private Collider ObjectCollider;
+    private AudioManager audioManager;
 
     float openRotationY = -87f;
     float closeRotationY = 0f;
@@ -14,6 +15,8 @@ public class PullingDoor : MonoBehaviour, IInteraction
     private void Start()
     {
         ObjectCollider = GetComponent<Collider>();
+        audioManager = AudioManager.Instance; // AudioManager 인스턴스 가져오기
+
     }
 
     public void OnInteract()
@@ -35,6 +38,7 @@ public class PullingDoor : MonoBehaviour, IInteraction
 
         float elapsedTime = 0f;
         float moveTime = 1f;
+        audioManager.PlayDoorSound(0); // AudioManager에서 첫 번째 door sound 재생
 
         while (elapsedTime < moveTime)
         {
@@ -42,11 +46,11 @@ public class PullingDoor : MonoBehaviour, IInteraction
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
         transform.localRotation = targetRotation;
         isOpen = !isOpen;
         isMoving = false;
         ToggleObject(true);
+
     }
 
     public string GetInteractPrompt()

@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4052351919569708}
   - component: {fileID: 33066379602599036}
   - component: {fileID: 23996634048293706}
-  - component: {fileID: 6997847073949963296}
+  - component: {fileID: 6397864057942249928}
   - component: {fileID: 8680599647654322864}
   m_Layer: 6
   m_Name: fire_cabinet__pr_1_2
@@ -169,7 +169,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6997847073949963296
+--- !u!114 &6397864057942249928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1464330131123152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5e58d47f50b4e945ab5f07262646d5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 93d07cd65cdbb1c45a6a0c9d71f16ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!64 &8680599647654322864

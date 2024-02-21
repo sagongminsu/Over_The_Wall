@@ -14,14 +14,19 @@ public class PlayerRunState : PlayerGroundedState
         base.Enter();
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
         StartAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
+
+        // Run 상태에서 WalkSound 재생 (Pitch를 빠르게 설정)
+        AudioManager.Instance.PlayWalkSound(1.7f); // 예시로 Pitch를 1.5로 설정
     }
 
     public override void Exit()
     {
         base.Exit();
         StopAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
-    }
 
+        // Run 상태에서 WalkSound 중지
+        AudioManager.Instance.StopWalkSound();
+    }
     public override void Update()
     {
         base.Update();

@@ -86,6 +86,8 @@ public class PlayerAttackState : PlayerBaseState
                 StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
             else if (weaponType == "OHMelee")
                 StartAnimation(stateMachine.Player.AnimationData.MeleeAttackParameterHash);
+            else if (weaponType == "Pick")
+                StartAnimation(stateMachine.Player.AnimationData.PickParameterHash);
         }
         else if (stopAnimation)
         {
@@ -93,6 +95,8 @@ public class PlayerAttackState : PlayerBaseState
                 StopAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
             else if (weaponType == "OHMelee")
                 StopAnimation(stateMachine.Player.AnimationData.MeleeAttackParameterHash);
+            else if (weaponType == "Pick")
+                StopAnimation(stateMachine.Player.AnimationData.PickParameterHash);
         }
     }
 
@@ -113,6 +117,8 @@ public class PlayerAttackState : PlayerBaseState
                     return "THMelee";
                 case WeaponType.Range:
                     return "Range";
+                case WeaponType.Pick:
+                    return "Pick";
             }
         }
 

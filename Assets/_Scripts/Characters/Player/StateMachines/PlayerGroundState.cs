@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerGroundedState : PlayerBaseState
 {
+    private bool isWalking = false;
+
     public PlayerGroundedState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
@@ -41,6 +43,18 @@ public class PlayerGroundedState : PlayerBaseState
             return;
         }
 
+        // 걷기 시작 확인
+        if (stateMachine.MovementInput != Vector2.zero && !isWalking)
+        {
+            AudioManager.Instance.PlayWalkSound(1.0f);
+            isWalking = true;
+        }
+        // 걷기 종료 확인
+        else if (stateMachine.MovementInput == Vector2.zero && isWalking)
+        {
+            AudioManager.Instance.StopWalkSound();
+            isWalking = false;
+        }
     }
 
     public override void PhysicsUpdate()

@@ -58,7 +58,7 @@ public class PlayerConditions : MonoBehaviour, IDamagable
         playerSO.Stamina.curValue = playerSO.Stamina.startValue;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         hunger.Subtract(hunger.decayRate * Time.deltaTime);
