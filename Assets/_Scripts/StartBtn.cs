@@ -10,8 +10,8 @@ public class StartBtn : MonoBehaviour
         
     }
 
-    public void StartGame()
-    {
-        LoadingSceneController.Instance.LoadScene("MainScene");
-    }
+    //public void StartGame()
+    //{
+    //    LoadingScene.Instance.LoadScene("TestScene");
+    //}
 }
