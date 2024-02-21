@@ -18,6 +18,7 @@ public class gameManager : MonoBehaviour
 
     void Awake()
     {
+        if (I == null)
         I = this;
 
         currentMouseSensitivity = defaultMouseSensitivity;
@@ -46,76 +47,77 @@ public class gameManager : MonoBehaviour
         }
     }
 
-    public bool CheckTime(int startTime, int endTime)
+
+public bool CheckTime(int startTime, int endTime)
+{
+    if (dayNightCycle.Hours >= startTime && dayNightCycle.Hours <= endTime)
     {
-        if (dayNightCycle.Hours >= startTime && dayNightCycle.Hours <= endTime)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return true;
     }
-
-    public void SaveGame()
+    else
     {
-        PlayerData playerData = new PlayerData
-        {
-            // time이 1140f 이상 1439f 이하에서 저장시 day++
-            currentHours = dayNightCycle.Hours >= 1140f ? 0 : dayNightCycle.Hours,
-            health = playerConditions.health.curValue,
-            stamina = playerConditions.playerSO.Stamina.curValue,
-            days = dayNightCycle.Hours >= 1140f ? dayNightCycle.Days + 1 : dayNightCycle.Days,
-        };
-
-        string jsonData = JsonUtility.ToJson(playerData);
-        PlayerPrefs.SetString("SavedGameData", jsonData);
-        PlayerPrefs.Save();
-
-        Debug.Log("Game saved!");
+        return false;
     }
+}
 
-    public void LoadGame()
+public void SaveGame()
+{
+    PlayerData playerData = new PlayerData
     {
-        if (PlayerPrefs.HasKey("SavedGameData"))
-        {
-            string jsonData = PlayerPrefs.GetString("SavedGameData");
-            PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonData);
+        // time이 1140f 이상 1439f 이하에서 저장시 day++
+        currentHours = dayNightCycle.Hours >= 1140f ? 0 : dayNightCycle.Hours,
+        health = playerConditions.health.curValue,
+        stamina = playerConditions.playerSO.Stamina.curValue,
+        days = dayNightCycle.Hours >= 1140f ? dayNightCycle.Days + 1 : dayNightCycle.Days,
+    };
 
-            dayNightCycle.SetHours(360);
-            dayNightCycle.Days = playerData.days;
+    string jsonData = JsonUtility.ToJson(playerData);
+    PlayerPrefs.SetString("SavedGameData", jsonData);
+    PlayerPrefs.Save();
 
-            playerConditions.health.curValue = playerData.health;
-            playerConditions.playerSO.Stamina.curValue = playerData.stamina;
+    Debug.Log("Game saved!");
+}
 
-            Debug.Log("게임 로드 완료!");
-        }
-        else
-        {
-            Debug.Log("저장된 게임 데이터를 찾을 수 없습니다.");
-        }
-    }
-    public void SetMouseSensitivity(float sensitivity)
+public void LoadGame()
+{
+    if (PlayerPrefs.HasKey("SavedGameData"))
     {
-        currentMouseSensitivity = sensitivity;
-    }
+        string jsonData = PlayerPrefs.GetString("SavedGameData");
+        PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonData);
 
-    public float GetMouseSensitivity()
-    {
-        return currentMouseSensitivity;
-    }
+        dayNightCycle.SetHours(360);
+        dayNightCycle.Days = playerData.days;
 
-    public void DeleteSavedGame()
-    {
-        if (PlayerPrefs.HasKey("SavedGameData"))
-        {
-            PlayerPrefs.DeleteKey("SavedGameData");
-            Debug.Log("Saved game data deleted!");
-        }
-        else
-        {
-            Debug.Log("No saved game data found to delete.");
-        }
+        playerConditions.health.curValue = playerData.health;
+        playerConditions.playerSO.Stamina.curValue = playerData.stamina;
+
+        Debug.Log("게임 로드 완료!");
     }
+    else
+    {
+        Debug.Log("저장된 게임 데이터를 찾을 수 없습니다.");
+    }
+}
+public void SetMouseSensitivity(float sensitivity)
+{
+    currentMouseSensitivity = sensitivity;
+}
+
+public float GetMouseSensitivity()
+{
+    return currentMouseSensitivity;
+}
+
+public void DeleteSavedGame()
+{
+    if (PlayerPrefs.HasKey("SavedGameData"))
+    {
+        PlayerPrefs.DeleteKey("SavedGameData");
+        Debug.Log("Saved game data deleted!");
+    }
+    else
+    {
+        Debug.Log("No saved game data found to delete.");
+    }
+}
 }
