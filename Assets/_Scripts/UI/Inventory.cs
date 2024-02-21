@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
     private int curEquipIndex;
 
     private PlayerInput playerInput;
-    private PlayerConditions playerConditions;
+    public PlayerConditions playerConditions;
 
     [Header("Events")]
     public UnityEvent onOpenInventiry;
@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
     void Awake()
     {
         instance = this;
-        playerConditions = GetComponent<PlayerConditions>();
+        
     }
     private void Start()
     {
@@ -60,7 +60,7 @@ public class Inventory : MonoBehaviour
             uiSlots[i].Clear();
         }
         slots[0] = new ItemSlot() { item = baton, quantity = 1 };
-        AddItem(slots[0].item);
+        UpdateUi(); 
         ClearSelectedItemWindow();
         inventoryWindow.SetActive(false);
     }
