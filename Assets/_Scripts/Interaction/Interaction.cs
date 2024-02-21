@@ -52,14 +52,14 @@ public class Interaction : MonoBehaviour
             else
             {
                 // 모든 강조된 오브젝트의 Material을 원래 Material로 되돌림
-                foreach (GameObject obj in originalMaterials.Keys)
+                foreach (GameObject obj in new List<GameObject>(originalMaterials.Keys))
                 {
                     ApplyOutline(obj, false);
                 }
                 originalMaterials.Clear();
 
                 interactionManager.SetCurrentInteraction(null);
-                promptText.gameObject.SetActive(false);
+                promptText.gameObject.SetActive(false); // 여기에 추가
             }
         }
     }
