@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class gameManager : MonoBehaviour
@@ -5,22 +6,44 @@ public class gameManager : MonoBehaviour
     public DayNightCycle dayNightCycle;
     public PlayerConditions playerConditions;
 
+    public Action<bool> ToggleInven;
+
     public static gameManager I;
 
     public float defaultMouseSensitivity = 5.0f;
+    public KeyCode OpenInven;
+    public bool Open;
 
     private float currentMouseSensitivity;
 
     void Awake()
     {
         if (I == null)
+        I = this;
+
+        currentMouseSensitivity = defaultMouseSensitivity;
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(OpenInven))
         {
-            I = this;
-            currentMouseSensitivity = defaultMouseSensitivity;
-        }
-        else
-        {
-            Destroy(gameObject);
+           
+            Open = !Open;
+            ToggleInven?.Invoke(Open);
+            if (Open)
+            {
+               
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else if (!Open)
+            {
+               
+                Time.timeScale = 1;
+                Cursor.lockState = CursorLockMode.Locked;
+
+            }
+
         }
     }
 
