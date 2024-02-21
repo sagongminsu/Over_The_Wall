@@ -25,19 +25,19 @@ MonoBehaviour:
       <ComboStateIndex>k__BackingField: 1
       <ComboTransitionTime>k__BackingField: 0.8
       <ForceTransitionTime>k__BackingField: 0.8
-      <Force>k__BackingField: 1
+      <Force>k__BackingField: 0
       <Damage>k__BackingField: 10
     - <AttackName>k__BackingField: "2\uD0C0"
       <ComboStateIndex>k__BackingField: 2
       <ComboTransitionTime>k__BackingField: 0.8
       <ForceTransitionTime>k__BackingField: 0.8
-      <Force>k__BackingField: 1
+      <Force>k__BackingField: 0
       <Damage>k__BackingField: 10
     - <AttackName>k__BackingField: "3\uD0C0"
       <ComboStateIndex>k__BackingField: -1
       <ComboTransitionTime>k__BackingField: 0.8
       <ForceTransitionTime>k__BackingField: 0.8
-      <Force>k__BackingField: 1.5
+      <Force>k__BackingField: 1
       <Damage>k__BackingField: 15
   <Stamina>k__BackingField:
     curValue: 10
