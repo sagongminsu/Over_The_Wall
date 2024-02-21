@@ -22,6 +22,7 @@ public enum WeaponType
     OHMelee,
     THMelee,
     Range,
+    Pick,
 }
 
 [System.Serializable]
