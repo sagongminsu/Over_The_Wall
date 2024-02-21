@@ -5,19 +5,23 @@ using UnityEngine;
 public class CreateFood : MonoBehaviour
 {
     public GameObject[] createFood;
+    private gameManager gameManager;
 
-
+    private void Awake()
+    {
+        gameManager = gameManager.I;
+    }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (gameManager.I.CheckTime(11, 12))
+        if (gameManager.CheckTime(11, 12))
         {
             activateFoods();
         }
 
-        else if (gameManager.I.CheckTime(17, 18))
+        else if (gameManager.CheckTime(17, 18))
         {
             activateFoods();
         }

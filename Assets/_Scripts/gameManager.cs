@@ -18,27 +18,34 @@ public class gameManager : MonoBehaviour
 
     void Awake()
     {
-        if (I == null)
+        if (I != null && I != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         I = this;
 
         currentMouseSensitivity = defaultMouseSensitivity;
+
+        DontDestroyOnLoad(gameObject);
     }
     private void Update()
     {
         if (Input.GetKeyDown(OpenInven))
         {
-           
+
             Open = !Open;
             ToggleInven?.Invoke(Open);
             if (Open)
             {
-               
+
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
             }
             else if (!Open)
             {
-               
+
                 Time.timeScale = 1;
                 Cursor.lockState = CursorLockMode.Locked;
 
@@ -48,76 +55,87 @@ public class gameManager : MonoBehaviour
     }
 
 
-public bool CheckTime(int startTime, int endTime)
-{
-    if (dayNightCycle.Hours >= startTime && dayNightCycle.Hours <= endTime)
+    public bool CheckTime(int startTime, int endTime)
     {
-        return true;
+        // dayNightCycle이 null이 아닌지 확인
+        if (dayNightCycle != null)
+        {
+            // dayNightCycle.Hours가 null이 아닌지 확인
+            if (dayNightCycle.Hours != null && dayNightCycle.Hours >= startTime && dayNightCycle.Hours <= endTime)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            // dayNightCycle이 null인 경우에 대한 처리
+            Debug.LogError("dayNightCycle is null in CheckTime.");
+            return false;
+        }
     }
-    else
+
+    public void SaveGame()
     {
-        return false;
+        PlayerData playerData = new PlayerData
+        {
+            // time이 1140f 이상 1439f 이하에서 저장시 day++
+            currentHours = dayNightCycle.Hours >= 1140f ? 0 : dayNightCycle.Hours,
+            health = playerConditions.health.curValue,
+            stamina = playerConditions.playerSO.Stamina.curValue,
+            days = dayNightCycle.Hours >= 1140f ? dayNightCycle.Days + 1 : dayNightCycle.Days,
+        };
+
+        string jsonData = JsonUtility.ToJson(playerData);
+        PlayerPrefs.SetString("SavedGameData", jsonData);
+        PlayerPrefs.Save();
+
+        Debug.Log("Game saved!");
     }
-}
 
-public void SaveGame()
-{
-    PlayerData playerData = new PlayerData
+    public void LoadGame()
     {
-        // time이 1140f 이상 1439f 이하에서 저장시 day++
-        currentHours = dayNightCycle.Hours >= 1140f ? 0 : dayNightCycle.Hours,
-        health = playerConditions.health.curValue,
-        stamina = playerConditions.playerSO.Stamina.curValue,
-        days = dayNightCycle.Hours >= 1140f ? dayNightCycle.Days + 1 : dayNightCycle.Days,
-    };
+        if (PlayerPrefs.HasKey("SavedGameData"))
+        {
+            string jsonData = PlayerPrefs.GetString("SavedGameData");
+            PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonData);
 
-    string jsonData = JsonUtility.ToJson(playerData);
-    PlayerPrefs.SetString("SavedGameData", jsonData);
-    PlayerPrefs.Save();
+            dayNightCycle.SetHours(360);
+            dayNightCycle.Days = playerData.days;
 
-    Debug.Log("Game saved!");
-}
+            playerConditions.health.curValue = playerData.health;
+            playerConditions.playerSO.Stamina.curValue = playerData.stamina;
 
-public void LoadGame()
-{
-    if (PlayerPrefs.HasKey("SavedGameData"))
-    {
-        string jsonData = PlayerPrefs.GetString("SavedGameData");
-        PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-        dayNightCycle.SetHours(360);
-        dayNightCycle.Days = playerData.days;
-
-        playerConditions.health.curValue = playerData.health;
-        playerConditions.playerSO.Stamina.curValue = playerData.stamina;
-
-        Debug.Log("게임 로드 완료!");
+            Debug.Log("게임 로드 완료!");
+        }
+        else
+        {
+            Debug.Log("저장된 게임 데이터를 찾을 수 없습니다.");
+        }
     }
-    else
+    public void SetMouseSensitivity(float sensitivity)
     {
-        Debug.Log("저장된 게임 데이터를 찾을 수 없습니다.");
+        currentMouseSensitivity = sensitivity;
     }
-}
-public void SetMouseSensitivity(float sensitivity)
-{
-    currentMouseSensitivity = sensitivity;
-}
 
-public float GetMouseSensitivity()
-{
-    return currentMouseSensitivity;
-}
+    public float GetMouseSensitivity()
+    {
+        return currentMouseSensitivity;
+    }
 
-public void DeleteSavedGame()
-{
-    if (PlayerPrefs.HasKey("SavedGameData"))
+    public void DeleteSavedGame()
     {
-        PlayerPrefs.DeleteKey("SavedGameData");
-        Debug.Log("Saved game data deleted!");
+        if (PlayerPrefs.HasKey("SavedGameData"))
+        {
+            PlayerPrefs.DeleteKey("SavedGameData");
+            Debug.Log("Saved game data deleted!");
+        }
+        else
+        {
+            Debug.Log("No saved game data found to delete.");
+        }
     }
-    else
-    {
-        Debug.Log("No saved game data found to delete.");
-    }
-}
 }
