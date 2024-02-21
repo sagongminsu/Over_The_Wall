@@ -17,9 +17,10 @@ public class Interaction : MonoBehaviour
 
     // 셰이더로부터 받은 윤곽선 머티리얼
     public Material outlineMaterial;
+    private Material originalMaterial;
 
     // 각 오브젝트의 원래 Material을 저장할 딕셔너리
-    private Dictionary<GameObject, Material> originalMaterials = new Dictionary<GameObject, Material>();
+    //private Dictionary<GameObject, Material> originalMaterials = new Dictionary<GameObject, Material>();
 
     void Start()
     {
@@ -51,15 +52,13 @@ public class Interaction : MonoBehaviour
             }
             else
             {
-                // 모든 강조된 오브젝트의 Material을 원래 Material로 되돌림
-                foreach (GameObject obj in new List<GameObject>(originalMaterials.Keys))
-                {
-                    ApplyOutline(obj, false);
-                }
-                originalMaterials.Clear();
+                if (interactionManager.CurrentInteractGameObject == null) return;
+
+                ApplyOutline(interactionManager.CurrentInteractGameObject, false);
+                //originalMaterials.Clear();
 
                 interactionManager.SetCurrentInteraction(null);
-                promptText.gameObject.SetActive(false); // 여기에 추가
+                promptText.gameObject.SetActive(false);
             }
         }
     }
@@ -90,19 +89,19 @@ public class Interaction : MonoBehaviour
         if (apply)
         {
             // 원래 Material을 저장하고, outlineMaterial을 적용
-            if (!originalMaterials.ContainsKey(obj))
+            if (originalMaterial == null)
             {
-                originalMaterials[obj] = renderer.material;
+                originalMaterial = renderer.material;
+                renderer.material = outlineMaterial;
             }
-            renderer.material = outlineMaterial;
         }
         else
         {
             // outlineMaterial을 적용했던 것을 원래 Material로 되돌림
-            if (originalMaterials.ContainsKey(obj))
+            if (originalMaterial != null)
             {
-                renderer.material = originalMaterials[obj];
-                originalMaterials.Remove(obj);
+                renderer.material = originalMaterial;
+                originalMaterial = null;
             }
         }
     }

@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
     public ItemSlotUI[] uiSlots;
     public GameObject Inven;
     public ItemData_ itemData_;
+ 
 
     public ItemSlot[] slots;
 
@@ -25,7 +26,6 @@ public class Inventory : MonoBehaviour
     public TMPro.TextMeshProUGUI selectedItemName;
     public TMPro.TextMeshProUGUI selectedItemDescription;
     public TMPro.TextMeshProUGUI selectedItemStatNames;
-    public TMPro.TextMeshProUGUI selectedItemCount;
     public TMPro.TextMeshProUGUI selectedItemStatValues;
     public GameObject useButton;
     public GameObject equipButton;
@@ -42,16 +42,16 @@ public class Inventory : MonoBehaviour
     public UnityEvent onCloseInventory;
 
     public static Inventory instance;
+    public ItemData_ baton;
 
     void Awake()
     {
         instance = this;
-        playerInput = GetComponent<PlayerInput>();
         playerConditions = GetComponent<PlayerConditions>();
     }
     private void Start()
     {
-        inventoryWindow.SetActive(false);
+        gameManager.I.ToggleInven += ToggleInven;
         slots = new ItemSlot[uiSlots.Length];
         for (int i = 0; i < slots.Length; i++)
         {
@@ -59,23 +59,21 @@ public class Inventory : MonoBehaviour
             uiSlots[i].index = i;
             uiSlots[i].Clear();
         }
+        slots[0] = new ItemSlot() { item = baton, quantity = 1 };
+        AddItem(slots[0].item);
         ClearSelectedItemWindow();
+        inventoryWindow.SetActive(false);
     }
 
 
-    private void Update()
+    private void ToggleInven(bool isOpen)
     {
-        if (Input.GetKeyDown(OpenInven))
-        {
-            Toggle();
-        }
+      
+        Inven.SetActive(isOpen);
+       
     }
 
-    private void Toggle()
-    {
-        bool Open = Inven.activeSelf;
-        Inven.SetActive(!Open);
-    }
+    
 
     public void AddItem(ItemData_ item)
     {
@@ -92,6 +90,7 @@ public class Inventory : MonoBehaviour
         ItemSlot emptySlot = GetEmptySlot();
         if (emptySlot != null)
         {
+
             emptySlot.item = item;
             emptySlot.quantity = 1;
             UpdateUi();
@@ -175,7 +174,7 @@ public class Inventory : MonoBehaviour
         selectedItem = null;
         selectedItemName.text = string.Empty;
         selectedItemDescription.text = string.Empty;
-
+        selectedItemStatValues.text = string.Empty;
         selectedItemStatNames.text = string.Empty;
 
 
@@ -225,13 +224,13 @@ public class Inventory : MonoBehaviour
         {
             for (int i = 0; i < selectedItem.item.consumables.Length; i++)
             {
-                //switch (selectedItem.item.consumables[i].type)
-                //{
-                //    case ConsumableType.Health:
-                //        Condition.Heal(selectedItem.item.consumables[i].value); break;
-                //    case ConsumableType.Hunger:
-                //        Condition.Eat(selectedItem.item.consumables[i].value); break;
-                //}
+                switch (selectedItem.item.consumables[i].type)
+                {
+                    case ConsumableType.Health:
+                        playerConditions.Heal(selectedItem.item.consumables[i].value); break;
+                    case ConsumableType.Hunger:
+                        playerConditions.Eat(selectedItem.item.consumables[i].value); break;
+                }
             }
         }
         RemoveSelectedItem(selectedItem.item);
@@ -256,7 +255,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(ItemData_ item, int quantity)
     {
-
+      
     }
 
     public bool HasItems(ItemData_ item, int quantity)
