@@ -18,6 +18,7 @@ public class ItemSlotUI : MonoBehaviour
     private void Awake()
     {
         outline = GetComponent<Outline>();
+        button.onClick.AddListener(OnButtonClick);
     }
 
     private void OnEnable()

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5955995681328601783}
-  - component: {fileID: 2507881363883274707}
+  - component: {fileID: 5640982362673359977}
   m_Layer: 0
   m_Name: gameManager
   m_TagString: Untagged
@@ -24,15 +24,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622530266784239064}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5000, y: 1, z: 5000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2507881363883274707
+--- !u!114 &5640982362673359977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayNightCycle: {fileID: 0}
   playerConditions: {fileID: 0}
+  defaultMouseSensitivity: 5
+  OpenInven: 9
+  Open: 0

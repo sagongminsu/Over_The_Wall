@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     public ItemSlotUI[] uiSlots;
     public GameObject Inven;
     public ItemData_ itemData_;
-    public bool Open;
+ 
 
     public ItemSlot[] slots;
 
@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
     }
     private void Start()
     {
-        inventoryWindow.SetActive(false);
+        gameManager.I.ToggleInven += ToggleInven;
         slots = new ItemSlot[uiSlots.Length];
         for (int i = 0; i < slots.Length; i++)
         {
@@ -62,42 +62,17 @@ public class Inventory : MonoBehaviour
         slots[0] = new ItemSlot() { item = baton, quantity = 1 };
         AddItem(slots[0].item);
         ClearSelectedItemWindow();
+        inventoryWindow.SetActive(false);
     }
 
 
-    private void Update()
+    private void ToggleInven(bool isOpen)
     {
-        if (Input.GetKeyDown(OpenInven))
-        {
-            Toggle();
-            if (Open)
-            {
-                Inven.SetActive(true);
-                Time.timeScale = 0;
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else if (!Open)
-            {
-                Inven.SetActive(false);
-                Time.timeScale = 1;
-                Cursor.lockState = CursorLockMode.Locked;
-            
-            }
-            
-        }
+      
+        Inven.SetActive(isOpen);
+       
     }
 
-      private void Toggle()
-        {
-            if (Open)
-            {
-                Open = false;
-            }
-            else if (!Open)
-            {
-                Open = true;
-            }
-        }
     
 
     public void AddItem(ItemData_ item)
