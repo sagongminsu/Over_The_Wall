@@ -41,7 +41,7 @@ MonoBehaviour:
       <Damage>k__BackingField: 15
   <Stamina>k__BackingField:
     curValue: 10
-    maxValue: 10
+    maxValue: 15
     startValue: 10
-    regenRate: 0.5
+    regenRate: 0.7
     decayRate: 0
