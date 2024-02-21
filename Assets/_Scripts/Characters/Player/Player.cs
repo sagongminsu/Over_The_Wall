@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
 
+    [field: SerializeField] public PlayerLeft Lweapon { get; private set; }
+    [field: SerializeField] public PlayerRight Rweapon { get; private set; }
     public WeaponColliderController Weapon_R{ get; private set; }
     public WeaponColliderController Weapon_L{ get; private set; }
 

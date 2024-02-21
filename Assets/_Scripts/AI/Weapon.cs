@@ -4,28 +4,41 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    private int damage;
-    [SerializeField] private Collider weaponCollider; // 무기의 Collider
 
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private Collider aCollider;
+
+    private int damage = 10;
+    
+
+    private List<Collider> alreadyColliderWith = new List<Collider>();
+
+    private void OnEnable()
     {
-        
-        if (other.CompareTag("Ai")) // AI와 충돌했는지 확인
+        alreadyColliderWith.Clear();
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider == aCollider) return;
+        if (!collider.CompareTag("Ai")) return; // "" 태그를 가진 객체에만 대미지 적용
+        if (alreadyColliderWith.Contains(collider)) return;
+
+        alreadyColliderWith.Add(collider);
+
+        // Ai에게 대미지 적용
+        if (collider.TryGetComponent(out AIHealth health))
         {
-            
-            var healthComponent = other.GetComponent<AIHealth>(); // AIHealth 컴포넌트 참조
-            Debug.Log($"[Weapon] 플레이어가 Ai에게 {damage} 대미지 적용.");
-            if (healthComponent != null)
-            {
-                healthComponent.TakeDamage(damage); // 대미지 적용
-            }
+            health.TakeDamage(damage);
+            Debug.Log($"[Weapon] 플레이어 {collider.name}에게 {damage} 대미지 적용");
         }
+
+
     }
 
     // Collider 활성화/비활성화
     public void ToggleColliders(bool state)
     {
-        weaponCollider.enabled = state;
+        aCollider.enabled = state;
     }
     
 }
