@@ -13,12 +13,19 @@ public class AIHealth : MonoBehaviour
     private AiStateMachine aiStateMachine; // AI 상태 머신 참조
 
     public bool IsDead => health <= 0;
-
-    private void Start()
+    private void Awake()
     {
         health = maxHealth;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
+        // 사망 이벤트에 메서드를 연결합니다.
+        OnDie += HandleDeath;
+    }
+
+    private void Start()
+    {
+
         Ai aiComponent = GetComponent<Ai>();
         if (aiComponent != null)
         {
@@ -29,7 +36,11 @@ public class AIHealth : MonoBehaviour
             Debug.LogError("AI 컴포넌트를 찾을 수 없습니다!", this);
         }
     }
-
+    private void OnDestroy()
+    {
+        // 컴포넌트가 파괴될 때 이벤트 연결을 해제합니다.
+        OnDie -= HandleDeath;
+    }
     public void TakeDamage(int damage)
     {
         if (IsDead) return;
@@ -39,11 +50,6 @@ public class AIHealth : MonoBehaviour
         if (IsDead)
         {
             OnDie?.Invoke();
-            // AI가 죽었을 때의 추가 로직을 여기에 구현합니다.
-            if (navMeshAgent != null)
-                navMeshAgent.enabled = false;
-            if (animator != null)
-                animator.SetTrigger("Die");
         }
     }
 
@@ -54,5 +60,10 @@ public class AIHealth : MonoBehaviour
             // AI에게 데미지 적용
             TakeDamage(aiStateMachine.Ai.Data.Damage);
         }
+    }
+
+    private void HandleDeath()
+    {
+        gameObject.SetActive(false);
     }
 }
