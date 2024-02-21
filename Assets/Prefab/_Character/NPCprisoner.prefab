@@ -2336,9 +2336,11 @@ GameObject:
   - component: {fileID: 2687161867290782049}
   - component: {fileID: 5394246661458487119}
   - component: {fileID: 5120733210260036251}
+  - component: {fileID: 9122409821808522768}
+  - component: {fileID: 3635745740524531332}
   m_Layer: 6
   m_Name: NPCprisoner
-  m_TagString: Untagged
+  m_TagString: Ai
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2531,7 +2533,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4619618511521661719}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8abc6791278b6874c9b7446696138655, type: 3}
   m_Name: 
@@ -2558,11 +2560,40 @@ MonoBehaviour:
     fallParameterName: Fall
     attackParameterName: '@Attack'
     comboAttackParameterName: ComboAttack
+    meleeAttackParameterName: MeleeAttack
+    pickParameterName: Pick
     aimingParameterName: Aiming
     standingParameterName: Standing
     crouchParameterName: Crouch
   <RightHandWeapon>k__BackingField: {fileID: 5297269964652654749}
   <LeftHandWeapon>k__BackingField: {fileID: 2858026800310480114}
+--- !u!114 &9122409821808522768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619618511521661719}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130878185d069754388e9e44416da954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints: []
+--- !u!114 &3635745740524531332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619618511521661719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2488b3833a880a246aa85be56b87decb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1927306356246808622}
+  drag: 0.3
 --- !u!1 &4678940071441905048
 GameObject:
   m_ObjectHideFlags: 0
