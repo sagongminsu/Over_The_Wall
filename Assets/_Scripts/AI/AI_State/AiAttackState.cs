@@ -18,10 +18,22 @@ public class AiAttackState : AiBaseState
         RigntalreadyAppliedDealing = false;
         LeftalreadyAppliedDealing = false;
 
+
         stateMachine.MovementSpeedModifier = 0;
         base.Enter();
+        //float damage = stateMachine.Ai.Data.Damage;
         StartAnimation(stateMachine.Ai.AnimationData.AttackParameterHash);
 
+ 
+        if (stateMachine.Ai.RightHandWeapon != null)
+        {
+            stateMachine.Ai.RightHandWeapon.ResetCollisions();
+        }
+
+        if (stateMachine.Ai.LeftHandWeapon != null)
+        {
+            stateMachine.Ai.LeftHandWeapon.ResetCollisions();
+        }
     }
 
     public override void Exit()
@@ -50,27 +62,26 @@ public class AiAttackState : AiBaseState
                 TryApplyForce();
             }
 
-            //오른손
+
             if (!RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
             {
+                //int damage = stateMachine.Ai.Data.Damage; // AiSO에서 데미지 값을 가져옵니다.
                 stateMachine.Ai.RightHandWeapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
                 stateMachine.Ai.RightHandWeapon.gameObject.SetActive(true);
                 RigntalreadyAppliedDealing = true;
             }
-
-            if (RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
+            if (!RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
             {
                 stateMachine.Ai.RightHandWeapon.gameObject.SetActive(false);
             }
-            //왼손
             if (!LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
             {
+                //int damage = stateMachine.Ai.Data.Damage; // AiSO에서 데미지 값을 가져옵니다.
                 stateMachine.Ai.LeftHandWeapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
                 stateMachine.Ai.LeftHandWeapon.gameObject.SetActive(true);
                 LeftalreadyAppliedDealing = true;
             }
-
-            if (LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
+            if (!LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
             {
                 stateMachine.Ai.LeftHandWeapon.gameObject.SetActive(false);
             }

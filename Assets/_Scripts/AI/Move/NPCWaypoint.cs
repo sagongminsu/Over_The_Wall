@@ -27,6 +27,7 @@ public class NPCWaypoint : MonoBehaviour
 
     void MoveToNextWaypoint()
     {
+        if (waypoints == null) return;
         if (waypoints.Length == 0) return;
         agent.destination = waypoints[waypointIndex].position;
         waypointIndex = (waypointIndex + 1) % waypoints.Length;
