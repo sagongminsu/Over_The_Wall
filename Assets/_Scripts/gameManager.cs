@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 public class gameManager : MonoBehaviour
 {
     public DayNightCycle dayNightCycle;
     public PlayerConditions playerConditions;
+
+    public Action clearInterect;
 
     public static gameManager I;
 

@@ -42,6 +42,7 @@ public class Inventory : MonoBehaviour
     public UnityEvent onCloseInventory;
 
     public static Inventory instance;
+    public ItemData_ baton;
 
     void Awake()
     {
@@ -58,6 +59,8 @@ public class Inventory : MonoBehaviour
             uiSlots[i].index = i;
             uiSlots[i].Clear();
         }
+        slots[0] = new ItemSlot() { item = baton, quantity = 1 };
+        AddItem(slots[0].item);
         ClearSelectedItemWindow();
     }
 
@@ -71,11 +74,14 @@ public class Inventory : MonoBehaviour
             {
                 Inven.SetActive(true);
                 Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
             }
             else if (!Open)
             {
                 Inven.SetActive(false);
                 Time.timeScale = 1;
+                Cursor.lockState = CursorLockMode.Locked;
+            
             }
             
         }
@@ -109,6 +115,7 @@ public class Inventory : MonoBehaviour
         ItemSlot emptySlot = GetEmptySlot();
         if (emptySlot != null)
         {
+
             emptySlot.item = item;
             emptySlot.quantity = 1;
             UpdateUi();
@@ -242,13 +249,13 @@ public class Inventory : MonoBehaviour
         {
             for (int i = 0; i < selectedItem.item.consumables.Length; i++)
             {
-                //switch (selectedItem.item.consumables[i].type)
-                //{
-                //    case ConsumableType.Health:
-                //        Condition.Heal(selectedItem.item.consumables[i].value); break;
-                //    case ConsumableType.Hunger:
-                //        Condition.Eat(selectedItem.item.consumables[i].value); break;
-                //}
+                switch (selectedItem.item.consumables[i].type)
+                {
+                    case ConsumableType.Health:
+                        playerConditions.Heal(selectedItem.item.consumables[i].value); break;
+                    case ConsumableType.Hunger:
+                        playerConditions.Eat(selectedItem.item.consumables[i].value); break;
+                }
             }
         }
         RemoveSelectedItem(selectedItem.item);

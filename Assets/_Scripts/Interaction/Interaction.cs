@@ -25,6 +25,8 @@ public class Interaction : MonoBehaviour
     {
         camera = Camera.main;
         interactionManager = InteractionManager.Instance;
+        gameManager.I.clearInterect += ClearInterect;
+            
     }
 
     void Update()
@@ -51,19 +53,22 @@ public class Interaction : MonoBehaviour
             }
             else
             {
-                // 모든 강조된 오브젝트의 Material을 원래 Material로 되돌림
-                foreach (GameObject obj in originalMaterials.Keys)
-                {
-                    ApplyOutline(obj, false);
-                }
-                originalMaterials.Clear();
-
-                interactionManager.SetCurrentInteraction(null);
-                promptText.gameObject.SetActive(false);
+                ClearInterect();
             }
         }
     }
+    private void ClearInterect()
+    {
+       // 모든 강조된 오브젝트의 Material을 원래 Material로 되돌림
+        foreach (GameObject obj in originalMaterials.Keys)
+        {
+           ApplyOutline(obj, false);
+        }
+        originalMaterials.Clear();
 
+        interactionManager.SetCurrentInteraction(null);
+        promptText.gameObject.SetActive(false);
+    }
     private void SetPromptText()
     {
         promptText.gameObject.SetActive(true);
