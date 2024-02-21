@@ -104,7 +104,9 @@ public class PlayerAttackState : PlayerBaseState
     {
         if (equipManager == null)
             equipManager = EquipManager.instance;
-
+        if (equipManager.curEquip == null)
+            return "Pistol";
+        
         if (equipManager.isEquipped && equipManager.curEquip.GetComponent<ItemData_>() != null)
         {
             WeaponType weaponTypeValue = equipManager.curEquip.GetComponent<ItemData_>().weaponType;
