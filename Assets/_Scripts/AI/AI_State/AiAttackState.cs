@@ -65,7 +65,7 @@ public class AiAttackState : AiBaseState
 
             if (!RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
             {
-                //int damage = stateMachine.Ai.Data.Damage; // AiSO에서 데미지 값을 가져옵니다.
+
                 stateMachine.Ai.RightHandWeapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
                 stateMachine.Ai.RightHandWeapon.gameObject.SetActive(true);
                 RigntalreadyAppliedDealing = true;
@@ -76,7 +76,6 @@ public class AiAttackState : AiBaseState
             }
             if (!LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
             {
-                //int damage = stateMachine.Ai.Data.Damage; // AiSO에서 데미지 값을 가져옵니다.
                 stateMachine.Ai.LeftHandWeapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
                 stateMachine.Ai.LeftHandWeapon.gameObject.SetActive(true);
                 LeftalreadyAppliedDealing = true;

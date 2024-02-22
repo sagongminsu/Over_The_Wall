@@ -31,6 +31,10 @@ public class AiStateMachine : StateMachine
         {
             ChangeState(ChasingState);
         }
+        if (!Ai.AiHealth.IsDead)
+        {
+            ChangeState(ChasingState);
+        }
         else
         {
             ChangeState(PatrollingState);
