@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAttackState : PlayerBaseState
 {
+    EquipManager equipManager;
 
     public PlayerAttackState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -73,10 +74,10 @@ public class PlayerAttackState : PlayerBaseState
 
     protected void HandleWeaponType(bool startAnimation, bool stopAnimation)
     {
-        EquipManager equipManager = EquipManager.instance;
-        
-        //if (equipManager == null)
-        //    equipManager = EquipManager.instance;
+
+
+        if (equipManager == null)
+            equipManager = EquipManager.instance;
 
         string weaponType = GetWeaponType(equipManager);
 
@@ -107,9 +108,9 @@ public class PlayerAttackState : PlayerBaseState
         if (equipManager.curEquip == null)
             return "Pistol";
         
-        if (equipManager.isEquipped && equipManager.curEquip.GetComponent<ItemData_>() != null)
+        if (equipManager.isEquipped && equipManager.data != null)
         {
-            WeaponType weaponTypeValue = equipManager.curEquip.GetComponent<ItemData_>().weaponType;
+            WeaponType weaponTypeValue = equipManager.data.weaponType;
 
             switch (weaponTypeValue)
             {
@@ -122,6 +123,7 @@ public class PlayerAttackState : PlayerBaseState
                 case WeaponType.Pick:
                     return "Pick";
             }
+           
         }
 
         return "Pistol";

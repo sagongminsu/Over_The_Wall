@@ -6,7 +6,7 @@ public class EquipManager : MonoBehaviour
 {
     public GameObject curEquip;
     public Transform equipParent;
-
+    public ItemData_ data;
     public bool isEquipped = false;
 
     public static EquipManager instance;
@@ -20,7 +20,9 @@ public class EquipManager : MonoBehaviour
     {
         UnEquip();
         curEquip = Instantiate(item.equipPrefab, equipParent);
+        data = item;
         isEquipped = true;
+        Debug.Log("ÀåÂø");
     }
 
     public void UnEquip()
@@ -30,6 +32,8 @@ public class EquipManager : MonoBehaviour
             Destroy(curEquip.gameObject);
             curEquip = null;
             isEquipped = false;
+            data = null;
+            Debug.Log("ÀåÂø ÇØÁ¦");
         }
     }
 }
