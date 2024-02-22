@@ -246,14 +246,12 @@ public class PlayerBaseState : IState
         if (stateMachine.Player.Pause.CheckActive() == false)
         {
             Cursor.lockState = CursorLockMode.None;
-            Debug.Log("온");
             Time.timeScale = 0.0f;
             stateMachine.Player.Pause.ActiveUI(true);
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
-            Debug.Log("오프");
             Time.timeScale = 1.0f;
             stateMachine.Player.Pause.ActiveUI(false);
         }
