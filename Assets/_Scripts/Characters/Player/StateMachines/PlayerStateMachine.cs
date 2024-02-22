@@ -33,6 +33,7 @@ public class PlayerStateMachine : StateMachine
 
     public bool IsAiming { get; set; }
     public bool IsCrouch { get; set; }
+    public bool IsPause { get; set; }
 
     public bool IsIdle { get; set; }
     public bool IsWalk {  get; set; }

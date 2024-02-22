@@ -148,6 +148,8 @@ public class PlayerBaseState : IState
         input.PlayerActions.Aim.canceled += OnAimingCanceled;
 
         input.PlayerActions.Crouch.started += OnCrouchStarted;
+
+        input.PlayerActions.Pause.started += OnPauseStarted;
     }
 
     protected virtual void RemoveInputActionsCallbacks()
@@ -170,6 +172,8 @@ public class PlayerBaseState : IState
         input.PlayerActions.Aim.canceled -= OnAimingCanceled;
 
         input.PlayerActions.Crouch.started -= OnCrouchStarted;
+
+        input.PlayerActions.Pause.started -= OnPauseStarted;
     }
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
@@ -235,6 +239,26 @@ public class PlayerBaseState : IState
             stateMachine.IsCrouch = false;
             AdjustCharacterHeight(1.77f);
         }
+    }
+
+    protected virtual void OnPauseStarted(InputAction.CallbackContext obj)
+    {
+        if (stateMachine.Player.Pause.CheckActive() == false)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Debug.Log("온");
+            Time.timeScale = 0.0f;
+            stateMachine.Player.Pause.ActiveUI(true);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Debug.Log("오프");
+            Time.timeScale = 1.0f;
+            stateMachine.Player.Pause.ActiveUI(false);
+        }
+
+        
     }
 
     private void AdjustCharacterHeight(float height)
