@@ -20,7 +20,7 @@ public class AINavigation : MonoBehaviour
         bool isMoving = navMeshAgent.velocity.magnitude > 0.1f; 
 
 
-        animator.SetBool("IsWalking", isMoving);
+        animator.SetBool("Walking", isMoving);
 
     }
 }

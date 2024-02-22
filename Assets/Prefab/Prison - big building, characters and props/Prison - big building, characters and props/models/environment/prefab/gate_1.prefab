@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &4960062157246266
 Transform:
@@ -117,7 +117,7 @@ Transform:
   - {fileID: 4242748443998806}
   - {fileID: 4960062157246266}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 286
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &64562572013560138
 MeshCollider:
@@ -159,7 +159,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &4238101482900420
 Transform:
@@ -241,7 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45354199902f3df45bbea2fe6c485d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorSound: {fileID: 8300000, guid: 616d3b3bb785a2b43a11df8ac7e9c4df, type: 3}
 --- !u!64 &3410820811773612469
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -280,7 +279,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &4739047678123334
 Transform:
@@ -363,7 +362,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &4242748443998806
 Transform:
@@ -446,7 +445,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &4014628338880558
 Transform:
@@ -456,7 +455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838365550559998}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6574, y: 0.65932226, z: 0.063}
+  m_LocalPosition: {x: -1.657, y: 0.65932226, z: 0.077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -531,7 +530,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &4534180362024176
 Transform:
@@ -612,7 +611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e58d47f50b4e945ab5f07262646d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorSound: {fileID: 8300000, guid: 616d3b3bb785a2b43a11df8ac7e9c4df, type: 3}
 --- !u!64 &1962843987697643708
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -651,7 +649,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &4087577975919410
 Transform:
