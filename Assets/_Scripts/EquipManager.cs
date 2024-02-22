@@ -21,6 +21,7 @@ public class EquipManager : MonoBehaviour
         UnEquip();
         curEquip = Instantiate(item.equipPrefab, equipParent);
         isEquipped = true;
+        Debug.Log("ÀåÂø");
     }
 
     public void UnEquip()
@@ -30,6 +31,7 @@ public class EquipManager : MonoBehaviour
             Destroy(curEquip.gameObject);
             curEquip = null;
             isEquipped = false;
+            Debug.Log("ÀåÂø ÇØÁ¦");
         }
     }
 }
