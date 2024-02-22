@@ -7,9 +7,9 @@ public class AiBaseState : IState
     protected AiStateMachine stateMachine;
 
     protected readonly PlayerGroundData groundData;
-    public AiBaseState(AiStateMachine ememyStateMachine)
+    public AiBaseState(AiStateMachine AiStateMachine)
     {
-        stateMachine = ememyStateMachine;
+        stateMachine = AiStateMachine;
         groundData = stateMachine.Ai.Data.GroundedData;
     }
 
