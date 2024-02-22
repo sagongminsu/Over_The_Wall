@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4570,7 +4570,7 @@ PrefabInstance:
         type: 3}
       propertyPath: bgmSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 340158457}
     - target: {fileID: 5888465563746291805, guid: 25ee194f6f9645b4fb33c6ded98cc9ac,
         type: 3}
       propertyPath: walkSound
@@ -4580,12 +4580,12 @@ PrefabInstance:
         type: 3}
       propertyPath: audioSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 340158460}
     - target: {fileID: 5888465563746291805, guid: 25ee194f6f9645b4fb33c6ded98cc9ac,
         type: 3}
       propertyPath: walkSoundSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 340158461}
     - target: {fileID: 5888465563746291805, guid: 25ee194f6f9645b4fb33c6ded98cc9ac,
         type: 3}
       propertyPath: bgmTracks.Array.size
