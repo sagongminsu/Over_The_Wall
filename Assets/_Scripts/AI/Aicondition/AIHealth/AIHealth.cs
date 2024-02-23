@@ -47,8 +47,15 @@ public class AIHealth : MonoBehaviour
         health = Mathf.Max(health - damage, 0);
         Debug.Log($"Current Health: {health}");
 
-        if (IsDead)
+        if (!IsDead)
         {
+            animator.SetTrigger("Hit");
+            var aiStateMachine = GetComponent<Ai>().StateMachine;
+            aiStateMachine.ChangeState(new AiHitState(aiStateMachine));
+        }
+        else
+        {
+            // AI가 사망했다면 사망 처리를 수행합니다.
             OnDie?.Invoke();
         }
     }
