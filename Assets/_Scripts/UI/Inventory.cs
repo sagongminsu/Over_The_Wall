@@ -68,9 +68,7 @@ public class Inventory : MonoBehaviour
 
     private void ToggleInven(bool isOpen)
     {
-      
         Inven.SetActive(isOpen);
-       
     }
 
     

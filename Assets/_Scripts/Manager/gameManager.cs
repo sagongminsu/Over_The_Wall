@@ -10,10 +10,10 @@ public class gameManager : MonoBehaviour
 
     public static gameManager I;
 
-    public GameObject PauseUI;
     public float defaultMouseSensitivity = 5.0f;
     public KeyCode OpenInven;
     public bool Open;
+    public bool isPause;
 
     private float currentMouseSensitivity;
 
@@ -33,30 +33,26 @@ public class gameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (PauseUI.activeSelf == false)
+        if (isPause == false)
         {
             if (Input.GetKeyDown(OpenInven))
             {
-
                 Open = !Open;
                 ToggleInven?.Invoke(Open);
                 if (Open)
                 {
-
                     Time.timeScale = 0;
                     Cursor.lockState = CursorLockMode.None;
                 }
                 else if (!Open)
                 {
-
                     Time.timeScale = 1;
                     Cursor.lockState = CursorLockMode.Locked;
-
                 }
             }
         }
+        
     }
-
 
     public bool CheckTime(int startTime, int endTime)
     {

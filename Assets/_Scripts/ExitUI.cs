@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class ExitUI : MonoBehaviour
 {
+    gameManager gameManager;
 
+    private void Awake()
+    {
+        gameManager = gameManager.I;
+    }
     public void timeScale(float Value)
     {
         Time.timeScale = Value;
@@ -13,7 +18,8 @@ public class ExitUI : MonoBehaviour
 
     public void Exit(GameObject gameObject)
     {
-        StartCoroutine(ExitCoroutine(gameObject, 0.3f));
+        StartCoroutine(ExitCoroutine(gameObject, 0.5f));
+        gameManager.isPause = false;
     }
 
     private IEnumerator ExitCoroutine(GameObject gameObject, float delayTime)
