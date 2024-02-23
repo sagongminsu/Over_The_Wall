@@ -14,7 +14,7 @@ public class Teleport : MonoBehaviour
     public GameObject WarningMessage;
     public TextMeshProUGUI Text;
 
-    public float teleportDelay = 8f;
+    public float teleportDelay = 1.0f;
 
     private float timer = 0f;
     private bool teleportActivated = false;
@@ -83,8 +83,10 @@ public class Teleport : MonoBehaviour
 
     private void TeleportPlayer()
     {
+        Time.timeScale = 0.0f;
         playerTransform.position = teleportDestination.position;
         ResetTeleportTimer();
+        Time.timeScale = 1.0f;
     }
 
     private void ActivateWarningMessage()
