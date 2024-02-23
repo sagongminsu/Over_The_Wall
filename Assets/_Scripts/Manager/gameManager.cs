@@ -56,11 +56,9 @@ public class gameManager : MonoBehaviour
 
     public bool CheckTime(int startTime, int endTime)
     {
-        // dayNightCycle이 null이 아닌지 확인
-        if (dayNightCycle != null)
-        {
+     
             // dayNightCycle.Hours가 null이 아닌지 확인
-            if (dayNightCycle.Hours != null && dayNightCycle.Hours >= startTime && dayNightCycle.Hours <= endTime)
+            if (dayNightCycle.Hours >= startTime && dayNightCycle.Hours <= endTime)
             {
                 return true;
             }
@@ -68,13 +66,6 @@ public class gameManager : MonoBehaviour
             {
                 return false;
             }
-        }
-        else
-        {
-            // dayNightCycle이 null인 경우에 대한 처리
-            Debug.LogError("dayNightCycle is null in CheckTime.");
-            return false;
-        }
     }
 
     public void SaveGame()

@@ -7,7 +7,7 @@ public class CreateFood : MonoBehaviour
 {
     public GameObject[] createFood;
     public ItemObject itemObject;
-    public bool FoodSwich { get { return itemObject.ObjectSwitch; } }
+    
    
 
 
@@ -37,7 +37,7 @@ public class CreateFood : MonoBehaviour
         // 배열의 각 요소를 순회하면서 활성화
         foreach (GameObject foods in createFood)
         {
-            foods.SetActive(FoodSwich);
+            foods.SetActive(true);
         }
     }
     
