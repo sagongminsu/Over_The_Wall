@@ -14,6 +14,8 @@ public class AiStateMachine : StateMachine
     public AiChasingState ChasingState { get; }
     public AiAttackState AttackState { get; }
 
+    public AiHitState HitState { get; }
+
     public Vector2 MovementInput { get; set; }
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
@@ -49,6 +51,7 @@ public class AiStateMachine : StateMachine
         IdleingState = new AiIdleState(this);
         ChasingState = new AiChasingState(this);
         AttackState = new AiAttackState(this);
+        HitState = new AiHitState(this);
 
         MovementSpeed = ai.Data.GroundedData.BaseSpeed;
         RotationDamping = ai.Data.GroundedData.BaseRotationDamping;

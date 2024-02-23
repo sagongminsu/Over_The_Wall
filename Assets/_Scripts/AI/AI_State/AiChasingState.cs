@@ -43,7 +43,7 @@ public class AiChasingState : AiBaseState
 
     private bool IsInAttackRange()
     {
-        // if (stateMachine.Target.IsDead) { return false; }
+         //if (stateMachine.Target.IsDead) { return false; }
 
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Ai.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.Ai.Data.AttackRange * stateMachine.Ai.Data.AttackRange;
