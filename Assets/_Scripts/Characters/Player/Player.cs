@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public WeaponColliderController Weapon_L{ get; private set; }
 
     public AimUI Aim { get; private set; }
+
+    public PauseUI Pause { get; private set; }
     
 
     public Rigidbody Rigidbody { get; private set; }
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour
         Weapon_R = GetWeapon("Weapon_R");
         Weapon_L = GetWeapon("Weapon_L");
         Aim = GetComponent<AimUI>();
+        Pause = GetComponent<PauseUI>();
 
         stateMachine = new PlayerStateMachine(this);
     }

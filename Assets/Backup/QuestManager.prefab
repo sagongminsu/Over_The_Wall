@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1437795947351638617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1179243649380572345}
+  - component: {fileID: 3094948002693731889}
+  - component: {fileID: 478873247961656748}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1179243649380572345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437795947351638617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 950.5201, y: 813.94775, z: -494.31616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 50
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3094948002693731889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437795947351638617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2963dc538cd11bd4886ef4f23a26a11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
+  textField: {fileID: 0}
+  defaultText: "\uD574\uC57C\uD560 \uC77C\n1. \uC8C4\uC218npc\uC640 \uB300\uD654\uD558\uAE30\n2.
+    \uAC31\uB2E8 \uBCF4\uC2A4\uC640 \uB300\uD654\uD558\uAE30\n3. \uC810\uC2EC\uC2DD\uC0AC\uD558\uAE30\n4.
+    \uC228\uACA8\uC9C4 \uC5F4\uC1E0\uCC3E\uAE30\n5. \uC790\uC815\uAE4C\uC9C0 \uBC29\uC73C\uB85C
+    \uB3CC\uC544\uAC00\uC11C \uC790\uAE30"
+  alternativeText: Alternative Text
+--- !u!114 &478873247961656748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437795947351638617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ee94663c81a41478199d3dc1554ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scheduleUI: {fileID: 3094948002693731889}

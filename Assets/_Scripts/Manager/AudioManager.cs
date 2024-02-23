@@ -1,9 +1,13 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
+
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+    public AudioMixer masterMixer;
+    public Slider audioSlider;
 
     public AudioClip[] doorSounds = new AudioClip[3]; // 도어 사운드를 저장하는 배열
     public AudioClip[] bgmTracks; // BGM 트랙을 저장하는 배열
@@ -34,6 +38,16 @@ public class AudioManager : MonoBehaviour
     {
         // 게임 시작 시 첫 번째 BGM 재생
         PlayNextBGM();
+    }
+    public void AudioControl()
+    {
+        float sound = audioSlider.value;
+
+        if (sound == -40f)
+        {
+            masterMixer.SetFloat("Master", -80f);
+        }
+        else masterMixer.SetFloat("Master", sound);
     }
 
     public void PlayDoorSound(int index)
