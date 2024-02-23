@@ -96,7 +96,7 @@ public class DayNightCycle : MonoBehaviour
         if (crrentHours > 12) crrentHours -= 12;
         if (crrentHours == 0) crrentHours = 12;
 
-        timeText.text = "Day " + Days + "\nTime: " + " " + daytime + crrentHours.ToString("00") + ":" + minutes.ToString("00");
+        timeText.text = Days + " ÀÏÂ÷" + "\n" + daytime + crrentHours.ToString("00") + ":" + minutes.ToString("00");
     }
 
 }

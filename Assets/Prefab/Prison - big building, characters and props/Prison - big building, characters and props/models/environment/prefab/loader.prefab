@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4602713458154640}
   - component: {fileID: 33570044777764202}
   - component: {fileID: 23708484602796612}
+  - component: {fileID: 1258522180334192995}
   m_Layer: 0
   m_Name: loader
   m_TagString: Untagged
@@ -166,6 +167,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1258522180334192995
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496100931397294}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300004, guid: 8c63ee1c293a721489a4c55fd8e23801, type: 3}
 --- !u!1 &1733340458264420
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +305,7 @@ Transform:
   - {fileID: 4602713458154640}
   - {fileID: 4686819957411898}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &64219840345664752
 MeshCollider:

@@ -17,9 +17,9 @@ public class MouseSensitivitySlider : MonoBehaviour
     {
         if (gameManager != null)
         {
-            sensitivitySlider.value = gameManager.GetMouseSensitivity();
+            sensitivitySlider.value = gameManager.GetMouseSensitivity() * 10;
             sensitivitySlider.onValueChanged.AddListener(UpdateSensitivity);
-            UpdateSensitivity(gameManager.GetMouseSensitivity());
+            UpdateSensitivity(gameManager.GetMouseSensitivity()*10);
         }
         else
         {
@@ -31,8 +31,8 @@ public class MouseSensitivitySlider : MonoBehaviour
     {
         if (gameManager != null)
         {
-            gameManager.SetMouseSensitivity(value);
-            sensitivityText.text = value.ToString("F1");
+            gameManager.SetMouseSensitivity(value/10);
+            sensitivityText.text = value.ToString("F0");
         }
         else
         {
