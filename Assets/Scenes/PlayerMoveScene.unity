@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2139,6 +2139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curEquip: {fileID: 0}
   equipParent: {fileID: 0}
+  data: {fileID: 0}
   isEquipped: 0
 --- !u!114 &1229332370
 MonoBehaviour:
@@ -2155,6 +2156,8 @@ MonoBehaviour:
   dayNightCycle: {fileID: 0}
   playerConditions: {fileID: 0}
   defaultMouseSensitivity: 5
+  OpenInven: 0
+  Open: 0
 --- !u!1 &1308839850 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1464330131123152, guid: 018aa20d699e55742921013bdae5bb59,
