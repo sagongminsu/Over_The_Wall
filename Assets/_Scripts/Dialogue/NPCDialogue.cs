@@ -70,7 +70,7 @@ public class NPCDialogue : MonoBehaviour, IInteraction
         return interactPrompt;
     }
 
-    public void OnInteract()
+    public virtual void OnInteract()
     {
         if (isTalking)
         {
