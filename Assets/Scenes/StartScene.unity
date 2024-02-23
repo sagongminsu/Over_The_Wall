@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2882,6 +2882,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: gameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5640982362673359977, guid: e9943e4627d75a1468e613fca37cb92c,
+        type: 3}
+      propertyPath: PauseUI
+      value: 
+      objectReference: {fileID: 1287700323855735819, guid: 997196db1b01ee74ebb6cd3bad927a55,
+        type: 3}
     - target: {fileID: 5640982362673359977, guid: e9943e4627d75a1468e613fca37cb92c,
         type: 3}
       propertyPath: dayNightCycle
