@@ -1259,7 +1259,6 @@ MonoBehaviour:
   - {fileID: 134576967785289519}
   Inven: {fileID: 7002452408576069373}
   itemData_: {fileID: 0}
-  Open: 0
   inventoryWindow: {fileID: 7002452408576069373}
   dropPosition: {fileID: 0}
   selectedItemName: {fileID: 3601616051048523465}
@@ -1270,6 +1269,7 @@ MonoBehaviour:
   equipButton: {fileID: 4934649354151411291}
   unEquipButton: {fileID: 7610328867464418998}
   dropButton: {fileID: 6654362166035509252}
+  playerConditions: {fileID: 0}
   onOpenInventiry:
     m_PersistentCalls:
       m_Calls: []
