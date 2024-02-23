@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class ItemObject : MonoBehaviour, IInteraction
 {
     public ItemData_ item;
+    public bool ObjectSwitch = true;
 
     public string GetInteractPrompt()
     {
@@ -15,6 +17,6 @@ public class ItemObject : MonoBehaviour, IInteraction
     {
         gameObject.SetActive(false);
         Inventory.instance.AddItem(item);
-        
+        ObjectSwitch = false;
     }
 }

@@ -40,7 +40,7 @@ public class PlayerConditions : MonoBehaviour, IDamagable
     public Condition hunger;
     public PlayerSO playerSO;
     public float minStaminaToRun = 10f;
-
+    public AudioClip deathClip;
 
     public float noHungerHealthDecay;
 
@@ -48,7 +48,7 @@ public class PlayerConditions : MonoBehaviour, IDamagable
     public UnityEvent onDeath; // 플레이어 사망 시 발생할 이벤트
     public UnityEvent onStaminaDepleted; // 스태미너 고갈 시 발생할 이벤트
 
-   
+    private bool isDead = false;
 
     void Start()
     {   
@@ -59,21 +59,17 @@ public class PlayerConditions : MonoBehaviour, IDamagable
     }
 
 
-    void Update()
-    {
-        hunger.Subtract(hunger.decayRate * Time.deltaTime);
-        playerSO.Stamina.Add(playerSO.Stamina.regenRate * Time.deltaTime);
+void Update()
+{
+    hunger.Subtract(hunger.decayRate * Time.deltaTime);
+    playerSO.Stamina.Add(playerSO.Stamina.regenRate * Time.deltaTime);
 
-        if (hunger.curValue == 0.0f)
-            health.Subtract(noHungerHealthDecay * Time.deltaTime);
+    if (hunger.curValue <= 0.0f)
+        health.Subtract(noHungerHealthDecay * Time.deltaTime);
 
-        if (health.curValue == 0.0f && onDeath != null)
-        {
-            onDeath.Invoke(); // 사망 이벤트 발생
-        }
-
-
-    }
+    if (health.curValue <= 0.0f)
+        Die(); // 체력이 0 이하일 때 Die 메서드 호출
+}
 
     public void Heal(float amount)
     {
@@ -105,26 +101,29 @@ public class PlayerConditions : MonoBehaviour, IDamagable
         playerSO.Stamina.Subtract(amount);
         return true;
     }
-
-    public void Die()
-    {
-        Debug.Log("플레이어가 죽었다.");
-        if (onDeath != null)
-        {
-            onDeath.Invoke(); // 사망 이벤트 발생
-        }
-    }
-
-
     public void TakeDamage(int damage)
     {
         Debug.Log($"TakeDamage 호출됨. 받은 대미지: {damage}");
         health.Subtract(damage);
-        if (onTakeDamage != null)
+        onTakeDamage.Invoke(); // 피해 입었을 때의 이벤트 발생
+
+        if (health.curValue <= 0.0f)
+            Die(); // 체력이 0 이하일 때 Die 메서드 호출
+    }
+    public void Die()
+    {
+        if (!isDead) // isDead를 클래스 멤버 변수로 추가하여 중복 사망 처리 방지
         {
-            onTakeDamage.Invoke(); // 피해 입었을 때의 이벤트 발생
+            Debug.Log("플레이어가 죽었다.");
+            isDead = true;
+            AudioSource.PlayClipAtPoint(deathClip, transform.position);
+            onDeath.Invoke(); // 사망 이벤트 발생
+
         }
     }
+
+
+
 
     public bool CanRun()
     {
