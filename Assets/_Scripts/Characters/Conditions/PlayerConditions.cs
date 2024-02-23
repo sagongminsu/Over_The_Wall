@@ -40,7 +40,7 @@ public class PlayerConditions : MonoBehaviour, IDamagable
     public Condition hunger;
     public PlayerSO playerSO;
     public float minStaminaToRun = 10f;
-
+    public AudioClip deathClip;
 
     public float noHungerHealthDecay;
 
@@ -116,7 +116,9 @@ void Update()
         {
             Debug.Log("플레이어가 죽었다.");
             isDead = true;
+            AudioSource.PlayClipAtPoint(deathClip, transform.position);
             onDeath.Invoke(); // 사망 이벤트 발생
+
         }
     }
 
