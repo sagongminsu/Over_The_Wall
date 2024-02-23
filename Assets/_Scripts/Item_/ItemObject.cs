@@ -6,7 +6,10 @@ using UnityEngine;
 public class ItemObject : MonoBehaviour, IInteraction
 {
     public ItemData_ item;
-    public bool ObjectSwitch = true;
+   
+    public bool ObjectSwitch { get { return objectSwitch; } }
+    private bool objectSwitch = true;
+
 
     public string GetInteractPrompt()
     {
@@ -17,6 +20,6 @@ public class ItemObject : MonoBehaviour, IInteraction
     {
         gameObject.SetActive(false);
         Inventory.instance.AddItem(item);
-        ObjectSwitch = false;
+        objectSwitch = false;
     }
 }
