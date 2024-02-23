@@ -14,7 +14,7 @@ public class Teleport : MonoBehaviour
     public GameObject WarningMessage;
     public TextMeshProUGUI Text;
 
-    public float teleportDelay = 15f;
+    public float teleportDelay = 8f;
 
     private float timer = 0f;
     private bool teleportActivated = false;
@@ -37,12 +37,12 @@ public class Teleport : MonoBehaviour
     {
         if (!IsTimeLimitExceeded())
         {
-            ActivateWarningMessage();
+            
             if (!IsPlayerInsideTeleportArea())
             {
+                ActivateWarningMessage();
                 if (gameManager.CheckTime(06, 22) == false)
                 {
-                    ActivateWarningMessage();
                     timer += Time.deltaTime;
                     if (timer >= teleportDelay)
                     {
