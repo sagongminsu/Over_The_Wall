@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class Teleport : MonoBehaviour
@@ -13,7 +14,7 @@ public class Teleport : MonoBehaviour
     public GameObject WarningMessage;
     public TextMeshProUGUI Text;
 
-    public float teleportDelay = 10f;
+    public float teleportDelay = 15f;
 
     private float timer = 0f;
     private bool teleportActivated = false;
@@ -22,6 +23,10 @@ public class Teleport : MonoBehaviour
         gameManager = gameManager.I;
     }
 
+    private void Start()
+    {
+        WarningMessage.SetActive(false);
+    }
 
     void Update()
     {
@@ -32,36 +37,42 @@ public class Teleport : MonoBehaviour
     {
         if (!IsTimeLimitExceeded())
         {
+            ActivateWarningMessage();
             if (!IsPlayerInsideTeleportArea())
             {
-                ActivateWarningMessage();
-                timer += Time.deltaTime;
-                if (timer >= teleportDelay)
+                if (gameManager.CheckTime(06, 22) == false)
                 {
-                    teleportActivated = true;
-                    TeleportPlayer();     
+                    ActivateWarningMessage();
+                    timer += Time.deltaTime;
+                    if (timer >= teleportDelay)
+                    {
+                        teleportActivated = true;
+                        TeleportPlayer();
+                    }
                 }
             }
             else
             {
                 ResetTeleportTimer();
                 DeactivateWarningMessage();
+                WarningMessage.SetActive(false);
             }
         }
         else
         {
             ResetTeleportTimer();
             DeactivateWarningMessage();
+            WarningMessage.SetActive(false);
         }
     }
 
     private bool IsTimeLimitExceeded()
     {
-        return gameManager.CheckTime(6, 23);
+        return gameManager.CheckTime(6, 21);
     }
     private bool IsPlayerInsideTeleportArea()
     {
-        return !teleportArea.bounds.Contains(playerTransform.position);
+        return teleportArea.bounds.Contains(playerTransform.position);
     }
 
     private void ResetTeleportTimer()
@@ -78,11 +89,15 @@ public class Teleport : MonoBehaviour
 
     private void ActivateWarningMessage()
     {
-        if (gameManager.CheckTime(22, 23))
+        if (gameManager.CheckTime(21, 22))
         {
             WarningMessage.SetActive(true);
 
             Text.text = "취침 시간입니다. 어서 돌아가세요!";
+        }
+        else
+        {
+            Text.text = "시간내에 복귀하지 못했습니다. 강제로 귀환합니다.";
         }
     }
 
@@ -90,6 +105,4 @@ public class Teleport : MonoBehaviour
     {
         WarningMessage.SetActive(false);
     }
-
-
 }
