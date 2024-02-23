@@ -23,4 +23,5 @@ MonoBehaviour:
   consumables: []
   equipPrefab: {fileID: 0}
   weaponType: 0
+  HasQuestItem: 0
   QuestNum: 4

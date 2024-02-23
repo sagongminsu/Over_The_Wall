@@ -21,6 +21,6 @@ public class ItemObject : MonoBehaviour, IInteraction
     {
         gameObject.SetActive(false);
         Inventory.instance.AddItem(item);
-        ObjectSwitch = true;
+      
     }
 }

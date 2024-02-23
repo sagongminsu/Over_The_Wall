@@ -54,6 +54,7 @@ public class ItemData_ : ScriptableObject
     public WeaponType weaponType;
 
     [Header("Quest")]
+    public bool HasQuestItem;
     public int QuestNum;
 
 }
