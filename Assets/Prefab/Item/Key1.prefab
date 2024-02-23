@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1597166701855010881}
   - component: {fileID: 1427091415880141137}
   - component: {fileID: 168772372257794137}
-  m_Layer: 0
+  - component: {fileID: 3523478284403725182}
+  m_Layer: 6
   m_Name: Key1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,14 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452873720749704583}
-  m_LocalRotation: {x: -0.36085632, y: -0.61365074, z: -0.5956362, w: 0.37206584}
+  m_LocalRotation: {x: -0.36085588, y: -0.61365014, z: -0.5956385, w: 0.37206364}
   m_LocalPosition: {x: 5.5911, y: 7.5894, z: -20.535}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2461220575417970856}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: -91.719, y: 423.111, z: -540.673}
 --- !u!33 &1597166701855010881
 MeshFilter:
@@ -97,7 +98,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4478dc3da3af6e6488b6de5e1a80e96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  item: {fileID: 11400000, guid: 0fbd7449a68cd7743addeb4fad3240d9, type: 2}
+  ObjectSwitch: 1
+--- !u!65 &3523478284403725182
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452873720749704583}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08, y: 0.2, z: 0.005381247}
+  m_Center: {x: 0.00024982364, y: -0.0011694878, z: -3.0640795e-11}
 --- !u!1 &6509670764610968161
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +132,7 @@ GameObject:
   - component: {fileID: 7549729502755739067}
   - component: {fileID: 3124955659569946028}
   - component: {fileID: 8924692519933984440}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ring3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +215,7 @@ GameObject:
   - component: {fileID: 2461220575417970856}
   - component: {fileID: 5587828616170222568}
   - component: {fileID: 117733111545023859}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tag7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +300,7 @@ GameObject:
   - component: {fileID: 112033571397743672}
   - component: {fileID: 5305759188938532022}
   - component: {fileID: 223647784458687741}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eyelets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
