@@ -20,11 +20,12 @@ public class Bed : MonoBehaviour, IInteraction
     {
         if (gameManager.I.dayNightCycle.Hours > 21 || gameManager.I.dayNightCycle.Hours < 5)
         {
-            StartCoroutine(FadeOutAndIn());
             if (gameManager.I.dayNightCycle.Days == 0)
             {
                 QuestManager.instance.CompleteQuest(5);
             }
+            StartCoroutine(FadeOutAndIn());
+            
         }
         else
         {
