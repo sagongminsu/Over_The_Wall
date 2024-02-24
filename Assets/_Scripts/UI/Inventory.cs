@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
     public ItemSlotUI[] uiSlots;
     public GameObject Inven;
     public ItemData_ itemData_;
+  
  
 
     public ItemSlot[] slots;
@@ -36,6 +37,7 @@ public class Inventory : MonoBehaviour
 
     private PlayerInput playerInput;
     public PlayerConditions playerConditions;
+    public QuestManager questManager;
 
     [Header("Events")]
     public UnityEvent onOpenInventiry;
@@ -75,6 +77,10 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(ItemData_ item)
     {
+        if (item.type == ItemType.Quest)
+        {
+            QuestManager.instance.CompleteQuest(item.QuestNum);
+        }
         if (item.canStack)
         {
             ItemSlot slotToStackTo = GetItemStack(item);
@@ -230,8 +236,13 @@ public class Inventory : MonoBehaviour
                         playerConditions.Eat(selectedItem.item.consumables[i].value); break;
                 }
             }
+            RemoveSelectedItem(selectedItem.item);
         }
-        RemoveSelectedItem(selectedItem.item);
+        //else if (selectedItem.item.type == ItemType.Quest)
+        //{
+        //    QuestManager.RoadQuestNum(selectedItem.item. Quest[i].value);
+        //}
+       
     }
     private void RemoveSelectedItem(ItemData_ item)
     {

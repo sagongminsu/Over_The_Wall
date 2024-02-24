@@ -6,9 +6,9 @@ public class PrisonerNPCDialogue : NPCDialogue
     {
         dialogues = new string[]
         {
-            
-            "우리가 계획 중인 일이 있는데 부탁 하나 들어주면 너도 끼워주도록 하지.",
-            "우리 동료가 갇혀있는 방의 열쇠를 찾아서 내일까지 가져올 수 있겠나?"
+            "만나서 반갑네.",
+            "자네에게 뭔가가 필요한거 같군.",
+            "감옥 3층을 한번 찾아보게."
         };
     }
 
@@ -17,7 +17,7 @@ public class PrisonerNPCDialogue : NPCDialogue
         base.StartDialogue();
         dialogueText.text = dialogues[0];
     }
-    public new void OnInteract()
+    public override void OnInteract()
     {
         questManager.CompleteQuest(1);
         base.OnInteract();

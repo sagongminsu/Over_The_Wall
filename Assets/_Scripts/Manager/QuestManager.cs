@@ -4,20 +4,29 @@ using UnityEngine.UI;
 public class QuestManager : MonoBehaviour
 {
     public ScheduleUI scheduleUI;
+    public static QuestManager instance;
 
     // 각 퀘스트의 완료 상태를 저장하는 배열
     private bool[] questStatus = new bool[5];
 
     public Image[] questImages;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
 
+    }
     void Start()
     {
         InitializeQuests();
         UpdateQuestImages();
     }
+   
 
     // 퀘스트 상태 초기화 메서드
-    void InitializeQuests()
+    private void InitializeQuests()
     {
         for (int i = 0; i < questStatus.Length; i++)
         {

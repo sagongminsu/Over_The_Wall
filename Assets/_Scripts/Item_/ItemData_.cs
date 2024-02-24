@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Resource,
+    Quest,
     Equipable,
     Consumable
 }
@@ -52,5 +52,9 @@ public class ItemData_ : ScriptableObject
     [Header("Equip")]
     public GameObject equipPrefab;
     public WeaponType weaponType;
+
+    [Header("Quest")]
+    public bool HasQuestItem;
+    public int QuestNum;
 
 }
