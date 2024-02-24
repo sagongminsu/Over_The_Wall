@@ -28,7 +28,7 @@ public class Teleport : MonoBehaviour
         WarningMessage.SetActive(false);
     }
 
-    void Update()
+    void LateUpdate()
     {
         DoTeleport();
     }
