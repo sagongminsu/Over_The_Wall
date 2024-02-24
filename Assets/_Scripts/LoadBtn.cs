@@ -4,19 +4,13 @@ using UnityEngine.UI;
 
 public class LoadBtn : MonoBehaviour
 {
-    public Button loadGameButton;
+    public LoadingScene LoadingScene;
 
-    void Start()
-    {
-        //loadGameButton.onClick.AddListener(LoadSavedGame);
-    }
-
-    public void LoadSavedGame()
+    public void LoadSavedGame(int sceneId)
     {
         // 저장된 게임 데이터 로드
         gameManager.I.LoadGame();
 
-        // MainScene을 함께 로드
-        //SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+        LoadingScene.LoadScene(sceneId);
     }
 }

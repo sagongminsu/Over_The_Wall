@@ -13,6 +13,10 @@ public class ExitUI : MonoBehaviour
     public void timeScale(float Value)
     {
         Time.timeScale = Value;
+    }
+
+    public void CursorLock()
+    {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
