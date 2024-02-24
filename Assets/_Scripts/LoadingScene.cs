@@ -16,8 +16,6 @@ public class LoadingScene : MonoBehaviour
 
     private IEnumerator LoadSceneAsync(int sceneId)
     {
-        gameManager.I.LoadGame();
-
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
 
         LoadingUI.SetActive(true);
