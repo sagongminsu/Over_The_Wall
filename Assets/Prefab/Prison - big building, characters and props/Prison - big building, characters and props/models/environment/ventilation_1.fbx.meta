@@ -1,126 +1,341 @@
 fileFormatVersion: 2
 guid: 89ded84e4a2dacd46ba4ca1aab600447
-timeCreated: 1564553476
-licenseType: Store
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: vent_1
-    100002: vent_1_1
-    100004: vent_1_8_1
-    100006: vent_1_8_2
-    100008: vent_1_8_3
-    100010: vent_1_8_4
-    100012: vent_1_9_1
-    100014: vent_1_9_2
-    100016: vent_1_9_2_2
-    100018: vent_1_9_3
-    100020: vent_2
-    100022: vent_2_1
-    100024: vent_3
-    100026: vent_3_1
-    100028: vent_4_1
-    100030: vent_4_1_1
-    100032: vent_4_2
-    100034: vent_4_2_1
-    100036: vent_5
-    100038: vent_6
-    100040: vent_7
-    100042: //RootNode
-    400000: vent_1
-    400002: vent_1_1
-    400004: vent_1_8_1
-    400006: vent_1_8_2
-    400008: vent_1_8_3
-    400010: vent_1_8_4
-    400012: vent_1_9_1
-    400014: vent_1_9_2
-    400016: vent_1_9_2_2
-    400018: vent_1_9_3
-    400020: vent_2
-    400022: vent_2_1
-    400024: vent_3
-    400026: vent_3_1
-    400028: vent_4_1
-    400030: vent_4_1_1
-    400032: vent_4_2
-    400034: vent_4_2_1
-    400036: vent_5
-    400038: vent_6
-    400040: vent_7
-    400042: //RootNode
-    2300000: vent_1
-    2300002: vent_1_1
-    2300004: vent_1_8_1
-    2300006: vent_1_8_2
-    2300008: vent_1_8_3
-    2300010: vent_1_8_4
-    2300012: vent_1_9_1
-    2300014: vent_1_9_2
-    2300016: vent_1_9_2_2
-    2300018: vent_1_9_3
-    2300020: vent_2
-    2300022: vent_2_1
-    2300024: vent_3
-    2300026: vent_3_1
-    2300028: vent_4_1
-    2300030: vent_4_1_1
-    2300032: vent_4_2
-    2300034: vent_4_2_1
-    2300036: vent_5
-    2300038: vent_6
-    2300040: vent_7
-    3300000: vent_1
-    3300002: vent_1_1
-    3300004: vent_1_8_1
-    3300006: vent_1_8_2
-    3300008: vent_1_8_3
-    3300010: vent_1_8_4
-    3300012: vent_1_9_1
-    3300014: vent_1_9_2
-    3300016: vent_1_9_2_2
-    3300018: vent_1_9_3
-    3300020: vent_2
-    3300022: vent_2_1
-    3300024: vent_3
-    3300026: vent_3_1
-    3300028: vent_4_1
-    3300030: vent_4_1_1
-    3300032: vent_4_2
-    3300034: vent_4_2_1
-    3300036: vent_5
-    3300038: vent_6
-    3300040: vent_7
-    4300000: vent_3_1
-    4300002: vent_1
-    4300004: vent_1_1
-    4300006: vent_2
-    4300008: vent_2_1
-    4300010: vent_3
-    4300012: vent_4_2
-    4300014: vent_4_2_1
-    4300016: vent_4_1
-    4300018: vent_4_1_1
-    4300020: vent_1_8_4
-    4300022: vent_5
-    4300024: vent_6
-    4300026: vent_7
-    4300028: vent_1_8_1
-    4300030: vent_1_8_2
-    4300032: vent_1_8_3
-    4300034: vent_1_9_3
-    4300036: vent_1_9_2_2
-    4300038: vent_1_9_1
-    4300040: vent_1_9_2
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: vent_1
+  - first:
+      1: 100002
+    second: vent_1_1
+  - first:
+      1: 100004
+    second: vent_1_8_1
+  - first:
+      1: 100006
+    second: vent_1_8_2
+  - first:
+      1: 100008
+    second: vent_1_8_3
+  - first:
+      1: 100010
+    second: vent_1_8_4
+  - first:
+      1: 100012
+    second: vent_1_9_1
+  - first:
+      1: 100014
+    second: vent_1_9_2
+  - first:
+      1: 100016
+    second: vent_1_9_2_2
+  - first:
+      1: 100018
+    second: vent_1_9_3
+  - first:
+      1: 100020
+    second: vent_2
+  - first:
+      1: 100022
+    second: vent_2_1
+  - first:
+      1: 100024
+    second: vent_3
+  - first:
+      1: 100026
+    second: vent_3_1
+  - first:
+      1: 100028
+    second: vent_4_1
+  - first:
+      1: 100030
+    second: vent_4_1_1
+  - first:
+      1: 100032
+    second: vent_4_2
+  - first:
+      1: 100034
+    second: vent_4_2_1
+  - first:
+      1: 100036
+    second: vent_5
+  - first:
+      1: 100038
+    second: vent_6
+  - first:
+      1: 100040
+    second: vent_7
+  - first:
+      1: 100042
+    second: //RootNode
+  - first:
+      4: 400000
+    second: vent_1
+  - first:
+      4: 400002
+    second: vent_1_1
+  - first:
+      4: 400004
+    second: vent_1_8_1
+  - first:
+      4: 400006
+    second: vent_1_8_2
+  - first:
+      4: 400008
+    second: vent_1_8_3
+  - first:
+      4: 400010
+    second: vent_1_8_4
+  - first:
+      4: 400012
+    second: vent_1_9_1
+  - first:
+      4: 400014
+    second: vent_1_9_2
+  - first:
+      4: 400016
+    second: vent_1_9_2_2
+  - first:
+      4: 400018
+    second: vent_1_9_3
+  - first:
+      4: 400020
+    second: vent_2
+  - first:
+      4: 400022
+    second: vent_2_1
+  - first:
+      4: 400024
+    second: vent_3
+  - first:
+      4: 400026
+    second: vent_3_1
+  - first:
+      4: 400028
+    second: vent_4_1
+  - first:
+      4: 400030
+    second: vent_4_1_1
+  - first:
+      4: 400032
+    second: vent_4_2
+  - first:
+      4: 400034
+    second: vent_4_2_1
+  - first:
+      4: 400036
+    second: vent_5
+  - first:
+      4: 400038
+    second: vent_6
+  - first:
+      4: 400040
+    second: vent_7
+  - first:
+      4: 400042
+    second: //RootNode
+  - first:
+      23: 2300000
+    second: vent_1
+  - first:
+      23: 2300002
+    second: vent_1_1
+  - first:
+      23: 2300004
+    second: vent_1_8_1
+  - first:
+      23: 2300006
+    second: vent_1_8_2
+  - first:
+      23: 2300008
+    second: vent_1_8_3
+  - first:
+      23: 2300010
+    second: vent_1_8_4
+  - first:
+      23: 2300012
+    second: vent_1_9_1
+  - first:
+      23: 2300014
+    second: vent_1_9_2
+  - first:
+      23: 2300016
+    second: vent_1_9_2_2
+  - first:
+      23: 2300018
+    second: vent_1_9_3
+  - first:
+      23: 2300020
+    second: vent_2
+  - first:
+      23: 2300022
+    second: vent_2_1
+  - first:
+      23: 2300024
+    second: vent_3
+  - first:
+      23: 2300026
+    second: vent_3_1
+  - first:
+      23: 2300028
+    second: vent_4_1
+  - first:
+      23: 2300030
+    second: vent_4_1_1
+  - first:
+      23: 2300032
+    second: vent_4_2
+  - first:
+      23: 2300034
+    second: vent_4_2_1
+  - first:
+      23: 2300036
+    second: vent_5
+  - first:
+      23: 2300038
+    second: vent_6
+  - first:
+      23: 2300040
+    second: vent_7
+  - first:
+      33: 3300000
+    second: vent_1
+  - first:
+      33: 3300002
+    second: vent_1_1
+  - first:
+      33: 3300004
+    second: vent_1_8_1
+  - first:
+      33: 3300006
+    second: vent_1_8_2
+  - first:
+      33: 3300008
+    second: vent_1_8_3
+  - first:
+      33: 3300010
+    second: vent_1_8_4
+  - first:
+      33: 3300012
+    second: vent_1_9_1
+  - first:
+      33: 3300014
+    second: vent_1_9_2
+  - first:
+      33: 3300016
+    second: vent_1_9_2_2
+  - first:
+      33: 3300018
+    second: vent_1_9_3
+  - first:
+      33: 3300020
+    second: vent_2
+  - first:
+      33: 3300022
+    second: vent_2_1
+  - first:
+      33: 3300024
+    second: vent_3
+  - first:
+      33: 3300026
+    second: vent_3_1
+  - first:
+      33: 3300028
+    second: vent_4_1
+  - first:
+      33: 3300030
+    second: vent_4_1_1
+  - first:
+      33: 3300032
+    second: vent_4_2
+  - first:
+      33: 3300034
+    second: vent_4_2_1
+  - first:
+      33: 3300036
+    second: vent_5
+  - first:
+      33: 3300038
+    second: vent_6
+  - first:
+      33: 3300040
+    second: vent_7
+  - first:
+      43: 4300000
+    second: vent_3_1
+  - first:
+      43: 4300002
+    second: vent_1
+  - first:
+      43: 4300004
+    second: vent_1_1
+  - first:
+      43: 4300006
+    second: vent_2
+  - first:
+      43: 4300008
+    second: vent_2_1
+  - first:
+      43: 4300010
+    second: vent_3
+  - first:
+      43: 4300012
+    second: vent_4_2
+  - first:
+      43: 4300014
+    second: vent_4_2_1
+  - first:
+      43: 4300016
+    second: vent_4_1
+  - first:
+      43: 4300018
+    second: vent_4_1_1
+  - first:
+      43: 4300020
+    second: vent_1_8_4
+  - first:
+      43: 4300022
+    second: vent_5
+  - first:
+      43: 4300024
+    second: vent_6
+  - first:
+      43: 4300026
+    second: vent_7
+  - first:
+      43: 4300028
+    second: vent_1_8_1
+  - first:
+      43: 4300030
+    second: vent_1_8_2
+  - first:
+      43: 4300032
+    second: vent_1_8_3
+  - first:
+      43: 4300034
+    second: vent_1_9_3
+  - first:
+      43: 4300036
+    second: vent_1_9_2_2
+  - first:
+      43: 4300038
+    second: vent_1_9_1
+  - first:
+      43: 4300040
+    second: vent_1_9_2
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 1
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -128,39 +343,65 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -170,14 +411,19 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
