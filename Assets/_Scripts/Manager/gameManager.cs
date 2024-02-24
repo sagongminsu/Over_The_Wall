@@ -31,6 +31,8 @@ public class gameManager : MonoBehaviour
         currentMouseSensitivity = defaultMouseSensitivity;
 
         DontDestroyOnLoad(gameObject);
+
+        Application.targetFrameRate = 60;
     }
     private void Update()
     {
