@@ -4,9 +4,6 @@ using UnityEngine.InputSystem;
 public class PlayerInteractState : PlayerGroundedState
 {
     private InteractionManager interactionManager;
-    private bool hasInteracted = false;
-    private float interactCooldown = 0.2f;
-    private float interactTimer = 0f;
 
     public PlayerInteractState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -16,11 +13,9 @@ public class PlayerInteractState : PlayerGroundedState
     public override void Enter()
     {
 
-        if (!hasInteracted && interactionManager.CurrentInteractGameObject != null && interactionManager.CurrentInteraction != null)
+        if (interactionManager.CurrentInteractGameObject != null && interactionManager.CurrentInteraction != null)
         {
             interactionManager.CurrentInteraction.OnInteract();
-            hasInteracted = true;
-            interactTimer = interactCooldown;
         }
         else
         {
@@ -41,15 +36,6 @@ public class PlayerInteractState : PlayerGroundedState
     public override void Update()
     {
         base.Update();
-
-        if (hasInteracted)
-        {
-            interactTimer -= Time.deltaTime;
-            if (interactTimer <= 0)
-            {
-                hasInteracted = false;
-            }
-        }
     }
 
     protected override void OnInteractionCanceled(InputAction.CallbackContext context)
@@ -65,8 +51,4 @@ public class PlayerInteractState : PlayerGroundedState
 
     }
 
-    public void SetHasInteracted(bool value)
-    {
-        hasInteracted = value;
-    }
 }
