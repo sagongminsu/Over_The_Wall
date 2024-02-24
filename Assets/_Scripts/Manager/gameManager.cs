@@ -14,6 +14,7 @@ public class gameManager : MonoBehaviour
     public KeyCode OpenInven;
     public bool Open;
     public bool isPause;
+    public bool isLoad = false;
 
     private float currentMouseSensitivity;
 
@@ -85,8 +86,14 @@ public class gameManager : MonoBehaviour
 
         Debug.Log("Game saved!");
     }
-
     public void LoadGame()
+    {
+        if(PlayerPrefs.HasKey("SavedGameData"))
+        {
+            isLoad = true;
+        }
+    }
+    public void Load()
     {
         if (PlayerPrefs.HasKey("SavedGameData"))
         {

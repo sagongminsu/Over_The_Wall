@@ -53,9 +53,17 @@ public class PlayerConditions : MonoBehaviour, IDamagable
     void Start()
     {
         gameManager.I.playerConditions = this;
-        health.curValue = health.startValue;
-        hunger.curValue = hunger.startValue;
-        playerSO.Stamina.curValue = playerSO.Stamina.startValue;
+        if(gameManager.I.isLoad)
+        {
+            gameManager.I.Load();
+        }
+        else
+        {
+            health.curValue = health.startValue;
+            hunger.curValue = hunger.startValue;
+            playerSO.Stamina.curValue = playerSO.Stamina.startValue;
+        }
+       
     }
 
 
