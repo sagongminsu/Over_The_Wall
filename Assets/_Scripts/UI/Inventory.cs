@@ -47,9 +47,14 @@ public class Inventory : MonoBehaviour
     public ItemData_ baton;
 
     void Awake()
-    {
-        instance = this;
+    {   
+        if(instance == null)
+        {
+   
+            instance = this;
+            DontDestroyOnLoad(this);
 
+        }
     }
     private void Start()
     {
