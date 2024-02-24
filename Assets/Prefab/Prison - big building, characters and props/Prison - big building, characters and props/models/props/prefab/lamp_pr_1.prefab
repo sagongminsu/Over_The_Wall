@@ -118,7 +118,7 @@ Transform:
   - {fileID: 4032301943707508}
   - {fileID: 4663616295425160}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33311081045125048
 MeshFilter:
@@ -219,36 +219,36 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 599.991
+      time: 999.99
       value: 0
       inSlope: -0
-      outSlope: 334.36734
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 600
-      value: 3
-      inSlope: 334.36734
-      outSlope: 0
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 999.9
-      value: 3
-      inSlope: -0
-      outSlope: -30.007326
+      outSlope: 300.15854
       tangentMode: 69
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1000
+      value: 3.0045166
+      inSlope: 300.15854
+      outSlope: -0.0000022071538
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1279.99
+      value: 3.0038986
+      inSlope: -0.0000022071538
+      outSlope: -300.0968
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1280
       value: 0
-      inSlope: -30.007326
+      inSlope: -300.0968
       outSlope: 0
       tangentMode: 69
       weightedMode: 0

@@ -5,6 +5,7 @@ public class SlidingDoor : MonoBehaviour, IInteraction
 {
     private Collider ObjectCollider;
     private AudioManager audioManager;
+    private Teleport teleport;
 
     float openPositionX = -2.78f;
     float closePositionX = -1.47f;
@@ -12,21 +13,45 @@ public class SlidingDoor : MonoBehaviour, IInteraction
 
     bool isOpen = false;
     bool isMoving = false;
-
+    bool lockDoor = false;
     void Start()
     {
         ObjectCollider = GetComponent<Collider>();
         audioManager = AudioManager.Instance; // AudioManager 인스턴스 가져오기
 
     }
+    void Update()
+    {
+        if (gameManager.I.dayNightCycle.time < 360f || gameManager.I.dayNightCycle.time > 1380f)
+        {
+            lockDoor = true;
+            Vector3 targetPosition = new Vector3(closePositionX, transform.localPosition.y, transform.localPosition.z);
+            transform.localPosition = targetPosition;
+            isOpen = false;
+        }
+        else
+        {
+            lockDoor = false;
+        }
+    }
+
+
 
     public void OnInteract()
     {
-        if (!isMoving)
+        if (lockDoor == false)
         {
-            StartCoroutine(MoveDoor());
+            if (!isMoving)
+            {
+                StartCoroutine(MoveDoor());
+            }
+        }
+        else
+        {
+            return;
         }
     }
+
 
     IEnumerator MoveDoor()
     {
@@ -61,8 +86,16 @@ public class SlidingDoor : MonoBehaviour, IInteraction
 
     public string GetInteractPrompt()
     {
-        return isOpen ? "Interaction 닫기" : "Interaction 열기";
+        if (lockDoor == false)
+        {
+            return isOpen ? "Interaction 닫기" : "Interaction 열기";
+        }
+        else
+        {
+            return "잠김";
+        }
     }
+
 
     private void ToggleObject(bool enable)
     {
