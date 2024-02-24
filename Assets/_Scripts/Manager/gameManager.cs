@@ -10,7 +10,7 @@ public class gameManager : MonoBehaviour
 
     public static gameManager I;
 
-    public float defaultMouseSensitivity = 5.0f;
+    public float defaultMouseSensitivity = 1.0f;
     public KeyCode OpenInven;
     public bool Open;
     public bool isPause;
