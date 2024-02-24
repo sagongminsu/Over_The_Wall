@@ -32,7 +32,7 @@ public class CreateFood : MonoBehaviour
                 activateFoods();
             }
 
-            if (gameManager.I.CheckTime(17, 18))
+            else if (gameManager.I.CheckTime(17, 18))
             {
                 if (isFood) return;
                 activateFoods();
