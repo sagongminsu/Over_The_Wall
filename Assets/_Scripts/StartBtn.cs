@@ -4,14 +4,15 @@ using UnityEngine.UI;
 
 public class StartBtn : MonoBehaviour
 {
-
+    public LoadingScene LoadingScene;
     void Start()
     {
         
     }
 
-    //public void StartGame()
-    //{
-    //    LoadingScene.Instance.LoadScene("TestScene");
-    //}
+    public void StartGame(int sceneId)
+    {
+        gameManager.I.isLoad = false;
+        LoadingScene.LoadScene(sceneId);
+    }
 }
