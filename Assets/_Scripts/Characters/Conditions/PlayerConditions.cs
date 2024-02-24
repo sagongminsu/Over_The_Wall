@@ -52,24 +52,24 @@ public class PlayerConditions : MonoBehaviour, IDamagable
 
     void Start()
     {   
-       
+        gameManager.I.playerConditions = this;
         health.curValue = health.startValue;
         hunger.curValue = hunger.startValue;
         playerSO.Stamina.curValue = playerSO.Stamina.startValue;
     }
 
 
-void Update()
-{
-    hunger.Subtract(hunger.decayRate * Time.deltaTime);
-    playerSO.Stamina.Add(playerSO.Stamina.regenRate * Time.deltaTime);
+    void Update()
+    {
+        hunger.Subtract(hunger.decayRate * Time.deltaTime);
+        playerSO.Stamina.Add(playerSO.Stamina.regenRate * Time.deltaTime);
 
-    if (hunger.curValue <= 0.0f)
-        health.Subtract(noHungerHealthDecay * Time.deltaTime);
+        if (hunger.curValue <= 0.0f)
+            health.Subtract(noHungerHealthDecay * Time.deltaTime);
 
-    if (health.curValue <= 0.0f)
-        Die(); // 체력이 0 이하일 때 Die 메서드 호출
-}
+        if (health.curValue <= 0.0f)
+            Die(); // 체력이 0 이하일 때 Die 메서드 호출
+    }
 
     public void Heal(float amount)
     {
