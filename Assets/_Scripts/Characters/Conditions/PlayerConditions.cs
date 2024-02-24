@@ -51,8 +51,8 @@ public class PlayerConditions : MonoBehaviour, IDamagable
     private bool isDead = false;
 
     void Start()
-    {   
-       
+    {
+        gameManager.I.playerConditions = this;
         health.curValue = health.startValue;
         hunger.curValue = hunger.startValue;
         playerSO.Stamina.curValue = playerSO.Stamina.startValue;
