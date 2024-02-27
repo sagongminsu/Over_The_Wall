@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public interface IDamagable
 {
     void TakeDamage(int damageAmount);
+    void TakePhysicalDamage(int damageAmount);
 }
 
 [System.Serializable]
@@ -129,7 +130,11 @@ void Update()
 
         }
     }
-
+    public void TakePhysicalDamage(int damageAmount)
+    {
+        health.Subtract(damageAmount);
+        onTakeDamage?.Invoke();
+    }
 
 
 
