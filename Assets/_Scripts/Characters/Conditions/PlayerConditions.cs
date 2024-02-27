@@ -51,25 +51,33 @@ public class PlayerConditions : MonoBehaviour, IDamagable
     private bool isDead = false;
 
     void Start()
-    {   
-        gameManager.I.playerConditions = this;
-        health.curValue = health.startValue;
-        hunger.curValue = hunger.startValue;
-        playerSO.Stamina.curValue = playerSO.Stamina.startValue;
-    }
-
-
-    void Update()
     {
-        hunger.Subtract(hunger.decayRate * Time.deltaTime);
-        playerSO.Stamina.Add(playerSO.Stamina.regenRate * Time.deltaTime);
-
-        if (hunger.curValue <= 0.0f)
-            health.Subtract(noHungerHealthDecay * Time.deltaTime);
-
-        if (health.curValue <= 0.0f)
-            Die(); // 체력이 0 이하일 때 Die 메서드 호출
+        gameManager.I.playerConditions = this;
+        if(gameManager.I.isLoad)
+        {
+            gameManager.I.Load();
+        }
+        else
+        {
+            health.curValue = health.startValue;
+            hunger.curValue = hunger.startValue;
+            playerSO.Stamina.curValue = playerSO.Stamina.startValue;
+        }
+       
     }
+
+
+void Update()
+{
+    hunger.Subtract(hunger.decayRate * Time.deltaTime);
+    playerSO.Stamina.Add(playerSO.Stamina.regenRate * Time.deltaTime);
+
+    if (hunger.curValue <= 0.0f)
+        health.Subtract(noHungerHealthDecay * Time.deltaTime);
+
+    if (health.curValue <= 0.0f)
+        Die(); // 체력이 0 이하일 때 Die 메서드 호출
+}
 
     public void Heal(float amount)
     {

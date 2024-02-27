@@ -10,10 +10,11 @@ public class gameManager : MonoBehaviour
 
     public static gameManager I;
 
-    public float defaultMouseSensitivity = 5.0f;
+    public float defaultMouseSensitivity = 1.0f;
     public KeyCode OpenInven;
     public bool Open;
     public bool isPause;
+    public bool isLoad = false;
 
     private float currentMouseSensitivity;
 
@@ -30,6 +31,8 @@ public class gameManager : MonoBehaviour
         currentMouseSensitivity = defaultMouseSensitivity;
 
         DontDestroyOnLoad(gameObject);
+
+        Application.targetFrameRate = 60;
     }
     private void Update()
     {
@@ -85,8 +88,14 @@ public class gameManager : MonoBehaviour
 
         Debug.Log("Game saved!");
     }
-
     public void LoadGame()
+    {
+        if(PlayerPrefs.HasKey("SavedGameData"))
+        {
+            isLoad = true;
+        }
+    }
+    public void Load()
     {
         if (PlayerPrefs.HasKey("SavedGameData"))
         {

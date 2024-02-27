@@ -6,7 +6,6 @@ public class Bed : MonoBehaviour, IInteraction
 {
     public Image fadePanel;
     private bool dayIncremented = false;
-
     void Awake()
     {
         if (fadePanel == null)
@@ -19,9 +18,14 @@ public class Bed : MonoBehaviour, IInteraction
 
     public void OnInteract()
     {
-        if (gameManager.I.dayNightCycle.Hours > 18 || gameManager.I.dayNightCycle.Hours < 5)
+        if (gameManager.I.dayNightCycle.Hours > 21 || gameManager.I.dayNightCycle.Hours < 5)
         {
+            if (gameManager.I.dayNightCycle.Days == 0)
+            {
+                QuestManager.instance.CompleteQuest(5);
+            }
             StartCoroutine(FadeOutAndIn());
+            
         }
         else
         {

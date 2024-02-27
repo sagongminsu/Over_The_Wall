@@ -50,5 +50,10 @@ public class QuestManager : MonoBehaviour
             // 각 퀘스트 이미지의 활성화 여부를 questStatus 배열 값에 따라 설정합니다.
             questImages[i].gameObject.SetActive(questStatus[i]);
         }
+
+    }
+    public bool GetQuestState(int questNumber)
+    {
+        return questStatus[questNumber - 1];
     }
 }

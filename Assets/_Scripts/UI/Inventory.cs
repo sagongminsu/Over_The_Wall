@@ -13,8 +13,8 @@ public class Inventory : MonoBehaviour
     public ItemSlotUI[] uiSlots;
     public GameObject Inven;
     public ItemData_ itemData_;
-  
- 
+
+
 
     public ItemSlot[] slots;
 
@@ -47,9 +47,14 @@ public class Inventory : MonoBehaviour
     public ItemData_ baton;
 
     void Awake()
-    {
-        instance = this;
-        
+    {   
+        if(instance == null)
+        {
+   
+            instance = this;
+            DontDestroyOnLoad(this);
+
+        }
     }
     private void Start()
     {
@@ -62,7 +67,7 @@ public class Inventory : MonoBehaviour
             uiSlots[i].Clear();
         }
         slots[0] = new ItemSlot() { item = baton, quantity = 1 };
-        UpdateUi(); 
+        UpdateUi();
         ClearSelectedItemWindow();
         inventoryWindow.SetActive(false);
     }
@@ -73,7 +78,7 @@ public class Inventory : MonoBehaviour
         Inven.SetActive(isOpen);
     }
 
-    
+
 
     public void AddItem(ItemData_ item)
     {
@@ -171,7 +176,7 @@ public class Inventory : MonoBehaviour
         equipButton.SetActive(selectedItem.item.type == ItemType.Equipable && !uiSlots[index].equipped);
         unEquipButton.SetActive(selectedItem.item.type == ItemType.Equipable && uiSlots[index].equipped);
         dropButton.SetActive(true);
-        
+
     }
     private void ClearSelectedItemWindow()
     {
@@ -236,13 +241,13 @@ public class Inventory : MonoBehaviour
                         playerConditions.Eat(selectedItem.item.consumables[i].value); break;
                 }
             }
-            RemoveSelectedItem(selectedItem.item);
+            
         }
-        //else if (selectedItem.item.type == ItemType.Quest)
-        //{
-        //    QuestManager.RoadQuestNum(selectedItem.item. Quest[i].value);
-        //}
-       
+        if (gameManager.I.dayNightCycle.Days == 0 && selectedItem.item.name == "Food")
+        {
+            QuestManager.instance.CompleteQuest(3);
+        }
+        RemoveSelectedItem(selectedItem.item);
     }
     private void RemoveSelectedItem(ItemData_ item)
     {
