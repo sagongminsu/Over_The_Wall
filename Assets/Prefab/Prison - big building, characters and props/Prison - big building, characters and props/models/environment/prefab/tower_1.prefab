@@ -143,7 +143,7 @@ Transform:
   - {fileID: 4112738400421492}
   - {fileID: 4665809088581926}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &64379116496246944
 MeshCollider:

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4294139425651260}
   - component: {fileID: 64027930578038806}
   - component: {fileID: 3447354383523177782}
+  - component: {fileID: -848497596127359633}
   m_Layer: 0
   m_Name: fence_1_1
   m_TagString: Untagged
@@ -66,6 +67,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217416712151314}
   m_Mesh: {fileID: 4300002, guid: d0d2ec6ad19444d43be9cc89815ec10e, type: 3}
+--- !u!205 &-848497596127359633
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217416712151314}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1091218152192283846, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4273848551346383878, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: -5591583462676294139, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  m_Enabled: 1
 --- !u!1 &1662545763101194
 GameObject:
   m_ObjectHideFlags: 0
