@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33590050690887232}
   - component: {fileID: 23107544449933714}
   - component: {fileID: 64740193561299474}
+  - component: {fileID: 2942294804500378741}
   m_Layer: 0
   m_Name: doors_3
   m_TagString: Untagged
@@ -110,6 +111,36 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300016, guid: a12b8bb8dddd0ad478632bd53d633dd1, type: 3}
+--- !u!205 &2942294804500378741
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119577999844384}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: -5604667883247288367, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: -8002024837147919378, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: -6551081666717035022, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  m_Enabled: 1
 --- !u!1 &1277055132303972
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45354199902f3df45bbea2fe6c485d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorSound: {fileID: 8300000, guid: f12452983896aa9488baa1e1f1bedacb, type: 3}
 --- !u!64 &3176775779921842524
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -697,7 +727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e58d47f50b4e945ab5f07262646d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorSound: {fileID: 8300000, guid: f12452983896aa9488baa1e1f1bedacb, type: 3}
 --- !u!64 &2451831347130406132
 MeshCollider:
   m_ObjectHideFlags: 0

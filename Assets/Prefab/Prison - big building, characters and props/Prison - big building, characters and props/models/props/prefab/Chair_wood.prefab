@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23785048029656042}
   - component: {fileID: 64444819090422016}
   - component: {fileID: 9178844960082348038}
+  - component: {fileID: 3462259871565973537}
   m_Layer: 0
   m_Name: Chair_wood
   m_TagString: Untagged
@@ -126,3 +127,33 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!205 &3462259871565973537
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811395196074792}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 383138030802284498, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 235686944084928563, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: -8647294858755199144, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  m_Enabled: 1

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23696860430853964}
   - component: {fileID: 64062773745768896}
   - component: {fileID: 331254730933542393}
+  - component: {fileID: -2635156070489647329}
   m_Layer: 6
   m_Name: food_pr_1
   m_TagString: Untagged
@@ -121,3 +122,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 23b4b8ab1ff195c418d5a7c5cefc8174, type: 2}
   ObjectSwitch: 1
+--- !u!205 &-2635156070489647329
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727205188046394}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 6256628528477855716, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: -5834606730257778552, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 8845882032111913842, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  m_Enabled: 1

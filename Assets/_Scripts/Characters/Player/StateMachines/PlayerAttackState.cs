@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerAttackState : PlayerBaseState
 {
     EquipManager equipManager;
+    gameManager gameManager;
+
+    string weaponType;
 
     public PlayerAttackState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -13,7 +16,14 @@ public class PlayerAttackState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.MovementSpeedModifier = 0;
+
         base.Enter();
+
+        if (equipManager == null)
+            equipManager = EquipManager.instance;
+        if (gameManager == null)
+            gameManager = gameManager.I;
+
         StartAnim();
 
         if (stateMachine.Player != null)
@@ -36,6 +46,7 @@ public class PlayerAttackState : PlayerBaseState
         {
             Debug.LogError("Player null");
         }
+
     }
 
     public override void Exit()
@@ -65,7 +76,7 @@ public class PlayerAttackState : PlayerBaseState
             Debug.LogError("Player null");
         }
     }
-
+    
     private void HandleAttack(AiStateMachine aiStateMachine)
     {
         // AI에게 공격이 감지되었다고 알림
@@ -74,12 +85,7 @@ public class PlayerAttackState : PlayerBaseState
 
     protected void HandleWeaponType(bool startAnimation, bool stopAnimation)
     {
-
-
-        if (equipManager == null)
-            equipManager = EquipManager.instance;
-
-        string weaponType = GetWeaponType(equipManager);
+        weaponType = GetWeaponType(equipManager);
 
         if (startAnimation)
         {
@@ -105,9 +111,10 @@ public class PlayerAttackState : PlayerBaseState
     {
         if (equipManager == null)
             equipManager = EquipManager.instance;
+
         if (equipManager.curEquip == null)
             return "Pistol";
-        
+
         if (equipManager.isEquipped && equipManager.data != null)
         {
             WeaponType weaponTypeValue = equipManager.data.weaponType;
@@ -123,7 +130,7 @@ public class PlayerAttackState : PlayerBaseState
                 case WeaponType.Pick:
                     return "Pick";
             }
-           
+
         }
 
         return "Pistol";

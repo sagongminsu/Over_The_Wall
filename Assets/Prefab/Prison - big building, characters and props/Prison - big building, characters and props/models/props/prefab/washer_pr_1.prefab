@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 33176130943927500}
   - component: {fileID: 23886360828299638}
   - component: {fileID: 64367716959894998}
+  - component: {fileID: -8980977577029192175}
   m_Layer: 0
   m_Name: washer_pr_1
   m_TagString: Untagged
@@ -227,3 +228,33 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 60b160fad86fda2479b0160379541dc4, type: 3}
+--- !u!205 &-8980977577029192175
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587014211561788}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: -3945942534264775076, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: -4245458076233653399, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 5382959803017918796, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  m_Enabled: 1

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 64334925285642408}
   - component: {fileID: 1848670567216474505}
   - component: {fileID: -2942541374761008018}
+  - component: {fileID: 6573785540382343147}
   m_Layer: 6
   m_Name: table_pr_2
   m_TagString: Untagged
@@ -139,3 +140,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a93d6aab73c39147a6d18d9299e9d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!205 &6573785540382343147
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373011188937158}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2486274880994016057, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2830386740633771008, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: -8574890653082894731, guid: 4caecdb18e2aec6468402f5d696985ca,
+        type: 3}
+  m_Enabled: 1

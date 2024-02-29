@@ -130,12 +130,12 @@ void Update()
 
         }
     }
+
     public void TakePhysicalDamage(int damageAmount)
     {
         health.Subtract(damageAmount);
         onTakeDamage?.Invoke();
     }
-
 
 
     public bool CanRun()

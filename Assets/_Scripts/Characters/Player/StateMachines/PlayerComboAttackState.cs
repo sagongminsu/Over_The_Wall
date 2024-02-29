@@ -1,4 +1,5 @@
 using System;
+using Unity.Burst.Intrinsics;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,7 +10,8 @@ public class PlayerComboAttackState : PlayerAttackState
 
     AttackInfoData attackInfoData;
 
-    EquipManager equipManager = EquipManager.instance;
+    EquipManager equipManager;
+    gameManager gameManager;
 
     public PlayerComboAttackState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -19,12 +21,18 @@ public class PlayerComboAttackState : PlayerAttackState
     {
         base.Enter();
 
+        if (equipManager == null) 
+            equipManager = EquipManager.instance;
+        if (gameManager == null)
+            gameManager = gameManager.I;
+
         StartAnimation(stateMachine.Player.AnimationData.ComboAttackParameterHash);
 
         alreadyApplyCombo = false;
         alreadyAppliedForce = false;
 
         int comboIndex = stateMachine.ComboIndex;
+
         attackInfoData = stateMachine.Player.Data.AttackData.GetAttackInfo(comboIndex);
         stateMachine.Player.PlayerAnimator.SetInteger("Combo", comboIndex);
         stateMachine.Player.ArmAnimator.SetInteger("Combo", comboIndex);
@@ -42,6 +50,7 @@ public class PlayerComboAttackState : PlayerAttackState
 
     private void TryComboAttack()
     {
+        
         if (alreadyApplyCombo) return;
 
         if (attackInfoData.ComboStateIndex == -1) return;
@@ -67,10 +76,11 @@ public class PlayerComboAttackState : PlayerAttackState
 
         ForceMove();
 
-        if (equipManager == null) equipManager = EquipManager.instance;
-
         UpdateAttackStateMachine(stateMachine.Player.PlayerAnimator, GetWeaponType(equipManager));
         UpdateAttackStateMachine(stateMachine.Player.ArmAnimator, GetWeaponType(equipManager));
+
+        if (gameManager.Open)
+            stateMachine.ChangeState(stateMachine.IdleState);
     }
 
     private void UpdateAttackStateMachine(Animator animator, string Weapon)
