@@ -4,6 +4,7 @@ using System;
 
 public class DayNightCycle : MonoBehaviour
 {
+    DateManager dateManager;
     public int Hours {  get { return hours; } }
     private int hours;
     public void SetHours(float newHours)
@@ -41,6 +42,8 @@ public class DayNightCycle : MonoBehaviour
     private void Start()
     {
         gameManager.I.dayNightCycle = this;
+        dateManager = DateManager.instance;
+
         timeRate = 1440.0f / fullDayLength; // 게임 내 하루와 현실 시간의 비율 계산
         time = startTime;
         Days = 0; // 시작 날짜 초기화
@@ -62,6 +65,8 @@ public class DayNightCycle : MonoBehaviour
 
         // 시간 및 날짜 표시 업데이트
         UpdateTimeText();
+
+        
       
     }
 
@@ -70,7 +75,7 @@ public class DayNightCycle : MonoBehaviour
         return time;
     }
 
-
+    
 
 
     private void UpdateLighting(Light lightSource, Gradient colorGradient, AnimationCurve intensityCurve)
@@ -91,6 +96,8 @@ public class DayNightCycle : MonoBehaviour
     }
     public void UpdateTimeText()
     {
+        dateManager.Hour = (int)(time / 60.0f);
+        dateManager.Minute = (int)time % 60;
         hours = (int)(time / 60.0f);
         int minutes = (int)time % 60;
         int crrentHours = hours;
@@ -98,7 +105,7 @@ public class DayNightCycle : MonoBehaviour
         if (crrentHours > 12) crrentHours -= 12;
         if (crrentHours == 0) crrentHours = 12;
 
-        timeText.text = Days + " 일차" + "\n" + daytime + crrentHours.ToString("00") + ":" + minutes.ToString("00");
+        
     }
 
 }
