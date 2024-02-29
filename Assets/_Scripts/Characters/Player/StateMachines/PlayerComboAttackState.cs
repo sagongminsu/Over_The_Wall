@@ -80,7 +80,11 @@ public class PlayerComboAttackState : PlayerAttackState
         UpdateAttackStateMachine(stateMachine.Player.ArmAnimator, GetWeaponType(equipManager));
 
         if (gameManager.Open)
+        {
+            StopAnimation(stateMachine.Player.AnimationData.ComboAttackParameterHash);
             stateMachine.ChangeState(stateMachine.IdleState);
+        }
+            
     }
 
     private void UpdateAttackStateMachine(Animator animator, string Weapon)

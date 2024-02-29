@@ -1483,6 +1483,23 @@ BlendTree:
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 0
+--- !u!1109 &-1408389636828168313
+AnimatorTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: '@Attack'
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: -8164097446836060818}
+  m_DstState: {fileID: 0}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 1
 --- !u!1107 &-1167205929191406038
 AnimatorStateMachine:
   serializedVersion: 6
@@ -2078,6 +2095,23 @@ BlendTree:
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 0
+--- !u!1109 &487733665408107099
+AnimatorTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MeleeAttack
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 2766814750751550449}
+  m_DstState: {fileID: 0}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 1
 --- !u!1107 &498891621340027653
 AnimatorStateMachine:
   serializedVersion: 6
@@ -2308,9 +2342,11 @@ AnimatorStateMachine:
     - {fileID: 5832422490164275640}
     - {fileID: -520141973046106690}
     - {fileID: -4516266124141385177}
+    - {fileID: 487733665408107099}
   - first: {fileID: 2766814750751550449}
     second:
     - {fileID: -3420148346509184131}
+    - {fileID: -1408389636828168313}
   - first: {fileID: 1120263531488430954}
     second:
     - {fileID: -3367383365591476713}

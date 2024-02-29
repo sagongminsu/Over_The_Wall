@@ -1,5 +1,8 @@
+using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class DateManager : MonoBehaviour
 {
@@ -11,6 +14,7 @@ public class DateManager : MonoBehaviour
 
     private string Week;
     private string TaskName;
+    private string[] DaysOfWeek = { "월", "화", "수", "목", "금", "토", "일" };
 
     [Header("Text")]
     public TextMeshProUGUI DayText;
@@ -26,7 +30,7 @@ public class DateManager : MonoBehaviour
 
     void Start()
     {
-        WorkCycle();
+        StartCoroutine(WorkCycle());
     }
 
     private void Update()
@@ -34,7 +38,7 @@ public class DateManager : MonoBehaviour
         UpdateText();
     }
 
-    private void WorkCycle()
+    IEnumerator WorkCycle()
     {
         int currentDay = 1;
 
@@ -42,100 +46,111 @@ public class DateManager : MonoBehaviour
         {
             if (IsWeekend(currentDay))
             {
-                WeekendCycle();
+                yield return StartCoroutine(WeekendCycle());
             }
             else
             {
-                WeekdayCycle();
+                yield return StartCoroutine(WeekdayCycle());
             }
 
             UpdateDay(ref currentDay);
 
-            // Add game end condition if needed
+            // 필요에 따라 게임이 끝날 조건을 추가할 수 있습니다.
+            // 예를 들어, 특정 일수까지 진행하면 게임 종료 등
         }
     }
 
-    private void WeekdayCycle()
+    IEnumerator WeekdayCycle()
     {
-        Sleep(0, 5);
-        RollCall(6, 6);
-        Eat(7, 7);
-        Work(8, 11);
-        Eat(12, 12);
-        Work(13, 16);
-        FreeTime(17, 17);
-        Eat(18, 18);
-        FreeTime(19, 20);
-        RollCall(21, 21);
-        Sleep(22, 23);
+        yield return StartCoroutine(Sleep(0, 5));
+        yield return StartCoroutine(RollCall(6, 6));
+        yield return StartCoroutine(Eat(7, 7));
+        yield return StartCoroutine(Work(8, 11));
+        yield return StartCoroutine(Eat(12, 12));
+        yield return StartCoroutine(Work(13, 15));
+        yield return StartCoroutine(FreeTime(16, 17));
+        yield return StartCoroutine(Eat(18, 18));
+        yield return StartCoroutine(FreeTime(19, 20));
+        yield return StartCoroutine(RollCall(21, 21));
+        yield return StartCoroutine(Sleep(22, 23));
     }
 
-    private void WeekendCycle()
+    IEnumerator WeekendCycle()
     {
-        Sleep(0, 5);
-        RollCall(6, 6);
-        Eat(7, 7);
-        FreeTime(8, 11);
-        Eat(12, 12);
-        FreeTime(13, 17);
-        Eat(18, 18);
-        FreeTime(19, 20);
-        RollCall(21, 21);
-        Sleep(22, 23);
+        yield return StartCoroutine(Sleep(0, 5));
+        yield return StartCoroutine(RollCall(6, 6));
+        yield return StartCoroutine(Eat(7, 7));
+        yield return StartCoroutine(FreeTime(8, 11));
+        yield return StartCoroutine(Eat(12, 12));
+        yield return StartCoroutine(FreeTime(13, 17));
+        yield return StartCoroutine(Eat(18, 18));
+        yield return StartCoroutine(FreeTime(19, 20));
+        yield return StartCoroutine(RollCall(21, 21));
+        yield return StartCoroutine(Sleep(22, 23));
     }
 
-    private void Sleep(int startTime, int endTime)
+    IEnumerator Sleep(int startTime, int endTime)
     {
         TaskName = "수면시간";
-        if (CheckTime(startTime, endTime))
+
+        while (CheckTime(startTime, endTime))
         {
-            // Do nothing
+            yield return null;
         }
+
+        yield return new WaitForEndOfFrame();
     }
 
-    private void RollCall(int startTime, int endTime)
+    IEnumerator RollCall(int startTime, int endTime)
     {
         TaskName = "점호 시간";
-        if (CheckTime(startTime, endTime))
+        while (CheckTime(startTime, endTime))
         {
-            // Do nothing
+            yield return null;
         }
+
+        yield return new WaitForEndOfFrame();
     }
 
-    private void Eat(int startTime, int endTime)
+
+    IEnumerator Eat(int startTime, int endTime)
     {
         TaskName = "식사 시간";
-        if (CheckTime(startTime, endTime))
+        while (CheckTime(startTime, endTime))
         {
-            // Do nothing
+            yield return null;
         }
+
+        yield return new WaitForEndOfFrame();
     }
 
-    private void Work(int startTime, int endTime)
+    IEnumerator Work(int startTime, int endTime)
     {
         TaskName = "일과 시간";
-        if (CheckTime(startTime, endTime))
+        while (CheckTime(startTime, endTime))
         {
-            // Do nothing
+            yield return null;
         }
+
+        yield return new WaitForEndOfFrame();
     }
 
-    private void FreeTime(int startTime, int endTime)
+    IEnumerator FreeTime(int startTime, int endTime)
     {
         TaskName = "자유 시간";
-        if (CheckTime(startTime, endTime))
+        while (CheckTime(startTime, endTime))
         {
-            // Do nothing
+            yield return null;
         }
+
+        yield return new WaitForEndOfFrame();
     }
 
     void UpdateDay(ref int currentDay)
     {
-        currentDay++;
-        if (currentDay > 7)
-        {
-            currentDay = 1; // 일주일이 지나면 다시 월요일로 초기화
-        }
+        currentDay %= 7;
+        
+        Week = DaysOfWeek[currentDay - 1];
     }
 
     bool IsWeekend(int currentDay)
@@ -160,7 +175,7 @@ public class DateManager : MonoBehaviour
 
     public void UpdateText()
     {
-        DayText.text = Day + "일" + Week + "요일";
+        DayText.text = Day + "일 " + Week + "요일";
         TimeText.text = Hour.ToString("00") + ":" + Minute.ToString("00");
         WorkText.text = TaskName;
     }

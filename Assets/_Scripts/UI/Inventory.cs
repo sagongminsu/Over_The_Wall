@@ -58,7 +58,7 @@ public class Inventory : MonoBehaviour
     }
     private void Start()
     {
-        gameManager.I.ToggleInven += ToggleInven;
+        //gameManager.I.ToggleInven += ToggleInven;
         slots = new ItemSlot[uiSlots.Length];
         for (int i = 0; i < slots.Length; i++)
         {
@@ -69,7 +69,7 @@ public class Inventory : MonoBehaviour
         slots[0] = new ItemSlot() { item = baton, quantity = 1 };
         UpdateUi();
         ClearSelectedItemWindow();
-        inventoryWindow.SetActive(false);
+        //inventoryWindow.SetActive(false);
     }
 
 
@@ -276,5 +276,7 @@ public class Inventory : MonoBehaviour
     {
         return false;
     }
+
+    
 }
 

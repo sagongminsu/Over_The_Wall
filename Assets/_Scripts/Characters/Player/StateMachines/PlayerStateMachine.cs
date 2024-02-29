@@ -19,6 +19,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerCrouchWalkState CrouchWalkState { get; }
 
     public PlayerSitState SitState { get; }
+    public UIInvenState InvenState { get; }
 
     // 
     public Vector2 MovementInput { get; set; }
@@ -63,6 +64,7 @@ public class PlayerStateMachine : StateMachine
         CrouchIdleState = new PlayerCrouchIdleState(this);
         CrouchWalkState = new PlayerCrouchWalkState(this);
         SitState = new PlayerSitState(this);
+        InvenState = new UIInvenState(this);
 
         MainCameraTransform = Camera.main.transform;
 

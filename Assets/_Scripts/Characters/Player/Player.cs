@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public AimUI Aim { get; private set; }
 
     public PauseUI Pause { get; private set; }
+    public InvenUI Inven { get; private set; }
     
 
     public Rigidbody Rigidbody { get; private set; }
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         Weapon_L = GetWeapon("Weapon_L");
         Aim = GetComponent<AimUI>();
         Pause = GetComponent<PauseUI>();
+        Inven = GetComponent<InvenUI>();
 
         stateMachine = new PlayerStateMachine(this);
     }

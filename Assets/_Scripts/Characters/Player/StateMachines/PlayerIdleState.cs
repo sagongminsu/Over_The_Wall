@@ -12,7 +12,7 @@ public class PlayerIdleState : PlayerGroundedState
         base.Enter();
 
         stateMachine.MovementSpeedModifier = 0f;
-
+        Debug.Log("¿‘¿Â");
         StartAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
     }
 
@@ -35,6 +35,7 @@ public class PlayerIdleState : PlayerGroundedState
 
         if (stateMachine.IsAttacking)
         {
+            if(stateMachine.Player.Inven.CheckActive() == false)
             OnAttack();
             return;
         }

@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public class PlayerBaseState : IState
 {
     protected PlayerStateMachine stateMachine;
     protected readonly PlayerGroundData groundData;
+    gameManager gameManager;
 
     public PlayerBaseState(PlayerStateMachine playerStateMachine)
     {
@@ -150,6 +152,7 @@ public class PlayerBaseState : IState
         input.PlayerActions.Crouch.started += OnCrouchStarted;
 
         input.PlayerActions.Pause.started += OnPauseStarted;
+        input.PlayerActions.Inven.started += OnInvenStarted;
     }
 
     protected virtual void RemoveInputActionsCallbacks()
@@ -174,6 +177,7 @@ public class PlayerBaseState : IState
         input.PlayerActions.Crouch.started -= OnCrouchStarted;
 
         input.PlayerActions.Pause.started -= OnPauseStarted;
+        input.PlayerActions.Inven.started -= OnInvenStarted;
     }
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
@@ -255,8 +259,14 @@ public class PlayerBaseState : IState
             Time.timeScale = 1.0f;
             stateMachine.Player.Pause.ActiveUI(false);
         }
+    }
 
-        
+    protected virtual void OnInvenStarted(InputAction.CallbackContext obj)
+    {
+        if (stateMachine.Player.Inven.CheckActive() == false && stateMachine.Player.Pause.CheckActive() == false)
+        {
+            stateMachine.ChangeState(stateMachine.InvenState);
+        }
     }
 
     private void AdjustCharacterHeight(float height)
