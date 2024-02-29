@@ -382,6 +382,8 @@ GameObject:
   - component: {fileID: 51908082095010610}
   - component: {fileID: 6527225763312940153}
   - component: {fileID: 2635291241700601385}
+  - component: {fileID: 7460875207073035429}
+  - component: {fileID: 2185148443178598157}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -405,7 +407,7 @@ Transform:
   - {fileID: 332525185610139565}
   - {fileID: 4046235599059374916}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1241119461626284168
 MonoBehaviour:
@@ -522,19 +524,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health:
     curValue: 0
-    maxValue: 500
-    startValue: 500
+    maxValue: 100
+    startValue: 100
     regenRate: 1
     decayRate: 0
   hunger:
     curValue: 0
-    maxValue: 10
-    startValue: 10
-    regenRate: 1
-    decayRate: 3
+    maxValue: 100
+    startValue: 100
+    regenRate: 0
+    decayRate: 0.15
   playerSO: {fileID: 11400000, guid: de058fd90621bec4390615ca7f6d0b0d, type: 2}
   minStaminaToRun: 10
-  deathClip: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: 4c984f6c511c2b64ebe19ab9c38e2e5d, type: 3}
   noHungerHealthDecay: 0
   onTakeDamage:
     m_PersistentCalls:
@@ -553,7 +555,19 @@ MonoBehaviour:
         m_CallState: 2
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DeathButton, Assembly-CSharp
+        m_MethodName: ShowDeathPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onStaminaDepleted:
     m_PersistentCalls:
       m_Calls: []
@@ -571,6 +585,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MeleeAim: {fileID: 0}
   RangeAim: {fileID: 0}
+--- !u!114 &7460875207073035429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493378523390232850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dad40e3db963ee44b16edd138866f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseCanvas: {fileID: 0}
+--- !u!114 &2185148443178598157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493378523390232850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3129f017c08fd42a5e1d5e3bd011d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Inventory: {fileID: 0}
 --- !u!1 &5606654451373964258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,17 +1142,17 @@ PrefabInstance:
     - target: {fileID: 3347842088034301681, guid: d3a019066cfb9f84fa46f62e0b20ed3a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.32
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 3347842088034301681, guid: d3a019066cfb9f84fa46f62e0b20ed3a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.49
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 3347842088034301681, guid: d3a019066cfb9f84fa46f62e0b20ed3a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.01
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 3347842088034301681, guid: d3a019066cfb9f84fa46f62e0b20ed3a,
         type: 3}
@@ -1157,7 +1197,7 @@ PrefabInstance:
     - target: {fileID: 3347842088034462417, guid: d3a019066cfb9f84fa46f62e0b20ed3a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

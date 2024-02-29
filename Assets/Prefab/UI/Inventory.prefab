@@ -665,7 +665,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6125887522684061522}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 117188829769588019}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: OnUseButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2667574788897451969
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +874,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1982719180325257772}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 117188829769588019}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: OnEquipButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5313866767641988007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,7 +1144,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2989102137286056304}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 117188829769588019}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: OnDropButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7002452408576069373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,7 +1195,7 @@ RectTransform:
   - {fileID: 7367008049578640610}
   - {fileID: 5650419975198418309}
   m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1241,7 +1277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a793cce830292c43a366f93db338b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OpenInven: 0
+  OpenInven: 9
   uiSlots:
   - {fileID: 5851048632433876505}
   - {fileID: 138710961265558389}
@@ -1270,6 +1306,7 @@ MonoBehaviour:
   unEquipButton: {fileID: 7610328867464418998}
   dropButton: {fileID: 6654362166035509252}
   playerConditions: {fileID: 0}
+  questManager: {fileID: 0}
   onOpenInventiry:
     m_PersistentCalls:
       m_Calls: []
@@ -1534,7 +1571,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7323695144923236762}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 117188829769588019}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: OnUnEquipButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8874948364158203574
 GameObject:
   m_ObjectHideFlags: 0
