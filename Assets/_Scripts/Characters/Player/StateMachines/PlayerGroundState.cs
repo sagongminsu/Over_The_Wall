@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerGroundedState : PlayerBaseState
 {
     private bool isWalking = false;
+    gameManager gameManager;
 
     public PlayerGroundedState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -13,6 +14,9 @@ public class PlayerGroundedState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
+
+        gameManager = gameManager.I;
+
         StartAnimation(stateMachine.Player.AnimationData.GroundParameterHash);
     }
 
@@ -107,6 +111,7 @@ public class PlayerGroundedState : PlayerBaseState
 
     protected virtual void OnAttack()
     {
+        if(!gameManager.Open || !gameManager.isPause)
         stateMachine.ChangeState(stateMachine.ComboAttackState);
     }
 
