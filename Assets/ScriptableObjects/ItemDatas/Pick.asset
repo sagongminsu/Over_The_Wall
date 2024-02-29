@@ -15,12 +15,12 @@ MonoBehaviour:
   displayName: "\uACE1\uAD2D\uC774"
   description: "\uB3CC\uC744 \uCE98\uB54C \uC4F0\uB294 \uB3C4\uAD6C\uC774\uB2E4"
   type: 1
-  icon: {fileID: 21300000, guid: d641894414ce1be4d8d7f0e7e9181ffd, type: 3}
-  dropPrefab: {fileID: 3347842088034462417, guid: d3a019066cfb9f84fa46f62e0b20ed3a,
-    type: 3}
-  canStack: 0
+  icon: {fileID: 21300000, guid: 8fc86b550d432484ca58a9eeca50c271, type: 3}
+  dropPrefab: {fileID: 108562, guid: d94616396dd214a47a7db19f795a9ef2, type: 3}
+  canStack: 1
   maxStackAmount: 1
   consumables: []
-  equipPrefab: {fileID: 3347842088034462417, guid: d3a019066cfb9f84fa46f62e0b20ed3a,
-    type: 3}
+  equipPrefab: {fileID: 108562, guid: d94616396dd214a47a7db19f795a9ef2, type: 3}
   weaponType: 1
+  HasQuestItem: 0
+  QuestNum: 0

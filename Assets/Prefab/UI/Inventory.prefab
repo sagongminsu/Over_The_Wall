@@ -1270,6 +1270,7 @@ MonoBehaviour:
   unEquipButton: {fileID: 7610328867464418998}
   dropButton: {fileID: 6654362166035509252}
   playerConditions: {fileID: 0}
+  questManager: {fileID: 0}
   onOpenInventiry:
     m_PersistentCalls:
       m_Calls: []
@@ -1277,6 +1278,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   baton: {fileID: 11400000, guid: 95a304f6ab175024a940387c537eaf5a, type: 2}
+  pickaxe: {fileID: 11400000, guid: b941fa78156c381458482847e3c646fe, type: 2}
 --- !u!1 &7451146180202681852
 GameObject:
   m_ObjectHideFlags: 0

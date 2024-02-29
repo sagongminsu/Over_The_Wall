@@ -45,6 +45,7 @@ public class Inventory : MonoBehaviour
 
     public static Inventory instance;
     public ItemData_ baton;
+    public ItemData_ pickaxe;
 
     void Awake()
     {   
@@ -67,6 +68,7 @@ public class Inventory : MonoBehaviour
             uiSlots[i].Clear();
         }
         slots[0] = new ItemSlot() { item = baton, quantity = 1 };
+        slots[1] = new ItemSlot() { item = pickaxe, quantity = 1 };
         UpdateUi();
         ClearSelectedItemWindow();
         inventoryWindow.SetActive(false);
