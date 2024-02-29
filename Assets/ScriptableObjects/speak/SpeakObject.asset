@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b656832bd6aa54b95d4ad73d3c858d, type: 3}
+  m_Name: SpeakObject
+  m_EditorClassIdentifier: 
+  speakLines:
+  - "\uAE30\uC0C1! \uC544\uCE68\uC810\uD638 \uC2DC\uAC04\uC774\uB2E4. \uBC24\uC5D0
+    \uBB38\uC81C \uC788\uC5C8\uB098?"
+  responses:
+  - responseText: Yes
+    nextSpeak: {fileID: 11400000, guid: d733b8d5ab44c224bb526d0b1dafc56b, type: 2}
+  - responseText: No
+    nextSpeak: {fileID: 11400000, guid: cae9c217e3a37144c8d1c19b4cb2fade, type: 2}

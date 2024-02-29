@@ -23,3 +23,4 @@ public class PrisonerNPCDialogue : NPCDialogue
         base.OnInteract();
     }
 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
