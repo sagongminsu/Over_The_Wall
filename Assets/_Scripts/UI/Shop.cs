@@ -6,6 +6,7 @@ public class Shop : MonoBehaviour
 {
     public GameObject ShopMan;
     public GameObject ShopUI;
+    public GameObject Inven;
     public ItemSlotUI[] uiSlots;
     public ItemSlot[] slots;
 
@@ -22,6 +23,7 @@ public class Shop : MonoBehaviour
 
     public GameObject BuyButton;
     public GameObject SoldButton;
+    public GameObject ReturnButton;
 
     void Start()
     {
@@ -47,18 +49,27 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void ItemSetting()
+    public void ItemSetting(ItemData_ item)
     {
 
     }
 
-    public void USeBuyButton()
+    public void UseBuyButton()
     {
+        
 
     }
-    public void USeSoldButton()
+    public void UseSoldButton()
     {
+        Inven.SetActive(true);
+        ReturnButton.SetActive(true);
 
+    }
+    public void UseReturnButton()
+    {
+        ShopUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
     }
     private void UpdateUi()
     {
