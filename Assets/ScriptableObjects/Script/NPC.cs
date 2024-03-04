@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Rendering.Universal;
 
 public class NPC : MonoBehaviour, IInteraction
@@ -29,7 +30,15 @@ public class NPC : MonoBehaviour, IInteraction
 
     private bool playerInRange = false;
 
+    // NavMeshAgent 추가
+    private NavMeshAgent agent;
+    public Transform targetLocation;
+    private bool isMovingToTarget = false;
+    public Transform secondTargetLocation;
 
+    // 이동 완료 상태를 추적하는 변수들
+    private bool isFirstLocationReached = false;
+    private bool isSecondLocationReached = false;
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -38,6 +47,11 @@ public class NPC : MonoBehaviour, IInteraction
             Debug.LogError("플레이어를 찾을 수 없습니다.");
         }
         inventory = FindObjectOfType<Inventory>();
+        agent = GetComponent<NavMeshAgent>();
+        if (agent == null)
+        {
+            Debug.LogError("NavMeshAgent 컴포넌트가 이 GameObject에 없습니다.");
+        }
     }
     private void Update()
     {
@@ -57,7 +71,20 @@ public class NPC : MonoBehaviour, IInteraction
                 playerInRange = false;
             }
         }
-        
+        if (isMovingToTarget && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        {
+            // 목적지에 도착했으면 퀘스트를 완료 상태로 표시
+            quest.isCompleted = true;
+            isMovingToTarget = false; // 이동을 마쳤으므로 이동 상태를 false로 설정
+        }
+        if (isMovingToTarget && !agent.pathPending &&
+            agent.remainingDistance <= agent.stoppingDistance && !isFirstLocationReached)
+        {
+            // 첫 번째 목적지에 도착했으므로 isCompleted를 true로 설정
+            quest.isCompleted = true;
+            isMovingToTarget = false;
+            isFirstLocationReached = true;
+        }
     }
 
     #region dialogue
@@ -69,6 +96,45 @@ public class NPC : MonoBehaviour, IInteraction
     private void EndDialogue()
     {
         DialougeSetFlase();
+        if (!isFirstLocationReached)
+        {
+            if (targetLocation != null)
+            {
+                agent.SetDestination(targetLocation.position);
+                isMovingToTarget = true;
+                isFirstLocationReached = true;
+            }
+            else
+            {
+                Debug.LogError("NPC가 이동할 첫 번째 목표 위치가 지정안됨");
+            }
+        }
+        // isCompleted 상태이고 두 번째 목적지로 이동하는 조건을 체크
+        else if (quest.isCompleted && !isSecondLocationReached)
+        {
+            if (secondTargetLocation != null)
+            {
+                agent.SetDestination(secondTargetLocation.position);
+                isSecondLocationReached = true;
+            }
+            else
+            {
+                Debug.LogError("NPC가 이동할 두 번째 목표 위치가 지정안됨");
+            }
+        }
+        if (quest.isCompleted && isFirstLocationReached && !isSecondLocationReached)
+        {
+            // 두 번째 목적지로 이동
+            if (secondTargetLocation != null)
+            {
+                agent.SetDestination(secondTargetLocation.position);
+                isSecondLocationReached = true; // 두 번째 목적지로 이동 시작
+            }
+            else
+            {
+                Debug.LogError("NPC가 이동할 두 번째 목표 위치가 지정안됨");
+            }
+        }
     }
 
 
@@ -252,6 +318,13 @@ public class NPC : MonoBehaviour, IInteraction
                 currentCompleteIndex = 0;
                 currentCompletedIndex = 0;
             }
+
+        }
+        if (isFirstLocationReached && quest.isCompleted && !isSecondLocationReached)
+        {
+            agent.SetDestination(secondTargetLocation.position);
+            isMovingToTarget = true;
+            isSecondLocationReached = true; // 두 번째 이동 시작
         }
     }
 }
