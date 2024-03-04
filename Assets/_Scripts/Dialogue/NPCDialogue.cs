@@ -48,7 +48,7 @@ public class NPCDialogue : MonoBehaviour, IInteraction
     }
 
     // 대화 종료 함수
-    private void EndDialogue()
+    protected virtual void EndDialogue()
     {
         Debug.Log("대화 종료");
         isTalking = false;

@@ -24,3 +24,5 @@ MonoBehaviour:
   equipPrefab: {fileID: 3347842088034462417, guid: d3a019066cfb9f84fa46f62e0b20ed3a,
     type: 3}
   weaponType: 1
+  HasQuestItem: 0
+  QuestNum: 0
