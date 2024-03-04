@@ -25,25 +25,6 @@ public class UIInvenState : PlayerBaseState
         stateMachine.Player.Inven.ActiveUI(false);
     }
 
-    public override void Update()
-    {
-        base.Update();
-
-        //if (stateMachine.Player.Inven.CheckActive() == false && stateMachine.Player.Pause.CheckActive() == false)
-        //{
-        //    stateMachine.ChangeState(stateMachine.IdleState);
-        //    Cursor.lockState = CursorLockMode.None;
-        //    Time.timeScale = 0.0f;
-        //    stateMachine.Player.Inven.ActiveUI(true);
-        //}
-        //else
-        //{
-        //    Cursor.lockState = CursorLockMode.Locked;
-        //    Time.timeScale = 1.0f;
-        //    stateMachine.ChangeState(stateMachine.IdleState);
-        //    stateMachine.Player.Inven.ActiveUI(false);
-        //}
-    }
 
     protected override void OnInvenStarted(InputAction.CallbackContext context)
     {

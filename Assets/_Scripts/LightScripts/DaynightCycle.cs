@@ -46,7 +46,7 @@ public class DayNightCycle : MonoBehaviour
 
         timeRate = 1440.0f / fullDayLength; // 게임 내 하루와 현실 시간의 비율 계산
         time = startTime;
-        Days = 0; // 시작 날짜 초기화
+        Days = 1; // 시작 날짜 초기화
     }
 
     public void Update()
@@ -96,6 +96,7 @@ public class DayNightCycle : MonoBehaviour
     }
     public void UpdateTimeText()
     {
+        dateManager.Day = Days;
         dateManager.Hour = (int)(time / 60.0f);
         dateManager.Minute = (int)time % 60;
         hours = (int)(time / 60.0f);
