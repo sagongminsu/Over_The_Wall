@@ -57,7 +57,7 @@ public class NPC : MonoBehaviour, IInteraction
                 playerInRange = false;
             }
         }
-        Debug.Log(playerInRange);
+        
     }
 
     #region dialogue

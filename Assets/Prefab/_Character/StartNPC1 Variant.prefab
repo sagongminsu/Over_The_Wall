@@ -374,7 +374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400100, guid: fd8a675b60bc1c84c98e867ea9d8e30c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400100, guid: fd8a675b60bc1c84c98e867ea9d8e30c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -432,10 +432,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 9012484786098822434}
-    - targetCorrespondingSourceObject: {fileID: 100100, guid: fd8a675b60bc1c84c98e867ea9d8e30c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3774323033681650408}
   m_SourcePrefab: {fileID: 100100000, guid: fd8a675b60bc1c84c98e867ea9d8e30c, type: 3}
 --- !u!1 &8937101729518925461 stripped
 GameObject:
@@ -511,20 +507,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3774323033681650408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8937101729518925461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00b2c61aeb309b041834b9a75963618a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactPrompt: "\uB300\uD654\uD558\uAE30"
-  dialogueText: {fileID: 0}
-  dialogueBox: {fileID: 0}
-  dialogues: []
-  questManager: {fileID: 0}
