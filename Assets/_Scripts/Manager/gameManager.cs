@@ -16,6 +16,8 @@ public class gameManager : MonoBehaviour
     public bool isPause;
     public bool isLoad = false;
 
+    public bool NewGame;
+
     private float currentMouseSensitivity;
 
     void Awake()
@@ -99,6 +101,8 @@ public class gameManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("SavedGameData"))
         {
+            NewGame = false;
+
             string jsonData = PlayerPrefs.GetString("SavedGameData");
             PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonData);
 

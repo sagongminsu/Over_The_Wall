@@ -24,6 +24,8 @@ public class PlayerAnimationData
     [SerializeField] private string standingParameterName = "Standing";
     [SerializeField] private string crouchParameterName = "Crouch";
 
+    [SerializeField] private string questParametetName = "Quest";
+
 
 
     public int GroundParameterHash { get; private set; }
@@ -44,6 +46,7 @@ public class PlayerAnimationData
     public int AimingParameterHash { get; private set; }
     public int StandingParameterHash { get; private set; }
     public int CrouchParameterHash { get; private set; }
+    public int QuestParameterHash { get; private set; }
 
 
     public void Initialize()
@@ -68,5 +71,6 @@ public class PlayerAnimationData
         StandingParameterHash = Animator.StringToHash(standingParameterName);
         CrouchParameterHash = Animator.StringToHash(crouchParameterName);
 
+        QuestParameterHash = Animator.StringToHash(questParametetName);
     }
 }

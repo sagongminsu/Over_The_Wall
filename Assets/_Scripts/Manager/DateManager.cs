@@ -177,8 +177,10 @@ public class DateManager : MonoBehaviour
 
     public void UpdateText()
     {
+        int adjustedMinute = (Minute / 10) * 10;
+
         DayText.text = Day + "¿œ " + Week + "ø‰¿œ";
-        TimeText.text = Hour.ToString("00") + ":" + Minute.ToString("00");
+        TimeText.text = Hour.ToString("00") + ":" + adjustedMinute.ToString("00");
         WorkText.text = TaskName;
     }
 }
