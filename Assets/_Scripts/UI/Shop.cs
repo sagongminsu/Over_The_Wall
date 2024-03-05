@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+public class ShopItemSlot
+{
+    public ItemData_ item;
+    
+}
 public class Shop : MonoBehaviour
 {
-    public GameObject ShopMan;
+    public GoldManager goldManger;
+    
     public GameObject ShopUI;
     public GameObject Inven;
     public ItemSlotUI[] uiSlots;
@@ -23,30 +29,24 @@ public class Shop : MonoBehaviour
 
     public GameObject BuyButton;
     public GameObject SoldButton;
+    public GameObject ReturnBuyButton;
     public GameObject ReturnButton;
 
-    void Start()
-    {
-        slots = new ItemSlot[uiSlots.Length];
-        for (int i = 0; i < slots.Length; i++)
-        {
-            slots[i] = new ItemSlot();
-            uiSlots[i].index = i;
-            uiSlots[i].Clear();
-        }
-    }
+   //void Strart()
+    //{
+    //    slots = new ItemSlot[uiSlots.Length];
+    //    for (int i = 0; i < slots.Length; i++)
+    //    {
+    //        slots[i] = new ItemSlot();
+    //        uiSlots[i].index = i;
+    //        uiSlots[i].Clear();
+    //    }
+    //}
 
-    // Update is called once per frame
+
     void Update()
     {
-        if (gameManager.I.CheckTime(14, 17))
-        {
-            ShopMan.SetActive(true);
-        }
-        else
-        {
-            ShopMan.SetActive(false);
-        }
+        
     }
 
     public void ItemSetting(ItemData_ item)
@@ -61,8 +61,8 @@ public class Shop : MonoBehaviour
     }
     public void UseSoldButton()
     {
-        Inven.SetActive(true);
-        ReturnButton.SetActive(true);
+        
+        
 
     }
     public void UseReturnButton()
@@ -82,7 +82,7 @@ public class Shop : MonoBehaviour
             }
             else
             {
-                uiSlots[i].Clear();
+                uiSlots[i].Clear(); 
             }
         }
     }
@@ -117,4 +117,5 @@ public class Shop : MonoBehaviour
             selectedItemStatValues.text += selectedItem.item.consumables[i].value.ToString() + "\n";
         }
     }
+
 }
