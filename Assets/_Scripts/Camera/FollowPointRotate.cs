@@ -9,6 +9,7 @@ public class FollowPointRotate : MonoBehaviour
     private PlayerInputActions inputActions;
     private float verticalRotation = 0f;
     private gameManager gameManager;
+    private GoldManager goldManager;
 
     void Awake()
     {
@@ -16,6 +17,7 @@ public class FollowPointRotate : MonoBehaviour
         inputActions.Enable();
 
         gameManager = gameManager.I;
+        goldManager = GoldManager.instance;
     }
 
     void OnDisable()
@@ -25,6 +27,7 @@ public class FollowPointRotate : MonoBehaviour
 
     void Update()
     {
+        if(!goldManager.isMining)
         RotateVertical();
     }
 

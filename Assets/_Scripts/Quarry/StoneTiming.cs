@@ -12,7 +12,7 @@ public class StoneTiming : MonoBehaviour
     [SerializeField] RectTransform[] timingRect = null;
     [SerializeField] Animator StoneHit = null;
 
-    public GoldManager goldManager;
+    private GoldManager goldManager;
 
     public string hit = "Hit";
 
@@ -24,6 +24,8 @@ public class StoneTiming : MonoBehaviour
     Vector2[] timingBoxs = null;
     void Start()
     {
+        goldManager = GoldManager.instance;
+
         Quarry.SetActive(false);
         timingBoxs = new Vector2[timingRect.Length];
         for(int i = 0; i < timingRect.Length; i++)
@@ -41,7 +43,7 @@ public class StoneTiming : MonoBehaviour
         {
             inputCount++;
             CheckTiming();
-            
+            goldManager.isMining = true;
 
         }
         if (inputCount == 5)
@@ -49,12 +51,10 @@ public class StoneTiming : MonoBehaviour
             
             Quarry.SetActive(false);
             SetScore();
-
+            goldManager.isMining = false;
 
         }
         Gold.text = totalGold.ToString();
-        Debug.Log("1");
-        Debug.Log(goldManager.Gold);
     }
     public void CheckTiming()
     {

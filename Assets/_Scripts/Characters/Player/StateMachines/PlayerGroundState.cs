@@ -6,6 +6,7 @@ public class PlayerGroundedState : PlayerBaseState
 {
     private bool isWalking = false;
     gameManager gameManager;
+    GoldManager goldManager;
 
     public PlayerGroundedState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -16,7 +17,7 @@ public class PlayerGroundedState : PlayerBaseState
         base.Enter();
 
         gameManager = gameManager.I;
-
+        goldManager = GoldManager.instance;
         StartAnimation(stateMachine.Player.AnimationData.GroundParameterHash);
     }
 
@@ -85,16 +86,20 @@ public class PlayerGroundedState : PlayerBaseState
 
     protected virtual void OnMove()
     {
-        if (stateMachine.IsCrouch)
-            stateMachine.ChangeState(stateMachine.CrouchWalkState);
-        else if (stateMachine.IsAiming)
-            stateMachine.ChangeState(stateMachine.AimingWalkState);
-        else
-            stateMachine.ChangeState(stateMachine.WalkState);
+        if (!goldManager.isMining)
+        {
+            if (stateMachine.IsCrouch)
+                stateMachine.ChangeState(stateMachine.CrouchWalkState);
+            else if (stateMachine.IsAiming)
+                stateMachine.ChangeState(stateMachine.AimingWalkState);
+            else
+                stateMachine.ChangeState(stateMachine.WalkState);
+        }    
     }
 
     protected override void OnJumpStarted(InputAction.CallbackContext context)
     {
+        if(!goldManager.isMining)
         stateMachine.ChangeState(stateMachine.JumpState);
     }
 

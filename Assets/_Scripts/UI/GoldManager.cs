@@ -9,7 +9,8 @@ public class GoldManager : MonoBehaviour
     public TextMeshProUGUI GoldText;
     public int Gold { get { return gold; } set { gold = value; } }
     private int gold;
-    private static GoldManager instance;
+    public bool isMining;
+    public static GoldManager instance;
     void Awake()
     {
         if (instance == null)
