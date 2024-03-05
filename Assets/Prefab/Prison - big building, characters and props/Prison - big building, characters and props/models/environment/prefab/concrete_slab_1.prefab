@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23892383085721906}
   - component: {fileID: 64548417200580900}
   - component: {fileID: 7398396253570738808}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: concrete_slab_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,11 +29,11 @@ Transform:
   m_GameObject: {fileID: 1766488542283108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.9553554, y: 2.8392913, z: 2.8392923}
+  m_LocalScale: {x: 1.7838967, y: 1.7838972, z: 1.7838972}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 72
+  m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33770168687359428
 MeshFilter:

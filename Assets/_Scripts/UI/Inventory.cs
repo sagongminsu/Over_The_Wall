@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
     public ItemSlotUI[] uiSlots;
     public GameObject Inven;
     public ItemData_ itemData_;
+    public Shop shop;
 
 
 
@@ -223,11 +224,7 @@ public class Inventory : MonoBehaviour
     {
         UnEquip(selectedItemIndex);
     }
-    public void OnDropButton()
-    {
-        ThrowItem(selectedItem.item);
-        RemoveSelectedItem(selectedItem.item);
-    }
+    
     public void OnUseButton()
     {
         if (selectedItem.item.type == ItemType.Consumable)
