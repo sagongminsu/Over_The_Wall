@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class RockInteraction : MonoBehaviour, IInteraction
 {
-
+    public GameObject Quarry;
     public void OnInteract()
     {
-        Debug.Log("Ã¤±¤!");
+        Quarry.SetActive(true);
     }
 
     public string GetInteractPrompt()

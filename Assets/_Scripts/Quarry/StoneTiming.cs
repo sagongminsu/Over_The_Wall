@@ -1,15 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class StoneTiming : MonoBehaviour
 {
     public GameObject Stone;
+    public GameObject Quarry;
+    public TextMeshProUGUI Gold;
     [SerializeField] Transform Center = null;
     [SerializeField] RectTransform[] timingRect = null;
     [SerializeField] Animator StoneHit = null;
 
-    string hit = "Hit";
+    public GoldManager goldManager;
+
+    public string hit = "Hit";
+
+    public int totalGold;
+    public int addGold;
+    private int inputCount = 0;
+    
+
     Vector2[] timingBoxs = null;
     void Start()
     {
@@ -27,8 +38,17 @@ public class StoneTiming : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            inputCount++;
             CheckTiming();
+            
         }
+        if (inputCount == 5)
+        {
+            Quarry.SetActive(false);
+            SetScore();
+        }
+        Gold.text = totalGold.ToString();
+        Debug.Log(totalGold);
     }
     public void CheckTiming()
     {
@@ -37,18 +57,35 @@ public class StoneTiming : MonoBehaviour
         {
             if (timingBoxs[x].x <= StonePosX && StonePosX <= timingBoxs[x].y)
             {
-                Debug.Log(x);
-
+               
+                StoneHitEffect();
+                if (x == 0)
+                {
+                    addGold = 200;
+                }
+                else if (x == 1)
+                {
+                    addGold = 200;
+                }
+                else if (x == 2)
+                {
+                    addGold = 100;
+                }
+                totalGold += addGold;
             }
             else
             {
                 Debug.Log("Fail");
             }
-            StoneHitEffect();
+            
         }
     }
     public void StoneHitEffect()
     {
         StoneHit.SetTrigger(hit);
+    }
+    public void SetScore()
+    {
+        goldManager.Gold += totalGold;
     }
 }

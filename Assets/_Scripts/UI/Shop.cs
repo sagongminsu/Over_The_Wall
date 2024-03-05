@@ -32,22 +32,23 @@ public class Shop : MonoBehaviour
     public GameObject ReturnBuyButton;
     public GameObject ReturnButton;
 
-   //void Strart()
-    //{
-    //    slots = new ItemSlot[uiSlots.Length];
-    //    for (int i = 0; i < slots.Length; i++)
-    //    {
-    //        slots[i] = new ItemSlot();
-    //        uiSlots[i].index = i;
-    //        uiSlots[i].Clear();
-    //    }
-    //}
-
-
-    void Update()
+    private void Start()
     {
+       
+        slots = new ItemSlot[uiSlots.Length];
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i] = new ItemSlot();
+            uiSlots[i].index = i;
+            uiSlots[i].Clear();
+        }
+        slots[0] = new ItemSlot() { item = Coffee, quantity = 1 };
+        slots[1] = new ItemSlot() { item = Cigarrete, quantity = 1 };
+        UpdateUi();
         
     }
+
+
 
     public void ItemSetting(ItemData_ item)
     {
