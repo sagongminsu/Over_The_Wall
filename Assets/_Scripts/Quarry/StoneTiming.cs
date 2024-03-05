@@ -24,6 +24,7 @@ public class StoneTiming : MonoBehaviour
     Vector2[] timingBoxs = null;
     void Start()
     {
+        Quarry.SetActive(false);
         timingBoxs = new Vector2[timingRect.Length];
         for(int i = 0; i < timingRect.Length; i++)
         {
@@ -41,14 +42,19 @@ public class StoneTiming : MonoBehaviour
             inputCount++;
             CheckTiming();
             
+
         }
         if (inputCount == 5)
         {
+            
             Quarry.SetActive(false);
             SetScore();
+
+
         }
         Gold.text = totalGold.ToString();
-        Debug.Log(totalGold);
+        Debug.Log("1");
+        Debug.Log(goldManager.Gold);
     }
     public void CheckTiming()
     {
@@ -72,6 +78,7 @@ public class StoneTiming : MonoBehaviour
                     addGold = 100;
                 }
                 totalGold += addGold;
+               
             }
             else
             {
