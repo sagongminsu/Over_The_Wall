@@ -18,7 +18,7 @@ public class StoneTiming : MonoBehaviour
 
     public int totalGold;
     public int addGold;
-    private int inputCount = 0;
+    public int inputCount = 0;
     
 
     Vector2[] timingBoxs = null;
@@ -51,7 +51,9 @@ public class StoneTiming : MonoBehaviour
             
             Quarry.SetActive(false);
             SetScore();
+            totalGold = 0;
             goldManager.isMining = false;
+            
 
         }
         Gold.text = totalGold.ToString();

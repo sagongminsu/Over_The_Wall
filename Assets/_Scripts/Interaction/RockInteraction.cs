@@ -4,12 +4,26 @@ public class RockInteraction : MonoBehaviour, IInteraction
 {
     public GameObject Quarry;
     GoldManager goldManager;
-
+    public StoneTiming stoneTiming;
     private void Awake()
     {
         goldManager = GoldManager.instance;
-    }
+        stoneTiming = GetComponent<StoneTiming>();
 
+    }
+    private void Update()
+    {
+        if (stoneTiming.inputCount == 5)
+        {
+            gameObject.layer = LayerMask.NameToLayer("Default");
+        }
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer("Interatable");
+
+        }
+
+    }
     public void OnInteract()
     {
         Quarry.SetActive(true);
@@ -20,4 +34,5 @@ public class RockInteraction : MonoBehaviour, IInteraction
     {
         return "Interaction Ã¤±¤";
     }
+    
 }
