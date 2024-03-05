@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5021a1f7cf10b468e1217b40ea6702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0
+  time: 680
   fullDayLength: 1440
   startTime: 360
   noon: {x: 70, y: 0, z: 0}
@@ -435,6 +435,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   timeText: {fileID: 0}
   Days: 0
+  Pause: 1
 --- !u!1 &7180889846577472010
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,14 +11,9 @@ public class ShopOpen : MonoBehaviour, IInteraction
 
     private void Update()
     {
-        if (gameManager.I.CheckTime(14, 17))
-        {
-            ShopMan.SetActive(true);
-        }
-        else
-        {
-            ShopMan.SetActive(false);
-        }
+     
+            ShopMan.SetActive(gameManager.I.CheckTime(14,17));
+      
     }
     public string GetInteractPrompt()
     {

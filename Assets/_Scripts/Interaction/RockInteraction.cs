@@ -13,15 +13,7 @@ public class RockInteraction : MonoBehaviour, IInteraction
     }
     private void Update()
     {
-        if (stoneTiming.inputCount == 5)
-        {
-            gameObject.layer = LayerMask.NameToLayer("Default");
-        }
-        else
-        {
-            gameObject.layer = LayerMask.NameToLayer("Interatable");
-
-        }
+      
 
     }
     public void OnInteract()
