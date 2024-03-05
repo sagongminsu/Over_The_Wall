@@ -12,7 +12,6 @@ public class PlayerIdleState : PlayerGroundedState
         base.Enter();
 
         stateMachine.MovementSpeedModifier = 0f;
-        Debug.Log("¿‘¿Â");
         StartAnimation(stateMachine.Player.AnimationData.StandingParameterHash);
     }
 

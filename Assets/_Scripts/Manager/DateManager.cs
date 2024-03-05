@@ -44,6 +44,8 @@ public class DateManager : MonoBehaviour
 
         while (true)
         {
+            UpdateDay(ref currentDay);
+
             if (IsWeekend(currentDay))
             {
                 yield return StartCoroutine(WeekendCycle());
@@ -53,7 +55,7 @@ public class DateManager : MonoBehaviour
                 yield return StartCoroutine(WeekdayCycle());
             }
 
-            UpdateDay(ref currentDay);
+            currentDay++;
 
             // 필요에 따라 게임이 끝날 조건을 추가할 수 있습니다.
             // 예를 들어, 특정 일수까지 진행하면 게임 종료 등
@@ -175,8 +177,10 @@ public class DateManager : MonoBehaviour
 
     public void UpdateText()
     {
+        int adjustedMinute = (Minute / 10) * 10;
+
         DayText.text = Day + "일 " + Week + "요일";
-        TimeText.text = Hour.ToString("00") + ":" + Minute.ToString("00");
+        TimeText.text = Hour.ToString("00") + ":" + adjustedMinute.ToString("00");
         WorkText.text = TaskName;
     }
 }

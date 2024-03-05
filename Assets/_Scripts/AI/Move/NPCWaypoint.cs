@@ -17,7 +17,7 @@ public class NPCWaypoint : MonoBehaviour
 
     void Update()
     {
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        if (!agent.pathPending && agent.remainingDistance < 10.5f)
         {
             MoveToNextWaypoint();
         }

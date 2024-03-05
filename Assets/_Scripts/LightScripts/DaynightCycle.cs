@@ -39,6 +39,8 @@ public class DayNightCycle : MonoBehaviour
 
     public int Days; // 경과한 날짜 수
 
+    public int Pause = 1;
+
     private void Start()
     {
         gameManager.I.dayNightCycle = this;
@@ -46,12 +48,12 @@ public class DayNightCycle : MonoBehaviour
 
         timeRate = 1440.0f / fullDayLength; // 게임 내 하루와 현실 시간의 비율 계산
         time = startTime;
-        Days = 0; // 시작 날짜 초기화
+        Days = 1; // 시작 날짜 초기화
     }
 
     public void Update()
     {
-        time += timeRate * Time.deltaTime; // 게임 내 시간 업데이트
+        time += timeRate * Time.deltaTime * Pause; // 게임 내 시간 업데이트
 
         // 하루가 지나면 날짜 증가 및 시간 리셋
         if (time >= 1440.0f)
@@ -96,6 +98,7 @@ public class DayNightCycle : MonoBehaviour
     }
     public void UpdateTimeText()
     {
+        dateManager.Day = Days;
         dateManager.Hour = (int)(time / 60.0f);
         dateManager.Minute = (int)time % 60;
         hours = (int)(time / 60.0f);

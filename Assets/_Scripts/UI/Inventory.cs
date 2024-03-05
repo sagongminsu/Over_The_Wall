@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour
 
     public ItemSlot[] slots;
 
+
     public GameObject inventoryWindow;
     public Transform dropPosition;
 
@@ -277,6 +278,31 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
-    
+    public int CheckItemCount(ItemData_ item)
+    {
+        int Count = 0;
+        ItemSlot slotToStackTo = GetItemStack(item);
+        if (slotToStackTo != null)
+        {
+            Count = slotToStackTo.quantity;
+        }
+        return Count;
+    }
+
+    public bool CheckQuestCompletion(ItemData_ item, int requiredQuantity)
+    {
+        int itemCount = CheckItemCount(item);
+
+        if (itemCount >= requiredQuantity)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
 }
 

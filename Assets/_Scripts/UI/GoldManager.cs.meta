@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Scripts/UI/GoldManager.cs.meta
 guid: ee9e8126f90a67f4ea7fbf29d990c8df
+========
+guid: b6ca39159feb046408104cf1d468934b
+>>>>>>>> e498132517f693e5e449bfa67385947f52a5b438:Assets/_Scripts/Story/StartStory.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
