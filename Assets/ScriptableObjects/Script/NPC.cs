@@ -1,10 +1,11 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NPC : MonoBehaviour, IInteraction
 {
-    QuestManager questManager;
+    public QuestManager questManager;
 
     public string interactPrompt = "대화하기";
     public float detectionRange = 5f;
@@ -17,7 +18,11 @@ public class NPC : MonoBehaviour, IInteraction
     private bool isDialogueActive;
 
     private Inventory inventory;
-    public bool playerInRange = false;
+    private bool playerInRange = false;
+
+    private NavMeshAgent agent; 
+    public Transform targetLocation; 
+    public Transform secondTargetLocation; 
 
     private void Awake()
     {
@@ -32,11 +37,24 @@ public class NPC : MonoBehaviour, IInteraction
             Debug.LogError("플레이어를 찾을 수 없습니다.");
         }
         inventory = FindObjectOfType<Inventory>();
+        // Initialize NavMeshAgent
+        agent = GetComponent<NavMeshAgent>();
+        if (agent == null)
+        {
+            Debug.LogError("NavMeshAgent component missing on this GameObject.");
+        }
     }
 
     private void Update()
     {
         UpdatePlayerInRange();
+    }
+    private void MoveToTarget(Transform target)
+    {
+        if (agent != null && target != null)
+        {
+            agent.SetDestination(target.position);
+        }
     }
 
     private void UpdatePlayerInRange()
@@ -107,7 +125,10 @@ public class NPC : MonoBehaviour, IInteraction
     private void QuestOngoing()
     {
         quest.onGoing = true;
+        
+        MoveToTarget(targetLocation);
     }
+
 
     private void QuestComplete()
     {
@@ -115,6 +136,7 @@ public class NPC : MonoBehaviour, IInteraction
         {
             inventory.RemoveItem(requiredResource.item, requiredResource.requiredAmount);
         }
+        MoveToTarget(secondTargetLocation);
     }
 
     #endregion
