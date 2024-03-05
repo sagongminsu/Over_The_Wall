@@ -42,8 +42,8 @@ public class Shop : MonoBehaviour
             uiSlots[i].index = i;
             uiSlots[i].Clear();
         }
-       // slots[0] = new ItemSlot() { item = Coffee, quantity = 1 };
-       // slots[1] = new ItemSlot() { item = Cigarrete, quantity = 1 };
+        //slots[0] = new ItemSlot() { item = Coffee, quantity = 1 };
+        //slots[1] = new ItemSlot() { item = Cigarrete, quantity = 1 };
         UpdateUi();
         
     }

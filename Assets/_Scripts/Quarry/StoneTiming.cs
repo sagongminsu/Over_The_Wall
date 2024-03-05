@@ -56,6 +56,7 @@ public class StoneTiming : MonoBehaviour
             
 
         }
+       
         Gold.text = totalGold.ToString();
     }
     public void CheckTiming()
