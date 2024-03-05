@@ -16,22 +16,36 @@ public class RequiredResource
     public int requiredAmount;
 }
 
+[Serializable]
+public class QuestDialogue
+{
+    public string[] BeforeStart;
+    public string[] OnGoing;
+    public string[] OnComplete;
+    public string[] AfterComplete;
+}
+
 
 [CreateAssetMenu(fileName = "NewQuest", menuName = "Quest System/Quest")]
 public class QuestData : ScriptableObject
 {
     [Header("Info")]
+    public string questID;
     public string questTitle;
     public string questDescription;
     public bool onGoing;
     public bool isCompleted;
 
+    [Header("RequiredResource")]
     public RequiredResource[] requiredResource;
 
     [Header("Dialouge")]
-    public string[] Dialouge;
-    public string[] OnGoing;
-    public string[] Complete;
-    public string[] Completed;
+    public QuestDialogue questDialogue;
 
+    // 추가: 퀘스트 클리어 함수
+    public void CompleteQuest()
+    {
+        isCompleted = true;
+        // 다른 클리어에 관련된 동작 수행
+    }
 }

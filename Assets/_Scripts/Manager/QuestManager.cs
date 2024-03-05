@@ -1,8 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour
 {
+    [Header("QuestData")]
+    public List<QuestData> Quests = new List<QuestData>();
+
     public ScheduleUI scheduleUI;
     public static QuestManager instance;
 
@@ -56,4 +60,5 @@ public class QuestManager : MonoBehaviour
     {
         return questStatus[questNumber - 1];
     }
+
 }

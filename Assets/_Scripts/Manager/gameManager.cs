@@ -1,4 +1,6 @@
+using Cinemachine;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class gameManager : MonoBehaviour
@@ -16,7 +18,8 @@ public class gameManager : MonoBehaviour
     public bool isPause;
     public bool isLoad = false;
 
-    public bool NewGame;
+
+    public bool NewGame = true;
 
     private float currentMouseSensitivity;
 
@@ -30,12 +33,16 @@ public class gameManager : MonoBehaviour
 
         I = this;
 
+        NewGame = true;
+
         currentMouseSensitivity = defaultMouseSensitivity;
 
         DontDestroyOnLoad(gameObject);
 
         Application.targetFrameRate = 60;
     }
+
+
     private void Update()
     {
         //if (isPause == false)
@@ -95,14 +102,13 @@ public class gameManager : MonoBehaviour
         if(PlayerPrefs.HasKey("SavedGameData"))
         {
             isLoad = true;
+
         }
     }
     public void Load()
     {
         if (PlayerPrefs.HasKey("SavedGameData"))
         {
-            NewGame = false;
-
             string jsonData = PlayerPrefs.GetString("SavedGameData");
             PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonData);
 
@@ -111,6 +117,7 @@ public class gameManager : MonoBehaviour
 
             playerConditions.health.curValue = playerData.health;
             playerConditions.playerSO.Stamina.curValue = playerData.stamina;
+            NewGame = false;
 
             Debug.Log("게임 로드 완료!");
         }
@@ -142,5 +149,5 @@ public class gameManager : MonoBehaviour
         }
     }
 
-
+    
 }
