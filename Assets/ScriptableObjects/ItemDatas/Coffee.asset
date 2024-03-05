@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 0
   icon: {fileID: 21300000, guid: 5d30dbb91b27ddb4eb13a3c812a0f290, type: 3}
   dropPrefab: {fileID: 0}
-  price: 0
+  price: 5000
   canStack: 1
   maxStackAmount: 5
   consumables:
