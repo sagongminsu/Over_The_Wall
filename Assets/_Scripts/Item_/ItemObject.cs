@@ -8,8 +8,9 @@ public class ItemObject : MonoBehaviour, IInteraction
 {
     public ItemData_ item;
 
-    public bool ObjectSwitch;
- 
+
+     
+     
 
    
     public string GetInteractPrompt()

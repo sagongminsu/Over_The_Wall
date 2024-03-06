@@ -13,11 +13,9 @@ public class Inventory : MonoBehaviour
     public ItemSlotUI[] uiSlots;
     public GameObject Inven;
     public ItemData_ itemData_;
-
-
+    public Shop shop;
 
     public ItemSlot[] slots;
-
 
     public GameObject inventoryWindow;
     public Transform dropPosition;
@@ -32,7 +30,6 @@ public class Inventory : MonoBehaviour
     public GameObject useButton;
     public GameObject equipButton;
     public GameObject unEquipButton;
-    public GameObject dropButton;
 
     private int curEquipIndex;
 
@@ -176,7 +173,6 @@ public class Inventory : MonoBehaviour
         useButton.SetActive(selectedItem.item.type == ItemType.Consumable);
         equipButton.SetActive(selectedItem.item.type == ItemType.Equipable && !uiSlots[index].equipped);
         unEquipButton.SetActive(selectedItem.item.type == ItemType.Equipable && uiSlots[index].equipped);
-        dropButton.SetActive(true);
 
     }
     private void ClearSelectedItemWindow()
@@ -191,7 +187,6 @@ public class Inventory : MonoBehaviour
         useButton.SetActive(false);
         equipButton.SetActive(false);
         unEquipButton.SetActive(false);
-        dropButton.SetActive(false);
     }
 
     public void OnEquipButton()
@@ -223,11 +218,7 @@ public class Inventory : MonoBehaviour
     {
         UnEquip(selectedItemIndex);
     }
-    public void OnDropButton()
-    {
-        ThrowItem(selectedItem.item);
-        RemoveSelectedItem(selectedItem.item);
-    }
+    
     public void OnUseButton()
     {
         if (selectedItem.item.type == ItemType.Consumable)

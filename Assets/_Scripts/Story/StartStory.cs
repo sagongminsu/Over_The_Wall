@@ -1,17 +1,11 @@
+using Cinemachine;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class StartStory : MonoBehaviour
 {
-    public Camera MainCamera;
-    public Camera StoryCamera;
+    public CinemachineVirtualCamera virtualCamera;
     public GameObject Player;
-
-    public TextMeshProUGUI Text;
-
-    private bool Complete = false;
 
     gameManager gameManager;
 
@@ -20,64 +14,30 @@ public class StartStory : MonoBehaviour
         gameManager = gameManager.I;
     }
 
-    void Start()
+    private void Start()
     {
+        Debug.Log(gameManager.NewGame);
         if (gameManager.NewGame)
         {
-            MainCamera.enabled = false;
-            StoryCamera.enabled = true;
 
-            Complete = false;
-
-            gameManager.dayNightCycle.Pause = 0;
-
-            StartCoroutine(StartStorySequence());
+            StartCoroutine(DisableVirtualCameraAfterDelay(4f));
         }
         else
         {
-            Complete = true;
+
+            virtualCamera.gameObject.SetActive(false);
         }
     }
-    private void SwitchCamera()
+    private IEnumerator DisableVirtualCameraAfterDelay(float delayInSeconds)
     {
-        MainCamera.enabled = !MainCamera.enabled;
-        StoryCamera.enabled = !StoryCamera.enabled;
-    }
+        yield return new WaitForSeconds(delayInSeconds);
 
-    private void PlayerPosition()
-    {
-        Player.transform.position = new Vector3(-28.05f, -0.059f, -57.44f);
-    }
-
-    private IEnumerator StartStorySequence()
-    {
-        yield return new WaitForSeconds(9f);
-
-        PlayerPosition();
-        SwitchCamera();
-
-
-        Complete = true;
-    }
-
-    void Update()
-    {
-        if (!Complete)
+        if (virtualCamera != null)
         {
-            Input.ResetInputAxes();
-            gameManager.dayNightCycle.Pause = 0;
-        }
-        else
-        {
-            gameManager.dayNightCycle.Pause = 1;
+            Player.transform.position = new Vector3(-28.05f, -0.059f, -57.44f);
+            //Player.transform.position = new Vector3(50f, -0.1f, -21f);
+            virtualCamera.gameObject.SetActive(false);
         }
     }
-
-    private void WakeUp()
-    {
-
-    }
-    //간수랑 대화
-    //따라가기
-    //
 }
+

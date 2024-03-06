@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
+    public GoldManager goldManager;
+
     public GameObject ShopMan;
     public GameObject ShopUI;
+    public GameObject Inven;
     public ItemSlotUI[] uiSlots;
     public ItemSlot[] slots;
 
@@ -22,9 +26,15 @@ public class Shop : MonoBehaviour
 
     public GameObject BuyButton;
     public GameObject SoldButton;
+    public GameObject ReturnBuyButton;
+    public GameObject ReturnButton;
 
-    void Start()
+    public ItemData_ Coffee;
+    public ItemData_ Cigarette;
+
+    private void Start()
     {
+        goldManager = GoldManager.instance;
         slots = new ItemSlot[uiSlots.Length];
         for (int i = 0; i < slots.Length; i++)
         {
@@ -32,33 +42,41 @@ public class Shop : MonoBehaviour
             uiSlots[i].index = i;
             uiSlots[i].Clear();
         }
+        slots[0] = new ItemSlot() { item = Coffee, quantity = 1 };
+        slots[1] = new ItemSlot() { item = Cigarette, quantity = 1 };
+        UpdateUi();
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (gameManager.I.CheckTime(14, 17))
-        {
-            ShopMan.SetActive(true);
-        }
-        else
-        {
-            ShopMan.SetActive(false);
-        }
+       
     }
 
-    public void ItemSetting()
+    public void ItemSetting(ItemData_ item)
     {
 
     }
 
-    public void USeBuyButton()
+    public void UseBuyButton(ItemData_ item)
     {
+        goldManager.Gold -= selectedItem.item.price;
+
+        
+      
 
     }
-    public void USeSoldButton()
+    public void UseSoldButton()
     {
+        
+        
 
+    }
+    public void UseReturnButton()
+    {
+        ShopUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
     }
     private void UpdateUi()
     {
@@ -71,7 +89,7 @@ public class Shop : MonoBehaviour
             }
             else
             {
-                uiSlots[i].Clear();
+                uiSlots[i].Clear(); 
             }
         }
     }
@@ -106,4 +124,5 @@ public class Shop : MonoBehaviour
             selectedItemStatValues.text += selectedItem.item.consumables[i].value.ToString() + "\n";
         }
     }
+
 }

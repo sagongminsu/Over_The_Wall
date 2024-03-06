@@ -48,7 +48,6 @@ public class PlayerInteractState : PlayerGroundedState
             stateMachine.ChangeState(stateMachine.RunState);
         else
             stateMachine.ChangeState(stateMachine.IdleState);
-
     }
 
 }

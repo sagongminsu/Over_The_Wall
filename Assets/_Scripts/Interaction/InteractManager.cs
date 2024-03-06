@@ -31,6 +31,7 @@ public class InteractionManager : MonoBehaviour
     public GameObject CurrentInteractGameObject { get; private set; }
     public IInteraction CurrentInteraction { get; private set; }
 
+
     public void SetCurrentInteraction(GameObject interactObject)
     {
         CurrentInteractGameObject = interactObject;

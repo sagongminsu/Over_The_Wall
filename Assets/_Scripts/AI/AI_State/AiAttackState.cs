@@ -101,7 +101,7 @@ public class AiAttackState : AiBaseState
         }
     }
 
-        private void TryApplyForce()
+    private void TryApplyForce()
     {
         if (alreadyAppliedForce) return;
         alreadyAppliedForce = true;

@@ -98,8 +98,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3955740944832554744}
-  m_LocalRotation: {x: -0, y: -0.6924606, z: -0, w: 0.72145575}
-  m_LocalPosition: {x: -27.251123, y: -1.084, z: -50.46852}
+  m_LocalRotation: {x: -0, y: -0.3557758, z: -0, w: 0.9345714}
+  m_LocalPosition: {x: -21.708124, y: -1.025, z: -51.20552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -201,8 +201,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4662512576522733665}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -26.201124, y: -1.925, z: -51.28052}
+  m_LocalRotation: {x: -0, y: -0.3557758, z: -0, w: 0.9345714}
+  m_LocalPosition: {x: -21.708124, y: -1.025, z: -51.20552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 1066182988809986785}
   - component: {fileID: 1393085957526752408}
   - component: {fileID: 2916939607532079215}
+  - component: {fileID: 4079132094729232187}
   m_Layer: 0
   m_Name: Crouch Camera
   m_TagString: Untagged
@@ -347,8 +348,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5338154816345870767}
-  m_LocalRotation: {x: -0, y: -0.6924606, z: -0, w: 0.72145575}
-  m_LocalPosition: {x: -27.251123, y: -1.084, z: -50.46852}
+  m_LocalRotation: {x: -0, y: -0.3557758, z: -0, w: 0.9345714}
+  m_LocalPosition: {x: -21.708124, y: -1.025, z: -51.20552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -412,6 +413,21 @@ MonoBehaviour:
   minFov: 40
   maxFov: 80
 --- !u!114 &2916939607532079215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5338154816345870767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d70cc20219cd84593f67d248eafe36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Offset: {x: 0, y: -0.5, z: 0.22}
+  m_ApplyAfter: 1
+  m_PreserveComposition: 0
+--- !u!114 &4079132094729232187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -587,14 +603,6 @@ MonoBehaviour:
     m_MinDuration: 0
   - m_FullHash: -13041127
     m_VirtualCamera: {fileID: 0}
-    m_ActivateAfter: 0
-    m_MinDuration: 0
-  - m_FullHash: -13041127
-    m_VirtualCamera: {fileID: 0}
-    m_ActivateAfter: 0
-    m_MinDuration: 0
-  - m_FullHash: -190886482
-    m_VirtualCamera: {fileID: 5068780820935412518}
     m_ActivateAfter: 0
     m_MinDuration: 0
   m_DefaultBlend:
