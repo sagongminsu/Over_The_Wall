@@ -235,7 +235,7 @@ public class Inventory : MonoBehaviour
             }
             
         }
-        if (gameManager.I.dayNightCycle.Days == 0 && selectedItem.item.name == "Food")
+        if (gameManager.I.dayNightCycle.Days == 1 && selectedItem.item.name == "Food")
         {
             QuestManager.instance.CompleteQuest(3);
         }
