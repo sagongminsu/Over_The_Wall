@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using UnityEngine;
+using UnityEngine.UI; // UI 네임스페이스 추가
 
 public class CardScript : MonoBehaviour
 {
@@ -20,18 +20,18 @@ public class CardScript : MonoBehaviour
 
     public string GetSpriteName()
     {
-        return GetComponent<SpriteRenderer>().sprite.name;
+        return GetComponent<Image>().sprite.name; // Image로 변경
     }
 
     public void SetSprite(Sprite newSprite)
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = newSprite;
+        gameObject.GetComponent<Image>().sprite = newSprite; // Image로 변경
     }
 
     public void ResetCard()
     {
         Sprite back = GameObject.Find("Deck").GetComponent<DeckScript>().GetCardBack();
-        gameObject.GetComponent<SpriteRenderer>().sprite = back;
+        gameObject.GetComponent<Image>().sprite = back; // Image로 변경
         value = 0;
     }
 }

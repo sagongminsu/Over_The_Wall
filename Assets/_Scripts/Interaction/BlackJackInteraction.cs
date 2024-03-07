@@ -13,10 +13,13 @@ public class BlackJackInteraction : MonoBehaviour, IInteraction
 
     public void OnInteract()
     {
-        // blackJack 게임 오브젝트가 존재하고 활성화되어 있지 않은 경우에만 활성화합니다.
         if (blackJack != null && !blackJack.activeSelf)
         {
             blackJack.SetActive(true);
+
+
+            Cursor.lockState = CursorLockMode.None;
+
         }
     }
 }

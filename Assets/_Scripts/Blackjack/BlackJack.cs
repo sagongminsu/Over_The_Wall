@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UI;
+using UnityEngine.UI; 
 
 public class BlackJack : MonoBehaviour
 {
@@ -21,12 +18,12 @@ public class BlackJack : MonoBehaviour
     public PlayerScript dealerScript;
 
     // public Text to access and update - hud
-    public TMP_Text scoreText;
-    public TMP_Text dealerScoreText;
-    public TMP_Text betsText;
-    public TMP_Text cashText;
-    public TMP_Text mainText;
-    public TMP_Text standBtnText;
+    public Text scoreText;
+    public Text dealerScoreText; 
+    public Text betsText; 
+    public Text cashText; 
+    public Text mainText;
+    public Text standBtnText; 
 
     // Card hiding dealer's 2nd card
     public GameObject hideCard;
@@ -58,7 +55,10 @@ public class BlackJack : MonoBehaviour
         scoreText.text = "Hand: " + playerScript.handValue.ToString();
         dealerScoreText.text = "Hand: " + dealerScript.handValue.ToString();
         // Place card back on dealer card, hide card
-        hideCard.GetComponent<Renderer>().enabled = true;
+        hideCard.GetComponent<Image>().enabled = true;
+        // Show only one card for dealer
+        dealerScript.hand[0].GetComponent<Image>().enabled = true;
+        dealerScript.hand[1].GetComponent<Image>().enabled = false;
         // Adjust buttons visibility
         dealBtn.gameObject.SetActive(false);
         hitBtn.gameObject.SetActive(true);
@@ -69,8 +69,8 @@ public class BlackJack : MonoBehaviour
         betsText.text = "Bets: $" + pot.ToString();
         playerScript.AdjustMoney(-20);
         cashText.text = "$" + playerScript.GetMoney().ToString();
-
     }
+
 
     private void HitClicked()
     {
@@ -88,6 +88,8 @@ public class BlackJack : MonoBehaviour
         standClicks++;
         if (standClicks > 1) RoundOver();
         HitDealer();
+        // 공개된 카드를 숨기고 두 번째 카드를 공개함
+        dealerScript.hand[1].GetComponent<Image>().enabled = true;
         standBtnText.text = "Call";
     }
 
@@ -101,7 +103,7 @@ public class BlackJack : MonoBehaviour
         }
     }
 
-    // Check for winnner and loser, hand is over
+    // Check for winner and loser, hand is over
     void RoundOver()
     {
         // Booleans (true/false) for bust and blackjack/21
@@ -118,12 +120,12 @@ public class BlackJack : MonoBehaviour
             mainText.text = "All Bust: Bets returned";
             playerScript.AdjustMoney(pot / 2);
         }
-        // if player busts, dealer didnt, or if dealer has more points, dealer wins
+        // if player busts, dealer didn't, or if dealer has more points, dealer wins
         else if (playerBust || (!dealerBust && dealerScript.handValue > playerScript.handValue))
         {
             mainText.text = "Dealer wins!";
         }
-        // if dealer busts, player didnt, or player has more points, player wins
+        // if dealer busts, player didn't, or player has more points, player wins
         else if (dealerBust || playerScript.handValue > dealerScript.handValue)
         {
             mainText.text = "You win!";
@@ -139,7 +141,7 @@ public class BlackJack : MonoBehaviour
         {
             roundOver = false;
         }
-        // Set ui up for next move / hand / turn
+        // Set UI up for next move / hand / turn
         if (roundOver)
         {
             hitBtn.gameObject.SetActive(false);

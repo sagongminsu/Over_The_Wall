@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class PlayerScript : MonoBehaviour
         // Get a card, use deal card to assign sprite and value to card on table
         int cardValue = deckScript.DealCard(hand[cardIndex].GetComponent<CardScript>());
         // Show card on game screen
-        hand[cardIndex].GetComponent<Renderer>().enabled = true;
+        hand[cardIndex].GetComponent<Image>().enabled = true; // Image로 변경
         // Add card value to running total of the hand
         handValue += cardValue;
         // If value is 1, it is an ace
@@ -43,7 +44,7 @@ public class PlayerScript : MonoBehaviour
         {
             aceList.Add(hand[cardIndex].GetComponent<CardScript>());
         }
-        // Cehck if we should use an 11 instead of a 1
+        // Check if we should use an 11 instead of a 1
         AceCheck();
         cardIndex++;
         return handValue;
@@ -52,7 +53,7 @@ public class PlayerScript : MonoBehaviour
     // Search for needed ace conversions, 1 to 11 or vice versa
     public void AceCheck()
     {
-        // for each ace in the lsit check
+        // for each ace in the list check
         foreach (CardScript ace in aceList)
         {
             if (handValue + 10 < 22 && ace.GetValueOfCard() == 1)
@@ -76,7 +77,7 @@ public class PlayerScript : MonoBehaviour
         money += amount;
     }
 
-    // Output players current money amount
+    // Output player's current money amount
     public int GetMoney()
     {
         return money;
@@ -88,7 +89,7 @@ public class PlayerScript : MonoBehaviour
         for (int i = 0; i < hand.Length; i++)
         {
             hand[i].GetComponent<CardScript>().ResetCard();
-            hand[i].GetComponent<Renderer>().enabled = false;
+            hand[i].GetComponent<Image>().enabled = false; // Image로 변경
         }
         cardIndex = 0;
         handValue = 0;
