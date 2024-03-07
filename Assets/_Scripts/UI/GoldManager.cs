@@ -33,4 +33,8 @@ public class GoldManager : MonoBehaviour
 
         GoldText.text = Gold.ToString();
     }
+    public void AdjustGold(int amount)
+    {
+        Gold += amount;
+    }
 }

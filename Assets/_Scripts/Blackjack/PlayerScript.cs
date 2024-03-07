@@ -14,8 +14,8 @@ public class PlayerScript : MonoBehaviour
     // Total value of player/dealer's hand
     public int handValue = 0;
 
-    // Betting money
-    private int money = 1000;
+    // Reference to GoldManager
+    public GoldManager goldManager;
 
     // Array of card objects on table
     public GameObject[] hand;
@@ -36,7 +36,7 @@ public class PlayerScript : MonoBehaviour
         // Get a card, use deal card to assign sprite and value to card on table
         int cardValue = deckScript.DealCard(hand[cardIndex].GetComponent<CardScript>());
         // Show card on game screen
-        hand[cardIndex].GetComponent<Image>().enabled = true; // Image로 변경
+        hand[cardIndex].GetComponent<Image>().enabled = true;
         // Add card value to running total of the hand
         handValue += cardValue;
         // If value is 1, it is an ace
@@ -71,16 +71,18 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    // Add or subtract from money, for bets
-    public void AdjustMoney(int amount)
-    {
-        money += amount;
-    }
-
     // Output player's current money amount
     public int GetMoney()
     {
-        return money;
+        // Use gold value from GoldManager
+        return goldManager.Gold;
+    }
+
+    // Adjust gold amount
+    public void AdjustGold(int amount)
+    {
+        // Use AdjustGold method from GoldManager
+        goldManager.AdjustGold(amount);
     }
 
     // Hides all cards, resets the needed variables
@@ -89,10 +91,28 @@ public class PlayerScript : MonoBehaviour
         for (int i = 0; i < hand.Length; i++)
         {
             hand[i].GetComponent<CardScript>().ResetCard();
-            hand[i].GetComponent<Image>().enabled = false; // Image로 변경
+            hand[i].GetComponent<Image>().enabled = false;
         }
         cardIndex = 0;
         handValue = 0;
         aceList = new List<CardScript>();
+    }
+
+    // 딜러의 두 번째 카드를 공개하거나 가려둡니다.
+    public void RevealFirstCard(bool reveal)
+    {
+        if (hand[1] != null) // 두 번째 카드가 존재하는 경우에만 처리합니다.
+        {
+            // 두 번째 카드를 공개하거나 가려둡니다.
+            hand[1].GetComponent<Image>().enabled = reveal;
+        }
+    }
+
+    public void RevealAllCards()
+    {
+        for (int i = 0; i < hand.Length; i++)
+        {
+            hand[i].GetComponent<Image>().enabled = true;
+        }
     }
 }
