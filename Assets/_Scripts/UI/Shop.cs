@@ -74,8 +74,8 @@ public class Shop : MonoBehaviour
     }
     public void UseReturnButton()
     {
-        ShopUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        ShopUI.SetActive(false);
         Time.timeScale = 1;
     }
     private void UpdateUi()
