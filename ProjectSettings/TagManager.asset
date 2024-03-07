@@ -9,6 +9,7 @@ TagManager:
   - Ai
   - PlayerWeapon
   - Arm
+  - AiWeapon
   layers:
   - Default
   - TransparentFX
