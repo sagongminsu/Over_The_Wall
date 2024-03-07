@@ -3,13 +3,18 @@ using UnityEngine;
 public class RockInteraction : MonoBehaviour, IInteraction
 {
     public GameObject Quarry;
-    GoldManager goldManager;
+    gameManager gameManager;
     public StoneTiming stoneTiming;
     private void Awake()
     {
-        goldManager = GoldManager.instance;
+        
         stoneTiming = GetComponent<StoneTiming>();
 
+    }
+    private void Start()
+    {
+        gameManager = gameManager.I;
+      
     }
     private void Update()
     {
@@ -19,7 +24,7 @@ public class RockInteraction : MonoBehaviour, IInteraction
     public void OnInteract()
     {
         Quarry.SetActive(true);
-        goldManager.isMining = true;
+        gameManager.isMining = true;
     }
 
     public string GetInteractPrompt()

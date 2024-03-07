@@ -16,7 +16,8 @@ public class StoneTiming : MonoBehaviour
     [SerializeField] Sprite[] judementSprite = null;
 
     private GoldManager goldManager;
-    public Effect effect;
+    public gameManager gameManager;
+   
 
     public string hit = "Hit";
 
@@ -29,7 +30,8 @@ public class StoneTiming : MonoBehaviour
     void Start()
     {
         goldManager = GoldManager.instance;
-        effect = GetComponent<Effect>();
+        gameManager = gameManager.I;
+       
         Quarry.SetActive(false);
         timingBoxs = new Vector2[timingRect.Length];
         for(int i = 0; i < timingRect.Length; i++)
@@ -47,7 +49,7 @@ public class StoneTiming : MonoBehaviour
         {
             inputCount++;
             CheckStonTiming();
-            goldManager.isMining = true;
+            gameManager.isMining = true;
 
         }
         if (inputCount == 5)
@@ -56,7 +58,7 @@ public class StoneTiming : MonoBehaviour
             Quarry.SetActive(false);
             SetScore();
             totalGold = 0;
-            goldManager.isMining = false;
+            gameManager.isMining = false;
             
 
         }
@@ -77,7 +79,7 @@ public class StoneTiming : MonoBehaviour
 
                 if (x == 0)
                 {
-                    addGold = 200;
+                    addGold = 300;
                     
                 }
                 else if (x == 1)

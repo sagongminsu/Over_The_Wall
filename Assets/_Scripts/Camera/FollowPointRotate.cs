@@ -16,6 +16,10 @@ public class FollowPointRotate : MonoBehaviour
         inputActions = new PlayerInputActions();
         inputActions.Enable();
 
+       
+    }
+    private void Start()
+    {
         gameManager = gameManager.I;
         goldManager = GoldManager.instance;
     }
@@ -27,11 +31,18 @@ public class FollowPointRotate : MonoBehaviour
 
     void Update()
     {
-        RotateVertical();
+      
+            if (!gameManager.isMining)
+            {
+                RotateVertical();
+            }
+       
+
     }
 
     private void RotateVertical()
     {
+       
         float mouseSensitivity = gameManager.GetMouseSensitivity();
 
         Vector2 mouseDelta = inputActions.Player.Look.ReadValue<Vector2>();
