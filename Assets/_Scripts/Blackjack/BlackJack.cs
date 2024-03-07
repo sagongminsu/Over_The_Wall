@@ -25,7 +25,6 @@ public class BlackJack : MonoBehaviour
     public Text scoreText;
     public Text dealerScoreText;
     public Text betsText;
-    public Text cashText;
     public Text mainText;
     public Text standBtnText;
 
@@ -74,7 +73,7 @@ public class BlackJack : MonoBehaviour
         pot = 40;
         betsText.text = "Bets: $" + pot.ToString();
         playerScript.AdjustGold(-20);
-        cashText.text = "$" + playerScript.GetMoney().ToString();
+        goldText.text = "$" + playerScript.GetMoney().ToString();
     }
 
     private void HitClicked()
@@ -160,7 +159,7 @@ public class BlackJack : MonoBehaviour
             mainText.gameObject.SetActive(true);
             dealerScoreText.gameObject.SetActive(true);
             hideCard.GetComponent<Image>().enabled = false;
-            cashText.text = "$" + playerScript.GetMoney().ToString();
+            goldText.text = "$" + playerScript.GetMoney().ToString();
             standClicks = 0;
         }
     }
@@ -182,7 +181,7 @@ public class BlackJack : MonoBehaviour
     // UI에 현재 골드 반영
     public void UpdateGoldUI()
     {
-        goldText.text = goldManager.Gold.ToString();
+        goldManager.UpdateGold();
     }
     void QuitGame()
     {

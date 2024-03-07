@@ -27,7 +27,6 @@ public class FollowPointRotate : MonoBehaviour
 
     void Update()
     {
-        if(!goldManager.isMining)
         RotateVertical();
     }
 

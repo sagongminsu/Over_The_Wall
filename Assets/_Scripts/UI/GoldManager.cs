@@ -15,7 +15,7 @@ public class GoldManager : MonoBehaviour
     {
         if (instance == null)
         {
-
+            isMining = false;
             instance = this;
             DontDestroyOnLoad(this);
 
@@ -30,8 +30,12 @@ public class GoldManager : MonoBehaviour
     }
     void Update()
     {
-
+        UpdateGold();
+    }
+    public void UpdateGold()
+    {
         GoldText.text = Gold.ToString();
+
     }
     public void AdjustGold(int amount)
     {
