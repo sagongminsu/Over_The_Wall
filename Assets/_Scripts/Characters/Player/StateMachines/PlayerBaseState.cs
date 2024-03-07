@@ -50,7 +50,6 @@ public class PlayerBaseState : IState
 
     private void Move()
     {
-        if (!goldManager.isMining)
         {
             Vector3 movementDirection = GetMovementDirection();
 
