@@ -423,10 +423,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100100, guid: fd8a675b60bc1c84c98e867ea9d8e30c,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7512008424937551090}
-    - targetCorrespondingSourceObject: {fileID: 100100, guid: fd8a675b60bc1c84c98e867ea9d8e30c,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 610267090485433048}
     - targetCorrespondingSourceObject: {fileID: 100100, guid: fd8a675b60bc1c84c98e867ea9d8e30c,
         type: 3}
@@ -439,24 +435,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8937101729518891409}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7512008424937551090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8937101729518925461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e288a6e7bc528b647931b7e0d076f789, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactPrompt: "\uB300\uD654\uD558\uAE30"
-  detectionRange: 2
-  player: {fileID: 0}
-  quest: {fileID: 11400000, guid: 59f4b98d8d86dbe4c9d4efbe712f4444, type: 2}
-  Dialogue: {fileID: 0}
-  DialogueText: {fileID: 0}
 --- !u!136 &610267090485433048
 CapsuleCollider:
   m_ObjectHideFlags: 0

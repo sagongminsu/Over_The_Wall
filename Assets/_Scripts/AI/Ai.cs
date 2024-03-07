@@ -16,8 +16,8 @@ public class Ai : MonoBehaviour
     public Animator Animator { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public CharacterController Controller { get; private set; }
-    [field: SerializeField] public RightWeapon RightHandWeapon { get; private set; }
-    [field: SerializeField] public LeftWeapon LeftHandWeapon { get; private set; }
+    //[field: SerializeField] public RightWeapon RightHandWeapon { get; private set; }
+    //[field: SerializeField] public LeftWeapon LeftHandWeapon { get; private set; }
    
     public AIHealth AiHealth { get; private set; }
 
