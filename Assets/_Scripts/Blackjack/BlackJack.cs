@@ -169,12 +169,16 @@ public class BlackJack : MonoBehaviour
     // Add money to pot if bet clicked
     void BetClicked()
     {
-        int betAmount = 1000;
-        goldManager.Gold -= betAmount;
-        pot += betAmount;
-        betsText.text = "Bets: $" + pot.ToString();
+        if(goldManager.Gold >= 1000)
+        {
+            int betAmount = 1000;
+            goldManager.Gold -= betAmount;
+            pot += betAmount;
+            betsText.text = "Bets: $" + pot.ToString();
 
-        UpdateGoldUI();
+            UpdateGoldUI();
+        }
+        
     }
 
 
