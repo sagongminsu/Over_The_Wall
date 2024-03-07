@@ -8,12 +8,14 @@ public class QuestManager : MonoBehaviour
     public List<QuestData> Quests = new List<QuestData>();
 
     public ScheduleUI scheduleUI;
-    public static QuestManager instance;
+
 
     // 각 퀘스트의 완료 상태를 저장하는 배열
     private bool[] questStatus = new bool[5];
 
     public Image[] questImages;
+
+    public static QuestManager instance;
     private void Awake()
     {
         if (instance == null)
