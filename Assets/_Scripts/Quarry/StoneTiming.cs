@@ -11,8 +11,12 @@ public class StoneTiming : MonoBehaviour
     [SerializeField] Transform Center = null;
     [SerializeField] RectTransform[] timingRect = null;
     [SerializeField] Animator StoneHit = null;
+    [SerializeField] Animator judgementAnimator = null;
+    [SerializeField] UnityEngine.UI.Image judgemenImage = null;
+    [SerializeField] Sprite[] judementSprite = null;
 
     private GoldManager goldManager;
+    public Effect effect;
 
     public string hit = "Hit";
 
@@ -25,7 +29,7 @@ public class StoneTiming : MonoBehaviour
     void Start()
     {
         goldManager = GoldManager.instance;
-
+        effect = GetComponent<Effect>();
         Quarry.SetActive(false);
         timingBoxs = new Vector2[timingRect.Length];
         for(int i = 0; i < timingRect.Length; i++)
@@ -42,7 +46,7 @@ public class StoneTiming : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             inputCount++;
-            CheckTiming();
+            CheckStonTiming();
             goldManager.isMining = true;
 
         }
@@ -59,7 +63,7 @@ public class StoneTiming : MonoBehaviour
        
         Gold.text = totalGold.ToString();
     }
-    public void CheckTiming()
+    public void CheckStonTiming()
     {
         float StonePosX = Stone.transform.localPosition.x;
         for (int x = 0; x < timingBoxs.Length; x++)
@@ -68,20 +72,27 @@ public class StoneTiming : MonoBehaviour
             {
                
                 StoneHitEffect();
+                
+
+
                 if (x == 0)
                 {
                     addGold = 200;
+                    
                 }
                 else if (x == 1)
                 {
                     addGold = 200;
+                   
                 }
                 else if (x == 2)
                 {
                     addGold = 100;
+                    
                 }
                 totalGold += addGold;
-               
+                JudgementEffect(x);
+                return;
             }
             else
             {
@@ -97,5 +108,10 @@ public class StoneTiming : MonoBehaviour
     public void SetScore()
     {
         goldManager.Gold += totalGold;
+    }
+    public void JudgementEffect(int num)
+    {
+        judgemenImage.sprite = judementSprite[num];
+        judgementAnimator.SetTrigger(hit);
     }
 }
