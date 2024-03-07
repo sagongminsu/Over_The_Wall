@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class StoneTiming : MonoBehaviour
@@ -10,8 +11,9 @@ public class StoneTiming : MonoBehaviour
     public TextMeshProUGUI Gold;
     [SerializeField] Transform Center = null;
     [SerializeField] RectTransform[] timingRect = null;
-    [SerializeField] Animator StoneHit = null;
+ 
 
+    private Effect effect;
     private GoldManager goldManager;
 
     public string hit = "Hit";
@@ -25,6 +27,7 @@ public class StoneTiming : MonoBehaviour
     void Start()
     {
         goldManager = GoldManager.instance;
+        effect = GetComponent<Effect>();
 
         Quarry.SetActive(false);
         timingBoxs = new Vector2[timingRect.Length];
@@ -67,35 +70,42 @@ public class StoneTiming : MonoBehaviour
             if (timingBoxs[x].x <= StonePosX && StonePosX <= timingBoxs[x].y)
             {
                
-                StoneHitEffect();
-                if (x == 0)
-                {
-                    addGold = 200;
-                }
-                else if (x == 1)
-                {
-                    addGold = 200;
-                }
-                else if (x == 2)
-                {
-                    addGold = 100;
-                }
+                effect.StoneHitEffect();
+                effect.JudgmentEffect(x);
+                TakeGold(x);
                 totalGold += addGold;
-               
+                return;
             }
             else
             {
-                Debug.Log("Fail");
+                effect.JudgmentEffect(3);
             }
             
         }
     }
-    public void StoneHitEffect()
-    {
-        StoneHit.SetTrigger(hit);
-    }
+   
     public void SetScore()
     {
         goldManager.Gold += totalGold;
     }
+    public void TakeGold(int gold)
+    {
+        if (gold == 0)
+        {
+            addGold = 200;
+        }
+        else if (gold == 1)
+        {
+            addGold = 200;
+        }
+        else if (gold == 2)
+        {
+            addGold = 100;
+        }
+        else
+        {
+            addGold = 0;
+        }
+    }
+    
 }

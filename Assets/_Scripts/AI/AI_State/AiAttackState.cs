@@ -5,8 +5,8 @@ using UnityEngine;
 public class AiAttackState : AiBaseState
 {
     private bool alreadyAppliedForce;
-    private bool RigntalreadyAppliedDealing;
-    private bool LeftalreadyAppliedDealing;
+    //private bool RigntalreadyAppliedDealing;
+    //private bool LeftalreadyAppliedDealing;
 
     public AiAttackState(AiStateMachine aiStateMachine) : base(aiStateMachine)
     {
@@ -15,8 +15,8 @@ public class AiAttackState : AiBaseState
     public override void Enter()
     {
         alreadyAppliedForce = false;
-        RigntalreadyAppliedDealing = false;
-        LeftalreadyAppliedDealing = false;
+        //RigntalreadyAppliedDealing = false;
+        //LeftalreadyAppliedDealing = false;
 
 
         stateMachine.MovementSpeedModifier = 0;
@@ -25,15 +25,15 @@ public class AiAttackState : AiBaseState
         StartAnimation(stateMachine.Ai.AnimationData.AttackParameterHash);
 
  
-        if (stateMachine.Ai.RightHandWeapon != null)
-        {
-            stateMachine.Ai.RightHandWeapon.ResetCollisions();
-        }
+        //if (stateMachine.Ai.RightHandWeapon != null)
+        //{
+        //    stateMachine.Ai.RightHandWeapon.ResetCollisions();
+        //}
 
-        if (stateMachine.Ai.LeftHandWeapon != null)
-        {
-            stateMachine.Ai.LeftHandWeapon.ResetCollisions();
-        }
+        //if (stateMachine.Ai.LeftHandWeapon != null)
+        //{
+        //    stateMachine.Ai.LeftHandWeapon.ResetCollisions();
+        //}
     }
 
     public override void Exit()
@@ -64,27 +64,27 @@ public class AiAttackState : AiBaseState
                 }
 
 
-                if (!RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
-                {
+                //if (!RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
+                //{
 
-                    stateMachine.Ai.RightHandWeapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
-                    stateMachine.Ai.RightHandWeapon.gameObject.SetActive(true);
-                    RigntalreadyAppliedDealing = true;
-                }
-                if (!RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
-                {
-                    stateMachine.Ai.RightHandWeapon.gameObject.SetActive(false);
-                }
-                if (!LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
-                {
-                    stateMachine.Ai.LeftHandWeapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
-                    stateMachine.Ai.LeftHandWeapon.gameObject.SetActive(true);
-                    LeftalreadyAppliedDealing = true;
-                }
-                if (!LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
-                {
-                    stateMachine.Ai.LeftHandWeapon.gameObject.SetActive(false);
-                }
+                //    stateMachine.Ai.RightHandWeapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
+                //    stateMachine.Ai.RightHandWeapon.gameObject.SetActive(true);
+                //    RigntalreadyAppliedDealing = true;
+                //}
+                //if (!RigntalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
+                //{
+                //    stateMachine.Ai.RightHandWeapon.gameObject.SetActive(false);
+                //}
+                //if (!LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_Start_TransitionTime)
+                //{
+                //    stateMachine.Ai.LeftHandWeapon.SetAttack(stateMachine.Ai.Data.Damage, stateMachine.Ai.Data.Force);
+                //    stateMachine.Ai.LeftHandWeapon.gameObject.SetActive(true);
+                //    LeftalreadyAppliedDealing = true;
+                //}
+                //if (!LeftalreadyAppliedDealing && normalizedTime >= stateMachine.Ai.Data.Dealing_End_TransitionTime)
+                //{
+                //    stateMachine.Ai.LeftHandWeapon.gameObject.SetActive(false);
+                //}
             }
 
 

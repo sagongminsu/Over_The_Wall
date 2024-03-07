@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     public GoldManager goldManager;
+    public static Shop instance;
 
     public GameObject ShopMan;
     public GameObject ShopUI;
     public GameObject Inven;
-    public ItemSlotUI[] uiSlots;
+    public ShopItemSlotUI[] uiSlots;
     public ItemSlot[] slots;
 
     public ItemData_ itemData_;
@@ -31,7 +32,16 @@ public class Shop : MonoBehaviour
 
     public ItemData_ Coffee;
     public ItemData_ Cigarette;
+    private void Awake()
+    {
+        if (instance == null)
+        {
 
+            instance = this;
+            DontDestroyOnLoad(this);
+
+        }
+    }
     private void Start()
     {
         goldManager = GoldManager.instance;
@@ -75,8 +85,9 @@ public class Shop : MonoBehaviour
     public void UseReturnButton()
     {
         ShopUI.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+       
     }
     private void UpdateUi()
     {
