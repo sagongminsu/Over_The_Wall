@@ -34,8 +34,8 @@ public class StartStory : MonoBehaviour
 
         if (virtualCamera != null)
         {
-            Player.transform.position = new Vector3(-28.05f, -0.059f, -57.44f);
-            //Player.transform.position = new Vector3(50f, -0.1f, -21f);
+           //Player.transform.position = new Vector3(-28.05f, -0.059f, -57.44f);
+            Player.transform.position = new Vector3(50f, -0.1f, -21f);
             virtualCamera.gameObject.SetActive(false);
         }
     }

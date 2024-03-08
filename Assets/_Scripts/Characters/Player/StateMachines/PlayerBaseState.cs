@@ -15,6 +15,7 @@ public class PlayerBaseState : IState
         stateMachine = playerStateMachine;
         groundData = stateMachine.Player.Data.GroundedData;
         goldManager = GoldManager.instance;
+        gameManager = gameManager.I;
     }
 
     public virtual void Enter()
@@ -50,14 +51,18 @@ public class PlayerBaseState : IState
 
     private void Move()
     {
-        {
-            Vector3 movementDirection = GetMovementDirection();
+      
+        
+            if (!gameManager.isMining)
+            {
+                Vector3 movementDirection = GetMovementDirection();
 
-            RotateByMouseDelta();
-            //Rotate(movementDirection);
+                RotateByMouseDelta();
+                //Rotate(movementDirection);
 
-            Move(movementDirection);
-        }
+                Move(movementDirection);
+            }
+        
     }
 
     private Vector3 GetMovementDirection()

@@ -15,6 +15,7 @@ public class gameManager : MonoBehaviour
     public bool Open;
     public bool isPause;
     public bool isLoad = false;
+    public bool isMining = false;
 
     public bool NewGame = true;
 
@@ -26,6 +27,7 @@ public class gameManager : MonoBehaviour
     {
         if (I != null && I != this)
         {
+            
             Destroy(gameObject);
             return;
         }
@@ -44,6 +46,7 @@ public class gameManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(isMining);
         //if (isPause == false)
         //{
         //    if (Input.GetKeyDown(OpenInven))

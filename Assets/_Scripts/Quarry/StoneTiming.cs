@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class StoneTiming : MonoBehaviour
@@ -11,10 +10,14 @@ public class StoneTiming : MonoBehaviour
     public TextMeshProUGUI Gold;
     [SerializeField] Transform Center = null;
     [SerializeField] RectTransform[] timingRect = null;
- 
+    [SerializeField] Animator StoneHit = null;
+    [SerializeField] Animator judgementAnimator = null;
+    [SerializeField] UnityEngine.UI.Image judgemenImage = null;
+    [SerializeField] Sprite[] judementSprite = null;
 
-    private Effect effect;
     private GoldManager goldManager;
+    public gameManager gameManager;
+   
 
     public string hit = "Hit";
 
@@ -27,8 +30,8 @@ public class StoneTiming : MonoBehaviour
     void Start()
     {
         goldManager = GoldManager.instance;
-        effect = GetComponent<Effect>();
-
+        gameManager = gameManager.I;
+       
         Quarry.SetActive(false);
         timingBoxs = new Vector2[timingRect.Length];
         for(int i = 0; i < timingRect.Length; i++)
@@ -45,8 +48,8 @@ public class StoneTiming : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             inputCount++;
-            CheckTiming();
-            goldManager.isMining = true;
+            CheckStonTiming();
+            gameManager.isMining = true;
 
         }
         if (inputCount == 5)
@@ -55,14 +58,14 @@ public class StoneTiming : MonoBehaviour
             Quarry.SetActive(false);
             SetScore();
             totalGold = 0;
-            goldManager.isMining = false;
+            gameManager.isMining = false;
             
 
         }
        
         Gold.text = totalGold.ToString();
     }
-    public void CheckTiming()
+    public void CheckStonTiming()
     {
         float StonePosX = Stone.transform.localPosition.x;
         for (int x = 0; x < timingBoxs.Length; x++)
@@ -70,42 +73,47 @@ public class StoneTiming : MonoBehaviour
             if (timingBoxs[x].x <= StonePosX && StonePosX <= timingBoxs[x].y)
             {
                
-                effect.StoneHitEffect();
-                effect.JudgmentEffect(x);
-                TakeGold(x);
+                StoneHitEffect();
+                
+
+
+                if (x == 0)
+                {
+                    addGold = 300;
+                    
+                }
+                else if (x == 1)
+                {
+                    addGold = 200;
+                   
+                }
+                else if (x == 2)
+                {
+                    addGold = 100;
+                    
+                }
                 totalGold += addGold;
+                JudgementEffect(x);
                 return;
             }
             else
             {
-                effect.JudgmentEffect(3);
+                Debug.Log("Fail");
             }
             
         }
     }
-   
+    public void StoneHitEffect()
+    {
+        StoneHit.SetTrigger(hit);
+    }
     public void SetScore()
     {
         goldManager.Gold += totalGold;
     }
-    public void TakeGold(int gold)
+    public void JudgementEffect(int num)
     {
-        if (gold == 0)
-        {
-            addGold = 200;
-        }
-        else if (gold == 1)
-        {
-            addGold = 200;
-        }
-        else if (gold == 2)
-        {
-            addGold = 100;
-        }
-        else
-        {
-            addGold = 0;
-        }
+        judgemenImage.sprite = judementSprite[num];
+        judgementAnimator.SetTrigger(hit);
     }
-    
 }
