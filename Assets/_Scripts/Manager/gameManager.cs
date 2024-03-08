@@ -43,31 +43,6 @@ public class gameManager : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-
-    private void Update()
-    {
-        Debug.Log(isMining);
-        //if (isPause == false)
-        //{
-        //    if (Input.GetKeyDown(OpenInven))
-        //    {
-        //        Open = !Open;
-        //        ToggleInven?.Invoke(Open);
-        //        if (Open)
-        //        {
-        //            Time.timeScale = 0;
-        //            Cursor.lockState = CursorLockMode.None;
-        //        }
-        //        else if (!Open)
-        //        {
-        //            Time.timeScale = 1;
-        //            Cursor.lockState = CursorLockMode.Locked;
-        //        }
-        //    }
-        //}
-        
-    }
-
     public bool CheckTime(int startTime, int endTime)
     {
      

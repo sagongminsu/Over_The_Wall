@@ -190,9 +190,7 @@ public class BlackJack : MonoBehaviour
     void QuitGame()
     {
         // 마우스 락 설정
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
+        Cursor.lockState = CursorLockMode.Locked;
         // BlackJackCanvas 게임 오브젝트 비활성화
         GameObject blackJackCanvas = GameObject.Find("BlackJackCanvas");
         if (blackJackCanvas != null)
