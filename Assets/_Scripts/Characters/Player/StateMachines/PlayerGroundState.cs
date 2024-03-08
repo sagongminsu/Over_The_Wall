@@ -86,7 +86,7 @@ public class PlayerGroundedState : PlayerBaseState
 
     protected virtual void OnMove()
     {
-        if (!goldManager.isMining)
+        if (!gameManager.isMining)
         {
             if (stateMachine.IsCrouch)
                 stateMachine.ChangeState(stateMachine.CrouchWalkState);
@@ -99,7 +99,7 @@ public class PlayerGroundedState : PlayerBaseState
 
     protected override void OnJumpStarted(InputAction.CallbackContext context)
     {
-        if(!goldManager.isMining)
+        if(!gameManager.isMining)
         stateMachine.ChangeState(stateMachine.JumpState);
     }
 
