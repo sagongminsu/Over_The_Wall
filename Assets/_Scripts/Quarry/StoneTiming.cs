@@ -17,24 +17,24 @@ public class StoneTiming : MonoBehaviour
 
     private GoldManager goldManager;
     public gameManager gameManager;
-   
+
 
     public string hit = "Hit";
 
     public int totalGold;
     public int addGold;
     public int inputCount = 0;
-    
+
 
     Vector2[] timingBoxs = null;
     void Start()
     {
         goldManager = GoldManager.instance;
         gameManager = gameManager.I;
-       
+
         Quarry.SetActive(false);
         timingBoxs = new Vector2[timingRect.Length];
-        for(int i = 0; i < timingRect.Length; i++)
+        for (int i = 0; i < timingRect.Length; i++)
         {
             timingBoxs[i].Set(Center.localPosition.x - timingRect[i].rect.width / 2,
                               Center.localPosition.x + timingRect[i].rect.width / 2);
@@ -52,18 +52,22 @@ public class StoneTiming : MonoBehaviour
             gameManager.isMining = true;
 
         }
+
+
+        Gold.text = totalGold.ToString();
+    }
+    private void LateUpdate()
+    {
         if (inputCount == 5)
         {
-            
+
             Quarry.SetActive(false);
             SetScore();
             totalGold = 0;
             gameManager.isMining = false;
-            
+
 
         }
-       
-        Gold.text = totalGold.ToString();
     }
     public void CheckStonTiming()
     {
@@ -72,25 +76,25 @@ public class StoneTiming : MonoBehaviour
         {
             if (timingBoxs[x].x <= StonePosX && StonePosX <= timingBoxs[x].y)
             {
-               
+
                 StoneHitEffect();
-                
+
 
 
                 if (x == 0)
                 {
                     addGold = 300;
-                    
+
                 }
                 else if (x == 1)
                 {
                     addGold = 200;
-                   
+
                 }
                 else if (x == 2)
                 {
                     addGold = 100;
-                    
+
                 }
                 totalGold += addGold;
                 JudgementEffect(x);
@@ -100,7 +104,7 @@ public class StoneTiming : MonoBehaviour
             {
                 Debug.Log("Fail");
             }
-            
+
         }
     }
     public void StoneHitEffect()
