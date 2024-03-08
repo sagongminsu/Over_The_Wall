@@ -17,7 +17,7 @@ public class GoldManager : MonoBehaviour
         {
             isMining = false;
             instance = this;
-            DontDestroyOnLoad(this);
+            
 
         }
     }

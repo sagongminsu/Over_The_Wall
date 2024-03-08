@@ -22,8 +22,10 @@ public class ShopOpen : MonoBehaviour, IInteraction
 
     public void OnInteract()
     {
-      ShopWindow.SetActive(true);
+       
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
+        ShopWindow.SetActive(true);
     }
+    
 }

@@ -42,7 +42,7 @@ public class BlackJack : MonoBehaviour
         standBtn.onClick.AddListener(() => StandClicked());
         betBtn.onClick.AddListener(() => BetClicked());
         quitBtn.onClick.AddListener(() => QuitGame());
-        UpdateGoldUI(); // 시작할 때 UI 업데이트
+        goldManager.UpdateGold();
     }
 
     private void DealClicked()
@@ -70,9 +70,9 @@ public class BlackJack : MonoBehaviour
         standBtn.gameObject.SetActive(true);
         standBtnText.text = "Stand";
         // Set standard pot size
-        pot = 40;
+        pot = 1000;
         betsText.text = "Bets: $" + pot.ToString();
-        playerScript.AdjustGold(-20);
+        playerScript.AdjustGold(-1000);
         goldText.text = "$" + playerScript.GetMoney().ToString();
     }
 
@@ -138,13 +138,13 @@ public class BlackJack : MonoBehaviour
         else if (dealerBust || playerScript.handValue > dealerScript.handValue)
         {
             mainText.text = "You win!";
-            playerScript.AdjustGold(pot);
+            playerScript.AdjustGold(pot * 2); // 베팅된 금액의 2배를 지급
         }
         //Check for tie, return bets
         else if (playerScript.handValue == dealerScript.handValue)
         {
             mainText.text = "Push: Bets returned";
-            playerScript.AdjustGold(pot / 2);
+            playerScript.AdjustGold(pot); // 베팅된 금액을 그대로 지급
         }
         else
         {
@@ -161,27 +161,31 @@ public class BlackJack : MonoBehaviour
             hideCard.GetComponent<Image>().enabled = false;
             goldText.text = "$" + playerScript.GetMoney().ToString();
             standClicks = 0;
+            pot = 0; // 베팅된 금액 초기화
+            betsText.text = "Bets: $" + pot.ToString(); // 베팅된 금액 UI 업데이트
         }
     }
-
 
     // Add money to pot if bet clicked
     void BetClicked()
     {
-        Text newBet = betBtn.GetComponentInChildren(typeof(Text)) as Text;
-        int intBet = int.Parse(newBet.text.ToString().Remove(0, 1));
-        playerScript.AdjustGold(-intBet);
+        if(goldManager.Gold >= 1000)
+        {
+            int betAmount = 1000;
+            goldManager.Gold -= betAmount;
+            pot += betAmount;
+            betsText.text = "Bets: $" + pot.ToString();
 
-        // GoldManager에서 Gold 속성 변경
-        goldManager.Gold -= intBet;
-
-        UpdateGoldUI(); // UI 업데이트
+            UpdateGoldUI();
+        }
+        
     }
 
-    // UI에 현재 골드 반영
+
+
     public void UpdateGoldUI()
     {
-        goldManager.UpdateGold();
+        goldText.text = "$" + goldManager.Gold.ToString(); // Scoreboard의 goldText 업데이트
     }
     void QuitGame()
     {

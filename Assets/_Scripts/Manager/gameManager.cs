@@ -10,8 +10,6 @@ public class gameManager : MonoBehaviour
 
     public Action<bool> ToggleInven;
 
-    public static gameManager I;
-
     public float defaultMouseSensitivity = 1.0f;
     public KeyCode OpenInven;
     public bool Open;
@@ -19,10 +17,11 @@ public class gameManager : MonoBehaviour
     public bool isLoad = false;
     public bool isMining = false;
 
-
     public bool NewGame = true;
 
     private float currentMouseSensitivity;
+
+    public static gameManager I;
 
     void Awake()
     {
