@@ -5,7 +5,7 @@ using UnityEngine;
 public class Stone : MonoBehaviour
 {
 
-    public float StoneSpeed = 400;
+    public float StoneSpeed = 300;
     public RectTransform rectTransform;
     public float minX = -300f; // 이동 가능한 최소 X 좌표
     public float maxX = 300f;
