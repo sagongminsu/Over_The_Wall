@@ -35,9 +35,16 @@ public class QuestData : ScriptableObject
     public string questDescription;
     public bool onGoing;
     public bool isCompleted;
+    public QuestData[] PrerequisiteQuest;
+
+
 
     [Header("RequiredResource")]
     public RequiredResource[] requiredResource;
+
+    [Header("Reward")]
+    public int Gold;
+    public GameObject Item;
 
     [Header("Dialouge")]
     public QuestDialogue questDialogue;

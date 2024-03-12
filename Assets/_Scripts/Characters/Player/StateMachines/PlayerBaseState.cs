@@ -258,15 +258,8 @@ public class PlayerBaseState : IState
     {
         if (stateMachine.Player.Pause.CheckActive() == false)
         {
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0.0f;
+            stateMachine.ChangeState(stateMachine.UIState);
             stateMachine.Player.Pause.ActiveUI(true);
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Time.timeScale = 1.0f;
-            stateMachine.Player.Pause.ActiveUI(false);
         }
     }
 
@@ -274,7 +267,8 @@ public class PlayerBaseState : IState
     {
         if (stateMachine.Player.Inven.CheckActive() == false && stateMachine.Player.Pause.CheckActive() == false)
         {
-            stateMachine.ChangeState(stateMachine.InvenState);
+            stateMachine.Player.Inven.ActiveUI(true);
+            stateMachine.ChangeState(stateMachine.UIState);
         }
     }
 

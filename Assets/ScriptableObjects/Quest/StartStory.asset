@@ -19,7 +19,10 @@ MonoBehaviour:
     \uC5C6\uB2E4."
   onGoing: 0
   isCompleted: 0
+  PrerequisiteQuest: []
   requiredResource: []
+  Gold: 0
+  Item: {fileID: 0}
   questDialogue:
     BeforeStart:
     - "\uAE68\uC5B4\uB0AC\uB098?"
