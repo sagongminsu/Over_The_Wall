@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197d11c900a44464bb4cda296d027eb2, type: 3}
+  m_Name: Baton
+  m_EditorClassIdentifier: 
+  displayName: "\uC9C4\uC555\uBD09"
+  description: "\uC8C4\uC218\uB97C \uC9C4\uC555\uD560\uB54C \uC4F0\uB294 \uBD09\uC774\uB2E4."
+  type: 1
+  icon: {fileID: 21300000, guid: d641894414ce1be4d8d7f0e7e9181ffd, type: 3}
+  dropPrefab: {fileID: 3347842088034462417, guid: d3a019066cfb9f84fa46f62e0b20ed3a,
+    type: 3}
+  price: 20000
+  canStack: 0
+  maxStackAmount: 1
+  consumables: []
+  equipPrefab: {fileID: 3347842088034462417, guid: d3a019066cfb9f84fa46f62e0b20ed3a,
+    type: 3}
+  weaponType: 1
+  HasQuestItem: 0
+  QuestNum: 0
